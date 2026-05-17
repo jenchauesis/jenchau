@@ -805,51 +805,37 @@ section { position: relative; z-index: 1; }
 .modal-body { padding: 2.5rem; }
 .modal-media-grid {
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 8px;
-  align-items: stretch;
+  align-items: start;
 }
 
 .modal-media-item {
   background: #050505;
   overflow: hidden;
-  aspect-ratio: 1 / 1;
 }
 
 .modal-media-item img,
 .modal-media-item video {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
   display: block;
+  object-fit: contain;
 }
 
-/* size collage */
 .modal-media-item.hero {
-  grid-column: span 8;
-  aspect-ratio: 16 / 10;
-}
-
-.modal-media-item.portrait {
-  grid-column: span 4;
-  aspect-ratio: 4 / 5;
-}
-
-.modal-media-item.medium {
-  grid-column: span 6;
-  aspect-ratio: 4 / 3;
-}
-
-.modal-media-item.small {
-  grid-column: span 4;
-  aspect-ratio: 1 / 1;
+  grid-column: span 2;
 }
 
 .modal-media-item.wide {
-  grid-column: span 12;
-  aspect-ratio: 16 / 7;
+  grid-column: span 2;
 }
 
+.modal-media-item.portrait,
+.modal-media-item.medium,
+.modal-media-item.small {
+  grid-column: span 1;
+}
 .modal-media-item img,
 .modal-media-item video {
   width: 100%;
@@ -1622,14 +1608,17 @@ const pdata = {
     <strong style="color:#f0b030">The Archivist</strong> in sesame — knowledge encoded into object.<br><br>
     Fashion as narrative. A bag is not an accessory — it is a philosophy.`,
     meta: { Tools:'CLO3D · Blender', Year:'2024–2025', Type:'Conceptual Collection', Domain:'Luxury Fashion' },
-    media:[
+   media:[
   {class:'hero', src:'https://drive.google.com/thumbnail?id=1ELzkqG_3SibAutaNhyX-fvMa4x1zbb7l&sz=w2000'},
-  {class:'portrait', src:'https://drive.google.com/thumbnail?id=1JcskzAVocDWGRSwpaUwFqXttne-JRt96&sz=w2000'},
+  {class:'medium', src:'https://drive.google.com/thumbnail?id=1JcskzAVocDWGRSwpaUwFqXttne-JRt96&sz=w2000'},
   {class:'medium', src:'https://drive.google.com/thumbnail?id=1asotAWI4Y_CoxW4ncGxmkNyS2TG-zNAt&sz=w2000'},
   {class:'medium', src:'https://drive.google.com/thumbnail?id=1jKpWBhiN72yMl23eTfas5BA6gGOzJ3ED&sz=w2000'},
-  {class:'small', src:'https://drive.google.com/thumbnail?id=1dzFDVcsTWB_0-yBH97sfs3ToLNiwVwVi&sz=w2000'},
-  {class:'small', src:'https://drive.google.com/thumbnail?id=1wNo6WOiO4IxatyPKcZXFNN9rYiWpD3Ur&sz=w2000'},
-  {class:'small', src:'https://drive.google.com/thumbnail?id=1aXzgVAKehoMmw589dN5SPJrB8wYM-3hb&sz=w2000'},
+  {class:'medium', src:'https://drive.google.com/thumbnail?id=1dzFDVcsTWB_0-yBH97sfs3ToLNiwVwVi&sz=w2000'},
+  {class:'medium', src:'https://drive.google.com/thumbnail?id=1wNo6WOiO4IxatyPKcZXFNN9rYiWpD3Ur&sz=w2000'},
+  {class:'medium', src:'https://drive.google.com/thumbnail?id=1aXzgVAKehoMmw589dN5SPJrB8wYM-3hb&sz=w2000'},
+  {class:'medium', src:'https://drive.google.com/thumbnail?id=1GvtLxUI_8YD5xpjubjK86e8ocHgOc6AZ&sz=w2000'},
+  {class:'medium', src:'https://drive.google.com/thumbnail?id=1jiZiKRRlV0Co0VrXmCWhBltlBGjU7Jpz&sz=w2000'},
+  {class:'medium', src:'https://drive.google.com/thumbnail?id=1w_kpke1884Ev8KzF-imrwAoD48neJ5CG&sz=w2000'},
   {class:'wide', src:'https://drive.google.com/thumbnail?id=10HxNW5wORDkz2zYK51j0tSvpNSFXtPXI&sz=w2000'}
 ]
 },
