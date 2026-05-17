@@ -1,5 +1,5 @@
 /
-├── index.html              ← Main website file
+├── index (1).html              ← Main website file
 ├── README.md
 └── assets/
     ├── portrait.jpg        ← Your hero portrait photo
