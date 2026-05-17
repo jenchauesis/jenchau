@@ -805,12 +805,32 @@ section { position: relative; z-index: 1; }
 .modal-body { padding: 2.5rem; }
 .modal-media-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 6px;
-  align-items: start;
-   grid-auto-flow: dense;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 8px;
+  grid-auto-flow: dense;
+}
+.modal-media-item.hero {
+  grid-column: span 8;
+  grid-row: span 2;
 }
 
+.modal-media-item.portrait {
+  grid-column: span 4;
+  grid-row: span 2;
+}
+
+.modal-media-item.medium {
+  grid-column: span 6;
+}
+
+.modal-media-item.small {
+  grid-column: span 4;
+}
+
+.modal-media-item.tall {
+  grid-column: span 4;
+  grid-row: span 2;
+}
 .modal-media-item {
   background: #050505;
   overflow: hidden;
