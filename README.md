@@ -1,7 +1,7 @@
 /
-├── index (1).html              ← Main website file
-├── README.md
-└── assets/
+index (1).html              ← Main website file
+README.md
+ assets/
     ├── portrait.jpg        ← Your hero portrait photo
     └── projects/
         ├── delvaux/
