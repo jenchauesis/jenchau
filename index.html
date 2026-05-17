@@ -532,11 +532,11 @@ section { position: relative; z-index: 1; }
     var(--tan)
   );
 }.portrait-img-area {
-  width: 50%; height: 50%; object-fit: cover;
   aspect-ratio: 3/4; display: flex; align-items: center; justify-content: center;
   position: relative; overflow: hidden;
   background: linear-gradient(135deg, #1c0f22 0%, #0f1525 50%, #0f1a10 100%);
 }
+.portrait-img-area img { width: 100%; height: 100%; object-fit: cover; }
 .portrait-placeholder { font-family: var(--font-pixel); font-size: 0.34rem; color: var(--text-dimmer); text-align: center; line-height: 2.5; }
 .portrait-placeholder .ph-big { font-size: 2.5rem; display: block; margin-bottom: 0.8rem; opacity: 0.18; }
 .portrait-info { padding: 1.5rem; border-top: 1px solid var(--border); }
