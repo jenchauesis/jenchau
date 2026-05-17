@@ -476,8 +476,8 @@ section { position: relative; z-index: 1; }
 
 .about-grid {
   display: grid;
-  grid-template-columns: 0.75fr 1.25fr;
-  gap: 4rem;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 4.5rem;
   align-items: start;
 }
 .about-text p { font-size: 0.9rem; line-height: 2.1; color: var(--text-dim); margin-bottom: 1.5rem; }
@@ -524,13 +524,13 @@ section { position: relative; z-index: 1; }
   border: 1px solid var(--border);
   background: var(--ink);
 }
-.portrait-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
+.portrait-card {
+  max-width: 620px;
+  margin-left: auto;
+  position: sticky;
+  top: 5rem;
+  overflow: hidden;
+  border: 1px solid var(--border);
   background: linear-gradient(
     90deg,
     var(--rust),
@@ -539,17 +539,18 @@ section { position: relative; z-index: 1; }
     var(--rosewood),
     var(--tan)
   );
-}.portrait-img-area {
-  aspect-ratio: 3/4; display: flex; align-items: center; justify-content: center;
-  position: relative; overflow: hidden;
+}
+.portrait-img-area {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
   background: linear-gradient(135deg, #1c0f22 0%, #0f1525 50%, #0f1a10 100%);
 }
 .portrait-img-area img { display: block;
   width: 100%;
-  height: auto;
-  max-height: 760px;
+  height: 100%;
   object-fit: cover;
-  object-position: center top;
+  object-position: center 38%;
   filter: grayscale(100%); }
 .portrait-placeholder { font-family: var(--font-pixel); font-size: 0.34rem; color: var(--text-dimmer); text-align: center; line-height: 2.5; }
 .portrait-placeholder .ph-big { font-size: 2.5rem; display: block; margin-bottom: 0.8rem; opacity: 0.18; }
