@@ -1,0 +1,1363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JEN CHAU — Digital Fashion & Game Artist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* =============================================
+   PALETTE — VW CLASH × DOPAMINE
+   Base: deep mauve-black, warm ink
+   Accents: never obvious, always intentional
+   Burnt sienna × cobalt × acid lime × dusty rose
+   Warm amber × slate blue × terracotta × sage
+============================================= */
+:root {
+  /* Base */
+  --bg:        #16101a;   /* deep mauve-black */
+  --bg2:       #1e1525;   /* slightly lighter mauve */
+  --bg3:       #120d18;   /* darkest panels */
+  --ink:       #2a1f35;   /* card backgrounds */
+  --text:      #f0ebe8;   /* warm off-white */
+  --text-dim:  rgba(240,235,232,0.5);
+  --text-dimmer: rgba(240,235,232,0.28);
+
+  /* VW Clash accents — unexpected combos */
+  --sienna:    #c45c3a;   /* burnt sienna — warm, aged */
+  --sienna2:   #e07a58;
+  --cobalt:    #2d5be3;   /* cobalt — saturated but deep */
+  --cobalt2:   #5f87f5;
+  --lime:      #8fcf3a;   /* acid lime — the unexpected one */
+  --lime2:     #b4e05a;
+  --rose:      #c45a82;   /* dusty rose — VW signature */
+  --rose2:     #e07aa4;
+  --amber:     #d4900a;   /* warm amber — not gold, warmer */
+  --amber2:    #f0b030;
+  --slate:     #4a6fa5;   /* slate blue — quiet but present */
+  --slate2:    #7aa0d0;
+  --terra:     #b84a2a;   /* terracotta */
+  --sage:      #6a9a6a;   /* sage green */
+  --sage2:     #8fc08f;
+  --lavender:  #8a6ab4;   /* muted lavender */
+  --lavender2: #b09ad4;
+
+  /* Per-project color map */
+  --p1: var(--sienna);
+  --p2: var(--cobalt);
+  --p3: var(--lime);
+  --p4: var(--rose);
+  --p5: var(--amber);
+  --p6: var(--slate);
+  --p7: var(--sage);
+  --p8: var(--lavender);
+  --p9: var(--terra);
+  --p10: var(--cobalt2);
+
+  --border: rgba(240,235,232,0.08);
+
+  --font-pixel: 'Press Start 2P', monospace;
+  --font-serif: 'Playfair Display', serif;
+  --font-mono:  'Space Mono', monospace;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-mono);
+  cursor: none;
+  overflow-x: hidden;
+}
+
+/* Subtle texture */
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
+  background-size: 28px 28px;
+  pointer-events: none; z-index: 0;
+}
+
+/* Noise overlay — gives depth */
+body::after {
+  content: '';
+  position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
+  pointer-events: none; z-index: 0; opacity: 0.6;
+}
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg3); }
+::-webkit-scrollbar-thumb { background: linear-gradient(var(--sienna), var(--cobalt), var(--lime)); }
+
+/* CURSOR */
+#cursor {
+  position: fixed; pointer-events: none; z-index: 9999;
+  transform: translate(-50%,-50%);
+  width: 10px; height: 10px;
+  background: var(--lime);
+  transition: transform 0.08s;
+  clip-path: polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);
+}
+#cursor-trail {
+  position: fixed; width: 6px; height: 6px;
+  background: var(--rose);
+  pointer-events: none; z-index: 9998;
+  transform: translate(-50%,-50%);
+  transition: all 0.14s ease;
+  opacity: 0.65;
+}
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 1.1rem 3rem;
+  background: rgba(22,16,26,0.88);
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid var(--border);
+}
+
+/* Rainbow underline — but VW colors, desaturated slightly */
+nav::after {
+  content: '';
+  position: absolute; bottom: -3px; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg,
+    var(--sienna), var(--amber), var(--lime),
+    var(--cobalt), var(--rose), var(--lavender),
+    var(--sage), var(--sienna));
+  opacity: 0.7;
+}
+
+.nav-logo { font-family: var(--font-pixel); font-size: 0.46rem; line-height: 2; letter-spacing: 0.1em; }
+.nav-logo .l1 { color: var(--sienna2); }
+.nav-logo .l2 { color: var(--border); }
+.nav-logo .l3 { color: var(--cobalt2); }
+
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a {
+  font-family: var(--font-pixel); font-size: 0.38rem;
+  text-decoration: none; letter-spacing: 0.1em;
+  color: var(--text-dim); transition: color 0.2s;
+  position: relative; padding-bottom: 3px;
+}
+.nav-links a::after {
+  content: ''; position: absolute; bottom: 0; left: 0;
+  width: 0; height: 2px; background: currentColor; transition: width 0.3s;
+}
+.nav-links a:hover { color: var(--text); }
+.nav-links a:hover::after { width: 100%; }
+.nav-links li:nth-child(1) a:hover { color: var(--sienna2); }
+.nav-links li:nth-child(2) a:hover { color: var(--lime2); }
+.nav-links li:nth-child(3) a:hover { color: var(--cobalt2); }
+.nav-links li:nth-child(4) a:hover { color: var(--rose2); }
+.nav-links li:nth-child(5) a:hover { color: var(--amber2); }
+
+/* HERO */
+.hero {
+  position: relative; min-height: 100vh;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden; padding: 7rem 2rem 6rem;
+}
+
+/* Pixel stars — smaller, subtler */
+.stars { position: absolute; inset: 0; pointer-events: none; }
+.star { position: absolute; animation: twinkle var(--d,2.5s) infinite var(--delay,0s); }
+@keyframes twinkle { 0%,100%{opacity:0.9} 50%{opacity:0.08} }
+
+/* Floating shapes — not childish coins, more abstract */
+.floater {
+  position: absolute; pointer-events: none;
+  animation: floatShape var(--d,9s) ease-in-out infinite var(--delay,0s);
+  font-size: var(--fs, 16px);
+  filter: blur(0.5px);
+  opacity: 0.55;
+}
+@keyframes floatShape { 0%,100%{transform:translateY(0) rotate(0deg)} 50%{transform:translateY(-22px) rotate(8deg)} }
+
+/* Ground blocks — same concept, more refined */
+.hero-ground { position: absolute; bottom: 0; left: 0; right: 0; height: 40px; display: flex; overflow: hidden; pointer-events: none; }
+.ground-block {
+  flex-shrink: 0; width: 40px; height: 40px;
+  border-right: 1px solid rgba(0,0,0,0.4);
+  border-top: 1px solid rgba(255,255,255,0.08);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-pixel); font-size: 0.3rem;
+  transition: transform 0.3s;
+}
+.ground-block:hover { transform: translateY(-6px); }
+.ground-block:nth-child(10n+1)  { background: var(--sienna); color: white; }
+.ground-block:nth-child(10n+2)  { background: var(--cobalt); color: white; }
+.ground-block:nth-child(10n+3)  { background: var(--lime); color: var(--bg); }
+.ground-block:nth-child(10n+4)  { background: var(--rose); color: white; }
+.ground-block:nth-child(10n+5)  { background: var(--amber); color: var(--bg); }
+.ground-block:nth-child(10n+6)  { background: var(--slate); color: white; }
+.ground-block:nth-child(10n+7)  { background: var(--sage); color: var(--bg); }
+.ground-block:nth-child(10n+8)  { background: var(--lavender); color: white; }
+.ground-block:nth-child(10n+9)  { background: var(--terra); color: white; }
+.ground-block:nth-child(10n+10) { background: var(--bg2); color: var(--text-dim); }
+
+.hero-inner { position: relative; z-index: 2; text-align: center; max-width: 1000px; }
+
+.hero-eyebrow {
+  font-family: var(--font-pixel); font-size: 0.36rem;
+  letter-spacing: 0.32em; margin-bottom: 2.5rem;
+  color: var(--text-dimmer);
+  opacity: 0; animation: fadeUp 0.7s ease 0.2s forwards;
+}
+.hero-eyebrow em { color: var(--lime); font-style: normal; }
+
+/* Each letter — VW clash, not rainbow child */
+.hero-title {
+  font-family: var(--font-serif); font-size: clamp(4.5rem, 12vw, 10rem);
+  font-weight: 700; line-height: 0.85; letter-spacing: -0.025em;
+  margin-bottom: 1.8rem;
+  opacity: 0; animation: fadeUp 0.7s ease 0.4s forwards;
+}
+.n-j { color: var(--sienna2); font-style: italic; }
+.n-e { color: var(--amber2); }
+.n-n { color: var(--lime2); }
+.n-c { color: var(--cobalt2); font-style: italic; }
+.n-h { color: var(--rose2); }
+.n-a { color: var(--lavender2); }
+.n-u { color: var(--sage2); font-style: italic; }
+.n-blink { font-family: var(--font-pixel); font-size: 0.22em; color: var(--text-dimmer); vertical-align: middle; animation: blink 1s steps(1) infinite; }
+@keyframes blink { 50%{opacity:0} }
+
+/* Crossover tagline — the bridge between game & fashion */
+.hero-crossover {
+  display: inline-flex; align-items: center; gap: 1rem;
+  margin-bottom: 2rem;
+  opacity: 0; animation: fadeUp 0.7s ease 0.55s forwards;
+}
+.cross-label {
+  font-family: var(--font-pixel); font-size: 0.38rem;
+  padding: 0.55rem 1rem; letter-spacing: 0.1em;
+}
+.cross-label.game { background: var(--cobalt); color: white; box-shadow: 3px 3px 0 rgba(0,0,0,0.4); }
+.cross-label.divider { font-size: 0.5rem; color: var(--lime); }
+.cross-label.fashion { background: var(--rose); color: white; box-shadow: 3px 3px 0 rgba(0,0,0,0.4); }
+
+.hero-subtitle {
+  font-size: 0.7rem; color: var(--text-dimmer); letter-spacing: 0.22em;
+  margin-bottom: 2.5rem;
+  opacity: 0; animation: fadeUp 0.7s ease 0.65s forwards;
+}
+
+.hero-tags {
+  display: flex; gap: 0.6rem; justify-content: center; flex-wrap: wrap;
+  margin-bottom: 3rem; opacity: 0; animation: fadeUp 0.7s ease 0.8s forwards;
+}
+.tag {
+  font-family: var(--font-pixel); font-size: 0.33rem;
+  padding: 0.48rem 0.85rem; letter-spacing: 0.06em;
+  transition: all 0.15s; border: 1px solid;
+  background: transparent;
+}
+.tag:hover { transform: translate(-2px,-2px); }
+
+/* Tags — intentional clash pairs */
+.tg1 { color: var(--sienna2); border-color: var(--sienna); }
+.tg1:hover { background: var(--sienna); color: white; }
+.tg2 { color: var(--lime2); border-color: var(--lime); }
+.tg2:hover { background: var(--lime); color: var(--bg); }
+.tg3 { color: var(--cobalt2); border-color: var(--cobalt); }
+.tg3:hover { background: var(--cobalt); color: white; }
+.tg4 { color: var(--rose2); border-color: var(--rose); }
+.tg4:hover { background: var(--rose); color: white; }
+.tg5 { color: var(--amber2); border-color: var(--amber); }
+.tg5:hover { background: var(--amber); color: var(--bg); }
+.tg6 { color: var(--sage2); border-color: var(--sage); }
+.tg6:hover { background: var(--sage); color: var(--bg); }
+.tg7 { color: var(--lavender2); border-color: var(--lavender); }
+.tg7:hover { background: var(--lavender); color: white; }
+.tg8 { color: var(--slate2); border-color: var(--slate); }
+.tg8:hover { background: var(--slate); color: white; }
+
+.hero-ctas {
+  display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
+  opacity: 0; animation: fadeUp 0.7s ease 1s forwards;
+}
+.btn {
+  font-family: var(--font-pixel); font-size: 0.42rem;
+  padding: 0.9rem 1.8rem; text-decoration: none; letter-spacing: 0.1em;
+  border: none; cursor: none; transition: all 0.15s;
+  display: inline-flex; align-items: center; gap: 0.5rem;
+}
+.btn-s { background: var(--sienna); color: white; box-shadow: 4px 4px 0 rgba(0,0,0,0.5); }
+.btn-s:hover { transform: translate(-2px,-2px); box-shadow: 6px 6px 0 rgba(0,0,0,0.5); }
+.btn-c { background: var(--cobalt); color: white; box-shadow: 4px 4px 0 rgba(0,0,0,0.5); }
+.btn-c:hover { transform: translate(-2px,-2px); box-shadow: 6px 6px 0 rgba(0,0,0,0.5); }
+
+/* TICKER */
+.ticker { overflow: hidden; }
+.ticker-row { display: flex; overflow: hidden; padding: 0.55rem 0; }
+.ticker-row:nth-child(1) { background: var(--sienna); }
+.ticker-row:nth-child(2) { background: var(--cobalt); }
+.ticker-row:nth-child(3) { background: var(--lime); }
+.ticker-inner { display: flex; gap: 2.5rem; animation: ticker 24s linear infinite; white-space: nowrap; }
+.ticker-row:nth-child(2) .ticker-inner { animation-direction: reverse; animation-duration: 30s; }
+.ticker-row:nth-child(3) .ticker-inner { animation-duration: 18s; }
+.ticker-inner span { font-family: var(--font-pixel); font-size: 0.34rem; letter-spacing: 0.12em; }
+.ticker-row:nth-child(1) .ticker-inner span { color: rgba(255,255,255,0.9); }
+.ticker-row:nth-child(2) .ticker-inner span { color: rgba(255,255,255,0.9); }
+.ticker-row:nth-child(3) .ticker-inner span { color: var(--bg); }
+@keyframes ticker { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+/* COMMONS */
+section { position: relative; z-index: 1; }
+.container { max-width: 1300px; margin: 0 auto; padding: 0 3rem; }
+.section-header { display: flex; align-items: center; gap: 1.5rem; margin-bottom: 4rem; }
+.section-num { font-family: var(--font-pixel); font-size: 0.38rem; color: var(--text-dimmer); }
+.section-title { font-family: var(--font-serif); font-size: clamp(2rem,5vw,3.5rem); font-style: italic; font-weight: 700; }
+.section-line { flex: 1; height: 2px; opacity: 0.25; background: linear-gradient(90deg, currentColor, transparent); }
+
+/* ABOUT */
+.about { padding: 8rem 0; }
+.about-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 6rem; align-items: start; }
+.about-text p { font-size: 0.9rem; line-height: 2.1; color: var(--text-dim); margin-bottom: 1.5rem; }
+.hl { font-style: italic; font-weight: 400; }
+.hl-s { color: var(--sienna2); }
+.hl-c { color: var(--cobalt2); }
+.hl-l { color: var(--lime2); }
+.hl-r { color: var(--rose2); }
+.hl-a { color: var(--amber2); }
+.hl-v { color: var(--lavender2); }
+
+/* Crossover identity block */
+.identity-block {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 3px; margin-top: 2.5rem;
+}
+.id-panel {
+  padding: 1.5rem; position: relative; overflow: hidden;
+}
+.id-panel::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; }
+.id-panel.game { background: rgba(45,91,227,0.12); border: 1px solid rgba(45,91,227,0.25); }
+.id-panel.game::before { background: var(--cobalt); }
+.id-panel.fashion { background: rgba(196,90,130,0.12); border: 1px solid rgba(196,90,130,0.25); }
+.id-panel.fashion::before { background: var(--rose); }
+.id-panel.bridge { background: rgba(143,207,58,0.08); border: 1px solid rgba(143,207,58,0.2); grid-column: span 2; }
+.id-panel.bridge::before { background: var(--lime); }
+
+.id-label { font-family: var(--font-pixel); font-size: 0.32rem; margin-bottom: 0.8rem; letter-spacing: 0.08em; }
+.id-panel.game .id-label { color: var(--cobalt2); }
+.id-panel.fashion .id-label { color: var(--rose2); }
+.id-panel.bridge .id-label { color: var(--lime2); }
+
+.id-skills { display: flex; flex-direction: column; gap: 0.35rem; }
+.id-skill { font-size: 0.7rem; color: var(--text-dim); display: flex; align-items: center; gap: 0.5rem; }
+.id-skill::before { content: '▸'; font-size: 0.6rem; }
+.id-panel.game .id-skill::before { color: var(--cobalt); }
+.id-panel.fashion .id-skill::before { color: var(--rose); }
+.id-panel.bridge .id-skill::before { color: var(--lime); }
+
+.portrait-card {
+  position: relative; overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--ink);
+}
+.portrait-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg,var(--sienna),var(--cobalt),var(--lime),var(--rose),var(--amber)); }
+.portrait-img-area {
+  aspect-ratio: 3/4; display: flex; align-items: center; justify-content: center;
+  position: relative; overflow: hidden;
+  background: linear-gradient(135deg, #1c0f22 0%, #0f1525 50%, #0f1a10 100%);
+}
+.portrait-img-area img { width: 100%; height: 100%; object-fit: cover; }
+.portrait-placeholder { font-family: var(--font-pixel); font-size: 0.34rem; color: var(--text-dimmer); text-align: center; line-height: 2.5; }
+.portrait-placeholder .ph-big { font-size: 2.5rem; display: block; margin-bottom: 0.8rem; opacity: 0.18; }
+.portrait-info { padding: 1.5rem; border-top: 1px solid var(--border); }
+.portrait-name { font-family: var(--font-pixel); font-size: 0.34rem; color: var(--sienna2); letter-spacing: 0.08em; margin-bottom: 0.5rem; }
+.portrait-detail { font-size: 0.68rem; color: var(--text-dimmer); line-height: 1.9; }
+
+/* PROJECTS */
+.projects { padding: 8rem 0; background: var(--bg3); }
+.projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px; }
+.project-card {
+  position: relative; background: var(--ink); overflow: hidden; cursor: none;
+  transition: transform 0.2s, box-shadow 0.2s; border: 1px solid transparent;
+}
+.project-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.5); z-index: 10; }
+.project-card.featured { grid-column: span 2; }
+
+/* Each card top stripe = project color */
+.card-stripe { height: 4px; width: 100%; }
+
+/* Project color assignments — VW clash: no two adjacent cards same family */
+.pc-1  .card-stripe { background: var(--sienna); }
+.pc-2  .card-stripe { background: var(--cobalt); }
+.pc-3  .card-stripe { background: var(--lime); }
+.pc-4  .card-stripe { background: var(--rose); }
+.pc-5  .card-stripe { background: var(--amber); }
+.pc-6  .card-stripe { background: var(--slate); }
+.pc-7  .card-stripe { background: var(--sage); }
+.pc-8  .card-stripe { background: var(--lavender); }
+.pc-9  .card-stripe { background: var(--terra); }
+.pc-10 .card-stripe { background: var(--cobalt2); }
+
+.pc-1:hover  { border-color: rgba(196,92,58,0.4); }
+.pc-2:hover  { border-color: rgba(45,91,227,0.4); }
+.pc-3:hover  { border-color: rgba(143,207,58,0.4); }
+.pc-4:hover  { border-color: rgba(196,90,130,0.4); }
+.pc-5:hover  { border-color: rgba(212,144,10,0.4); }
+.pc-6:hover  { border-color: rgba(74,111,165,0.4); }
+.pc-7:hover  { border-color: rgba(106,154,106,0.4); }
+.pc-8:hover  { border-color: rgba(138,106,180,0.4); }
+.pc-9:hover  { border-color: rgba(184,74,42,0.4); }
+.pc-10:hover { border-color: rgba(95,135,245,0.4); }
+
+.project-thumb { aspect-ratio: 16/10; position: relative; overflow: hidden; }
+.project-card.featured .project-thumb { aspect-ratio: 16/9; }
+.project-thumb svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.project-thumb img,
+.project-thumb video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.project-thumb-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(12,8,18,0.95) 0%, transparent 50%); }
+
+/* Hover: reveal image grid preview */
+.project-hover-strip {
+  position: absolute; inset: 0; opacity: 0; transition: opacity 0.3s;
+  display: grid; grid-template-columns: repeat(3,1fr); grid-template-rows: repeat(2,1fr); gap: 2px;
+}
+.project-card:hover .project-hover-strip { opacity: 1; }
+.hs-item { background: rgba(22,16,26,0.82); display: flex; align-items: center; justify-content: center; font-family: var(--font-pixel); font-size: 0.27rem; letter-spacing: 0.04em; transition: background 0.2s; }
+.hs-item:hover { background: rgba(255,255,255,0.06); }
+.pc-1  .hs-item { color: var(--sienna2); }
+.pc-2  .hs-item { color: var(--cobalt2); }
+.pc-3  .hs-item { color: var(--lime2); }
+.pc-4  .hs-item { color: var(--rose2); }
+.pc-5  .hs-item { color: var(--amber2); }
+.pc-6  .hs-item { color: var(--slate2); }
+.pc-7  .hs-item { color: var(--sage2); }
+.pc-8  .hs-item { color: var(--lavender2); }
+.pc-9  .hs-item { color: var(--sienna2); }
+.pc-10 .hs-item { color: var(--cobalt2); }
+
+.project-info { padding: 1.2rem 1.4rem 1.5rem; }
+.project-num { font-family: var(--font-pixel); font-size: 0.28rem; margin-bottom: 0.4rem; letter-spacing: 0.08em; }
+.pc-1  .project-num { color: var(--sienna); }
+.pc-2  .project-num { color: var(--cobalt2); }
+.pc-3  .project-num { color: var(--lime); }
+.pc-4  .project-num { color: var(--rose2); }
+.pc-5  .project-num { color: var(--amber); }
+.pc-6  .project-num { color: var(--slate2); }
+.pc-7  .project-num { color: var(--sage2); }
+.pc-8  .project-num { color: var(--lavender2); }
+.pc-9  .project-num { color: var(--terra); }
+.pc-10 .project-num { color: var(--cobalt2); }
+
+.project-name { font-family: var(--font-serif); font-size: 1.2rem; font-style: italic; font-weight: 700; margin-bottom: 0.4rem; color: var(--text); }
+.project-domain { font-family: var(--font-pixel); font-size: 0.27rem; margin-bottom: 0.5rem; letter-spacing: 0.06em; }
+.domain-game { color: var(--cobalt2); }
+.domain-fashion { color: var(--rose2); }
+.domain-both { color: var(--lime2); }
+.project-desc { font-size: 0.67rem; color: var(--text-dim); line-height: 1.75; margin-bottom: 0.9rem; }
+.project-footer { display: flex; align-items: center; justify-content: space-between; gap: 0.8rem; }
+.project-tags { display: flex; gap: 0.35rem; flex-wrap: wrap; }
+.ptag { font-family: var(--font-pixel); font-size: 0.26rem; padding: 0.28rem 0.5rem; background: transparent; border: 1px solid; letter-spacing: 0.03em; }
+.pc-1  .ptag { border-color: var(--sienna); color: var(--sienna2); }
+.pc-2  .ptag { border-color: var(--cobalt); color: var(--cobalt2); }
+.pc-3  .ptag { border-color: var(--lime); color: var(--lime2); }
+.pc-4  .ptag { border-color: var(--rose); color: var(--rose2); }
+.pc-5  .ptag { border-color: var(--amber); color: var(--amber2); }
+.pc-6  .ptag { border-color: var(--slate); color: var(--slate2); }
+.pc-7  .ptag { border-color: var(--sage); color: var(--sage2); }
+.pc-8  .ptag { border-color: var(--lavender); color: var(--lavender2); }
+.pc-9  .ptag { border-color: var(--terra); color: var(--sienna2); }
+.pc-10 .ptag { border-color: var(--cobalt2); color: var(--cobalt2); }
+
+.view-btn {
+  font-family: var(--font-pixel); font-size: 0.28rem; padding: 0.4rem 0.8rem;
+  border: none; cursor: none; letter-spacing: 0.06em; transition: all 0.15s;
+  white-space: nowrap; color: var(--bg);
+  box-shadow: 2px 2px 0 rgba(0,0,0,0.5);
+}
+.view-btn:hover { transform: translate(-1px,-1px); box-shadow: 3px 3px 0 rgba(0,0,0,0.5); }
+.pc-1  .view-btn { background: var(--sienna); }
+.pc-2  .view-btn { background: var(--cobalt); color: white; }
+.pc-3  .view-btn { background: var(--lime); }
+.pc-4  .view-btn { background: var(--rose); color: white; }
+.pc-5  .view-btn { background: var(--amber); }
+.pc-6  .view-btn { background: var(--slate); color: white; }
+.pc-7  .view-btn { background: var(--sage); }
+.pc-8  .view-btn { background: var(--lavender); color: white; }
+.pc-9  .view-btn { background: var(--terra); color: white; }
+.pc-10 .view-btn { background: var(--cobalt2); color: white; }
+
+/* EXPERIENCE + EDUCATION — shared layout */
+.exp-edu { padding: 8rem 0; }
+.exp-edu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+
+/* Subsection header */
+.subsec-header {
+  display: flex; align-items: center; gap: 1rem;
+  margin-bottom: 2.5rem; padding-bottom: 1rem;
+  border-bottom: 2px solid;
+}
+.subsec-header.exp-h { border-bottom-color: var(--sienna); }
+.subsec-header.edu-h { border-bottom-color: var(--cobalt); }
+.subsec-icon { font-size: 1.2rem; }
+.subsec-title { font-family: var(--font-pixel); font-size: 0.42rem; letter-spacing: 0.1em; }
+.subsec-header.exp-h .subsec-title { color: var(--sienna2); }
+.subsec-header.edu-h .subsec-title { color: var(--cobalt2); }
+
+/* Timeline cards */
+.timeline { display: flex; flex-direction: column; gap: 3px; }
+.tl-item {
+  padding: 1.5rem; background: var(--ink);
+  border-left: 3px solid;
+  position: relative; transition: background 0.2s;
+}
+.tl-item:hover { background: rgba(255,255,255,0.02); }
+
+/* Experience border colors */
+.tl-exp:nth-child(1) { border-left-color: var(--sienna); }
+.tl-exp:nth-child(2) { border-left-color: var(--amber); }
+.tl-exp:nth-child(3) { border-left-color: var(--rose); }
+
+/* Education border colors */
+.tl-edu:nth-child(1) { border-left-color: var(--cobalt); }
+.tl-edu:nth-child(2) { border-left-color: var(--lime); }
+.tl-edu:nth-child(3) { border-left-color: var(--lavender); }
+
+.tl-date { font-family: var(--font-pixel); font-size: 0.3rem; margin-bottom: 0.5rem; letter-spacing: 0.08em; }
+.tl-exp:nth-child(1) .tl-date { color: var(--sienna2); }
+.tl-exp:nth-child(2) .tl-date { color: var(--amber2); }
+.tl-exp:nth-child(3) .tl-date { color: var(--rose2); }
+.tl-edu:nth-child(1) .tl-date { color: var(--cobalt2); }
+.tl-edu:nth-child(2) .tl-date { color: var(--lime2); }
+.tl-edu:nth-child(3) .tl-date { color: var(--lavender2); }
+
+.tl-org { font-family: var(--font-serif); font-size: 1.4rem; font-style: italic; font-weight: 700; margin-bottom: 0.2rem; }
+.tl-role { font-family: var(--font-pixel); font-size: 0.3rem; letter-spacing: 0.06em; color: var(--text-dim); margin-bottom: 0.9rem; }
+.tl-bullets { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
+.tl-bullets li { font-size: 0.72rem; color: var(--text-dim); padding-left: 1.1rem; position: relative; line-height: 1.8; }
+.tl-bullets li::before { content: '▸'; position: absolute; left: 0; }
+.tl-exp:nth-child(1) .tl-bullets li::before { color: var(--sienna); }
+.tl-exp:nth-child(2) .tl-bullets li::before { color: var(--amber); }
+.tl-exp:nth-child(3) .tl-bullets li::before { color: var(--rose); }
+.tl-edu:nth-child(1) .tl-bullets li::before { color: var(--cobalt); }
+.tl-edu:nth-child(2) .tl-bullets li::before { color: var(--lime); }
+.tl-edu:nth-child(3) .tl-bullets li::before { color: var(--lavender); }
+
+/* Education special badge for Gobelins — ongoing */
+.tl-badge {
+  display: inline-block; font-family: var(--font-pixel); font-size: 0.28rem;
+  padding: 0.3rem 0.6rem; margin-top: 0.8rem; letter-spacing: 0.05em;
+}
+.badge-ongoing { background: var(--cobalt); color: white; }
+.badge-completed { background: var(--ink); border: 1px solid var(--border); color: var(--text-dim); }
+.badge-recognized { background: var(--lime); color: var(--bg); }
+
+/* MODAL */
+.modal-overlay {
+  position: fixed; inset: 0; background: rgba(12,8,18,0.96);
+  z-index: 1000; display: flex; align-items: center; justify-content: center;
+  opacity: 0; pointer-events: none; transition: opacity 0.3s; backdrop-filter: blur(14px);
+}
+.modal-overlay.active { opacity: 1; pointer-events: all; }
+.modal {
+  width: 92vw; max-width: 1100px; max-height: 90vh;
+  background: var(--bg2); overflow-y: auto;
+  transform: translateY(20px); transition: transform 0.3s;
+  border: 1px solid var(--border);
+}
+.modal-overlay.active .modal { transform: translateY(0); }
+.modal-stripe { height: 5px; }
+.modal-header {
+  padding: 2rem 2.5rem; border-bottom: 1px solid var(--border);
+  display: flex; justify-content: space-between; align-items: center;
+  position: sticky; top: 0; background: var(--bg2); z-index: 10;
+}
+.modal-title { font-family: var(--font-serif); font-size: 1.8rem; font-style: italic; font-weight: 700; }
+.modal-domain { font-family: var(--font-pixel); font-size: 0.3rem; color: var(--text-dimmer); margin-top: 0.3rem; letter-spacing: 0.1em; }
+.modal-close {
+  font-family: var(--font-pixel); font-size: 0.38rem; padding: 0.55rem 1.1rem;
+  cursor: none; letter-spacing: 0.1em; border: none; transition: all 0.15s;
+  color: white; box-shadow: 3px 3px 0 rgba(0,0,0,0.5);
+}
+.modal-close:hover { transform: translate(-1px,-1px); box-shadow: 4px 4px 0 rgba(0,0,0,0.5); }
+.modal-body { padding: 2.5rem; }
+.modal-media-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 5px; margin-bottom: 2.5rem; }
+.modal-media-item {
+  aspect-ratio: 4/3; position: relative; overflow: hidden; background: var(--ink);
+  display: flex; align-items: center; justify-content: center;
+}
+.modal-media-item.wide { grid-column: span 2; aspect-ratio: 16/9; }
+.modal-media-item img, .modal-media-item video { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; }
+.modal-media-item:hover img, .modal-media-item:hover video { transform: scale(1.05); }
+.media-ph { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.5rem; }
+.media-ph .ph-i { font-size: 1.5rem; opacity: 0.18; }
+.media-ph span { font-family: var(--font-pixel); font-size: 0.27rem; color: rgba(240,235,232,0.2); text-align: center; }
+.modal-info { display: grid; grid-template-columns: 1fr 200px; gap: 3rem; align-items: start; }
+.modal-desc { font-size: 0.88rem; line-height: 2.1; color: var(--text-dim); }
+.modal-meta { display: flex; flex-direction: column; gap: 0.8rem; }
+.meta-item { font-family: var(--font-pixel); font-size: 0.28rem; line-height: 2; letter-spacing: 0.05em; }
+.meta-label { color: var(--text-dimmer); display: block; }
+.meta-val { display: block; margin-top: 0.2rem; }
+
+/* CONTACT */
+.contact { padding: 10rem 0 8rem; text-align: center; position: relative; overflow: hidden; }
+.contact-bg { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: var(--font-serif); font-size: 28vw; font-style: italic; font-weight: 700; opacity: 0.018; pointer-events: none; color: var(--text); }
+.contact-eyebrow { font-family: var(--font-pixel); font-size: 0.35rem; letter-spacing: 0.3em; margin-bottom: 2rem; color: var(--text-dimmer); }
+.contact-eyebrow em { color: var(--lime2); font-style: normal; }
+.contact-title { font-family: var(--font-serif); font-size: clamp(3rem,9vw,7.5rem); font-style: italic; font-weight: 700; line-height: 0.9; margin-bottom: 1rem; }
+.contact-title .cw1 { color: var(--sienna2); display: block; }
+.contact-title .cw2 { color: var(--cobalt2); font-style: normal; display: block; }
+.contact-title .cw3 { color: var(--lime2); display: block; }
+.contact-sub { font-size: 0.75rem; color: var(--text-dimmer); letter-spacing: 0.22em; margin-bottom: 3.5rem; }
+.contact-links { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+.contact-link {
+  font-family: var(--font-pixel); font-size: 0.38rem; padding: 0.9rem 1.8rem;
+  text-decoration: none; letter-spacing: 0.1em; border: 1px solid;
+  transition: all 0.15s; cursor: none; display: inline-block; background: transparent;
+}
+.contact-link:hover { transform: translate(-2px,-2px); }
+.cl-1 { color: var(--sienna2); border-color: var(--sienna); }
+.cl-1:hover { background: var(--sienna); color: white; }
+.cl-2 { color: var(--cobalt2); border-color: var(--cobalt); }
+.cl-2:hover { background: var(--cobalt); color: white; }
+.cl-3 { color: var(--lime2); border-color: var(--lime); }
+.cl-3:hover { background: var(--lime); color: var(--bg); }
+
+/* FOOTER */
+footer { overflow: hidden; border-top: 1px solid var(--border); }
+.footer-blocks { display: flex; }
+.footer-block { flex: 1; padding: 1.2rem 0.8rem; text-align: center; font-family: var(--font-pixel); font-size: 0.27rem; letter-spacing: 0.05em; color: var(--bg); }
+.footer-block:nth-child(1) { background: var(--sienna); }
+.footer-block:nth-child(2) { background: var(--amber); }
+.footer-block:nth-child(3) { background: var(--lime); }
+.footer-block:nth-child(4) { background: var(--cobalt); color: white; }
+.footer-block:nth-child(5) { background: var(--rose); color: white; }
+.footer-block:nth-child(6) { background: var(--lavender); color: white; }
+
+/* REVEAL */
+.reveal { opacity: 0; transform: translateY(26px); transition: opacity 0.65s ease, transform 0.65s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+@keyframes fadeUp { from{opacity:0;transform:translateY(18px)} to{opacity:1;transform:translateY(0)} }
+
+@media (max-width: 1000px) {
+  .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .projects-grid { grid-template-columns: 1fr 1fr; }
+  .project-card.featured { grid-column: span 2; }
+  .exp-edu-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .container { padding: 0 1.5rem; }
+  nav { padding: 0.9rem 1.5rem; }
+  .modal-media-grid { grid-template-columns: repeat(2,1fr); }
+  .modal-media-item.wide { grid-column: span 1; aspect-ratio: 4/3; }
+  .modal-info { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  .projects-grid { grid-template-columns: 1fr; }
+  .project-card.featured { grid-column: span 1; }
+  .hero-ctas { flex-direction: column; align-items: center; }
+  .footer-blocks { flex-wrap: wrap; }
+  .footer-block { flex: 0 0 33.33%; }
+  .identity-block { grid-template-columns: 1fr; }
+  .id-panel.bridge { grid-column: span 1; }
+}
+</style>
+</head>
+<body>
+
+<div id="cursor"></div>
+<div id="cursor-trail"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <span class="l1">JEN CHAU</span><br>
+    <span class="l2">──────────</span><br>
+    <span class="l3">GAME × FASHION ARTIST</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#about">ABOUT</a></li>
+    <li><a href="#projects">WORK</a></li>
+    <li><a href="#experience">EXP</a></li>
+    <li><a href="#education">EDU</a></li>
+    <li><a href="#contact">CONTACT</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="stars" id="stars"></div>
+
+  <!-- Abstract floating shapes — not childish coins -->
+  <div class="floater" style="left:6%;top:25%;color:var(--sienna);--d:8s;--delay:0s;--fs:20px;">◆</div>
+  <div class="floater" style="left:88%;top:20%;color:var(--cobalt2);--d:10s;--delay:1.2s;--fs:14px;">✦</div>
+  <div class="floater" style="left:14%;top:65%;color:var(--lime);--d:7s;--delay:2s;--fs:12px;">▲</div>
+  <div class="floater" style="left:80%;top:70%;color:var(--rose2);--d:9s;--delay:0.5s;--fs:18px;">●</div>
+  <div class="floater" style="left:45%;top:12%;color:var(--amber);--d:11s;--delay:1.5s;--fs:10px;">◈</div>
+  <div class="floater" style="left:26%;top:42%;color:var(--lavender2);--d:8.5s;--delay:0.8s;--fs:16px;">◇</div>
+  <div class="floater" style="left:64%;top:35%;color:var(--sage2);--d:9.5s;--delay:2.3s;--fs:13px;">▪</div>
+  <div class="floater" style="left:55%;top:78%;color:var(--slate2);--d:7.5s;--delay:1s;--fs:15px;">◆</div>
+
+  <div class="hero-inner">
+    <div class="hero-eyebrow">✦ <em>DIGITAL FASHION</em> &amp; <em style="color:var(--cobalt2)">GAME ART</em> ✦</div>
+
+    <h1 class="hero-title">
+      <span class="n-j">J</span><span class="n-e">E</span><span class="n-n">N</span><span class="n-blink">▌</span><br>
+      <span class="n-c">C</span><span class="n-h">H</span><span class="n-a">A</span><span class="n-u">U</span>
+    </h1>
+
+    <div class="hero-crossover">
+      <span class="cross-label game">GAME ARTIST</span>
+      <span class="cross-label divider">×</span>
+      <span class="cross-label fashion">FASHION DESIGNER</span>
+    </div>
+
+    <p class="hero-subtitle">ESMOD PARIS · GOBELINS 2026 · CLO3D · BLENDER · UNREAL ENGINE 5</p>
+
+    <div class="hero-tags">
+      <span class="tag tg3">CLO3D</span>
+      <span class="tag tg1">BLENDER</span>
+      <span class="tag tg2">UNREAL ENGINE</span>
+      <span class="tag tg4">AI WORKFLOW</span>
+      <span class="tag tg5">LUXURY 3D</span>
+      <span class="tag tg6">ZBRUSH</span>
+      <span class="tag tg7">CHARACTER DESIGN</span>
+      <span class="tag tg8">WORLDBUILDING</span>
+    </div>
+
+    <div class="hero-ctas">
+      <a href="#projects" class="btn btn-s">▶ VIEW WORK</a>
+      <a href="#contact" class="btn btn-c">✉ CONTACT</a>
+    </div>
+  </div>
+
+  <div class="hero-ground" id="hero-ground"></div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-row"><div class="ticker-inner">
+    <span>✦ DIGITAL FASHION ARTIST</span><span>◆ GAME ART</span><span>✦ HIGH-FIDELITY 3D</span><span>◆ LUXURY BRAND R&D</span><span>✦ CINEMATIC STORYTELLING</span><span>◆ WORLDBUILDING</span><span>✦ DELVAUX · ESMOD · GOBELINS</span><span>◆ CLO3D RECOGNIZED</span>
+    <span>✦ DIGITAL FASHION ARTIST</span><span>◆ GAME ART</span><span>✦ HIGH-FIDELITY 3D</span><span>◆ LUXURY BRAND R&D</span><span>✦ CINEMATIC STORYTELLING</span><span>◆ WORLDBUILDING</span><span>✦ DELVAUX · ESMOD · GOBELINS</span><span>◆ CLO3D RECOGNIZED</span>
+  </div></div>
+  <div class="ticker-row"><div class="ticker-inner">
+    <span>▶ PARIS</span><span>▶ BRUSSELS</span><span>▶ 3D INNOVATION</span><span>▶ R&D PIPELINES</span><span>▶ AVATAR DESIGN</span><span>▶ NARRATIVE COSTUME</span><span>▶ PERFORMANCE IDENTITY</span><span>▶ WHERE GAME MEETS FASHION</span>
+    <span>▶ PARIS</span><span>▶ BRUSSELS</span><span>▶ 3D INNOVATION</span><span>▶ R&D PIPELINES</span><span>▶ AVATAR DESIGN</span><span>▶ NARRATIVE COSTUME</span><span>▶ PERFORMANCE IDENTITY</span><span>▶ WHERE GAME MEETS FASHION</span>
+  </div></div>
+  <div class="ticker-row"><div class="ticker-inner">
+    <span>★ CLO3D</span><span>★ BLENDER</span><span>★ UE5</span><span>★ ZBRUSH</span><span>★ PHOTOSHOP</span><span>★ ILLUSTRATOR</span><span>★ PREMIERE</span><span>★ AI × FASHION</span><span>★ REAL-TIME 3D</span><span>★ CHARACTER ART</span>
+    <span>★ CLO3D</span><span>★ BLENDER</span><span>★ UE5</span><span>★ ZBRUSH</span><span>★ PHOTOSHOP</span><span>★ ILLUSTRATOR</span><span>★ PREMIERE</span><span>★ AI × FASHION</span><span>★ REAL-TIME 3D</span><span>★ CHARACTER ART</span>
+  </div></div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="section-header reveal" style="color:var(--sienna2)">
+      <span class="section-num">001</span>
+      <h2 class="section-title">About</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <p>
+          Digital Fashion & Game Artist working at the intersection of <span class="hl hl-c">real-time 3D</span> and <span class="hl hl-r">luxury fashion visualization</span>. I build worlds where garments have lore, characters wear identity, and fashion becomes a design system.
+        </p>
+        <p>
+          R&D experience at <span class="hl hl-a">Delvaux Brussels</span> — embedded in the Avatar Innovation Project, delivering production-validated 3D packshots for global VIC clientele. Recognized by <span class="hl hl-l">CLO3D</span> for professional-grade digital fashion work.
+        </p>
+        <p>
+          Currently entering <span class="hl hl-v">Gobelins — Advanced Game Creation & Real-Time Application</span>. The convergence point: costumes designed for characters, fashion systems built for game worlds.
+        </p>
+
+        <div class="identity-block">
+          <div class="id-panel game">
+            <div class="id-label">▶ GAME ART</div>
+            <div class="id-skills">
+              <div class="id-skill">Real-time 3D · Unreal Engine 5</div>
+              <div class="id-skill">Character design & rigging</div>
+              <div class="id-skill">World-building · Environment art</div>
+              <div class="id-skill">Game-ready asset pipeline</div>
+            </div>
+          </div>
+          <div class="id-panel fashion">
+            <div class="id-label">◆ FASHION</div>
+            <div class="id-skills">
+              <div class="id-skill">CLO3D · digital garment simulation</div>
+              <div class="id-skill">Luxury 3D packshot · R&D</div>
+              <div class="id-skill">AI-assisted design workflows</div>
+              <div class="id-skill">Narrative costume design</div>
+            </div>
+          </div>
+          <div class="id-panel bridge">
+            <div class="id-label">✦ INTERSECTION — WHERE BOTH LIVE</div>
+            <div class="id-skills" style="flex-direction:row;flex-wrap:wrap;gap:0.5rem 2rem;">
+              <div class="id-skill">Avatar identity design</div>
+              <div class="id-skill">Cinematic costume for CGI & game</div>
+              <div class="id-skill">Fashion systems for virtual worlds</div>
+              <div class="id-skill">Blender · ZBrush · Photoshop · Premiere</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal" style="transition-delay:0.2s">
+        <div class="portrait-card">
+          <div class="portrait-img-area">
+            <!-- Replace with: <img src="your-photo.jpg" alt="Jen Chau"> -->
+            <div class="portrait-placeholder">
+              <span class="ph-big">🎮</span>
+              [ YOUR PHOTO HERE ]
+            </div>
+          </div>
+          <div class="portrait-info">
+            <div class="portrait-name">Jen Chau — Nguyen Ngoc Tran Chau</div>
+            <div class="portrait-detail">
+              Paris, France<br>
+              jenchauinparis@gmail.com<br>
+              +33 640 966 48
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="projects" id="projects">
+  <div class="container">
+    <div class="section-header reveal" style="color:var(--cobalt2)">
+      <span class="section-num">002</span>
+      <h2 class="section-title">Selected Work</h2>
+      <div class="section-line"></div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="projects-grid">
+
+      <!-- P1 — featured -->
+      <div class="project-card pc-1 featured reveal" onclick="openModal('p1')">
+        <div class="card-stripe"></div>
+        <div class="project-thumb">
+          <!-- Replace: <img src="images/p1.jpg" alt=""> -->
+          <svg viewBox="0 0 800 450" preserveAspectRatio="xMidYMid slice"><rect fill="#1c0d09" width="800" height="450"/><text x="400" y="235" text-anchor="middle" fill="#c45c3a" opacity="0.07" font-family="serif" font-size="130" font-weight="bold" font-style="italic">P1</text><text x="400" y="278" text-anchor="middle" fill="rgba(240,235,232,0.1)" font-family="monospace" font-size="13">[ ADD YOUR HERO IMAGE ]</text></svg>
+          <div class="project-thumb-overlay"></div>
+          <div class="project-hover-strip">
+            <div class="hs-item">IMG 1</div><div class="hs-item">IMG 2</div><div class="hs-item">IMG 3</div>
+            <div class="hs-item">IMG 4</div><div class="hs-item">VID ▶</div><div class="hs-item">IMG 5</div>
+          </div>
+        </div>
+        <div class="project-info">
+          <div class="project-num">PROJECT 001</div>
+          <div class="project-domain domain-fashion">◆ FASHION DESIGN</div>
+          <h3 class="project-name">The Mote — Luxury Bag Collection</h3>
+          <p class="project-desc">Conceptual luxury leather goods inspired by The Mote in God's Eye — The Anomaly, The Watcher, The Archivist. Fashion as narrative object, bag as philosophical artifact.</p>
+          <div class="project-footer">
+            <div class="project-tags"><span class="ptag">CLO3D</span><span class="ptag">CONCEPT</span><span class="ptag">LUXURY</span></div>
+            <button class="view-btn">VIEW ▶</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- P2 -->
+      <div class="project-card pc-2 reveal" style="transition-delay:0.08s" onclick="openModal('p2')">
+        <div class="card-stripe"></div>
+        <div class="project-thumb">
+          <svg viewBox="0 0 400 250" preserveAspectRatio="xMidYMid slice"><rect fill="#090e1e" width="400" height="250"/><text x="200" y="130" text-anchor="middle" fill="#2d5be3" opacity="0.07" font-family="serif" font-size="95" font-weight="bold" font-style="italic">P2</text><text x="200" y="157" text-anchor="middle" fill="rgba(240,235,232,0.09)" font-family="monospace" font-size="11">[ ADD IMAGE ]</text></svg>
+          <div class="project-thumb-overlay"></div>
+          <div class="project-hover-strip">
+            <div class="hs-item">IMG 1</div><div class="hs-item">IMG 2</div><div class="hs-item">IMG 3</div>
+            <div class="hs-item">IMG 4</div><div class="hs-item">IMG 5</div><div class="hs-item">IMG 6</div>
+          </div>
+        </div>
+        <div class="project-info">
+          <div class="project-num">PROJECT 002</div>
+          <div class="project-domain domain-game">▶ GAME / CHARACTER ART</div>
+          <h3 class="project-name">Character Universe</h3>
+          <p class="project-desc">Sci-fi character series — Zik, Nok, Seraphina X-9, the alien insect. Biomechanical aesthetics, narrative costume, otherworldly identity design.</p>
+          <div class="project-footer">
+            <div class="project-tags"><span class="ptag">BLENDER</span><span class="ptag">CGI</span><span class="ptag">CHARACTER</span></div>
+            <button class="view-btn">VIEW ▶</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- P3 -->
+      <div class="project-card pc-3 reveal" style="transition-delay:0.12s" onclick="openModal('p3')">
+        <div class="card-stripe"></div>
+        <div class="project-thumb">
+          <svg viewBox="0 0 400 250" preserveAspectRatio="xMidYMid slice"><rect fill="#0e1408" width="400" height="250"/><text x="200" y="130" text-anchor="middle" fill="#8fcf3a" opacity="0.07" font-family="serif" font-size="95" font-weight="bold" font-style="italic">P3</text><text x="200" y="157" text-anchor="middle" fill="rgba(240,235,232,0.09)" font-family="monospace" font-size="11">[ ADD IMAGE ]</text></svg>
+          <div class="project-thumb-overlay"></div>
+          <div class="project-hover-strip">
+            <div class="hs-item">IMG 1</div><div class="hs-item">IMG 2</div><div class="hs-item">IMG 3</div>
+            <div class="hs-item">VID ▶</div><div class="hs-item">IMG 4</div><div class="hs-item">IMG 5</div>
+          </div>
+        </div>
+        <div class="project-info">
+          <div class="project-num">PROJECT 003</div>
+          <div class="project-domain domain-fashion">◆ FASHION DESIGN</div>
+          <h3 class="project-name">Delvaux — R&D Packshots</h3>
+          <p class="project-desc">Hyper-realistic 3D packshots from the Delvaux R&D internship. Production-validated commercial outputs for global VIC clientele.</p>
+          <div class="project-footer">
+            <div class="project-tags"><span class="ptag">BLENDER</span><span class="ptag">LUXURY</span><span class="ptag">R&D</span></div>
+            <button class="view-btn">VIEW ▶</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- P4 -->
+      <div class="project-card pc-4 reveal" style="transition-delay:0.16s" onclick="openModal('p4')">
+        <div class="card-stripe"></div>
+        <div class="project-thumb">
+          <svg viewBox="0 0 400 250" preserveAspectRatio="xMidYMid slice"><rect fill="#1a0d12" width="400" height="250"/><text x="200" y="130" text-anchor="middle" fill="#c45a82" opacity="0.07" font-family="serif" font-size="95" font-weight="bold" font-style="italic">P4</text><text x="200" y="157" text-anchor="middle" fill="rgba(240,235,232,0.09)" font-family="monospace" font-size="11">[ ADD IMAGE ]</text></svg>
+          <div class="project-thumb-overlay"></div>
+          <div class="project-hover-strip">
+            <div class="hs-item">IMG 1</div><div class="hs-item">IMG 2</div><div class="hs-item">IMG 3</div>
+            <div class="hs-item">IMG 4</div><div class="hs-item">IMG 5</div><div class="hs-item">IMG 6</div>
+          </div>
+        </div>
+        <div class="project-info">
+          <div class="project-num">PROJECT 004</div>
+          <div class="project-domain domain-both">✦ GAME × FASHION</div>
+          <h3 class="project-name">AI Fashion Generation</h3>
+          <p class="project-desc">14,000+ AI-assisted design variations for 3DXAI. Scalable creative iteration workflows bridging generative AI with luxury fashion standards.</p>
+          <div class="project-footer">
+            <div class="project-tags"><span class="ptag">AI</span><span class="ptag">CLO3D</span><span class="ptag">WORKFLOW</span></div>
+            <button class="view-btn">VIEW ▶</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- P5 -->
+      <div class="project-card pc-5 reveal" style="transition-delay:0.2s" onclick="openModal('p5')">
+        <div class="card-stripe"></div>
+        <div class="project-thumb">
+          <svg viewBox="0 0 400 250" preserveAspectRatio="xMidYMid slice"><rect fill="#160f04" width="400" height="250"/><text x="200" y="130" text-anchor="middle" fill="#d4900a" opacity="0.07" font-family="serif" font-size="95" font-weight="bold" font-style="italic">P5</text><text x="200" y="157" text-anchor="middle" fill="rgba(240,235,232,0.09)" font-family="monospace" font-size="11">[ ADD IMAGE ]</text></svg>
+          <div class="project-thumb-overlay"></div>
+          <div class="project-hover-strip">
+            <div class="hs-item">IMG 1</div><div class="hs-item">IMG 2</div><div class="hs-item">IMG 3</div>
+            <div class="hs-item">VID ▶</div><div class="hs-item">IMG 4</div><div class="hs-item">IMG 5</div>
+          </div>
+        </div>
+        <div class="project-info">
+          <div class="project-num">PROJECT 005</div>
+          <div class="project-domain domain-fashion">◆ FASHION DESIGN</div>
+          <h3 class="project-name">Digital Garment Collection</h3>
+          <p class="project-desc">50+ production-ready digital garments — construction-accurate pattern logic, advanced CLO3D fabric simulation for luxury clients.</p>
+          <div class="project-footer">
+            <div class="project-tags"><span class="ptag">CLO3D</span><span class="ptag">GARMENT</span><span class="ptag">SIMULATION</span></div>
+            <button class="view-btn">VIEW ▶</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- P6 -->
+      <div class="project-card pc-6 reveal" style="transition-delay:0.24s" onclick="openModal('p6')">
+        <div class="card-stripe"></div>
+        <div class="project-thumb">
+          <svg viewBox="0 0 400 250" preserveAspectRatio="xMidYMid slice"><rect fill="#0a0f16" width="400" height="250"/><text x="200" y="130" text-anchor="middle" fill="#4a6fa5" opacity="0.07" font-family="serif" font-size="95" font-weight="bold" font-style="italic">P6</text><text x="200" y="157" text-anchor="middle" fill="rgba(240,235,232,0.09)" font-family="monospace" font-size="11">[ ADD IMAGE ]</text></svg>
+          <div class="project-thumb-overlay"></div>
+          <div class="project-hover-strip">
+            <div class="hs-item">IMG 1</div><div class="hs-item">IMG 2</div><div class="hs-item">IMG 3</div>
+            <div class="hs-item">IMG 4</div><div class="hs-item">IMG 5</div><div class="hs-item">IMG 6</div>
+          </div>
+        </div>
+        <div class="project-info">
+          <div class="project-num">PROJECT 006</div>
+          <div class="project-domain domain-game">▶ GAME ART</div>
+          <h3 class="project-name">World Environment Design</h3>
+          <p class="project-desc">Environment and world-building work — real-time assets, level dressing, atmospheric design for interactive experiences.</p>
+          <div class="project-footer">
+            <div class="project-tags"><span class="ptag">UE5</span><span class="ptag">ENVIRONMENT</span><span class="ptag">REAL-TIME</span></div>
+            <button class="view-btn">VIEW ▶</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- P7 -->
+      <div class="project-card pc-7 reveal" style="transition-delay:0.28s" onclick="openModal('p7')">
+        <div class="card-stripe"></div>
+        <div class="project-thumb">
+          <svg viewBox="0 0 400 250" preserveAspectRatio="xMidYMid slice"><rect fill="#0c1208" width="400" height="250"/><text x="200" y="130" text-anchor="middle" fill="#6a9a6a" opacity="0.07" font-family="serif" font-size="95" font-weight="bold" font-style="italic">P7</text><text x="200" y="157" text-anchor="middle" fill="rgba(240,235,232,0.09)" font-family="monospace" font-size="11">[ ADD IMAGE ]</text></svg>
+          <div class="project-thumb-overlay"></div>
+          <div class="project-hover-strip">
+            <div class="hs-item">IMG 1</div><div class="hs-item">IMG 2</div><div class="hs-item">IMG 3</div>
+            <div class="hs-item">VID ▶</div><div class="hs-item">IMG 4</div><div class="hs-item">IMG 5</div>
+          </div>
+        </div>
+        <div class="project-info">
+          <div class="project-num">PROJECT 007</div>
+          <div class="project-domain domain-both">✦ GAME × FASHION</div>
+          <h3 class="project-name">Avatar Fashion System</h3>
+          <p class="project-desc">Costume design system for digital avatars — modular wardrobe logic, cultural coding, identity expression through in-game fashion.</p>
+          <div class="project-footer">
+            <div class="project-tags"><span class="ptag">AVATAR</span><span class="ptag">SYSTEM</span><span class="ptag">UE5</span></div>
+            <button class="view-btn">VIEW ▶</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- P8 -->
+      <div class="project-card pc-8 reveal" style="transition-delay:0.32s" onclick="openModal('p8')">
+        <div class="card-stripe"></div>
+        <div class="project-thumb">
+          <svg viewBox="0 0 400 250" preserveAspectRatio="xMidYMid slice"><rect fill="#110d18" width="400" height="250"/><text x="200" y="130" text-anchor="middle" fill="#8a6ab4" opacity="0.07" font-family="serif" font-size="95" font-weight="bold" font-style="italic">P8</text><text x="200" y="157" text-anchor="middle" fill="rgba(240,235,232,0.09)" font-family="monospace" font-size="11">[ ADD IMAGE ]</text></svg>
+          <div class="project-thumb-overlay"></div>
+          <div class="project-hover-strip">
+            <div class="hs-item">IMG 1</div><div class="hs-item">IMG 2</div><div class="hs-item">IMG 3</div>
+            <div class="hs-item">IMG 4</div><div class="hs-item">IMG 5</div><div class="hs-item">IMG 6</div>
+          </div>
+        </div>
+        <div class="project-info">
+          <div class="project-num">PROJECT 008</div>
+          <div class="project-domain domain-fashion">◆ FASHION DESIGN</div>
+          <h3 class="project-name">ESMOD Graduation Collection</h3>
+          <p class="project-desc">Final collection from ESMOD Paris — narrative-driven digital fashion. Identity, costume, world artifact as design language.</p>
+          <div class="project-footer">
+            <div class="project-tags"><span class="ptag">ESMOD</span><span class="ptag">COLLECTION</span><span class="ptag">IDENTITY</span></div>
+            <button class="view-btn">VIEW ▶</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- P9 -->
+      <div class="project-card pc-9 reveal" style="transition-delay:0.36s" onclick="openModal('p9')">
+        <div class="card-stripe"></div>
+        <div class="project-thumb">
+          <svg viewBox="0 0 400 250" preserveAspectRatio="xMidYMid slice"><rect fill="#170a06" width="400" height="250"/><text x="200" y="130" text-anchor="middle" fill="#b84a2a" opacity="0.07" font-family="serif" font-size="95" font-weight="bold" font-style="italic">P9</text><text x="200" y="157" text-anchor="middle" fill="rgba(240,235,232,0.09)" font-family="monospace" font-size="11">[ ADD IMAGE ]</text></svg>
+          <div class="project-thumb-overlay"></div>
+          <div class="project-hover-strip">
+            <div class="hs-item">IMG 1</div><div class="hs-item">IMG 2</div><div class="hs-item">IMG 3</div>
+            <div class="hs-item">VID ▶</div><div class="hs-item">IMG 4</div><div class="hs-item">IMG 5</div>
+          </div>
+        </div>
+        <div class="project-info">
+          <div class="project-num">PROJECT 009</div>
+          <div class="project-domain domain-game">▶ GAME ART</div>
+          <h3 class="project-name">Cinematic Costume Design</h3>
+          <p class="project-desc">Costume design for cinematic sequences — hero garments for CGI, game cinematics, and performance capture pipelines.</p>
+          <div class="project-footer">
+            <div class="project-tags"><span class="ptag">CINEMATIC</span><span class="ptag">COSTUME</span><span class="ptag">CGI</span></div>
+            <button class="view-btn">VIEW ▶</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- P10 -->
+      <div class="project-card pc-10 reveal" style="transition-delay:0.4s" onclick="openModal('p10')">
+        <div class="card-stripe"></div>
+        <div class="project-thumb">
+          <svg viewBox="0 0 400 250" preserveAspectRatio="xMidYMid slice"><rect fill="#090d1e" width="400" height="250"/><text x="200" y="130" text-anchor="middle" fill="#5f87f5" opacity="0.07" font-family="serif" font-size="95" font-weight="bold" font-style="italic">P10</text><text x="200" y="157" text-anchor="middle" fill="rgba(240,235,232,0.09)" font-family="monospace" font-size="11">[ ADD IMAGE ]</text></svg>
+          <div class="project-thumb-overlay"></div>
+          <div class="project-hover-strip">
+            <div class="hs-item">IMG 1</div><div class="hs-item">IMG 2</div><div class="hs-item">IMG 3</div>
+            <div class="hs-item">IMG 4</div><div class="hs-item">IMG 5</div><div class="hs-item">IMG 6</div>
+          </div>
+        </div>
+        <div class="project-info">
+          <div class="project-num">PROJECT 010</div>
+          <div class="project-domain domain-both">✦ GAME × FASHION</div>
+          <h3 class="project-name">Speculative Fashion World</h3>
+          <p class="project-desc">A speculative universe where fashion is infrastructure — visual world-building research combining luxury design codes with sci-fi game logic.</p>
+          <div class="project-footer">
+            <div class="project-tags"><span class="ptag">WORLDBUILDING</span><span class="ptag">SPECULATIVE</span><span class="ptag">3D</span></div>
+            <button class="view-btn">VIEW ▶</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE + EDUCATION -->
+<section class="exp-edu" id="experience">
+  <div class="container">
+    <div class="section-header reveal" style="color:var(--rose2)">
+      <span class="section-num">003</span>
+      <h2 class="section-title">Experience & Education</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="exp-edu-grid">
+
+      <!-- EXPERIENCE -->
+      <div class="reveal" id="education">
+        <div class="subsec-header exp-h">
+          <span class="subsec-icon">◆</span>
+          <span class="subsec-title">EXPERIENCE</span>
+        </div>
+        <div class="timeline">
+          <div class="tl-item tl-exp">
+            <div class="tl-date">09/2025 → 02/2026</div>
+            <div class="tl-org">Delvaux</div>
+            <div class="tl-role">3D INTERN — R&D AVATAR INNOVATION · BRUSSELS</div>
+            <ul class="tl-bullets">
+              <li>Only intern embedded in the R&D Avatar Innovation Project</li>
+              <li>Hyper-realistic 3D packshots for buyer-facing commercial presentations</li>
+              <li>Production-validated 3D models aligned with manufacturing processes</li>
+              <li>International projects for global VIC clientele</li>
+            </ul>
+          </div>
+          <div class="tl-item tl-exp">
+            <div class="tl-date">06/2024 → 07/2024</div>
+            <div class="tl-org">3DXAI</div>
+            <div class="tl-role">DIGITAL FASHION INTERN · PARIS</div>
+            <ul class="tl-bullets">
+              <li>50+ production-ready digital garments in CLO3D in 2 months</li>
+              <li>14,000+ AI-assisted design variations — 6,000 selected for development</li>
+              <li>Scalable AI-assisted workflows for high-volume luxury creative work</li>
+              <li>Work recognized by CLO3D for professional excellence</li>
+            </ul>
+            <span class="tl-badge badge-recognized">★ CLO3D RECOGNIZED</span>
+          </div>
+          <div class="tl-item tl-exp">
+            <div class="tl-date">Freelance</div>
+            <div class="tl-org">Independent</div>
+            <div class="tl-role">3D ARTIST & DIGITAL FASHION DESIGNER</div>
+            <ul class="tl-bullets">
+              <li>Conceptual fashion projects — narrative and speculative design</li>
+              <li>Character and costume design for personal world-building projects</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- EDUCATION -->
+      <div class="reveal" style="transition-delay:0.15s">
+        <div class="subsec-header edu-h">
+          <span class="subsec-icon">▶</span>
+          <span class="subsec-title">EDUCATION</span>
+        </div>
+        <div class="timeline">
+          <div class="tl-item tl-edu">
+            <div class="tl-date">2026 → 2028</div>
+            <div class="tl-org">Gobelins Paris</div>
+            <div class="tl-role">ADVANCED GAME CREATION & REAL-TIME APPLICATION — MASTER</div>
+            <ul class="tl-bullets">
+              <li>Real-time 3D, game engine pipelines, interactive design</li>
+              <li>Advanced character, environment, and costume art for games</li>
+              <li>Industry-embedded curriculum with studio partnerships</li>
+            </ul>
+            <span class="tl-badge badge-ongoing">▶ ONGOING 2026</span>
+          </div>
+          <div class="tl-item tl-edu">
+            <div class="tl-date">2022 → 2025</div>
+            <div class="tl-org">ESMOD Paris</div>
+            <div class="tl-role">DIGITAL FASHION DESIGN — BA DEGREE</div>
+            <ul class="tl-bullets">
+              <li>Digital Fashion Design specialization</li>
+              <li>3D simulation, digital pattern making, luxury brand workflows</li>
+              <li>AI-integrated design processes and visualization</li>
+            </ul>
+            <span class="tl-badge badge-completed">✓ GRADUATED 2025</span>
+          </div>
+          <div class="tl-item tl-edu">
+            <div class="tl-date">Languages</div>
+            <div class="tl-org" style="font-size:1.1rem">Skills & Languages</div>
+            <div class="tl-role">PROFICIENCY</div>
+            <ul class="tl-bullets">
+              <li>Vietnamese — Native</li>
+              <li>English — Bilingual</li>
+              <li>French — Intermediate (A2+)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-bg">JC</div>
+  <div class="container">
+    <div class="contact-eyebrow reveal">✦ OPEN TO OPPORTUNITIES · <em>PARIS &amp; REMOTE</em> ✦</div>
+    <h2 class="contact-title reveal">
+      <span class="cw1">Let's</span>
+      <span class="cw2">Build</span>
+      <span class="cw3">Worlds.</span>
+    </h2>
+    <p class="contact-sub reveal">Paris — Brussels — Remote — Everywhere</p>
+    <div class="contact-links reveal">
+      <a href="mailto:jenchauinparis@gmail.com" class="contact-link cl-1">✉ EMAIL</a>
+      <a href="https://linkedin.com" target="_blank" class="contact-link cl-2">in LINKEDIN</a>
+      <a href="#" class="contact-link cl-3">↓ CV PDF</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-blocks">
+    <div class="footer-block">JEN CHAU</div>
+    <div class="footer-block">PARIS 2026</div>
+    <div class="footer-block">GAME × FASHION</div>
+    <div class="footer-block">3D · AI · REAL-TIME</div>
+    <div class="footer-block">ESMOD · GOBELINS</div>
+    <div class="footer-block">© ALL RIGHTS</div>
+  </div>
+</footer>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal-overlay" onclick="handleOverlayClick(event)">
+  <div class="modal" id="modal">
+    <div class="modal-stripe" id="modal-stripe"></div>
+    <div class="modal-header">
+      <div>
+        <h2 class="modal-title" id="modal-title"></h2>
+        <div class="modal-domain" id="modal-domain"></div>
+      </div>
+      <button class="modal-close" id="modal-close-btn" onclick="closeModal()">✕ CLOSE</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-media-grid" id="modal-media"></div>
+      <div class="modal-info">
+        <div class="modal-desc" id="modal-desc"></div>
+        <div class="modal-meta" id="modal-meta"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* CURSOR */
+const cursor = document.getElementById('cursor');
+const trail  = document.getElementById('cursor-trail');
+document.addEventListener('mousemove', e => {
+  cursor.style.left = e.clientX + 'px'; cursor.style.top = e.clientY + 'px';
+  setTimeout(() => { trail.style.left = e.clientX + 'px'; trail.style.top = e.clientY + 'px'; }, 110);
+});
+
+/* STARS */
+const sc = ['#c45c3a','#2d5be3','#8fcf3a','#c45a82','#d4900a','#4a6fa5','#6a9a6a','#8a6ab4','#e07a58','#5f87f5'];
+const starsEl = document.getElementById('stars');
+for (let i = 0; i < 50; i++) {
+  const s = document.createElement('div'); s.className = 'star';
+  const sz = Math.random() < 0.6 ? 2 : 4;
+  s.style.cssText = `width:${sz}px;height:${sz}px;background:${sc[i%sc.length]};left:${Math.random()*100}%;top:${Math.random()*100}%;--d:${2+Math.random()*4}s;--delay:${Math.random()*3}s;`;
+  starsEl.appendChild(s);
+}
+
+/* GROUND */
+const ground = document.getElementById('hero-ground');
+const gchars = ['?','◆','★','●','▲','■','◈','◇'];
+for (let i = 0; i < Math.ceil(window.innerWidth/40)+2; i++) {
+  const b = document.createElement('div'); b.className = 'ground-block';
+  b.textContent = gchars[i % gchars.length]; ground.appendChild(b);
+}
+
+/* REVEAL */
+document.querySelectorAll('.reveal').forEach(r => {
+  new IntersectionObserver(([e]) => { if (e.isIntersecting) e.target.classList.add('visible'); }, { threshold: 0.07 }).observe(r);
+});
+
+/* PROJECT DATA */
+const pdata = {
+  p1:  { color:'#c45c3a', domain:'◆ FASHION DESIGN', title:'The Mote — Luxury Bag Collection',
+    desc:`Conceptual luxury leather goods inspired by <em>The Mote in God's Eye</em>.<br><br>
+    Three bags, three archetypes: <strong style="color:#e07a58">The Anomaly</strong> in deep plum — emotion entering a perfect order.
+    <strong style="color:#5f87f5">The Watcher</strong> in absolute black — unseen intelligence.
+    <strong style="color:#f0b030">The Archivist</strong> in sesame — knowledge encoded into object.<br><br>
+    Fashion as narrative. A bag is not an accessory — it is a philosophy.`,
+    meta: { Tools:'CLO3D · Blender', Year:'2024–2025', Type:'Conceptual Collection', Domain:'Luxury Fashion' },
+    media:[{l:'THE ANOMALY — HERO',w:true},{l:'THE WATCHER'},{l:'THE ARCHIVIST'},{l:'DETAIL SHOT'},{l:'COLLECTION VIEW',w:true},{l:'PROCESS'},{l:'RENDER 360°'},{l:'MATERIAL STUDY'},{l:'FINAL PACKSHOT'}]
+  },
+  p2:  { color:'#2d5be3', domain:'▶ GAME / CHARACTER ART', title:'Character Universe',
+    desc:`Sci-fi character design series — <em style="color:#5f87f5">Zik</em> (agile, half machine), <em style="color:#8fc08f">Nok</em> (armored, beetle-built), the <em style="color:#f0b030">Human</em> wandering eras, and <em style="color:#b09ad4">Seraphina X-9</em> — Ruler of the Luminous Expanse.<br><br>
+    Also: biomechanical alien insect with asymmetrical design, crystalline eyes, glowing circuits. Elegant otherworldliness.`,
+    meta: { Tools:'Blender · ZBrush · Photoshop', Year:'2024', Type:'Character Design Series', Domain:'Game Art' },
+    media:[{l:'SERAPHINA X-9',w:true},{l:'ZIK'},{l:'NOK'},{l:'THE HUMAN'},{l:'ALIEN — FULL',w:true},{l:'INSECT DETAIL'},{l:'LINEUP'},{l:'PROCESS'},{l:'FINAL RENDER'}]
+  },
+  p3:  { color:'#8fcf3a', domain:'◆ FASHION DESIGN', title:'Delvaux — R&D Packshots',
+    desc:`Hyper-realistic 3D packshots from the <em style="color:#f0b030">Delvaux R&D internship</em>.<br><br>
+    Production-validated outputs reducing reliance on traditional photography. Models aligned with manufacturing and sculpting processes, delivered to commercial standards for <em style="color:#e07a58">global VIC clientele</em>.`,
+    meta: { Tools:'Blender · ZBrush', Year:'2025–2026', Type:'Commercial 3D', Domain:'Luxury Fashion' },
+    media:[{l:'HERO PACKSHOT',w:true},{l:'DETAIL — CLASP'},{l:'MATERIAL STUDY'},{l:'FRONT VIEW'},{l:'360° TURN',w:true},{l:'SIDE PROFILE'},{l:'INTERIOR'},{l:'LIFESTYLE RENDER'},{l:'WIREFRAME'}]
+  },
+  p4:  { color:'#c45a82', domain:'✦ GAME × FASHION', title:'AI Fashion Generation — 3DXAI',
+    desc:`Scalable AI-assisted design iteration producing <em style="color:#8fc08f">14,000+ design variations</em>.<br><br>
+    6,000 selected for development. Built production workflows bridging generative AI with luxury fashion standards and CLO3D pipelines. Recognized by <em style="color:#8fcf3a">CLO3D</em>.`,
+    meta: { Tools:'CLO3D · AI Tools', Year:'2024', Type:'AI Workflow System', Domain:'Fashion × Tech' },
+    media:[{l:'VARIATION GRID',w:true},{l:'SELECTED 1'},{l:'SELECTED 2'},{l:'WORKFLOW'},{l:'OUTPUT VIEW',w:true},{l:'DETAIL'},{l:'FINAL GARMENT'},{l:'PROCESS'},{l:'COLLECTION'}]
+  },
+  p5:  { color:'#d4900a', domain:'◆ FASHION DESIGN', title:'Digital Garment Collection',
+    desc:`50+ production-ready digital garments in <em style="color:#b09ad4">CLO3D</em> — construction-accurate pattern logic, advanced fabric simulation.<br><br>
+    Each garment follows real construction methodology — drape, tension, seam allowance — translated into digital precision.`,
+    meta: { Tools:'CLO3D · Photoshop', Year:'2024', Type:'Digital Collection', Domain:'Luxury Fashion' },
+    media:[{l:'COLLECTION HERO',w:true},{l:'GARMENT 1'},{l:'GARMENT 2'},{l:'SIMULATION'},{l:'PATTERN DETAIL',w:true},{l:'DRAPE STUDY'},{l:'FABRIC CLOSE-UP'},{l:'FINAL RENDER'},{l:'LINEUP'}]
+  },
+  p6:  { color:'#4a6fa5', domain:'▶ GAME ART', title:'World Environment Design',
+    desc:`Environment and world-building work — real-time assets, level dressing, atmospheric design for interactive experiences in Unreal Engine 5.<br><br>
+    Exploring how space communicates narrative — environments that feel inhabited, lived-in, story-laden.`,
+    meta: { Tools:'Unreal Engine 5 · Blender', Year:'2025', Type:'Environment Art', Domain:'Game Art' },
+    media:[{l:'ENVIRONMENT HERO',w:true},{l:'DETAIL 1'},{l:'DETAIL 2'},{l:'ATMOSPHERE'},{l:'WIDE SHOT',w:true},{l:'ASSET STUDY'},{l:'LIGHTING'},{l:'WIREFRAME'},{l:'FINAL RENDER'}]
+  },
+  p7:  { color:'#6a9a6a', domain:'✦ GAME × FASHION', title:'Avatar Fashion System',
+    desc:`Costume design system for digital avatars — modular wardrobe logic, cultural coding, identity expression through in-game fashion.<br><br>
+    Where luxury design meets game systems: garments as character data, style as player identity.`,
+    meta: { Tools:'UE5 · CLO3D · Blender', Year:'2025', Type:'Design System', Domain:'Game × Fashion' },
+    media:[{l:'SYSTEM OVERVIEW',w:true},{l:'AVATAR 1'},{l:'AVATAR 2'},{l:'MODULAR PIECES'},{l:'OUTFIT BUILDER',w:true},{l:'DETAIL'},{l:'MATERIAL'},{l:'IN-GAME'},{l:'FINAL'}]
+  },
+  p8:  { color:'#8a6ab4', domain:'◆ FASHION DESIGN', title:'ESMOD Graduation Collection',
+    desc:`Final collection from <em style="color:#f0b030">ESMOD Paris — Digital Fashion Design</em>.<br><br>
+    Fashion as identity construction, costume as mythology, garment as world artifact. Synthesizes three years of digital fashion training into a statement about what fashion means when it escapes the physical.`,
+    meta: { Tools:'CLO3D · Blender · Photoshop', Year:'2025', Type:'Graduation Collection', Domain:'Digital Fashion' },
+    media:[{l:'COLLECTION HERO',w:true},{l:'LOOK 1'},{l:'LOOK 2'},{l:'DETAIL'},{l:'FULL LINEUP',w:true},{l:'TEXTILE STUDY'},{l:'RENDER'},{l:'PROCESS'},{l:'FINAL SHOT'}]
+  },
+  p9:  { color:'#b84a2a', domain:'▶ GAME ART', title:'Cinematic Costume Design',
+    desc:`Costume design for cinematic sequences — hero garments for CGI, game cinematics, and performance capture pipelines.<br><br>
+    Where fashion and film meet: how garments read on camera, in light, in motion. Designing for the shot.`,
+    meta: { Tools:'ZBrush · Blender · CLO3D', Year:'2025', Type:'Cinematic Design', Domain:'Game × Cinematic' },
+    media:[{l:'HERO COSTUME',w:true},{l:'FRONT'},{l:'BACK'},{l:'DETAIL'},{l:'IN-SCENE',w:true},{l:'MATERIAL'},{l:'SILHOUETTE'},{l:'PROCESS'},{l:'FINAL'}]
+  },
+  p10: { color:'#5f87f5', domain:'✦ GAME × FASHION', title:'Speculative Fashion World',
+    desc:`A speculative universe where fashion is infrastructure — visual world-building research combining luxury design codes with sci-fi game logic.<br><br>
+    What does couture look like in a post-scarcity civilization? What does street fashion mean for an interplanetary society? Fashion as world-building tool.`,
+    meta: { Tools:'Blender · UE5 · Photoshop', Year:'2025–2026', Type:'Speculative Research', Domain:'Game × Fashion' },
+    media:[{l:'WORLD OVERVIEW',w:true},{l:'FACTION 1'},{l:'FACTION 2'},{l:'GARMENT STUDY'},{l:'ENVIRONMENT',w:true},{l:'CHARACTER'},{l:'MATERIAL'},{l:'RESEARCH'},{l:'FINAL VISION'}]
+  }
+};
+
+function openModal(id) {
+  const p = pdata[id]; if (!p) return;
+  document.getElementById('modal-stripe').style.background = p.color;
+  document.getElementById('modal').style.borderColor = 'rgba('+hexToRgb(p.color)+',0.35)';
+  document.getElementById('modal-close-btn').style.background = p.color;
+  document.getElementById('modal-title').textContent = p.title;
+  document.getElementById('modal-domain').textContent = p.domain;
+  const mediaEl = document.getElementById('modal-media'); mediaEl.innerHTML = '';
+  p.media.forEach((m,i) => {
+    const div = document.createElement('div');
+    div.className = 'modal-media-item' + (m.w ? ' wide' : '');
+    // To replace with real image: div.innerHTML = `<img src="images/${id}/${i+1}.jpg" alt="${m.l}">`;
+    // To replace with video: div.innerHTML = `<video src="videos/${id}/${i+1}.mp4" autoplay muted loop playsinline></video>`;
+    div.innerHTML = `<div class="media-ph"><span class="ph-i">${i===4?'▶':'◆'}</span><span>${m.l}</span><span style="font-size:0.22rem;opacity:0.6">[ img / video ]</span></div>`;
+    div.style.borderTop = `2px solid ${p.color}30`;
+    mediaEl.appendChild(div);
+  });
+  const metaEl = document.getElementById('modal-meta'); metaEl.innerHTML = '';
+  Object.entries(p.meta).forEach(([k,v]) => {
+    metaEl.innerHTML += `<div class="meta-item" style="border-left:2px solid ${p.color};padding-left:0.8rem"><span class="meta-label">${k.toUpperCase()}</span><span class="meta-val" style="color:${p.color}">${v}</span></div>`;
+  });
+  document.getElementById('modal-desc').innerHTML = p.desc;
+  document.getElementById('modal-overlay').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  document.getElementById('modal-overlay').classList.remove('active');
+  document.body.style.overflow = '';
+}
+function handleOverlayClick(e) { if (e.target===document.getElementById('modal-overlay')) closeModal(); }
+document.addEventListener('keydown', e => { if(e.key==='Escape') closeModal(); });
+
+function hexToRgb(hex) {
+  const r = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  return r ? `${parseInt(r[1],16)},${parseInt(r[2],16)},${parseInt(r[3],16)}` : '255,255,255';
+}
+</script>
+</body>
+</html>
