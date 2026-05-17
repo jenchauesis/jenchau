@@ -1653,7 +1653,11 @@ function openModal(id) {
     div.className = 'modal-media-item' + (m.w ? ' wide' : '');
     // To replace with real image: div.innerHTML = `<img src="images/${id}/${i+1}.jpg" alt="${m.l}">`;
     // To replace with video: div.innerHTML = `<video src="videos/${id}/${i+1}.mp4" autoplay muted loop playsinline></video>`;
-    div.innerHTML = `<div class="media-ph"><span class="ph-i">${i===4?'▶':'◆'}</span><span>${m.l}</span><span style="font-size:0.22rem;opacity:0.6">[ img / video ]</span></div>`;
+    if (m.src) {
+  div.innerHTML = `<img src="${m.src}" alt="${m.l}">`;
+} else {
+  div.innerHTML = `<div class="media-ph"><span class="ph-i">◆</span><span>${m.l}</span></div>`;
+}
     div.style.borderTop = `2px solid ${p.color}30`;
     mediaEl.appendChild(div);
   });
