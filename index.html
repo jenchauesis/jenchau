@@ -516,8 +516,22 @@ section { position: relative; z-index: 1; }
   border: 1px solid var(--border);
   background: var(--ink);
 }
-.portrait-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg,var(--sienna),var(--cobalt),var(--lime),var(--rose),var(--amber)); }
-.portrait-img-area {
+.portrait-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(
+    90deg,
+    var(--rust),
+    var(--dusty-teal),
+    var(--sage),
+    var(--rosewood),
+    var(--tan)
+  );
+}.portrait-img-area {
   aspect-ratio: 3/4; display: flex; align-items: center; justify-content: center;
   position: relative; overflow: hidden;
   background: linear-gradient(135deg, #1c0f22 0%, #0f1525 50%, #0f1a10 100%);
@@ -543,16 +557,16 @@ section { position: relative; z-index: 1; }
 .card-stripe { height: 4px; width: 100%; }
 
 /* Project color assignments — VW clash: no two adjacent cards same family */
-.pc-1  .card-stripe { background: var(--sienna); }
-.pc-2  .card-stripe { background: var(--cobalt); }
-.pc-3  .card-stripe { background: var(--lime); }
-.pc-4  .card-stripe { background: var(--rose); }
-.pc-5  .card-stripe { background: var(--amber); }
-.pc-6  .card-stripe { background: var(--slate); }
-.pc-7  .card-stripe { background: var(--sage); }
-.pc-8  .card-stripe { background: var(--lavender); }
-.pc-9  .card-stripe { background: var(--terra); }
-.pc-10 .card-stripe { background: var(--cobalt2); }
+.pc-1  .card-stripe { background: var(--rust); }
+.pc-2  .card-stripe { background: var(--dusty-teal); }
+.pc-3  .card-stripe { background: var(--sage); }
+.pc-4  .card-stripe { background: var(--rosewood); }
+.pc-5  .card-stripe { background: var(--tan); }
+.pc-6  .card-stripe { background: var(--mahogany); }
+.pc-7  .card-stripe { background: var(--olive); }
+.pc-8  .card-stripe { background: var(--jade); }
+.pc-9  .card-stripe { background: var(--blood); }
+.pc-10 .card-stripe { background: var(--dusty-teal2); }
 
 .pc-1:hover  { border-color: rgba(196,92,58,0.4); }
 .pc-2:hover  { border-color: rgba(45,91,227,0.4); }
@@ -580,49 +594,55 @@ section { position: relative; z-index: 1; }
 .project-card:hover .project-hover-strip { opacity: 1; }
 .hs-item { background: rgba(22,16,26,0.82); display: flex; align-items: center; justify-content: center; font-family: var(--font-pixel); font-size: 0.27rem; letter-spacing: 0.04em; transition: background 0.2s; }
 .hs-item:hover { background: rgba(255,255,255,0.06); }
-.pc-1  .hs-item { color: var(--sienna2); }
-.pc-2  .hs-item { color: var(--cobalt2); }
-.pc-3  .hs-item { color: var(--lime2); }
-.pc-4  .hs-item { color: var(--rose2); }
-.pc-5  .hs-item { color: var(--amber2); }
-.pc-6  .hs-item { color: var(--slate2); }
-.pc-7  .hs-item { color: var(--sage2); }
-.pc-8  .hs-item { color: var(--lavender2); }
-.pc-9  .hs-item { color: var(--sienna2); }
-.pc-10 .hs-item { color: var(--cobalt2); }
+.pc-1  .hs-item { color: var(--rust2); }
+.pc-2  .hs-item { color: var(--dusty-teal2); }
+.pc-3  .hs-item { color: var(--sage2); }
+.pc-4  .hs-item { color: var(--rosewood2); }
+.pc-5  .hs-item { color: var(--tan2); }
+.pc-6  .hs-item { color: var(--mahogany2); }
+.pc-7  .hs-item { color: var(--olive2); }
+.pc-8  .hs-item { color: var(--jade2); }
+.pc-9  .hs-item { color: var(--blood2); }
+.pc-10 .hs-item { color: var(--dusty-teal2); }
 
 .project-info { padding: 1.2rem 1.4rem 1.5rem; }
 .project-num { font-family: var(--font-pixel); font-size: 0.28rem; margin-bottom: 0.4rem; letter-spacing: 0.08em; }
-.pc-1  .project-num { color: var(--sienna); }
-.pc-2  .project-num { color: var(--cobalt2); }
-.pc-3  .project-num { color: var(--lime); }
-.pc-4  .project-num { color: var(--rose2); }
-.pc-5  .project-num { color: var(--amber); }
-.pc-6  .project-num { color: var(--slate2); }
-.pc-7  .project-num { color: var(--sage2); }
-.pc-8  .project-num { color: var(--lavender2); }
-.pc-9  .project-num { color: var(--terra); }
-.pc-10 .project-num { color: var(--cobalt2); }
+
+.pc-1  .project-num { color: var(--rust); }
+.pc-2  .project-num { color: var(--dusty-teal2); }
+.pc-3  .project-num { color: var(--sage); }
+.pc-4  .project-num { color: var(--rosewood2); }
+.pc-5  .project-num { color: var(--tan); }
+.pc-6  .project-num { color: var(--mahogany2); }
+.pc-7  .project-num { color: var(--olive2); }
+.pc-8  .project-num { color: var(--jade2); }
+.pc-9  .project-num { color: var(--blood); }
+.pc-10 .project-num { color: var(--dusty-teal2); }
 
 .project-name { font-family: var(--font-serif); font-size: 1.2rem; font-style: italic; font-weight: 700; margin-bottom: 0.4rem; color: var(--text); }
+
 .project-domain { font-family: var(--font-pixel); font-size: 0.27rem; margin-bottom: 0.5rem; letter-spacing: 0.06em; }
-.domain-game { color: var(--cobalt2); }
-.domain-fashion { color: var(--rose2); }
-.domain-both { color: var(--lime2); }
+.domain-game { color: var(--dusty-teal2); }
+.domain-fashion { color: var(--rosewood2); }
+.domain-both { color: var(--sage2); }
+
 .project-desc { font-size: 0.67rem; color: var(--text-dim); line-height: 1.75; margin-bottom: 0.9rem; }
+
 .project-footer { display: flex; align-items: center; justify-content: space-between; gap: 0.8rem; }
 .project-tags { display: flex; gap: 0.35rem; flex-wrap: wrap; }
+
 .ptag { font-family: var(--font-pixel); font-size: 0.26rem; padding: 0.28rem 0.5rem; background: transparent; border: 1px solid; letter-spacing: 0.03em; }
-.pc-1  .ptag { border-color: var(--sienna); color: var(--sienna2); }
-.pc-2  .ptag { border-color: var(--cobalt); color: var(--cobalt2); }
-.pc-3  .ptag { border-color: var(--lime); color: var(--lime2); }
-.pc-4  .ptag { border-color: var(--rose); color: var(--rose2); }
-.pc-5  .ptag { border-color: var(--amber); color: var(--amber2); }
-.pc-6  .ptag { border-color: var(--slate); color: var(--slate2); }
-.pc-7  .ptag { border-color: var(--sage); color: var(--sage2); }
-.pc-8  .ptag { border-color: var(--lavender); color: var(--lavender2); }
-.pc-9  .ptag { border-color: var(--terra); color: var(--sienna2); }
-.pc-10 .ptag { border-color: var(--cobalt2); color: var(--cobalt2); }
+
+.pc-1  .ptag { border-color: var(--rust); color: var(--rust2); }
+.pc-2  .ptag { border-color: var(--dusty-teal); color: var(--dusty-teal2); }
+.pc-3  .ptag { border-color: var(--sage); color: var(--sage2); }
+.pc-4  .ptag { border-color: var(--rosewood); color: var(--rosewood2); }
+.pc-5  .ptag { border-color: var(--tan); color: var(--tan2); }
+.pc-6  .ptag { border-color: var(--mahogany); color: var(--mahogany2); }
+.pc-7  .ptag { border-color: var(--olive); color: var(--olive2); }
+.pc-8  .ptag { border-color: var(--jade); color: var(--jade2); }
+.pc-9  .ptag { border-color: var(--blood); color: var(--blood2); }
+.pc-10 .ptag { border-color: var(--dusty-teal2); color: var(--dusty-teal2); }
 
 .view-btn {
   font-family: var(--font-pixel); font-size: 0.28rem; padding: 0.4rem 0.8rem;
@@ -630,17 +650,19 @@ section { position: relative; z-index: 1; }
   white-space: nowrap; color: var(--bg);
   box-shadow: 2px 2px 0 rgba(0,0,0,0.5);
 }
+
 .view-btn:hover { transform: translate(-1px,-1px); box-shadow: 3px 3px 0 rgba(0,0,0,0.5); }
-.pc-1  .view-btn { background: var(--sienna); }
-.pc-2  .view-btn { background: var(--cobalt); color: white; }
-.pc-3  .view-btn { background: var(--lime); }
-.pc-4  .view-btn { background: var(--rose); color: white; }
-.pc-5  .view-btn { background: var(--amber); }
-.pc-6  .view-btn { background: var(--slate); color: white; }
-.pc-7  .view-btn { background: var(--sage); }
-.pc-8  .view-btn { background: var(--lavender); color: white; }
-.pc-9  .view-btn { background: var(--terra); color: white; }
-.pc-10 .view-btn { background: var(--cobalt2); color: white; }
+
+.pc-1  .view-btn { background: var(--rust); color: white; }
+.pc-2  .view-btn { background: var(--dusty-teal); color: white; }
+.pc-3  .view-btn { background: var(--sage); }
+.pc-4  .view-btn { background: var(--rosewood); color: white; }
+.pc-5  .view-btn { background: var(--tan); }
+.pc-6  .view-btn { background: var(--mahogany); color: white; }
+.pc-7  .view-btn { background: var(--olive); color: var(--bone); }
+.pc-8  .view-btn { background: var(--jade); color: white; }
+.pc-9  .view-btn { background: var(--blood); color: white; }
+.pc-10 .view-btn { background: var(--dusty-teal2); color: white; }
 
 /* EXPERIENCE + EDUCATION — shared layout */
 .exp-edu { padding: 8rem 0; }
@@ -652,61 +674,91 @@ section { position: relative; z-index: 1; }
   margin-bottom: 2.5rem; padding-bottom: 1rem;
   border-bottom: 2px solid;
 }
-.subsec-header.exp-h { border-bottom-color: var(--sienna); }
-.subsec-header.edu-h { border-bottom-color: var(--cobalt); }
+.subsec-header.exp-h { border-bottom-color: var(--rust); }
+.subsec-header.edu-h { border-bottom-color: var(--dusty-teal); }
+
 .subsec-icon { font-size: 1.2rem; }
 .subsec-title { font-family: var(--font-pixel); font-size: 0.42rem; letter-spacing: 0.1em; }
-.subsec-header.exp-h .subsec-title { color: var(--sienna2); }
-.subsec-header.edu-h .subsec-title { color: var(--cobalt2); }
+
+.subsec-header.exp-h .subsec-title { color: var(--rust2); }
+.subsec-header.edu-h .subsec-title { color: var(--dusty-teal2); }
 
 /* Timeline cards */
 .timeline { display: flex; flex-direction: column; gap: 3px; }
+
 .tl-item {
-  padding: 1.5rem; background: var(--ink);
+  padding: 1.5rem;
+  background: var(--ink);
   border-left: 3px solid;
-  position: relative; transition: background 0.2s;
+  position: relative;
+  transition: background 0.2s;
 }
+
 .tl-item:hover { background: rgba(255,255,255,0.02); }
 
 /* Experience border colors */
-.tl-exp:nth-child(1) { border-left-color: var(--sienna); }
-.tl-exp:nth-child(2) { border-left-color: var(--amber); }
-.tl-exp:nth-child(3) { border-left-color: var(--rose); }
+.tl-exp:nth-child(1) { border-left-color: var(--rust); }
+.tl-exp:nth-child(2) { border-left-color: var(--tan); }
+.tl-exp:nth-child(3) { border-left-color: var(--rosewood); }
 
 /* Education border colors */
-.tl-edu:nth-child(1) { border-left-color: var(--cobalt); }
-.tl-edu:nth-child(2) { border-left-color: var(--lime); }
-.tl-edu:nth-child(3) { border-left-color: var(--lavender); }
+.tl-edu:nth-child(1) { border-left-color: var(--dusty-teal); }
+.tl-edu:nth-child(2) { border-left-color: var(--sage); }
+.tl-edu:nth-child(3) { border-left-color: var(--jade); }
 
 .tl-date { font-family: var(--font-pixel); font-size: 0.3rem; margin-bottom: 0.5rem; letter-spacing: 0.08em; }
-.tl-exp:nth-child(1) .tl-date { color: var(--sienna2); }
-.tl-exp:nth-child(2) .tl-date { color: var(--amber2); }
-.tl-exp:nth-child(3) .tl-date { color: var(--rose2); }
-.tl-edu:nth-child(1) .tl-date { color: var(--cobalt2); }
-.tl-edu:nth-child(2) .tl-date { color: var(--lime2); }
-.tl-edu:nth-child(3) .tl-date { color: var(--lavender2); }
+
+.tl-exp:nth-child(1) .tl-date { color: var(--rust2); }
+.tl-exp:nth-child(2) .tl-date { color: var(--tan2); }
+.tl-exp:nth-child(3) .tl-date { color: var(--rosewood2); }
+
+.tl-edu:nth-child(1) .tl-date { color: var(--dusty-teal2); }
+.tl-edu:nth-child(2) .tl-date { color: var(--sage2); }
+.tl-edu:nth-child(3) .tl-date { color: var(--jade2); }
 
 .tl-org { font-family: var(--font-serif); font-size: 1.4rem; font-style: italic; font-weight: 700; margin-bottom: 0.2rem; }
-.tl-role { font-family: var(--font-pixel); font-size: 0.3rem; letter-spacing: 0.06em; color: var(--text-dim); margin-bottom: 0.9rem; }
-.tl-bullets { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
-.tl-bullets li { font-size: 0.72rem; color: var(--text-dim); padding-left: 1.1rem; position: relative; line-height: 1.8; }
-.tl-bullets li::before { content: '▸'; position: absolute; left: 0; }
-.tl-exp:nth-child(1) .tl-bullets li::before { color: var(--sienna); }
-.tl-exp:nth-child(2) .tl-bullets li::before { color: var(--amber); }
-.tl-exp:nth-child(3) .tl-bullets li::before { color: var(--rose); }
-.tl-edu:nth-child(1) .tl-bullets li::before { color: var(--cobalt); }
-.tl-edu:nth-child(2) .tl-bullets li::before { color: var(--lime); }
-.tl-edu:nth-child(3) .tl-bullets li::before { color: var(--lavender); }
 
-/* Education special badge for Gobelins — ongoing */
-.tl-badge {
-  display: inline-block; font-family: var(--font-pixel); font-size: 0.28rem;
-  padding: 0.3rem 0.6rem; margin-top: 0.8rem; letter-spacing: 0.05em;
+.tl-role {
+  font-family: var(--font-pixel);
+  font-size: 0.3rem;
+  letter-spacing: 0.06em;
+  color: var(--text-dim);
+  margin-bottom: 0.9rem;
 }
-.badge-ongoing { background: var(--cobalt); color: white; }
-.badge-completed { background: var(--ink); border: 1px solid var(--border); color: var(--text-dim); }
-.badge-recognized { background: var(--lime); color: var(--bg); }
 
+.tl-bullets { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
+
+.tl-bullets li {
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  padding-left: 1.1rem;
+  position: relative;
+  line-height: 1.8;
+}
+
+.tl-bullets li::before { content: '▸'; position: absolute; left: 0; }
+
+.tl-exp:nth-child(1) .tl-bullets li::before { color: var(--rust); }
+.tl-exp:nth-child(2) .tl-bullets li::before { color: var(--tan); }
+.tl-exp:nth-child(3) .tl-bullets li::before { color: var(--rosewood); }
+
+.tl-edu:nth-child(1) .tl-bullets li::before { color: var(--dusty-teal); }
+.tl-edu:nth-child(2) .tl-bullets li::before { color: var(--sage); }
+.tl-edu:nth-child(3) .tl-bullets li::before { color: var(--jade); }
+
+/* Education badges */
+.tl-badge {
+  display: inline-block;
+  font-family: var(--font-pixel);
+  font-size: 0.28rem;
+  padding: 0.3rem 0.6rem;
+  margin-top: 0.8rem;
+  letter-spacing: 0.05em;
+}
+
+.badge-ongoing { background: var(--dusty-teal); color: white; }
+.badge-completed { background: var(--ink); border: 1px solid var(--border); color: var(--text-dim); }
+.badge-recognized { background: var(--sage); color: var(--bg); }
 /* MODAL */
 .modal-overlay {
   position: fixed; inset: 0; background: rgba(12,8,18,0.96);
@@ -756,38 +808,99 @@ section { position: relative; z-index: 1; }
 
 /* CONTACT */
 .contact { padding: 10rem 0 8rem; text-align: center; position: relative; overflow: hidden; }
-.contact-bg { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: var(--font-serif); font-size: 28vw; font-style: italic; font-weight: 700; opacity: 0.018; pointer-events: none; color: var(--text); }
-.contact-eyebrow { font-family: var(--font-pixel); font-size: 0.35rem; letter-spacing: 0.3em; margin-bottom: 2rem; color: var(--text-dimmer); }
-.contact-eyebrow em { color: var(--lime2); font-style: normal; }
-.contact-title { font-family: var(--font-serif); font-size: clamp(3rem,9vw,7.5rem); font-style: italic; font-weight: 700; line-height: 0.9; margin-bottom: 1rem; }
-.contact-title .cw1 { color: var(--sienna2); display: block; }
-.contact-title .cw2 { color: var(--cobalt2); font-style: normal; display: block; }
-.contact-title .cw3 { color: var(--lime2); display: block; }
-.contact-sub { font-size: 0.75rem; color: var(--text-dimmer); letter-spacing: 0.22em; margin-bottom: 3.5rem; }
-.contact-links { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
-.contact-link {
-  font-family: var(--font-pixel); font-size: 0.38rem; padding: 0.9rem 1.8rem;
-  text-decoration: none; letter-spacing: 0.1em; border: 1px solid;
-  transition: all 0.15s; cursor: none; display: inline-block; background: transparent;
+
+.contact-bg {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-serif);
+  font-size: 28vw;
+  font-style: italic;
+  font-weight: 700;
+  opacity: 0.018;
+  pointer-events: none;
+  color: var(--text);
 }
+
+.contact-eyebrow {
+  font-family: var(--font-pixel);
+  font-size: 0.35rem;
+  letter-spacing: 0.3em;
+  margin-bottom: 2rem;
+  color: var(--text-dimmer);
+}
+
+.contact-eyebrow em { color: var(--sage2); font-style: normal; }
+
+.contact-title {
+  font-family: var(--font-serif);
+  font-size: clamp(3rem,9vw,7.5rem);
+  font-style: italic;
+  font-weight: 700;
+  line-height: 0.9;
+  margin-bottom: 1rem;
+}
+
+.contact-title .cw1 { color: var(--rust2); display: block; }
+.contact-title .cw2 { color: var(--dusty-teal2); font-style: normal; display: block; }
+.contact-title .cw3 { color: var(--sage2); display: block; }
+
+.contact-sub {
+  font-size: 0.75rem;
+  color: var(--text-dimmer);
+  letter-spacing: 0.22em;
+  margin-bottom: 3.5rem;
+}
+
+.contact-links { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+
+.contact-link {
+  font-family: var(--font-pixel);
+  font-size: 0.38rem;
+  padding: 0.9rem 1.8rem;
+  text-decoration: none;
+  letter-spacing: 0.1em;
+  border: 1px solid;
+  transition: all 0.15s;
+  cursor: none;
+  display: inline-block;
+  background: transparent;
+}
+
 .contact-link:hover { transform: translate(-2px,-2px); }
-.cl-1 { color: var(--sienna2); border-color: var(--sienna); }
-.cl-1:hover { background: var(--sienna); color: white; }
-.cl-2 { color: var(--cobalt2); border-color: var(--cobalt); }
-.cl-2:hover { background: var(--cobalt); color: white; }
-.cl-3 { color: var(--lime2); border-color: var(--lime); }
-.cl-3:hover { background: var(--lime); color: var(--bg); }
+
+.cl-1 { color: var(--rust2); border-color: var(--rust); }
+.cl-1:hover { background: var(--rust); color: white; }
+
+.cl-2 { color: var(--dusty-teal2); border-color: var(--dusty-teal); }
+.cl-2:hover { background: var(--dusty-teal); color: white; }
+
+.cl-3 { color: var(--sage2); border-color: var(--sage); }
+.cl-3:hover { background: var(--sage); color: var(--bg); }
 
 /* FOOTER */
 footer { overflow: hidden; border-top: 1px solid var(--border); }
+
 .footer-blocks { display: flex; }
-.footer-block { flex: 1; padding: 1.2rem 0.8rem; text-align: center; font-family: var(--font-pixel); font-size: 0.27rem; letter-spacing: 0.05em; color: var(--bg); }
-.footer-block:nth-child(1) { background: var(--sienna); }
-.footer-block:nth-child(2) { background: var(--amber); }
-.footer-block:nth-child(3) { background: var(--lime); }
-.footer-block:nth-child(4) { background: var(--cobalt); color: white; }
-.footer-block:nth-child(5) { background: var(--rose); color: white; }
-.footer-block:nth-child(6) { background: var(--lavender); color: white; }
+
+.footer-block {
+  flex: 1;
+  padding: 1.2rem 0.8rem;
+  text-align: center;
+  font-family: var(--font-pixel);
+  font-size: 0.27rem;
+  letter-spacing: 0.05em;
+  color: var(--bg);
+}
+
+.footer-block:nth-child(1) { background: var(--rust); color: white; }
+.footer-block:nth-child(2) { background: var(--tan); }
+.footer-block:nth-child(3) { background: var(--sage); }
+.footer-block:nth-child(4) { background: var(--dusty-teal); color: white; }
+.footer-block:nth-child(5) { background: var(--rosewood); color: white; }
+.footer-block:nth-child(6) { background: var(--jade); color: white; }
 
 /* REVEAL */
 .reveal { opacity: 0; transform: translateY(26px); transition: opacity 0.65s ease, transform 0.65s ease; }
@@ -843,18 +956,20 @@ footer { overflow: hidden; border-top: 1px solid var(--border); }
   <div class="stars" id="stars"></div>
 
   <!-- Abstract floating shapes — not childish coins -->
-  <div class="floater" style="left:6%;top:25%;color:var(--sienna);--d:8s;--delay:0s;--fs:20px;">◆</div>
-  <div class="floater" style="left:88%;top:20%;color:var(--cobalt2);--d:10s;--delay:1.2s;--fs:14px;">✦</div>
-  <div class="floater" style="left:14%;top:65%;color:var(--lime);--d:7s;--delay:2s;--fs:12px;">▲</div>
-  <div class="floater" style="left:80%;top:70%;color:var(--rose2);--d:9s;--delay:0.5s;--fs:18px;">●</div>
-  <div class="floater" style="left:45%;top:12%;color:var(--amber);--d:11s;--delay:1.5s;--fs:10px;">◈</div>
-  <div class="floater" style="left:26%;top:42%;color:var(--lavender2);--d:8.5s;--delay:0.8s;--fs:16px;">◇</div>
-  <div class="floater" style="left:64%;top:35%;color:var(--sage2);--d:9.5s;--delay:2.3s;--fs:13px;">▪</div>
-  <div class="floater" style="left:55%;top:78%;color:var(--slate2);--d:7.5s;--delay:1s;--fs:15px;">◆</div>
+<div class="floater" style="left:6%;top:25%;color:var(--rust);--d:8s;--delay:0s;--fs:20px;">◆</div>
+<div class="floater" style="left:88%;top:20%;color:var(--dusty-teal2);--d:10s;--delay:1.2s;--fs:14px;">✦</div>
+<div class="floater" style="left:14%;top:65%;color:var(--sage);--d:7s;--delay:2s;--fs:12px;">▲</div>
+<div class="floater" style="left:80%;top:70%;color:var(--rosewood2);--d:9s;--delay:0.5s;--fs:18px;">●</div>
+<div class="floater" style="left:45%;top:12%;color:var(--tan);--d:11s;--delay:1.5s;--fs:10px;">◈</div>
+<div class="floater" style="left:26%;top:42%;color:var(--mahogany2);--d:8.5s;--delay:0.8s;--fs:16px;">◇</div>
+<div class="floater" style="left:64%;top:35%;color:var(--sage2);--d:9.5s;--delay:2.3s;--fs:13px;">▪</div>
+<div class="floater" style="left:55%;top:78%;color:var(--jade2);--d:7.5s;--delay:1s;--fs:15px;">◆</div>
 
-  <div class="hero-inner">
-    <div class="hero-eyebrow">✦ <em>DIGITAL FASHION</em> &amp; <em style="color:var(--cobalt2)">GAME ART</em> ✦</div>
-
+<div class="hero-inner">
+  <div class="hero-eyebrow">
+    ✦ <em>DIGITAL FASHION</em> &amp;
+    <em style="color:var(--dusty-teal2)">GAME ART</em> ✦
+  </div>
     <h1 class="hero-title">
       <span class="n-j">J</span><span class="n-e">E</span><span class="n-n">N</span><span class="n-blink">▌</span><br>
       <span class="n-c">C</span><span class="n-h">H</span><span class="n-a">A</span><span class="n-u">U</span>
@@ -895,8 +1010,8 @@ footer { overflow: hidden; border-top: 1px solid var(--border); }
     <span>✦ DIGITAL FASHION ARTIST</span><span>◆ GAME ART</span><span>✦ HIGH-FIDELITY 3D</span><span>◆ LUXURY BRAND R&D</span><span>✦ CINEMATIC STORYTELLING</span><span>◆ WORLDBUILDING</span><span>✦ DELVAUX · ESMOD · GOBELINS</span><span>◆ CLO3D RECOGNIZED</span>
   </div></div>
   <div class="ticker-row"><div class="ticker-inner">
-    <span>▶ PARIS</span><span>▶ BRUSSELS</span><span>▶ 3D INNOVATION</span><span>▶ R&D PIPELINES</span><span>▶ AVATAR DESIGN</span><span>▶ NARRATIVE COSTUME</span><span>▶ PERFORMANCE IDENTITY</span><span>▶ WHERE GAME MEETS FASHION</span>
-    <span>▶ PARIS</span><span>▶ BRUSSELS</span><span>▶ 3D INNOVATION</span><span>▶ R&D PIPELINES</span><span>▶ AVATAR DESIGN</span><span>▶ NARRATIVE COSTUME</span><span>▶ PERFORMANCE IDENTITY</span><span>▶ WHERE GAME MEETS FASHION</span>
+    <span>▶ PARIS</span><span>▶ 3D INNOVATION</span><span>▶ R&D PIPELINES</span><span>▶ AVATAR DESIGN</span><span>▶ NARRATIVE COSTUME</span><span>▶ PERFORMANCE IDENTITY</span><span>▶ WHERE GAME MEETS FASHION</span>
+    <span>▶ PARIS</span><span>▶ 3D INNOVATION</span><span>▶ R&D PIPELINES</span><span>▶ AVATAR DESIGN</span><span>▶ NARRATIVE COSTUME</span><span>▶ PERFORMANCE IDENTITY</span><span>▶ WHERE GAME MEETS FASHION</span>
   </div></div>
   <div class="ticker-row"><div class="ticker-inner">
     <span>★ CLO3D</span><span>★ BLENDER</span><span>★ UE5</span><span>★ ZBRUSH</span><span>★ PHOTOSHOP</span><span>★ ILLUSTRATOR</span><span>★ PREMIERE</span><span>★ AI × FASHION</span><span>★ REAL-TIME 3D</span><span>★ CHARACTER ART</span>
