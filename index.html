@@ -439,17 +439,19 @@ nav::after {
   border: none; cursor: none; transition: all 0.15s;
   display: inline-flex; align-items: center; gap: 0.5rem;
 }
-.btn-s { background: var(--sienna); color: white; box-shadow: 4px 4px 0 rgba(0,0,0,0.5); }
+.btn-s { background: var(--rust); color: white; box-shadow: 4px 4px 0 rgba(0,0,0,0.5); }
 .btn-s:hover { transform: translate(-2px,-2px); box-shadow: 6px 6px 0 rgba(0,0,0,0.5); }
-.btn-c { background: var(--cobalt); color: white; box-shadow: 4px 4px 0 rgba(0,0,0,0.5); }
+
+.btn-c { background: var(--dusty-teal); color: white; box-shadow: 4px 4px 0 rgba(0,0,0,0.5); }
 .btn-c:hover { transform: translate(-2px,-2px); box-shadow: 6px 6px 0 rgba(0,0,0,0.5); }
 
 /* TICKER */
 .ticker { overflow: hidden; }
 .ticker-row { display: flex; overflow: hidden; padding: 0.55rem 0; }
-.ticker-row:nth-child(1) { background: var(--sienna); }
-.ticker-row:nth-child(2) { background: var(--cobalt); }
-.ticker-row:nth-child(3) { background: var(--lime); }
+
+.ticker-row:nth-child(1) { background: var(--rust); }
+.ticker-row:nth-child(2) { background: var(--dusty-teal); }
+.ticker-row:nth-child(3) { background: var(--sage); }
 .ticker-inner { display: flex; gap: 2.5rem; animation: ticker 24s linear infinite; white-space: nowrap; }
 .ticker-row:nth-child(2) .ticker-inner { animation-direction: reverse; animation-duration: 30s; }
 .ticker-row:nth-child(3) .ticker-inner { animation-duration: 18s; }
@@ -472,12 +474,12 @@ section { position: relative; z-index: 1; }
 .about-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 6rem; align-items: start; }
 .about-text p { font-size: 0.9rem; line-height: 2.1; color: var(--text-dim); margin-bottom: 1.5rem; }
 .hl { font-style: italic; font-weight: 400; }
-.hl-s { color: var(--sienna2); }
-.hl-c { color: var(--cobalt2); }
-.hl-l { color: var(--lime2); }
-.hl-r { color: var(--rose2); }
-.hl-a { color: var(--amber2); }
-.hl-v { color: var(--lavender2); }
+.hl-s { color: var(--rust2); }
+.hl-c { color: var(--dusty-teal2); }
+.hl-l { color: var(--sage2); }
+.hl-r { color: var(--rosewood2); }
+.hl-a { color: var(--tan2); }
+.hl-v { color: var(--mahogany2); }
 
 /* Crossover identity block */
 .identity-block {
@@ -488,23 +490,26 @@ section { position: relative; z-index: 1; }
 }
 .id-panel::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; }
 .id-panel.game { background: rgba(45,91,227,0.12); border: 1px solid rgba(45,91,227,0.25); }
-.id-panel.game::before { background: var(--cobalt); }
-.id-panel.fashion { background: rgba(196,90,130,0.12); border: 1px solid rgba(196,90,130,0.25); }
-.id-panel.fashion::before { background: var(--rose); }
-.id-panel.bridge { background: rgba(143,207,58,0.08); border: 1px solid rgba(143,207,58,0.2); grid-column: span 2; }
-.id-panel.bridge::before { background: var(--lime); }
+.id-panel.game::before { background: var(--dusty-teal); }
+
+.id-panel.fashion { background: rgba(150,88,75,0.12); border: 1px solid rgba(150,88,75,0.25); }
+.id-panel.fashion::before { background: var(--rosewood); }
+
+.id-panel.bridge { background: rgba(193,191,142,0.08); border: 1px solid rgba(193,191,142,0.2); grid-column: span 2; }
+.id-panel.bridge::before { background: var(--sage); }
 
 .id-label { font-family: var(--font-pixel); font-size: 0.32rem; margin-bottom: 0.8rem; letter-spacing: 0.08em; }
-.id-panel.game .id-label { color: var(--cobalt2); }
-.id-panel.fashion .id-label { color: var(--rose2); }
-.id-panel.bridge .id-label { color: var(--lime2); }
+.id-panel.game .id-label { color: var(--dusty-teal2); }
+.id-panel.fashion .id-label { color: var(--rosewood2); }
+.id-panel.bridge .id-label { color: var(--sage2); }
 
 .id-skills { display: flex; flex-direction: column; gap: 0.35rem; }
 .id-skill { font-size: 0.7rem; color: var(--text-dim); display: flex; align-items: center; gap: 0.5rem; }
+
 .id-skill::before { content: '▸'; font-size: 0.6rem; }
-.id-panel.game .id-skill::before { color: var(--cobalt); }
-.id-panel.fashion .id-skill::before { color: var(--rose); }
-.id-panel.bridge .id-skill::before { color: var(--lime); }
+.id-panel.game .id-skill::before { color: var(--dusty-teal); }
+.id-panel.fashion .id-skill::before { color: var(--rosewood); }
+.id-panel.bridge .id-skill::before { color: var(--sage); }
 
 .portrait-card {
   position: relative; overflow: hidden;
