@@ -85,7 +85,7 @@ body {
   background: var(--bg);
   color: var(--text);
   font-family: var(--font-mono);
-  cursor: none;
+  cursor: auto !important;
   overflow-x: hidden;
 }
 
@@ -436,7 +436,7 @@ nav::after {
 .btn {
   font-family: var(--font-pixel); font-size: 0.42rem;
   padding: 0.9rem 1.8rem; text-decoration: none; letter-spacing: 0.1em;
-  border: none; cursor: none; transition: all 0.15s;
+  border: none; cursor: auto !important; transition: all 0.15s;
   display: inline-flex; align-items: center; gap: 0.5rem;
 }
 .btn-s { background: var(--rust); color: white; box-shadow: 4px 4px 0 rgba(0,0,0,0.5); }
@@ -562,7 +562,7 @@ section { position: relative; z-index: 1; }
 .projects { padding: 8rem 0; background: var(--bg3); }
 .projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px; }
 .project-card {
-  position: relative; background: var(--ink); overflow: hidden; cursor: none;
+  position: relative; background: var(--ink); overflow: hidden; cursor: auto !important;
   transition: transform 0.2s, box-shadow 0.2s; border: 1px solid transparent;
 }
 .project-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.5); z-index: 10; }
@@ -661,7 +661,7 @@ section { position: relative; z-index: 1; }
 
 .view-btn {
   font-family: var(--font-pixel); font-size: 0.28rem; padding: 0.4rem 0.8rem;
-  border: none; cursor: none; letter-spacing: 0.06em; transition: all 0.15s;
+  border: none; cursor: auto !important; letter-spacing: 0.06em; transition: all 0.15s;
   white-space: nowrap; color: var(--bg);
   box-shadow: 2px 2px 0 rgba(0,0,0,0.5);
 }
@@ -798,7 +798,7 @@ section { position: relative; z-index: 1; }
 .modal-domain { font-family: var(--font-pixel); font-size: 0.3rem; color: var(--text-dimmer); margin-top: 0.3rem; letter-spacing: 0.1em; }
 .modal-close {
   font-family: var(--font-pixel); font-size: 0.38rem; padding: 0.55rem 1.1rem;
-  cursor: none; letter-spacing: 0.1em; border: none; transition: all 0.15s;
+  cursor: auto !important; letter-spacing: 0.1em; border: none; transition: all 0.15s;
   color: white; box-shadow: 3px 3px 0 rgba(0,0,0,0.5);
 }
 .modal-close:hover { transform: translate(-1px,-1px); box-shadow: 4px 4px 0 rgba(0,0,0,0.5); }
@@ -913,7 +913,7 @@ section { position: relative; z-index: 1; }
   letter-spacing: 0.1em;
   border: 1px solid;
   transition: all 0.15s;
-  cursor: none;
+  cursor: auto !important;
   display: inline-block;
   background: transparent;
 }
