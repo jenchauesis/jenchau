@@ -167,11 +167,25 @@ nav::after {
 }
 .nav-links a:hover { color: var(--text); }
 .nav-links a:hover::after { width: 100%; }
-.nav-links li:nth-child(1) a:hover { color: var(--sienna2); }
-.nav-links li:nth-child(2) a:hover { color: var(--lime2); }
-.nav-links li:nth-child(3) a:hover { color: var(--cobalt2); }
-.nav-links li:nth-child(4) a:hover { color: var(--rose2); }
-.nav-links li:nth-child(5) a:hover { color: var(--amber2); }
+.nav-links li:nth-child(1) a:hover {
+  color: var(--rust2);
+}
+
+.nav-links li:nth-child(2) a:hover {
+  color: var(--sage2);
+}
+
+.nav-links li:nth-child(3) a:hover {
+  color: var(--dusty-teal2);
+}
+
+.nav-links li:nth-child(4) a:hover {
+  color: var(--rosewood2);
+}
+
+.nav-links li:nth-child(5) a:hover {
+  color: var(--tan2);
+}
 
 /* HERO */
 .hero {
@@ -206,16 +220,55 @@ nav::after {
   transition: transform 0.3s;
 }
 .ground-block:hover { transform: translateY(-6px); }
-.ground-block:nth-child(10n+1)  { background: var(--sienna); color: white; }
-.ground-block:nth-child(10n+2)  { background: var(--cobalt); color: white; }
-.ground-block:nth-child(10n+3)  { background: var(--lime); color: var(--bg); }
-.ground-block:nth-child(10n+4)  { background: var(--rose); color: white; }
-.ground-block:nth-child(10n+5)  { background: var(--amber); color: var(--bg); }
-.ground-block:nth-child(10n+6)  { background: var(--slate); color: white; }
-.ground-block:nth-child(10n+7)  { background: var(--sage); color: var(--bg); }
-.ground-block:nth-child(10n+8)  { background: var(--lavender); color: white; }
-.ground-block:nth-child(10n+9)  { background: var(--terra); color: white; }
-.ground-block:nth-child(10n+10) { background: var(--bg2); color: var(--text-dim); }
+.ground-block:nth-child(10n+1)  {
+  background: var(--sage);
+  color: var(--bg);
+}
+
+.ground-block:nth-child(10n+2)  {
+  background: var(--dusty-teal);
+  color: white;
+}
+
+.ground-block:nth-child(10n+3)  {
+  background: var(--olive);
+  color: var(--bone);
+}
+
+.ground-block:nth-child(10n+4)  {
+  background: var(--rust);
+  color: white;
+}
+
+.ground-block:nth-child(10n+5)  {
+  background: var(--crimson);
+  color: white;
+}
+
+.ground-block:nth-child(10n+6)  {
+  background: var(--mahogany);
+  color: var(--bone);
+}
+
+.ground-block:nth-child(10n+7)  {
+  background: var(--tan);
+  color: var(--bg);
+}
+
+.ground-block:nth-child(10n+8)  {
+  background: var(--rosewood);
+  color: white;
+}
+
+.ground-block:nth-child(10n+9)  {
+  background: var(--blood);
+  color: var(--bone);
+}
+
+.ground-block:nth-child(10n+10) {
+  background: var(--jade);
+  color: var(--bone);
+}
 
 .hero-inner { position: relative; z-index: 2; text-align: center; max-width: 1000px; }
 
@@ -234,13 +287,36 @@ nav::after {
   margin-bottom: 1.8rem;
   opacity: 0; animation: fadeUp 0.7s ease 0.4s forwards;
 }
-.n-j { color: var(--sienna2); font-style: italic; }
-.n-e { color: var(--amber2); }
-.n-n { color: var(--lime2); }
-.n-c { color: var(--cobalt2); font-style: italic; }
-.n-h { color: var(--rose2); }
-.n-a { color: var(--lavender2); }
-.n-u { color: var(--sage2); font-style: italic; }
+.n-j {
+  color: var(--rust2);
+  font-style: italic;
+}
+
+.n-e {
+  color: var(--tan2);
+}
+
+.n-n {
+  color: var(--sage2);
+}
+
+.n-c {
+  color: var(--dusty-teal2);
+  font-style: italic;
+}
+
+.n-h {
+  color: var(--rosewood2);
+}
+
+.n-a {
+  color: var(--mahogany2);
+}
+
+.n-u {
+  color: var(--jade2);
+  font-style: italic;
+}
 .n-blink { font-family: var(--font-pixel); font-size: 0.22em; color: var(--text-dimmer); vertical-align: middle; animation: blink 1s steps(1) infinite; }
 @keyframes blink { 50%{opacity:0} }
 
@@ -277,21 +353,80 @@ nav::after {
 .tag:hover { transform: translate(-2px,-2px); }
 
 /* Tags — intentional clash pairs */
-.tg1 { color: var(--sienna2); border-color: var(--sienna); }
-.tg1:hover { background: var(--sienna); color: white; }
-.tg2 { color: var(--lime2); border-color: var(--lime); }
-.tg2:hover { background: var(--lime); color: var(--bg); }
-.tg3 { color: var(--cobalt2); border-color: var(--cobalt); }
-.tg3:hover { background: var(--cobalt); color: white; }
-.tg4 { color: var(--rose2); border-color: var(--rose); }
-.tg4:hover { background: var(--rose); color: white; }
-.tg5 { color: var(--amber2); border-color: var(--amber); }
-.tg5:hover { background: var(--amber); color: var(--bg); }
-.tg6 { color: var(--sage2); border-color: var(--sage); }
-.tg6:hover { background: var(--sage); color: var(--bg); }
-.tg7 { color: var(--lavender2); border-color: var(--lavender); }
-.tg7:hover { background: var(--lavender); color: white; }
-.tg8 { color: var(--slate2); border-color: var(--slate); }
+.tg1 {
+  color: var(--rust2);
+  border-color: var(--rust);
+}
+
+.tg1:hover {
+  background: var(--rust);
+  color: white;
+}
+
+.tg2 {
+  color: var(--sage2);
+  border-color: var(--sage);
+}
+
+.tg2:hover {
+  background: var(--sage);
+  color: var(--bg);
+}
+
+.tg3 {
+  color: var(--dusty-teal2);
+  border-color: var(--dusty-teal);
+}
+
+.tg3:hover {
+  background: var(--dusty-teal);
+  color: white;
+}
+
+.tg4 {
+  color: var(--rosewood2);
+  border-color: var(--rosewood);
+}
+
+.tg4:hover {
+  background: var(--rosewood);
+  color: white;
+}
+
+.tg5 {
+  color: var(--tan2);
+  border-color: var(--tan);
+}
+
+.tg5:hover {
+  background: var(--tan);
+  color: var(--bg);
+}
+
+.tg6 {
+  color: var(--jade2);
+  border-color: var(--jade);
+}
+
+.tg6:hover {
+  background: var(--jade);
+  color: var(--bone);
+}
+
+.tg7 {
+  color: var(--mahogany2);
+  border-color: var(--mahogany);
+}
+
+.tg7:hover {
+  background: var(--mahogany);
+  color: white;
+}
+
+.tg8 {
+  color: var(--crimson2);
+  border-color: var(--crimson);
+}
 .tg8:hover { background: var(--slate); color: white; }
 
 .hero-ctas {
