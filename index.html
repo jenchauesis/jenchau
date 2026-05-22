@@ -855,6 +855,49 @@ section { position: relative; z-index: 1; }
 .meta-label { color: var(--text-dimmer); display: block; }
 .meta-val { display: block; margin-top: 0.2rem; }
 
+/* ── THEY SAID IT ── */
+#recs{
+  background:var(--deep);
+  border-top:1px solid rgba(181,112,58,.08);
+}
+.recs-layout{
+  display:grid;grid-template-columns:1fr;gap:0;margin-top:4rem;
+}
+.rec{
+  display:grid;grid-template-columns:1fr 2px 1.8fr;gap:3rem;
+  padding:3.5rem 0;
+  border-bottom:1px solid rgba(181,112,58,.08);
+  align-items:start;
+  position:relative;
+}
+.rec:first-child{border-top:1px solid rgba(181,112,58,.08)}
+.rec-divider{background:linear-gradient(180deg,transparent,var(--copper),transparent);align-self:stretch}
+.rec-from{}
+.rec-company{
+  font-family:var(--ff-display);font-size:1.6rem;
+  font-weight:700;font-style:italic;
+  color:var(--copper2);margin-bottom:.3rem;
+}
+.rec-who{
+  font-family:var(--ff-mono);font-size:.5rem;letter-spacing:.25em;
+  text-transform:uppercase;color:var(--ivory);margin-bottom:.2rem;
+}
+.rec-role{
+  font-family:var(--ff-mono);font-size:.44rem;letter-spacing:.18em;
+  color:var(--dust);
+}
+.rec-body{
+  font-family:var(--ff-cormorant);font-style:italic;
+  font-size:1.25rem;line-height:1.9;color:rgba(245,240,232,.58);
+  position:relative;
+}
+.rec-body::before{
+  content:'"';
+  position:absolute;top:-.5rem;left:-1.5rem;
+  font-family:var(--ff-display);font-size:4rem;
+  color:rgba(181,112,58,.15);line-height:1;
+}
+   
 /* CONTACT */
 .contact { padding: 10rem 0 8rem; text-align: center; position: relative; overflow: hidden; }
 
