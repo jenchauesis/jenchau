@@ -210,64 +210,56 @@ nav::after {
 @keyframes floatShape { 0%,100%{transform:translateY(0) rotate(0deg)} 50%{transform:translateY(-22px) rotate(8deg)} }
 
 /* Ground blocks — same concept, more refined */
-.hero-ground { position: absolute; bottom: 0; left: 0; right: 0; height: 40px; display: flex; overflow: hidden; pointer-events: none; }
-.ground-block {
-  flex-shrink: 0; width: 40px; height: 40px;
-  border-right: 1px solid rgba(0,0,0,0.4);
-  border-top: 1px solid rgba(255,255,255,0.08);
-  display: flex; align-items: center; justify-content: center;
-  font-family: var(--font-pixel); font-size: 0.3rem;
-  transition: transform 0.3s;
-}
-.ground-block:hover { transform: translateY(-6px); }
-.ground-block:nth-child(10n+1)  {
-  background: var(--sage);
-  color: var(--bg);
+/* ARTWORK STRIP */
+.hero-artwork-strip {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 120px;
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent 0%, black 8%, black 92%, transparent 100%);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, black 8%, black 92%, transparent 100%);
 }
 
-.ground-block:nth-child(10n+2)  {
-  background: var(--dusty-teal);
-  color: white;
+.artwork-track {
+  display: flex;
+  gap: 4px;
+  animation: artworkScroll 40s linear infinite;
+  width: max-content;
 }
 
-.ground-block:nth-child(10n+3)  {
-  background: var(--olive);
-  color: var(--bone);
+.artwork-track:hover { animation-play-state: paused; }
+
+.artwork-item {
+  flex-shrink: 0;
+  width: 160px;
+  height: 120px;
+  overflow: hidden;
+  position: relative;
+  opacity: 0.75;
+  transition: opacity 0.3s, transform 0.3s;
 }
 
-.ground-block:nth-child(10n+4)  {
-  background: var(--rust);
-  color: white;
+.artwork-item:hover {
+  opacity: 1;
+  transform: translateY(-6px);
+  z-index: 2;
 }
 
-.ground-block:nth-child(10n+5)  {
-  background: var(--crimson);
-  color: white;
+.artwork-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  filter: saturate(0.85);
+  transition: filter 0.3s;
 }
 
-.ground-block:nth-child(10n+6)  {
-  background: var(--mahogany);
-  color: var(--bone);
-}
+.artwork-item:hover img { filter: saturate(1.1); }
 
-.ground-block:nth-child(10n+7)  {
-  background: var(--tan);
-  color: var(--bg);
-}
-
-.ground-block:nth-child(10n+8)  {
-  background: var(--rosewood);
-  color: white;
-}
-
-.ground-block:nth-child(10n+9)  {
-  background: var(--blood);
-  color: var(--bone);
-}
-
-.ground-block:nth-child(10n+10) {
-  background: var(--jade);
-  color: var(--bone);
+@keyframes artworkScroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
 }
 
 .hero-inner { position: relative; z-index: 2; text-align: center; max-width: 1000px; }
@@ -1218,7 +1210,35 @@ footer { overflow: hidden; border-top: 1px solid var(--border); }
     </div>
   </div>
 
-  <div class="hero-ground" id="hero-ground"></div>
+  <div class="hero-artwork-strip">
+  <div class="artwork-track">
+    <div class="artwork-item"><img src="https://drive.google.com/thumbnail?id=1B1TTm5kE7fCJ-5w0Ox6GMbxItLTsswod&sz=w800" alt=""></div>
+    <div class="artwork-item"><img src="https://drive.google.com/thumbnail?id=1ELzkqG_3SibAutaNhyX-fvMa4x1zbb7l&sz=w800" alt=""></div>
+    <div class="artwork-item"><img src="https://lh3.googleusercontent.com/d/1LuWJClFPXMLdTLioAGXC2pAcpfkCiJMI" alt=""></div>
+    <div class="artwork-item"><img src="https://lh3.googleusercontent.com/d/1nexh6TWG4lQnu9r13z8JR2me5iQ05jP7" alt=""></div>
+    <div class="artwork-item"><img src="https://lh3.googleusercontent.com/d/1BZhv33UsGX60OuraOQvrGVVuFL47GEE2" alt=""></div>
+    <div class="artwork-item"><img src="https://lh3.googleusercontent.com/d/1xo-gbQX2j70KrEhrDK6iLW3sNrHYVttu" alt=""></div>
+    <div class="artwork-item"><img src="https://lh3.googleusercontent.com/d/1TIyqbRM6Ozq41jOuwa3oSpgwjVMPci59" alt=""></div>
+    <div class="artwork-item"><img src="https://drive.google.com/thumbnail?id=1JcskzAVocDWGRSwpaUwFqXttne-JRt96&sz=w800" alt=""></div>
+    <div class="artwork-item"><img src="https://drive.google.com/thumbnail?id=1YjJ6n-6O8T_0PtRD_jMxET9BOcsVVl7N&sz=w800" alt=""></div>
+    <div class="artwork-item"><img src="https://lh3.googleusercontent.com/d/1UYV1t-iYigEKPjZFdYOcn9iSaHs3IhRe" alt=""></div>
+    <div class="artwork-item"><img src="https://drive.google.com/thumbnail?id=1uWc9zmfBUU9A3I6CG1m8_iydEL5P-muN&sz=w800" alt=""></div>
+    <div class="artwork-item"><img src="https://lh3.googleusercontent.com/d/1S4hQMSzpRSTTi1lT0uGKJXT53_aLEtVE" alt=""></div>
+    <!-- duplicate for seamless loop -->
+    <div class="artwork-item"><img src="https://drive.google.com/thumbnail?id=1B1TTm5kE7fCJ-5w0Ox6GMbxItLTsswod&sz=w800" alt=""></div>
+    <div class="artwork-item"><img src="https://drive.google.com/thumbnail?id=1ELzkqG_3SibAutaNhyX-fvMa4x1zbb7l&sz=w800" alt=""></div>
+    <div class="artwork-item"><img src="https://lh3.googleusercontent.com/d/1LuWJClFPXMLdTLioAGXC2pAcpfkCiJMI" alt=""></div>
+    <div class="artwork-item"><img src="https://lh3.googleusercontent.com/d/1nexh6TWG4lQnu9r13z8JR2me5iQ05jP7" alt=""></div>
+    <div class="artwork-item"><img src="https://lh3.googleusercontent.com/d/1BZhv33UsGX60OuraOQvrGVVuFL47GEE2" alt=""></div>
+    <div class="artwork-item"><img src="https://lh3.googleusercontent.com/d/1xo-gbQX2j70KrEhrDK6iLW3sNrHYVttu" alt=""></div>
+    <div class="artwork-item"><img src="https://lh3.googleusercontent.com/d/1TIyqbRM6Ozq41jOuwa3oSpgwjVMPci59" alt=""></div>
+    <div class="artwork-item"><img src="https://drive.google.com/thumbnail?id=1JcskzAVocDWGRSwpaUwFqXttne-JRt96&sz=w800" alt=""></div>
+    <div class="artwork-item"><img src="https://drive.google.com/thumbnail?id=1YjJ6n-6O8T_0PtRD_jMxET9BOcsVVl7N&sz=w800" alt=""></div>
+    <div class="artwork-item"><img src="https://lh3.googleusercontent.com/d/1UYV1t-iYigEKPjZFdYOcn9iSaHs3IhRe" alt=""></div>
+    <div class="artwork-item"><img src="https://drive.google.com/thumbnail?id=1uWc9zmfBUU9A3I6CG1m8_iydEL5P-muN&sz=w800" alt=""></div>
+    <div class="artwork-item"><img src="https://lh3.googleusercontent.com/d/1S4hQMSzpRSTTi1lT0uGKJXT53_aLEtVE" alt=""></div>
+  </div>
+</div>
 </section>
 
 <!-- TICKER -->
@@ -1791,13 +1811,7 @@ for (let i = 0; i < 50; i++) {
   starsEl.appendChild(s);
 }
 
-/* GROUND */
-const ground = document.getElementById('hero-ground');
-const gchars = ['?','◆','★','●','▲','■','◈','◇'];
-for (let i = 0; i < Math.ceil(window.innerWidth/40)+2; i++) {
-  const b = document.createElement('div'); b.className = 'ground-block';
-  b.textContent = gchars[i % gchars.length]; ground.appendChild(b);
-}
+
 
 /* REVEAL */
 document.querySelectorAll('.reveal').forEach(r => {
