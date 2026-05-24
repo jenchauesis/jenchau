@@ -9,71 +9,38 @@
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-/* =============================================
-   PALETTE — VW CLASH × DOPAMINE
-   Base: deep mauve-black, warm ink
-   Accents: never obvious, always intentional
-   Burnt sienna × cobalt × acid lime × dusty rose
-   Warm amber × slate blue × terracotta × sage
-============================================= */
 :root {
-  /* Base */
-  --bg:        #000000;   /* black the end */
-  --bg2:       #414445;   /* vulcanised */
-  --bg3:       #292a2a;   /* blacklish */
-  --ink:       #2a1f35;   /* card backgrounds */
-  --text:      #f0ebe8;   /* warm off-white */
-  --text-dim:  rgba(240,235,232,0.5);
+  --bg:        #0a0908;
+  --bg2:       #131211;
+  --bg3:       #0f0e0d;
+  --ink:       #1a1714;
+  --text:      #f0ebe8;
+  --text-dim:  rgba(240,235,232,0.55);
   --text-dimmer: rgba(240,235,232,0.28);
 
-  /* VW Clash accents — unexpected combos */
-  --sage:         #c1bf8e;   /* faded lily green */
+  --sage:         #c1bf8e;
   --sage2:        #d7d3a8;
-
-  --dusty-teal:   #718d8e;   /* muted river teal */
+  --dusty-teal:   #718d8e;
   --dusty-teal2:  #8fa9aa;
-
-  --olive:        #3e3e02;   /* moss olive */
-  --olive2:       #62611a;
-
-  --rust:         #a24a1a;   /* aged orange-brown */
+  --olive:        #5a5820;
+  --olive2:       #7a7830;
+  --rust:         #a24a1a;
   --rust2:        #c26734;
-
-  --crimson:      #8f1200;   /* deep ceremonial red */
+  --crimson:      #8f1200;
   --crimson2:     #b3270b;
-
-  --mahogany:     #532412;   /* dark wood brown */
+  --mahogany:     #532412;
   --mahogany2:    #71402a;
-
-  --tan:          #a87b51;   /* warm sandstone */
+  --tan:          #a87b51;
   --tan2:         #c49a72;
-
-  --rosewood:     #96584b;   /* dusty medieval rose */
+  --rosewood:     #96584b;
   --rosewood2:    #b77a6d;
-
-  --blood:        #4a0001;   /* dried blood red */
+  --blood:        #4a0001;
   --blood2:       #720000;
-
-  --jade:         #155c4e;   /* dark emerald-teal */
+  --jade:         #155c4e;
   --jade2:        #2a7d6b;
-
-  --black:     #11120D;   /* smoky black*/
-  --olive:     #565449;   /* olive drab */
-  --bone:      #D8CFBC;
-  --White:     #FFFBF4;   /*white floral*/
-
-  /* Per-project color map */
---p1:  var(--sage);
---p2:  var(--dusty-teal);
---p3:  var(--olive);
---p4:  var(--rust);
---p5:  var(--crimson);
---p6:  var(--mahogany);
---p7:  var(--tan);
---p8:  var(--rosewood);
---p9:  var(--blood);
---p10: var(--jade);
-  --border: rgba(240,235,232,0.08);
+  --bone:         #D8CFBC;
+  --white-floral: #FFFBF4;
+  --border: rgba(240,235,232,0.07);
 
   --font-pixel: 'Press Start 2P', monospace;
   --font-serif: 'Playfair Display', serif;
@@ -85,403 +52,245 @@ body {
   background: var(--bg);
   color: var(--text);
   font-family: var(--font-mono);
-  cursor: auto !important;
   overflow-x: hidden;
 }
 
-/* Subtle texture */
+/* Grid texture */
 body::before {
   content: '';
   position: fixed; inset: 0;
   background-image:
-    linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
-  background-size: 28px 28px;
+    linear-gradient(rgba(255,255,255,0.012) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.012) 1px, transparent 1px);
+  background-size: 32px 32px;
   pointer-events: none; z-index: 0;
 }
 
-/* Noise overlay — gives depth */
-body::after {
-  content: '';
-  position: fixed; inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
-  pointer-events: none; z-index: 0; opacity: 0.6;
-}
-
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: var(--bg3); }
-::-webkit-scrollbar-thumb { background: linear-gradient(var(--sienna), var(--cobalt), var(--lime)); }
-
-/* CURSOR */
-#cursor {
-  position: fixed; pointer-events: none; z-index: 9999;
-  transform: translate(-50%,-50%);
-  width: 10px; height: 10px;
-  background: var(--lime);
-  transition: transform 0.08s;
-  clip-path: polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);
-}
-#cursor-trail {
-  position: fixed; width: 6px; height: 6px;
-  background: var(--rose);
-  pointer-events: none; z-index: 9998;
-  transform: translate(-50%,-50%);
-  transition: all 0.14s ease;
-  opacity: 0.65;
-}
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg2); }
+::-webkit-scrollbar-thumb { background: var(--rust); }
 
 /* NAV */
 nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
   display: flex; justify-content: space-between; align-items: center;
   padding: 1.1rem 3rem;
-  background: rgba(22,16,26,0.88);
-  backdrop-filter: blur(18px);
+  background: rgba(10,9,8,0.92);
+  backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--border);
 }
-
-/* Rainbow underline — but VW colors, desaturated slightly */
 nav::after {
   content: '';
-  position: absolute; bottom: -3px; left: 0; right: 0; height: 3px;
+  position: absolute; bottom: -2px; left: 0; right: 0; height: 2px;
   background: linear-gradient(90deg,
-   var(--rust),var(--tan),var(--sage),var(--dusty-teal),var(--rosewood),var(--mahogany),var(--olive),var(--rust));
-  opacity: 0.7;
+   var(--rust),var(--tan),var(--sage),var(--dusty-teal),var(--rosewood),var(--mahogany),var(--jade),var(--rust));
+  opacity: 0.6;
 }
-
-.nav-logo { font-family: var(--font-pixel); font-size: 0.46rem; line-height: 2; letter-spacing: 0.1em; }
+.nav-logo { font-family: var(--font-pixel); font-size: 0.44rem; line-height: 2.2; letter-spacing: 0.1em; }
 .nav-logo .l1 { color: var(--rust2); }
-.nav-logo .l2 { color: var(--bone); }
+.nav-logo .l2 { color: rgba(240,235,232,0.2); }
 .nav-logo .l3 { color: var(--jade2); }
 
 .nav-links { display: flex; gap: 2rem; list-style: none; }
 .nav-links a {
-  font-family: var(--font-pixel); font-size: 0.38rem;
+  font-family: var(--font-pixel); font-size: 0.36rem;
   text-decoration: none; letter-spacing: 0.1em;
-  color: var(--text-dim); transition: color 0.2s;
+  color: var(--text-dimmer); transition: color 0.2s;
   position: relative; padding-bottom: 3px;
 }
 .nav-links a::after {
   content: ''; position: absolute; bottom: 0; left: 0;
-  width: 0; height: 2px; background: currentColor; transition: width 0.3s;
+  width: 0; height: 1px; background: currentColor; transition: width 0.3s;
 }
 .nav-links a:hover { color: var(--text); }
 .nav-links a:hover::after { width: 100%; }
-.nav-links li:nth-child(1) a:hover {
-  color: var(--rust2);
-}
-
-.nav-links li:nth-child(2) a:hover {
-  color: var(--sage2);
-}
-
-.nav-links li:nth-child(3) a:hover {
-  color: var(--dusty-teal2);
-}
-
-.nav-links li:nth-child(4) a:hover {
-  color: var(--rosewood2);
-}
-
-.nav-links li:nth-child(5) a:hover {
-  color: var(--tan2);
-}
+.nav-links li:nth-child(1) a:hover { color: var(--rust2); }
+.nav-links li:nth-child(2) a:hover { color: var(--sage2); }
+.nav-links li:nth-child(3) a:hover { color: var(--dusty-teal2); }
+.nav-links li:nth-child(4) a:hover { color: var(--rosewood2); }
+.nav-links li:nth-child(5) a:hover { color: var(--tan2); }
 
 /* HERO */
 .hero {
   position: relative; min-height: 100vh;
   display: flex; align-items: center; justify-content: center;
-  overflow: hidden; padding: 7rem 2rem 6rem;
+  overflow: hidden; padding: 8rem 2rem 5rem;
 }
 
-/* Pixel stars — smaller, subtler */
+/* Subtle star dots */
 .stars { position: absolute; inset: 0; pointer-events: none; }
-.star { position: absolute; animation: twinkle var(--d,2.5s) infinite var(--delay,0s); }
-@keyframes twinkle { 0%,100%{opacity:0.9} 50%{opacity:0.08} }
+.star { position: absolute; border-radius: 50%; animation: twinkle var(--d,2.5s) infinite var(--delay,0s); }
+@keyframes twinkle { 0%,100%{opacity:0.7} 50%{opacity:0.05} }
 
-/* Floating shapes — not childish coins, more abstract */
-.floater {
-  position: absolute; pointer-events: none;
-  animation: floatShape var(--d,9s) ease-in-out infinite var(--delay,0s);
-  font-size: var(--fs, 16px);
-  filter: blur(0.5px);
-  opacity: 0.55;
-}
-@keyframes floatShape { 0%,100%{transform:translateY(0) rotate(0deg)} 50%{transform:translateY(-22px) rotate(8deg)} }
-
-/* Ground blocks — same concept, more refined */
-.hero-ground { position: absolute; bottom: 0; left: 0; right: 0; height: 40px; display: flex; overflow: hidden; pointer-events: none; }
-.ground-block {
-  flex-shrink: 0; width: 40px; height: 40px;
-  border-right: 1px solid rgba(0,0,0,0.4);
-  border-top: 1px solid rgba(255,255,255,0.08);
-  display: flex; align-items: center; justify-content: center;
-  font-family: var(--font-pixel); font-size: 0.3rem;
-  transition: transform 0.3s;
-}
-.ground-block:hover { transform: translateY(-6px); }
-.ground-block:nth-child(10n+1)  {
-  background: var(--sage);
-  color: var(--bg);
-}
-
-.ground-block:nth-child(10n+2)  {
-  background: var(--dusty-teal);
-  color: white;
-}
-
-.ground-block:nth-child(10n+3)  {
-  background: var(--olive);
-  color: var(--bone);
-}
-
-.ground-block:nth-child(10n+4)  {
-  background: var(--rust);
-  color: white;
-}
-
-.ground-block:nth-child(10n+5)  {
-  background: var(--crimson);
-  color: white;
-}
-
-.ground-block:nth-child(10n+6)  {
-  background: var(--mahogany);
-  color: var(--bone);
-}
-
-.ground-block:nth-child(10n+7)  {
-  background: var(--tan);
-  color: var(--bg);
-}
-
-.ground-block:nth-child(10n+8)  {
-  background: var(--rosewood);
-  color: white;
-}
-
-.ground-block:nth-child(10n+9)  {
-  background: var(--blood);
-  color: var(--bone);
-}
-
-.ground-block:nth-child(10n+10) {
-  background: var(--jade);
-  color: var(--bone);
-}
-
-.hero-inner { position: relative; z-index: 2; text-align: center; max-width: 1000px; }
+.hero-inner { position: relative; z-index: 2; text-align: center; max-width: 1000px; width: 100%; }
 
 .hero-eyebrow {
-  font-family: var(--font-pixel); font-size: 0.36rem;
-  letter-spacing: 0.32em; margin-bottom: 2.5rem;
+  font-family: var(--font-pixel); font-size: 0.34rem;
+  letter-spacing: 0.3em; margin-bottom: 3rem;
   color: var(--text-dimmer);
   opacity: 0; animation: fadeUp 0.7s ease 0.2s forwards;
 }
-.hero-eyebrow em { color: var(--lime); font-style: normal; }
+.hero-eyebrow em { font-style: normal; }
+.hero-eyebrow .em-f { color: var(--rust2); }
+.hero-eyebrow .em-g { color: var(--dusty-teal2); }
 
-/* Each letter — VW clash, not rainbow child */
 .hero-title {
-  font-family: var(--font-serif); font-size: clamp(4.5rem, 12vw, 10rem);
-  font-weight: 700; line-height: 0.85; letter-spacing: -0.025em;
-  margin-bottom: 1.8rem;
-  opacity: 0; animation: fadeUp 0.7s ease 0.4s forwards;
+  font-family: var(--font-serif);
+  font-size: clamp(5rem, 14vw, 11.5rem);
+  font-weight: 700; line-height: 0.82; letter-spacing: -0.03em;
+  margin-bottom: 2.5rem;
+  opacity: 0; animation: fadeUp 0.8s ease 0.35s forwards;
 }
-.n-j {
-  color: var(--rust2);
-  font-style: italic;
+.n-j  { color: var(--rust2); font-style: italic; }
+.n-e  { color: var(--tan2); }
+.n-n  { color: var(--sage2); }
+.n-c  { color: var(--dusty-teal2); font-style: italic; }
+.n-h  { color: var(--rosewood2); }
+.n-a  { color: var(--mahogany2); }
+.n-u  { color: var(--jade2); font-style: italic; }
+.n-blink {
+  font-family: var(--font-pixel); font-size: 0.18em;
+  color: var(--text-dimmer); vertical-align: middle;
+  animation: blink 1s steps(1) infinite;
 }
-
-.n-e {
-  color: var(--tan2);
-}
-
-.n-n {
-  color: var(--sage2);
-}
-
-.n-c {
-  color: var(--dusty-teal2);
-  font-style: italic;
-}
-
-.n-h {
-  color: var(--rosewood2);
-}
-
-.n-a {
-  color: var(--mahogany2);
-}
-
-.n-u {
-  color: var(--jade2);
-  font-style: italic;
-}
-.n-blink { font-family: var(--font-pixel); font-size: 0.22em; color: var(--text-dimmer); vertical-align: middle; animation: blink 1s steps(1) infinite; }
 @keyframes blink { 50%{opacity:0} }
 
-/* Crossover tagline — the bridge between game & fashion */
 .hero-crossover {
-  display: inline-flex; align-items: center; gap: 1rem;
-  margin-bottom: 2rem;
+  display: inline-flex; align-items: center; gap: 1.2rem;
+  margin-bottom: 2.2rem;
   opacity: 0; animation: fadeUp 0.7s ease 0.55s forwards;
 }
 .cross-label {
-  font-family: var(--font-pixel); font-size: 0.38rem;
-  padding: 0.55rem 1rem; letter-spacing: 0.1em;
+  font-family: var(--font-pixel); font-size: 0.36rem;
+  padding: 0.6rem 1.1rem; letter-spacing: 0.1em;
 }
-.cross-label.game { background: var(--cobalt); color: white; box-shadow: 3px 3px 0 rgba(0,0,0,0.4); }
-.cross-label.divider { font-size: 0.5rem; color: var(--lime); }
-.cross-label.fashion { background: var(--rose); color: white; box-shadow: 3px 3px 0 rgba(0,0,0,0.4); }
+.cross-label.game { background: var(--dusty-teal); color: white; box-shadow: 3px 3px 0 rgba(0,0,0,0.5); }
+.cross-label.divider { font-size: 0.55rem; color: var(--text-dimmer); }
+.cross-label.fashion { background: var(--rosewood); color: white; box-shadow: 3px 3px 0 rgba(0,0,0,0.5); }
 
 .hero-subtitle {
-  font-size: 0.7rem; color: var(--text-dimmer); letter-spacing: 0.22em;
+  font-size: 0.62rem; color: var(--text-dimmer); letter-spacing: 0.18em;
   margin-bottom: 2.5rem;
   opacity: 0; animation: fadeUp 0.7s ease 0.65s forwards;
 }
 
 .hero-tags {
-  display: flex; gap: 0.6rem; justify-content: center; flex-wrap: wrap;
+  display: flex; gap: 0.55rem; justify-content: center; flex-wrap: wrap;
   margin-bottom: 3rem; opacity: 0; animation: fadeUp 0.7s ease 0.8s forwards;
 }
 .tag {
-  font-family: var(--font-pixel); font-size: 0.33rem;
-  padding: 0.48rem 0.85rem; letter-spacing: 0.06em;
-  transition: all 0.15s; border: 1px solid;
+  font-family: var(--font-pixel); font-size: 0.3rem;
+  padding: 0.45rem 0.8rem; letter-spacing: 0.06em;
+  transition: all 0.18s; border: 1px solid;
   background: transparent;
 }
 .tag:hover { transform: translate(-2px,-2px); }
-
-/* Tags — intentional clash pairs */
-.tg1 {
-  color: var(--rust2);
-  border-color: var(--rust);
-}
-
-.tg1:hover {
-  background: var(--rust);
-  color: white;
-}
-
-.tg2 {
-  color: var(--sage2);
-  border-color: var(--sage);
-}
-
-.tg2:hover {
-  background: var(--sage);
-  color: var(--bg);
-}
-
-.tg3 {
-  color: var(--dusty-teal2);
-  border-color: var(--dusty-teal);
-}
-
-.tg3:hover {
-  background: var(--dusty-teal);
-  color: white;
-}
-
-.tg4 {
-  color: var(--rosewood2);
-  border-color: var(--rosewood);
-}
-
-.tg4:hover {
-  background: var(--rosewood);
-  color: white;
-}
-
-.tg5 {
-  color: var(--tan2);
-  border-color: var(--tan);
-}
-
-.tg5:hover {
-  background: var(--tan);
-  color: var(--bg);
-}
-
-.tg6 {
-  color: var(--jade2);
-  border-color: var(--jade);
-}
-
-.tg6:hover {
-  background: var(--jade);
-  color: var(--bone);
-}
-
-.tg7 {
-  color: var(--mahogany2);
-  border-color: var(--mahogany);
-}
-
-.tg7:hover {
-  background: var(--mahogany);
-  color: white;
-}
-
-.tg8 {
-  color: var(--crimson2);
-  border-color: var(--crimson);
-}
-.tg8:hover { background: var(--slate); color: white; }
+.tg1 { color: var(--rust2); border-color: var(--rust); }
+.tg1:hover { background: var(--rust); color: white; }
+.tg2 { color: var(--sage2); border-color: var(--sage); }
+.tg2:hover { background: var(--sage); color: var(--bg); }
+.tg3 { color: var(--dusty-teal2); border-color: var(--dusty-teal); }
+.tg3:hover { background: var(--dusty-teal); color: white; }
+.tg4 { color: var(--rosewood2); border-color: var(--rosewood); }
+.tg4:hover { background: var(--rosewood); color: white; }
+.tg5 { color: var(--tan2); border-color: var(--tan); }
+.tg5:hover { background: var(--tan); color: var(--bg); }
+.tg6 { color: var(--jade2); border-color: var(--jade); }
+.tg6:hover { background: var(--jade); color: var(--bone); }
+.tg7 { color: var(--mahogany2); border-color: var(--mahogany); }
+.tg7:hover { background: var(--mahogany); color: white; }
+.tg8 { color: var(--crimson2); border-color: var(--crimson); }
+.tg8:hover { background: var(--crimson); color: white; }
 
 .hero-ctas {
   display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
+  margin-bottom: 4rem;
   opacity: 0; animation: fadeUp 0.7s ease 1s forwards;
 }
 .btn {
-  font-family: var(--font-pixel); font-size: 0.42rem;
-  padding: 0.9rem 1.8rem; text-decoration: none; letter-spacing: 0.1em;
-  border: none; cursor: auto !important; transition: all 0.15s;
+  font-family: var(--font-pixel); font-size: 0.4rem;
+  padding: 0.9rem 1.9rem; text-decoration: none; letter-spacing: 0.1em;
+  border: none; cursor: pointer; transition: all 0.15s;
   display: inline-flex; align-items: center; gap: 0.5rem;
 }
 .btn-s { background: var(--rust); color: white; box-shadow: 4px 4px 0 rgba(0,0,0,0.5); }
 .btn-s:hover { transform: translate(-2px,-2px); box-shadow: 6px 6px 0 rgba(0,0,0,0.5); }
-
 .btn-c { background: var(--dusty-teal); color: white; box-shadow: 4px 4px 0 rgba(0,0,0,0.5); }
 .btn-c:hover { transform: translate(-2px,-2px); box-shadow: 6px 6px 0 rgba(0,0,0,0.5); }
 
-/* TICKER */
-.ticker { overflow: hidden; }
-.ticker-row { display: flex; overflow: hidden; padding: 0.55rem 0; }
+/* HERO FEATURED IMAGE */
+.hero-featured {
+  opacity: 0; animation: fadeUp 0.9s ease 1.15s forwards;
+  position: relative; max-width: 820px; margin: 0 auto;
+}
+.hero-featured-img {
+  width: 100%; aspect-ratio: 16/7;
+  overflow: hidden; position: relative;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+.hero-featured-img img {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center 30%;
+  filter: grayscale(15%) contrast(1.05);
+  transition: transform 6s ease;
+}
+.hero-featured-img:hover img { transform: scale(1.04); }
+.hero-featured-img::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(10,9,8,0.7) 0%, transparent 60%);
+}
+.hero-featured-caption {
+  position: absolute; bottom: 1.2rem; left: 1.5rem; z-index: 2;
+  font-family: var(--font-pixel); font-size: 0.28rem;
+  letter-spacing: 0.1em; color: rgba(240,235,232,0.5);
+}
 
-.ticker-row:nth-child(1) { background: var(--rust); }
-.ticker-row:nth-child(2) { background: var(--dusty-teal); }
-.ticker-row:nth-child(3) { background: var(--sage); }
-.ticker-inner { display: flex; gap: 2.5rem; animation: ticker 24s linear infinite; white-space: nowrap; }
-.ticker-row:nth-child(2) .ticker-inner { animation-direction: reverse; animation-duration: 30s; }
-.ticker-row:nth-child(3) .ticker-inner { animation-duration: 18s; }
-.ticker-inner span { font-family: var(--font-pixel); font-size: 0.34rem; letter-spacing: 0.12em; }
-.ticker-row:nth-child(1) .ticker-inner span { color: rgba(255,255,255,0.9); }
-.ticker-row:nth-child(2) .ticker-inner span { color: rgba(255,255,255,0.9); }
-.ticker-row:nth-child(3) .ticker-inner span { color: var(--bg); }
+/* Ground blocks */
+.hero-ground { position: absolute; bottom: 0; left: 0; right: 0; height: 36px; display: flex; overflow: hidden; pointer-events: none; }
+.ground-block {
+  flex-shrink: 0; width: 36px; height: 36px;
+  border-right: 1px solid rgba(0,0,0,0.4);
+  border-top: 1px solid rgba(255,255,255,0.06);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-pixel); font-size: 0.28rem;
+  transition: transform 0.3s;
+}
+.ground-block:hover { transform: translateY(-6px); }
+.ground-block:nth-child(10n+1)  { background: var(--sage); color: var(--bg); }
+.ground-block:nth-child(10n+2)  { background: var(--dusty-teal); color: white; }
+.ground-block:nth-child(10n+3)  { background: var(--olive); color: var(--bone); }
+.ground-block:nth-child(10n+4)  { background: var(--rust); color: white; }
+.ground-block:nth-child(10n+5)  { background: var(--crimson); color: white; }
+.ground-block:nth-child(10n+6)  { background: var(--mahogany); color: var(--bone); }
+.ground-block:nth-child(10n+7)  { background: var(--tan); color: var(--bg); }
+.ground-block:nth-child(10n+8)  { background: var(--rosewood); color: white; }
+.ground-block:nth-child(10n+9)  { background: var(--blood); color: var(--bone); }
+.ground-block:nth-child(10n+10) { background: var(--jade); color: var(--bone); }
+
+/* TICKER — 1 row only, clean */
+.ticker { overflow: hidden; }
+.ticker-row { display: flex; overflow: hidden; }
+.ticker-row:nth-child(1) { background: var(--rust); padding: 0.6rem 0; }
+.ticker-inner { display: flex; gap: 2.5rem; animation: ticker 28s linear infinite; white-space: nowrap; }
+.ticker-inner span { font-family: var(--font-pixel); font-size: 0.32rem; letter-spacing: 0.12em; color: rgba(255,255,255,0.85); }
 @keyframes ticker { from{transform:translateX(0)} to{transform:translateX(-50%)} }
 
 /* COMMONS */
 section { position: relative; z-index: 1; }
 .container { max-width: 1300px; margin: 0 auto; padding: 0 3rem; }
 .section-header { display: flex; align-items: center; gap: 1.5rem; margin-bottom: 4rem; }
-.section-num { font-family: var(--font-pixel); font-size: 0.38rem; color: var(--text-dimmer); }
+.section-num { font-family: var(--font-pixel); font-size: 0.36rem; color: var(--text-dimmer); }
 .section-title { font-family: var(--font-serif); font-size: clamp(2rem,5vw,3.5rem); font-style: italic; font-weight: 700; }
-.section-line { flex: 1; height: 2px; opacity: 0.25; background: linear-gradient(90deg, currentColor, transparent); }
+.section-line { flex: 1; height: 1px; opacity: 0.15; background: linear-gradient(90deg, currentColor, transparent); }
 
 /* ABOUT */
-.about {
-  padding: 8rem 0;
+.about { padding: 8rem 0; }
+.about-grid { display: grid; grid-template-columns: 0.95fr 1.05fr; gap: 5rem; align-items: start; }
+.about-text p {
+  font-size: 0.88rem; line-height: 2.1; color: var(--text-dim); margin-bottom: 1.5rem;
 }
-
-.about-grid {
-  display: grid;
-  grid-template-columns: 0.9fr 1.1fr;
-  gap: 4.5rem;
-  align-items: start;
-}
-.about-text p { font-size: 0.9rem; line-height: 2.1; color: var(--text-dim); margin-bottom: 1.5rem; }
-.hl { font-style: italic; font-weight: 400; }
+.hl { font-style: italic; }
 .hl-s { color: var(--rust2); }
 .hl-c { color: var(--dusty-teal2); }
 .hl-l { color: var(--sage2); }
@@ -489,140 +298,143 @@ section { position: relative; z-index: 1; }
 .hl-a { color: var(--tan2); }
 .hl-v { color: var(--mahogany2); }
 
-/* Crossover identity block */
-.identity-block {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 3px; margin-top: 2.5rem;
+/* Skill pills — cleaner than bullet list */
+.skill-group { margin-top: 2.5rem; display: flex; flex-direction: column; gap: 1.2rem; }
+.skill-group-label {
+  font-family: var(--font-pixel); font-size: 0.3rem; letter-spacing: 0.1em;
+  margin-bottom: 0.6rem;
 }
-.id-panel {
-  padding: 1.5rem; position: relative; overflow: hidden;
+.skill-pills { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.skill-pill {
+  font-family: var(--font-pixel); font-size: 0.27rem;
+  padding: 0.35rem 0.65rem;
+  border: 1px solid; letter-spacing: 0.04em;
+  transition: all 0.15s;
 }
-.id-panel::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; }
-.id-panel.game { background: rgba(45,91,227,0.12); border: 1px solid rgba(45,91,227,0.25); }
-.id-panel.game::before { background: var(--dusty-teal); }
+.skill-pill:hover { transform: translate(-1px,-1px); }
+.sk-game { border-color: var(--dusty-teal); color: var(--dusty-teal2); }
+.sk-game:hover { background: var(--dusty-teal); color: white; }
+.sk-fashion { border-color: var(--rosewood); color: var(--rosewood2); }
+.sk-fashion:hover { background: var(--rosewood); color: white; }
+.sk-bridge { border-color: var(--sage); color: var(--sage2); }
+.sk-bridge:hover { background: var(--sage); color: var(--bg); }
+.sk-label-game { color: var(--dusty-teal2); }
+.sk-label-fashion { color: var(--rosewood2); }
+.sk-label-bridge { color: var(--sage2); }
 
-.id-panel.fashion { background: rgba(150,88,75,0.12); border: 1px solid rgba(150,88,75,0.25); }
-.id-panel.fashion::before { background: var(--rosewood); }
-
-.id-panel.bridge { background: rgba(193,191,142,0.08); border: 1px solid rgba(193,191,142,0.2); grid-column: span 2; }
-.id-panel.bridge::before { background: var(--sage); }
-
-.id-label { font-family: var(--font-pixel); font-size: 0.54rem; margin-bottom: 0.8rem; letter-spacing: 0.08em; }
-.id-panel.game .id-label { color: var(--dusty-teal2); }
-.id-panel.fashion .id-label { color: var(--rosewood2); }
-.id-panel.bridge .id-label { color: var(--sage2); }
-
-.id-skills { display: flex; flex-direction: column; gap: 0.35rem; }
-.id-skill { font-size: 0.7rem; color: var(--text-dim); display: flex; align-items: center; gap: 0.5rem; }
-
-.id-skill::before { content: '▸'; font-size: 0.6rem; }
-.id-panel.game .id-skill::before { color: var(--dusty-teal); }
-.id-panel.fashion .id-skill::before { color: var(--rosewood); }
-.id-panel.bridge .id-skill::before { color: var(--sage); }
-
+/* Portrait */
 .portrait-card {
-  position: relative; overflow: hidden;
-  border: 1px solid var(--border);
-  background: var(--ink);
-}
-.portrait-card {
-  max-width: 620px;
-  margin-left: auto;
-  position: sticky;
-  top: 5rem;
-  overflow: hidden;
-  border: 1px solid var(--border);
-  background: linear-gradient(
-    90deg,
-    var(--rust),
-    var(--dusty-teal),
-    var(--sage),
-    var(--rosewood),
-    var(--tan)
-  );
+  position: sticky; top: 5rem;
+  border: 2px solid transparent;
+  background: linear-gradient(var(--bg2),var(--bg2)) padding-box,
+              linear-gradient(135deg,var(--rust),var(--dusty-teal),var(--sage),var(--rosewood),var(--tan)) border-box;
 }
 .portrait-img-area {
-  width: 100%;
-  aspect-ratio: 4 / 5;
-  overflow: hidden;
-  background: linear-gradient(135deg, #1c0f22 0%, #0f1525 50%, #0f1a10 100%);
+  width: 100%; aspect-ratio: 4/5; overflow: hidden;
+  background: #0d0d0d;
 }
-.portrait-img-area img { display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 38%;
-  filter: grayscale(100%); }
-.portrait-placeholder { font-family: var(--font-pixel); font-size: 0.34rem; color: var(--text-dimmer); text-align: center; line-height: 2.5; }
-.portrait-placeholder .ph-big { font-size: 2.5rem; display: block; margin-bottom: 0.8rem; opacity: 0.18; }
+.portrait-img-area img {
+  display: block; width: 100%; height: 100%;
+  object-fit: cover; object-position: center 38%;
+  filter: grayscale(100%);
+  transition: filter 0.8s ease, transform 0.8s ease;
+}
+.portrait-card:hover .portrait-img-area img {
+  filter: grayscale(0%);
+  transform: scale(1.03);
+}
 .portrait-info { padding: 1.5rem; border-top: 1px solid var(--border); }
-.portrait-name { font-family: var(--font-pixel); font-size: 0.52rem; color: var(--sienna2); letter-spacing: 0.12em; margin-bottom: 0.5rem; }
-.portrait-detail { font-size: 0.9rem; color: var(--text-dimmer); line-height: 1.9; }
+.portrait-name {
+  font-family: var(--font-pixel); font-size: 0.46rem; color: var(--rust2);
+  letter-spacing: 0.1em; margin-bottom: 0.6rem; line-height: 1.8;
+}
+.portrait-detail { font-size: 0.78rem; color: var(--text-dimmer); line-height: 2.1; }
 
 /* PROJECTS */
 .projects { padding: 8rem 0; background: var(--bg3); }
-.projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px; }
+.projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
 .project-card {
-  position: relative; background: var(--ink); overflow: hidden; cursor: auto !important;
-  transition: transform 0.2s, box-shadow 0.2s; border: 1px solid transparent;
+  position: relative; background: var(--ink); overflow: hidden; cursor: pointer;
+  transition: transform 0.25s cubic-bezier(.25,.46,.45,.94), box-shadow 0.25s;
+  border: 1px solid transparent;
 }
-.project-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.5); z-index: 10; }
+.project-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.6); z-index: 10;
+}
 .project-card.featured { grid-column: span 2; }
 
-/* Each card top stripe = project color */
-.card-stripe { height: 4px; width: 100%; }
-
-/* Project color assignments — VW clash: no two adjacent cards same family */
+.card-stripe { height: 3px; width: 100%; }
 .pc-1  .card-stripe { background: var(--rust); }
 .pc-2  .card-stripe { background: var(--dusty-teal); }
 .pc-3  .card-stripe { background: var(--sage); }
 .pc-4  .card-stripe { background: var(--rosewood); }
 .pc-5  .card-stripe { background: var(--tan); }
-.pc-6  .card-stripe { background: var(--mahogany); }
-.pc-7  .card-stripe { background: var(--olive); }
+.pc-6  .card-stripe { background: var(--mahogany2); }
+.pc-7  .card-stripe { background: var(--olive2); }
 .pc-8  .card-stripe { background: var(--jade); }
-.pc-9  .card-stripe { background: var(--blood); }
+.pc-9  .card-stripe { background: var(--blood2); }
 .pc-10 .card-stripe { background: var(--dusty-teal2); }
 
-.pc-1:hover  { border-color: rgba(196,92,58,0.4); }
-.pc-2:hover  { border-color: rgba(45,91,227,0.4); }
-.pc-3:hover  { border-color: rgba(143,207,58,0.4); }
-.pc-4:hover  { border-color: rgba(196,90,130,0.4); }
-.pc-5:hover  { border-color: rgba(212,144,10,0.4); }
-.pc-6:hover  { border-color: rgba(74,111,165,0.4); }
-.pc-7:hover  { border-color: rgba(106,154,106,0.4); }
-.pc-8:hover  { border-color: rgba(138,106,180,0.4); }
-.pc-9:hover  { border-color: rgba(184,74,42,0.4); }
-.pc-10:hover { border-color: rgba(95,135,245,0.4); }
+.pc-1:hover  { border-color: rgba(162,74,26,0.4); }
+.pc-2:hover  { border-color: rgba(113,141,142,0.4); }
+.pc-3:hover  { border-color: rgba(193,191,142,0.4); }
+.pc-4:hover  { border-color: rgba(150,88,75,0.4); }
+.pc-5:hover  { border-color: rgba(168,123,81,0.4); }
+.pc-6:hover  { border-color: rgba(83,36,18,0.5); }
+.pc-7:hover  { border-color: rgba(90,88,32,0.5); }
+.pc-8:hover  { border-color: rgba(21,92,78,0.4); }
+.pc-9:hover  { border-color: rgba(114,0,0,0.5); }
+.pc-10:hover { border-color: rgba(143,169,170,0.4); }
 
-.project-thumb { aspect-ratio: 16/10; position: relative; overflow: hidden; }
-.project-card.featured .project-thumb { aspect-ratio: 16/9; }
-.project-thumb svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
-.project-thumb img,
-.project-thumb video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.project-thumb-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(12,8,18,0.95) 0%, transparent 50%); }
-
-/* Hover: reveal image grid preview */
-.project-hover-strip {
-  position: absolute; inset: 0; opacity: 0; transition: opacity 0.3s;
-  display: grid; grid-template-columns: repeat(3,1fr); grid-template-rows: repeat(2,1fr); gap: 2px;
+.project-thumb {
+  aspect-ratio: 16/10; position: relative; overflow: hidden;
 }
-.project-card:hover .project-hover-strip { opacity: 1; }
-.hs-item { background: rgba(22,16,26,0.82); display: flex; align-items: center; justify-content: center; font-family: var(--font-pixel); font-size: 0.27rem; letter-spacing: 0.04em; transition: background 0.2s; }
-.hs-item:hover { background: rgba(255,255,255,0.06); }
-.pc-1  .hs-item { color: var(--rust2); }
-.pc-2  .hs-item { color: var(--dusty-teal2); }
-.pc-3  .hs-item { color: var(--sage2); }
-.pc-4  .hs-item { color: var(--rosewood2); }
-.pc-5  .hs-item { color: var(--tan2); }
-.pc-6  .hs-item { color: var(--mahogany2); }
-.pc-7  .hs-item { color: var(--olive2); }
-.pc-8  .hs-item { color: var(--jade2); }
-.pc-9  .hs-item { color: var(--blood2); }
-.pc-10 .hs-item { color: var(--dusty-teal2); }
+.project-card.featured .project-thumb { aspect-ratio: 16/9; }
+
+/* Image zoom on hover */
+.project-thumb img,
+.project-thumb video {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+  transition: transform 0.6s cubic-bezier(.25,.46,.45,.94);
+}
+.project-card:hover .project-thumb img,
+.project-card:hover .project-thumb video { transform: scale(1.07); }
+
+.project-thumb-overlay {
+  position: absolute; inset: 0; z-index: 1;
+  background: linear-gradient(to top, rgba(10,9,8,0.92) 0%, rgba(10,9,8,0.1) 60%);
+}
+
+/* Hover reveal overlay */
+.project-hover-overlay {
+  position: absolute; inset: 0; z-index: 2;
+  background: rgba(10,9,8,0.7);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; transition: opacity 0.3s;
+  backdrop-filter: blur(2px);
+}
+.project-card:hover .project-hover-overlay { opacity: 1; }
+.hover-view-label {
+  font-family: var(--font-pixel); font-size: 0.36rem;
+  letter-spacing: 0.12em; padding: 0.7rem 1.4rem;
+  border: 1px solid;
+  transition: transform 0.2s;
+}
+.project-card:hover .hover-view-label { transform: scale(1.05); }
+.pc-1  .hover-view-label { color: var(--rust2); border-color: var(--rust); }
+.pc-2  .hover-view-label { color: var(--dusty-teal2); border-color: var(--dusty-teal); }
+.pc-3  .hover-view-label { color: var(--sage2); border-color: var(--sage); }
+.pc-4  .hover-view-label { color: var(--rosewood2); border-color: var(--rosewood); }
+.pc-5  .hover-view-label { color: var(--tan2); border-color: var(--tan); }
+.pc-6  .hover-view-label { color: var(--mahogany2); border-color: var(--mahogany); }
+.pc-7  .hover-view-label { color: var(--olive2); border-color: var(--olive); }
+.pc-8  .hover-view-label { color: var(--jade2); border-color: var(--jade); }
+.pc-9  .hover-view-label { color: var(--blood2); border-color: var(--blood); }
+.pc-10 .hover-view-label { color: var(--dusty-teal2); border-color: var(--dusty-teal2); }
 
 .project-info { padding: 1.2rem 1.4rem 1.5rem; }
-.project-num { font-family: var(--font-pixel); font-size: 0.28rem; margin-bottom: 0.4rem; letter-spacing: 0.08em; }
-
+.project-num { font-family: var(--font-pixel); font-size: 0.26rem; margin-bottom: 0.35rem; letter-spacing: 0.08em; }
 .pc-1  .project-num { color: var(--rust); }
 .pc-2  .project-num { color: var(--dusty-teal2); }
 .pc-3  .project-num { color: var(--sage); }
@@ -631,23 +443,26 @@ section { position: relative; z-index: 1; }
 .pc-6  .project-num { color: var(--mahogany2); }
 .pc-7  .project-num { color: var(--olive2); }
 .pc-8  .project-num { color: var(--jade2); }
-.pc-9  .project-num { color: var(--blood); }
+.pc-9  .project-num { color: var(--blood2); }
 .pc-10 .project-num { color: var(--dusty-teal2); }
 
-.project-name { font-family: var(--font-serif); font-size: 1.2rem; font-style: italic; font-weight: 700; margin-bottom: 0.4rem; color: var(--text); }
-
-.project-domain { font-family: var(--font-pixel); font-size: 0.27rem; margin-bottom: 0.5rem; letter-spacing: 0.06em; }
-.domain-game { color: var(--dusty-teal2); }
+.project-name {
+  font-family: var(--font-serif); font-size: 1.25rem; font-style: italic;
+  font-weight: 700; margin-bottom: 0.4rem; color: var(--text);
+}
+.project-domain { font-family: var(--font-pixel); font-size: 0.26rem; margin-bottom: 0.55rem; letter-spacing: 0.06em; }
+.domain-game    { color: var(--dusty-teal2); }
 .domain-fashion { color: var(--rosewood2); }
-.domain-both { color: var(--sage2); }
+.domain-both    { color: var(--sage2); }
 
-.project-desc { font-size: 0.67rem; color: var(--text-dim); line-height: 1.75; margin-bottom: 0.9rem; }
-
+.project-desc {
+  font-size: 0.66rem; color: var(--text-dim); line-height: 1.8;
+  margin-bottom: 1rem;
+  display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+}
 .project-footer { display: flex; align-items: center; justify-content: space-between; gap: 0.8rem; }
-.project-tags { display: flex; gap: 0.35rem; flex-wrap: wrap; }
-
-.ptag { font-family: var(--font-pixel); font-size: 0.26rem; padding: 0.28rem 0.5rem; background: transparent; border: 1px solid; letter-spacing: 0.03em; }
-
+.project-tags { display: flex; gap: 0.3rem; flex-wrap: wrap; }
+.ptag { font-family: var(--font-pixel); font-size: 0.24rem; padding: 0.25rem 0.48rem; background: transparent; border: 1px solid; letter-spacing: 0.03em; }
 .pc-1  .ptag { border-color: var(--rust); color: var(--rust2); }
 .pc-2  .ptag { border-color: var(--dusty-teal); color: var(--dusty-teal2); }
 .pc-3  .ptag { border-color: var(--sage); color: var(--sage2); }
@@ -660,125 +475,213 @@ section { position: relative; z-index: 1; }
 .pc-10 .ptag { border-color: var(--dusty-teal2); color: var(--dusty-teal2); }
 
 .view-btn {
-  font-family: var(--font-pixel); font-size: 0.28rem; padding: 0.4rem 0.8rem;
-  border: none; cursor: auto !important; letter-spacing: 0.06em; transition: all 0.15s;
-  white-space: nowrap; color: var(--bg);
-  box-shadow: 2px 2px 0 rgba(0,0,0,0.5);
+  font-family: var(--font-pixel); font-size: 0.26rem; padding: 0.4rem 0.8rem;
+  border: none; cursor: pointer; letter-spacing: 0.06em; transition: all 0.15s;
+  white-space: nowrap; box-shadow: 2px 2px 0 rgba(0,0,0,0.5);
 }
-
 .view-btn:hover { transform: translate(-1px,-1px); box-shadow: 3px 3px 0 rgba(0,0,0,0.5); }
-
 .pc-1  .view-btn { background: var(--rust); color: white; }
 .pc-2  .view-btn { background: var(--dusty-teal); color: white; }
-.pc-3  .view-btn { background: var(--sage); }
+.pc-3  .view-btn { background: var(--sage); color: var(--bg); }
 .pc-4  .view-btn { background: var(--rosewood); color: white; }
-.pc-5  .view-btn { background: var(--tan); }
+.pc-5  .view-btn { background: var(--tan); color: var(--bg); }
 .pc-6  .view-btn { background: var(--mahogany); color: white; }
-.pc-7  .view-btn { background: var(--olive); color: var(--bone); }
+.pc-7  .view-btn { background: var(--olive2); color: var(--bone); }
 .pc-8  .view-btn { background: var(--jade); color: white; }
 .pc-9  .view-btn { background: var(--blood); color: white; }
 .pc-10 .view-btn { background: var(--dusty-teal2); color: white; }
 
-/* EXPERIENCE + EDUCATION — shared layout */
+/* EXPERIENCE + EDUCATION */
 .exp-edu { padding: 8rem 0; }
 .exp-edu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
-
-/* Subsection header */
 .subsec-header {
   display: flex; align-items: center; gap: 1rem;
   margin-bottom: 2.5rem; padding-bottom: 1rem;
-  border-bottom: 2px solid;
+  border-bottom: 1px solid;
 }
 .subsec-header.exp-h { border-bottom-color: var(--rust); }
 .subsec-header.edu-h { border-bottom-color: var(--dusty-teal); }
-
-.subsec-icon { font-size: 1.2rem; }
-.subsec-title { font-family: var(--font-pixel); font-size: 0.42rem; letter-spacing: 0.1em; }
-
+.subsec-icon { font-size: 1rem; }
+.subsec-title { font-family: var(--font-pixel); font-size: 0.4rem; letter-spacing: 0.1em; }
 .subsec-header.exp-h .subsec-title { color: var(--rust2); }
 .subsec-header.edu-h .subsec-title { color: var(--dusty-teal2); }
 
-/* Timeline cards */
-.timeline { display: flex; flex-direction: column; gap: 3px; }
-
+.timeline { display: flex; flex-direction: column; gap: 2px; }
 .tl-item {
-  padding: 1.5rem;
-  background: var(--ink);
-  border-left: 3px solid;
-  position: relative;
-  transition: background 0.2s;
+  padding: 1.5rem; background: var(--ink);
+  border-left: 3px solid; position: relative; transition: background 0.2s;
 }
-
-.tl-item:hover { background: rgba(255,255,255,0.02); }
-
-/* Experience border colors */
+.tl-item:hover { background: rgba(255,255,255,0.015); }
 .tl-exp:nth-child(1) { border-left-color: var(--rust); }
 .tl-exp:nth-child(2) { border-left-color: var(--tan); }
 .tl-exp:nth-child(3) { border-left-color: var(--rosewood); }
-
-/* Education border colors */
 .tl-edu:nth-child(1) { border-left-color: var(--dusty-teal); }
 .tl-edu:nth-child(2) { border-left-color: var(--sage); }
 .tl-edu:nth-child(3) { border-left-color: var(--jade); }
 
-.tl-date { font-family: var(--font-pixel); font-size: 0.3rem; margin-bottom: 0.5rem; letter-spacing: 0.08em; }
-
+.tl-date { font-family: var(--font-pixel); font-size: 0.28rem; margin-bottom: 0.5rem; letter-spacing: 0.08em; }
 .tl-exp:nth-child(1) .tl-date { color: var(--rust2); }
 .tl-exp:nth-child(2) .tl-date { color: var(--tan2); }
 .tl-exp:nth-child(3) .tl-date { color: var(--rosewood2); }
-
 .tl-edu:nth-child(1) .tl-date { color: var(--dusty-teal2); }
 .tl-edu:nth-child(2) .tl-date { color: var(--sage2); }
 .tl-edu:nth-child(3) .tl-date { color: var(--jade2); }
 
 .tl-org { font-family: var(--font-serif); font-size: 1.4rem; font-style: italic; font-weight: 700; margin-bottom: 0.2rem; }
-
-.tl-role {
-  font-family: var(--font-pixel);
-  font-size: 0.3rem;
-  letter-spacing: 0.06em;
-  color: var(--text-dim);
-  margin-bottom: 0.9rem;
-}
-
+.tl-role { font-family: var(--font-pixel); font-size: 0.28rem; letter-spacing: 0.06em; color: var(--text-dim); margin-bottom: 0.9rem; line-height: 1.8; }
 .tl-bullets { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
-
 .tl-bullets li {
-  font-size: 0.72rem;
-  color: var(--text-dim);
-  padding-left: 1.1rem;
-  position: relative;
-  line-height: 1.8;
+  font-size: 0.72rem; color: var(--text-dim);
+  padding-left: 1.1rem; position: relative; line-height: 1.85;
 }
-
 .tl-bullets li::before { content: '▸'; position: absolute; left: 0; }
-
 .tl-exp:nth-child(1) .tl-bullets li::before { color: var(--rust); }
 .tl-exp:nth-child(2) .tl-bullets li::before { color: var(--tan); }
 .tl-exp:nth-child(3) .tl-bullets li::before { color: var(--rosewood); }
-
 .tl-edu:nth-child(1) .tl-bullets li::before { color: var(--dusty-teal); }
 .tl-edu:nth-child(2) .tl-bullets li::before { color: var(--sage); }
 .tl-edu:nth-child(3) .tl-bullets li::before { color: var(--jade); }
 
-/* Education badges */
 .tl-badge {
-  display: inline-block;
-  font-family: var(--font-pixel);
-  font-size: 0.28rem;
-  padding: 0.3rem 0.6rem;
-  margin-top: 0.8rem;
-  letter-spacing: 0.05em;
+  display: inline-block; font-family: var(--font-pixel); font-size: 0.27rem;
+  padding: 0.28rem 0.6rem; margin-top: 0.8rem; letter-spacing: 0.05em;
 }
-
 .badge-ongoing { background: var(--dusty-teal); color: white; }
 .badge-completed { background: var(--ink); border: 1px solid var(--border); color: var(--text-dim); }
 .badge-recognized { background: var(--sage); color: var(--bg); }
+
+/* REFERENCES */
+#recs { background: var(--bg3); padding: 8rem 0; }
+.recs-grid {
+  max-width: 1300px; margin: 3rem auto 0;
+  padding: 0 3rem; display: grid;
+  grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+}
+.rec {
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 2.5rem 2rem; position: relative;
+  transition: transform .3s; background: rgba(255,255,255,0.03);
+  display: flex; flex-direction: column;
+}
+.rec:hover { transform: translate(-4px,-4px); }
+.rec:hover::after { transform: translate(8px,8px); }
+.rec::after {
+  content: ''; position: absolute; inset: -1px;
+  border: 1px solid; transform: translate(4px,4px);
+  z-index: -1; transition: transform .3s;
+}
+.rec:nth-child(1)::after { border-color: var(--rosewood); }
+.rec:nth-child(2)::after { border-color: var(--jade); }
+.rec:nth-child(3)::after { border-color: var(--olive2); }
+.rec-badge {
+  display: inline-flex; align-items: center;
+  font-family: var(--font-pixel); font-size: 0.42rem; font-weight: 700;
+  padding: .22rem .7rem; margin-bottom: 1.8rem;
+  color: var(--white-floral); letter-spacing: .05em;
+}
+.rec:nth-child(1) .rec-badge { background: var(--rosewood); }
+.rec:nth-child(2) .rec-badge { background: var(--jade); }
+.rec:nth-child(3) .rec-badge { background: var(--olive2); }
+.rec-q {
+  font-size: .85rem; line-height: 2; color: rgba(255,255,255,0.5);
+  margin-bottom: 2rem; font-style: italic;
+  font-family: var(--font-mono); flex: 1;
+}
+.rec-foot { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1rem; }
+.rec-who {
+  font-family: var(--font-mono); font-weight: 700; font-size: .75rem;
+  letter-spacing: .08em; text-transform: uppercase; color: var(--white-floral);
+}
+.rec-role { font-size: .68rem; color: rgba(255,255,255,0.4); margin-top: .3rem; line-height: 1.5; }
+.rec-pdf-btn {
+  margin-top: 1rem; display: inline-flex; align-items: center; gap: 0.4rem;
+  font-family: var(--font-pixel); font-size: 0.3rem; letter-spacing: 0.08em;
+  padding: 0.45rem 0.9rem; border: 1px solid rgba(255,255,255,0.15);
+  background: transparent; color: var(--text-dim); cursor: pointer; transition: all 0.15s;
+}
+.rec-pdf-btn:hover { background: rgba(255,255,255,0.05); color: var(--white-floral); transform: translate(-2px,-2px); }
+.rec:nth-child(1) .rec-pdf-btn:hover { border-color: var(--rosewood); color: var(--rosewood2); }
+.rec:nth-child(2) .rec-pdf-btn:hover { border-color: var(--jade); color: var(--jade2); }
+.rec:nth-child(3) .rec-pdf-btn:hover { border-color: var(--olive2); color: var(--sage2); }
+
+/* PDF MODAL */
+.pdf-overlay {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.94);
+  z-index: 2000; display: flex; align-items: center; justify-content: center;
+  opacity: 0; pointer-events: none; transition: opacity 0.3s; backdrop-filter: blur(14px);
+}
+.pdf-overlay.active { opacity: 1; pointer-events: all; }
+.pdf-modal {
+  width: 90vw; max-width: 860px; height: 88vh;
+  background: var(--bg2); border: 1px solid var(--border);
+  display: flex; flex-direction: column;
+  transform: translateY(16px); transition: transform 0.3s;
+}
+.pdf-overlay.active .pdf-modal { transform: translateY(0); }
+.pdf-modal-header {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 1.2rem 1.8rem; border-bottom: 1px solid var(--border); flex-shrink: 0;
+}
+.pdf-modal-title { font-family: var(--font-pixel); font-size: 0.36rem; letter-spacing: 0.1em; color: var(--text-dim); }
+.pdf-modal-close {
+  font-family: var(--font-pixel); font-size: 0.33rem; padding: 0.45rem 1rem;
+  background: var(--rust); color: white; border: none; cursor: pointer;
+  letter-spacing: 0.08em; transition: all 0.15s;
+}
+.pdf-modal-close:hover { transform: translate(-1px,-1px); }
+.pdf-modal-body { flex: 1; overflow: hidden; }
+.pdf-modal-body iframe { width: 100%; height: 100%; display: block; }
+
+/* CONTACT */
+.contact { padding: 10rem 0 8rem; text-align: center; position: relative; overflow: hidden; }
+.contact-bg {
+  position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-serif); font-size: 28vw; font-style: italic; font-weight: 700;
+  opacity: 0.015; pointer-events: none; color: var(--text);
+}
+.contact-eyebrow { font-family: var(--font-pixel); font-size: 0.33rem; letter-spacing: 0.28em; margin-bottom: 2rem; color: var(--text-dimmer); }
+.contact-eyebrow em { color: var(--sage2); font-style: normal; }
+.contact-title {
+  font-family: var(--font-serif); font-size: clamp(3rem,9vw,7.5rem);
+  font-style: italic; font-weight: 700; line-height: 0.9; margin-bottom: 1rem;
+}
+.contact-title .cw1 { color: var(--rust2); display: block; }
+.contact-title .cw2 { color: var(--dusty-teal2); font-style: normal; display: block; }
+.contact-title .cw3 { color: var(--sage2); display: block; }
+.contact-sub { font-size: 0.72rem; color: var(--text-dimmer); letter-spacing: 0.2em; margin-bottom: 3.5rem; }
+.contact-links { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+.contact-link {
+  font-family: var(--font-pixel); font-size: 0.36rem; padding: 0.9rem 1.8rem;
+  text-decoration: none; letter-spacing: 0.1em; border: 1px solid;
+  transition: all 0.15s; cursor: pointer; display: inline-block; background: transparent;
+}
+.contact-link:hover { transform: translate(-2px,-2px); }
+.cl-1 { color: var(--rust2); border-color: var(--rust); }
+.cl-1:hover { background: var(--rust); color: white; }
+.cl-2 { color: var(--dusty-teal2); border-color: var(--dusty-teal); }
+.cl-2:hover { background: var(--dusty-teal); color: white; }
+.cl-3 { color: var(--sage2); border-color: var(--sage); }
+.cl-3:hover { background: var(--sage); color: var(--bg); }
+
+/* FOOTER */
+footer { overflow: hidden; border-top: 1px solid var(--border); }
+.footer-blocks { display: flex; }
+.footer-block {
+  flex: 1; padding: 1.2rem 0.8rem; text-align: center;
+  font-family: var(--font-pixel); font-size: 0.25rem; letter-spacing: 0.05em; color: var(--bg);
+}
+.footer-block:nth-child(1) { background: var(--rust); color: white; }
+.footer-block:nth-child(2) { background: var(--tan); }
+.footer-block:nth-child(3) { background: var(--sage); }
+.footer-block:nth-child(4) { background: var(--dusty-teal); color: white; }
+.footer-block:nth-child(5) { background: var(--rosewood); color: white; }
+.footer-block:nth-child(6) { background: var(--jade); color: white; }
+
 /* MODAL */
 .modal-overlay {
-  position: fixed; inset: 0; background: rgba(12,8,18,0.96);
+  position: fixed; inset: 0; background: rgba(10,9,8,0.97);
   z-index: 1000; display: flex; align-items: center; justify-content: center;
-  opacity: 0; pointer-events: none; transition: opacity 0.3s; backdrop-filter: blur(14px);
+  opacity: 0; pointer-events: none; transition: opacity 0.3s; backdrop-filter: blur(16px);
 }
 .modal-overlay.active { opacity: 1; pointer-events: all; }
 .modal {
@@ -788,353 +691,58 @@ section { position: relative; z-index: 1; }
   border: 1px solid var(--border);
 }
 .modal-overlay.active .modal { transform: translateY(0); }
-.modal-stripe { height: 5px; }
+.modal-stripe { height: 4px; }
 .modal-header {
   padding: 2rem 2.5rem; border-bottom: 1px solid var(--border);
   display: flex; justify-content: space-between; align-items: center;
   position: sticky; top: 0; background: var(--bg2); z-index: 10;
 }
 .modal-title { font-family: var(--font-serif); font-size: 1.8rem; font-style: italic; font-weight: 700; }
-.modal-domain { font-family: var(--font-pixel); font-size: 0.3rem; color: var(--text-dimmer); margin-top: 0.3rem; letter-spacing: 0.1em; }
+.modal-domain { font-family: var(--font-pixel); font-size: 0.28rem; color: var(--text-dimmer); margin-top: 0.3rem; letter-spacing: 0.1em; }
 .modal-close {
-  font-family: var(--font-pixel); font-size: 0.38rem; padding: 0.55rem 1.1rem;
-  cursor: auto !important; letter-spacing: 0.1em; border: none; transition: all 0.15s;
+  font-family: var(--font-pixel); font-size: 0.36rem; padding: 0.55rem 1.1rem;
+  cursor: pointer; letter-spacing: 0.1em; border: none; transition: all 0.15s;
   color: white; box-shadow: 3px 3px 0 rgba(0,0,0,0.5);
 }
 .modal-close:hover { transform: translate(-1px,-1px); box-shadow: 4px 4px 0 rgba(0,0,0,0.5); }
 .modal-body { padding: 2.5rem; }
 .modal-media-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 8px;
-  align-items: start;
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: 6px; align-items: start; margin-bottom: 2.5rem;
 }
-
-.modal-media-item {
-  background: #050505;
-  overflow: hidden;
-}
-
+.modal-media-item { background: #050505; overflow: hidden; }
 .modal-media-item img,
 .modal-media-item video {
-  width: 100%;
-  height: auto;
-  display: block;
-  object-fit: contain;
-}
-
-.modal-media-item.hero {
-  grid-column: span 2;
-}
-
-.modal-media-item.wide {
-  grid-column: span 2;
-}
-
-.modal-media-item.portrait,
-.modal-media-item.medium,
-.modal-media-item.small {
-  grid-column: span 1;
-}
-.modal-media-item img,
-.modal-media-item video {
-  width: 100%;
-  height: auto;
+  width: 100%; height: auto; display: block; object-fit: contain;
   max-height: 900px;
-  object-fit: contain;
-  display: block;
+  transition: transform 0.4s ease;
 }
-.modal-media-item:hover img, .modal-media-item:hover video { transform: scale(1.05); }
-.media-ph { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.5rem; }
-.media-ph .ph-i { font-size: 1.5rem; opacity: 0.18; }
-.media-ph span { font-family: var(--font-pixel); font-size: 0.27rem; color: rgba(240,235,232,0.2); text-align: center; }
+.modal-media-item:hover img,
+.modal-media-item:hover video { transform: scale(1.03); }
+.modal-media-item.hero,
+.modal-media-item.wide { grid-column: span 2; }
 .modal-info { display: grid; grid-template-columns: 1fr 200px; gap: 3rem; align-items: start; }
-.modal-desc { font-size: 0.88rem; line-height: 2.1; color: var(--text-dim); }
+.modal-desc { font-size: 0.86rem; line-height: 2.1; color: var(--text-dim); }
 .modal-meta { display: flex; flex-direction: column; gap: 0.8rem; }
-.meta-item { font-family: var(--font-pixel); font-size: 0.43rem; line-height: 2; letter-spacing: 0.1em; }
+.meta-item { font-family: var(--font-pixel); font-size: 0.4rem; line-height: 2; letter-spacing: 0.08em; }
 .meta-label { color: var(--text-dimmer); display: block; }
 .meta-val { display: block; margin-top: 0.2rem; }
 
-/* ═══ RECOMMENDATIONS ═══ */
-#recs {
-  background: var(--bg3);
-  padding: 8rem 0;
-}
-.s-head {
-  max-width: 1300px;
-  margin: 0 auto;
-  padding: 0 3rem;
-  margin-bottom: 0;
-}
-.s-num {
-  font-family: var(--font-pixel);
-  font-size: 0.38rem;
-  color: var(--text-dimmer);
-  margin-bottom: 0.6rem;
-}
-.s-title {
-  font-family: var(--font-serif);
-  font-size: clamp(2rem, 5vw, 3.5rem);
-  font-style: italic;
-  font-weight: 700;
-  margin-bottom: 0;
-}
-.recs-grid {
-  max-width: 1300px;
-  margin: 3rem auto 0;
-  padding: 0 3rem;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-}
-.rec {
-  border: 1px solid rgba(255,255,255,0.15);
-  padding: 2.5rem 2rem;
-  position: relative;
-  transition: transform .3s;
-  background: rgba(255,255,255,0.04);
-  display: flex;
-  flex-direction: column;
-}
-.rec:hover { transform: translate(-4px,-4px) }
-.rec:hover::after { transform: translate(8px,8px) }
-.rec::after {
-  content: '';
-  position: absolute;
-  inset: -1px;
-  border: 1.5px solid var(--black);
-  transform: translate(4px,4px);
-  z-index: -1;
-  transition: transform .3s;
-}
-.rec:nth-child(1)::after { border-color: var(--rosewood) }
-.rec:nth-child(2)::after { border-color: var(--jade) }
-.rec:nth-child(3)::after { border-color: var(--olive) }
-.rec-badge {
-  display: inline-flex;
-  align-items: center;
-  font-family: var(--font-pixel);
-  font-size: .5rem;
-  font-weight: 700;
-  padding: .25rem .7rem;
-  margin-bottom: 2rem;
-  color: var(--White);
-  letter-spacing: .05em;
-}
-.rec:nth-child(1) .rec-badge { background: var(--rosewood) }
-.rec:nth-child(2) .rec-badge { background: var(--jade) }
-.rec:nth-child(3) .rec-badge { background: var(--olive) }
-.rec-q {
-  font-size: .85rem;
-  line-height: 2;
-  color: rgba(255,255,255,0.55);
-  margin-bottom: 2rem;
-  font-style: italic;
-  font-family: var(--font-mono);
-  flex: 1;
-}
-.rec-foot {
-  border-top: 1px solid rgba(255,255,255,0.15);
-  padding-top: 1rem;
-}
-.rec-who {
-  font-family: var(--font-mono);
-  font-weight: 700;
-  font-size: .75rem;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  color: var(--White);
-}
-.rec-role {
-  font-size: .68rem;
-  color: rgba(255,255,255,0.4);
-  margin-top: .3rem;
-  line-height: 1.5;
-}
-/* PDF BUTTON */
-.rec-pdf-btn {
-  margin-top: 1rem;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  font-family: var(--font-pixel);
-  font-size: 0.32rem;
-  letter-spacing: 0.08em;
-  padding: 0.45rem 0.9rem;
-  border: 1px solid rgba(255,255,255,0.2);
-  background: transparent;
-  color: var(--text-dim);
-  cursor: pointer;
-  transition: all 0.15s;
-}
-.rec-pdf-btn:hover {
-  background: rgba(255,255,255,0.06);
-  color: var(--White);
-  transform: translate(-2px,-2px);
-}
-.rec:nth-child(1) .rec-pdf-btn:hover { border-color: var(--rosewood); color: var(--rosewood2); }
-.rec:nth-child(2) .rec-pdf-btn:hover { border-color: var(--jade);     color: var(--jade2); }
-.rec:nth-child(3) .rec-pdf-btn:hover { border-color: var(--olive);    color: var(--sage2); }
-/* PDF MODAL */
-.pdf-overlay {
-  position: fixed; inset: 0;
-  background: rgba(0,0,0,0.92);
-  z-index: 2000;
-  display: flex; align-items: center; justify-content: center;
-  opacity: 0; pointer-events: none;
-  transition: opacity 0.3s;
-  backdrop-filter: blur(12px);
-}
-.pdf-overlay.active { opacity: 1; pointer-events: all; }
-.pdf-modal {
-  width: 90vw; max-width: 860px;
-  height: 88vh;
-  background: var(--bg2);
-  border: 1px solid var(--border);
-  display: flex; flex-direction: column;
-  transform: translateY(16px);
-  transition: transform 0.3s;
-}
-.pdf-overlay.active .pdf-modal { transform: translateY(0); }
-.pdf-modal-header {
-  display: flex; justify-content: space-between; align-items: center;
-  padding: 1.2rem 1.8rem;
-  border-bottom: 1px solid var(--border);
-  flex-shrink: 0;
-}
-.pdf-modal-title {
-  font-family: var(--font-pixel);
-  font-size: 0.38rem;
-  letter-spacing: 0.1em;
-  color: var(--text-dim);
-}
-.pdf-modal-close {
-  font-family: var(--font-pixel); font-size: 0.35rem;
-  padding: 0.45rem 1rem;
-  background: var(--rust); color: white; border: none;
-  cursor: pointer; letter-spacing: 0.08em;
-  transition: all 0.15s;
-}
-.pdf-modal-close:hover { transform: translate(-1px,-1px); }
-.pdf-modal-body {
-  flex: 1; overflow: hidden;
-}
-.pdf-modal-body iframe {
-  width: 100%; height: 100%;
-  display: block;
-}
-   
-/* CONTACT */
-.contact { padding: 10rem 0 8rem; text-align: center; position: relative; overflow: hidden; }
-
-.contact-bg {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-serif);
-  font-size: 28vw;
-  font-style: italic;
-  font-weight: 700;
-  opacity: 0.018;
-  pointer-events: none;
-  color: var(--text);
-}
-
-.contact-eyebrow {
-  font-family: var(--font-pixel);
-  font-size: 0.35rem;
-  letter-spacing: 0.3em;
-  margin-bottom: 2rem;
-  color: var(--text-dimmer);
-}
-
-.contact-eyebrow em { color: var(--sage2); font-style: normal; }
-
-.contact-title {
-  font-family: var(--font-serif);
-  font-size: clamp(3rem,9vw,7.5rem);
-  font-style: italic;
-  font-weight: 700;
-  line-height: 0.9;
-  margin-bottom: 1rem;
-}
-
-.contact-title .cw1 { color: var(--rust2); display: block; }
-.contact-title .cw2 { color: var(--dusty-teal2); font-style: normal; display: block; }
-.contact-title .cw3 { color: var(--sage2); display: block; }
-
-.contact-sub {
-  font-size: 0.75rem;
-  color: var(--text-dimmer);
-  letter-spacing: 0.22em;
-  margin-bottom: 3.5rem;
-}
-
-.contact-links { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
-
-.contact-link {
-  font-family: var(--font-pixel);
-  font-size: 0.38rem;
-  padding: 0.9rem 1.8rem;
-  text-decoration: none;
-  letter-spacing: 0.1em;
-  border: 1px solid;
-  transition: all 0.15s;
-  cursor: auto !important;
-  display: inline-block;
-  background: transparent;
-}
-
-.contact-link:hover { transform: translate(-2px,-2px); }
-
-.cl-1 { color: var(--rust2); border-color: var(--rust); }
-.cl-1:hover { background: var(--rust); color: white; }
-
-.cl-2 { color: var(--dusty-teal2); border-color: var(--dusty-teal); }
-.cl-2:hover { background: var(--dusty-teal); color: white; }
-
-.cl-3 { color: var(--sage2); border-color: var(--sage); }
-.cl-3:hover { background: var(--sage); color: var(--bg); }
-
-/* FOOTER */
-footer { overflow: hidden; border-top: 1px solid var(--border); }
-
-.footer-blocks { display: flex; }
-
-.footer-block {
-  flex: 1;
-  padding: 1.2rem 0.8rem;
-  text-align: center;
-  font-family: var(--font-pixel);
-  font-size: 0.27rem;
-  letter-spacing: 0.05em;
-  color: var(--bg);
-}
-
-.footer-block:nth-child(1) { background: var(--rust); color: white; }
-.footer-block:nth-child(2) { background: var(--tan); }
-.footer-block:nth-child(3) { background: var(--sage); }
-.footer-block:nth-child(4) { background: var(--dusty-teal); color: white; }
-.footer-block:nth-child(5) { background: var(--rosewood); color: white; }
-.footer-block:nth-child(6) { background: var(--jade); color: white; }
-
 /* REVEAL */
-.reveal { opacity: 0; transform: translateY(26px); transition: opacity 0.65s ease, transform 0.65s ease; }
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
 .reveal.visible { opacity: 1; transform: translateY(0); }
 
 @keyframes fadeUp { from{opacity:0;transform:translateY(18px)} to{opacity:1;transform:translateY(0)} }
 
+/* RESPONSIVE */
 @media (max-width: 1000px) {
   .about-grid { grid-template-columns: 1fr; gap: 3rem; }
   .projects-grid { grid-template-columns: 1fr 1fr; }
   .project-card.featured { grid-column: span 2; }
   .exp-edu-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .recs-grid { grid-template-columns: 1fr; }
   .container { padding: 0 1.5rem; }
   nav { padding: 0.9rem 1.5rem; }
-  .modal-media-grid { grid-template-columns: repeat(2,1fr); }
-  .modal-media-item.wide { grid-column: span 1; aspect-ratio: 4/3; }
   .modal-info { grid-template-columns: 1fr; }
 }
 @media (max-width: 640px) {
@@ -1143,15 +751,12 @@ footer { overflow: hidden; border-top: 1px solid var(--border); }
   .hero-ctas { flex-direction: column; align-items: center; }
   .footer-blocks { flex-wrap: wrap; }
   .footer-block { flex: 0 0 33.33%; }
-  .identity-block { grid-template-columns: 1fr; }
-  .id-panel.bridge { grid-column: span 1; }
+  .nav-links { gap: 1.2rem; }
+  .hero-crossover { flex-direction: column; gap: 0.6rem; }
 }
 </style>
 </head>
 <body>
-
-<div id="cursor"></div>
-<div id="cursor-trail"></div>
 
 <!-- NAV -->
 <nav>
@@ -1173,21 +778,11 @@ footer { overflow: hidden; border-top: 1px solid var(--border); }
 <section class="hero" id="home">
   <div class="stars" id="stars"></div>
 
-  <!-- Abstract floating shapes — not childish coins -->
-<div class="floater" style="left:6%;top:25%;color:var(--rust);--d:8s;--delay:0s;--fs:20px;">◆</div>
-<div class="floater" style="left:88%;top:20%;color:var(--dusty-teal2);--d:10s;--delay:1.2s;--fs:14px;">✦</div>
-<div class="floater" style="left:14%;top:65%;color:var(--sage);--d:7s;--delay:2s;--fs:12px;">▲</div>
-<div class="floater" style="left:80%;top:70%;color:var(--rosewood2);--d:9s;--delay:0.5s;--fs:18px;">●</div>
-<div class="floater" style="left:45%;top:12%;color:var(--tan);--d:11s;--delay:1.5s;--fs:10px;">◈</div>
-<div class="floater" style="left:26%;top:42%;color:var(--mahogany2);--d:8.5s;--delay:0.8s;--fs:16px;">◇</div>
-<div class="floater" style="left:64%;top:35%;color:var(--sage2);--d:9.5s;--delay:2.3s;--fs:13px;">▪</div>
-<div class="floater" style="left:55%;top:78%;color:var(--jade2);--d:7.5s;--delay:1s;--fs:15px;">◆</div>
+  <div class="hero-inner">
+    <div class="hero-eyebrow">
+      ✦ <em class="em-f">DIGITAL FASHION</em> &amp; <em class="em-g">GAME ART</em> ✦
+    </div>
 
-<div class="hero-inner">
-  <div class="hero-eyebrow">
-    ✦ <em>DIGITAL FASHION</em> &amp;
-    <em style="color:var(--dusty-teal2)">GAME ART</em> ✦
-  </div>
     <h1 class="hero-title">
       <span class="n-j">J</span><span class="n-e">E</span><span class="n-n">N</span><span class="n-blink">▌</span><br>
       <span class="n-c">C</span><span class="n-h">H</span><span class="n-a">A</span><span class="n-u">U</span>
@@ -1216,34 +811,34 @@ footer { overflow: hidden; border-top: 1px solid var(--border); }
       <a href="#projects" class="btn btn-s">▶ VIEW WORK</a>
       <a href="#contact" class="btn btn-c">✉ CONTACT</a>
     </div>
+
+    <!-- Featured image — proof front and center -->
+    <div class="hero-featured">
+      <div class="hero-featured-img">
+        <img src="https://drive.google.com/thumbnail?id=1ELzkqG_3SibAutaNhyX-fvMa4x1zbb7l&sz=w2000" alt="MacArthur Collection — Jen Chau">
+      </div>
+      <div class="hero-featured-caption">MACARTHUR COLLECTION · FEATURED WORK</div>
+    </div>
   </div>
 
   <div class="hero-ground" id="hero-ground"></div>
 </section>
 
-<!-- TICKER -->
+<!-- TICKER — single row, clean -->
 <div class="ticker">
   <div class="ticker-row"><div class="ticker-inner">
-    <span>✦ DIGITAL FASHION ARTIST</span><span>◆ GAME ART</span><span>✦ HIGH-FIDELITY 3D</span><span>◆ LUXURY BRAND R&D</span><span>✦ CINEMATIC STORYTELLING</span><span>◆ WORLDBUILDING</span><span>✦ DELVAUX · ESMOD · GOBELINS</span><span>◆ CLO3D RECOGNIZED</span>
-    <span>✦ DIGITAL FASHION ARTIST</span><span>◆ GAME ART</span><span>✦ HIGH-FIDELITY 3D</span><span>◆ LUXURY BRAND R&D</span><span>✦ CINEMATIC STORYTELLING</span><span>◆ WORLDBUILDING</span><span>✦ DELVAUX · ESMOD · GOBELINS</span><span>◆ CLO3D RECOGNIZED</span>
-  </div></div>
-  <div class="ticker-row"><div class="ticker-inner">
-    <span>▶ PARIS</span><span>▶ 3D INNOVATION</span><span>▶ R&D PIPELINES</span><span>▶ AVATAR DESIGN</span><span>▶ NARRATIVE COSTUME</span><span>▶ PERFORMANCE IDENTITY</span><span>▶ WHERE GAME MEETS FASHION</span>
-    <span>▶ PARIS</span><span>▶ 3D INNOVATION</span><span>▶ R&D PIPELINES</span><span>▶ AVATAR DESIGN</span><span>▶ NARRATIVE COSTUME</span><span>▶ PERFORMANCE IDENTITY</span><span>▶ WHERE GAME MEETS FASHION</span>
-  </div></div>
-  <div class="ticker-row"><div class="ticker-inner">
-    <span>★ CLO3D</span><span>★ BLENDER</span><span>★ UE5</span><span>★ ZBRUSH</span><span>★ PHOTOSHOP</span><span>★ ILLUSTRATOR</span><span>★ PREMIERE</span><span>★ AI × FASHION</span><span>★ REAL-TIME 3D</span><span>★ CHARACTER ART</span>
-    <span>★ CLO3D</span><span>★ BLENDER</span><span>★ UE5</span><span>★ ZBRUSH</span><span>★ PHOTOSHOP</span><span>★ ILLUSTRATOR</span><span>★ PREMIERE</span><span>★ AI × FASHION</span><span>★ REAL-TIME 3D</span><span>★ CHARACTER ART</span>
+    <span>✦ DIGITAL FASHION ARTIST</span><span>◆ GAME ART</span><span>✦ HIGH-FIDELITY 3D</span><span>◆ LUXURY BRAND R&D</span><span>✦ CINEMATIC STORYTELLING</span><span>◆ WORLDBUILDING</span><span>✦ DELVAUX · ESMOD · GOBELINS</span><span>◆ CLO3D RECOGNIZED</span><span>✦ PARIS 2026</span><span>◆ WHERE GAME MEETS FASHION</span>
+    <span>✦ DIGITAL FASHION ARTIST</span><span>◆ GAME ART</span><span>✦ HIGH-FIDELITY 3D</span><span>◆ LUXURY BRAND R&D</span><span>✦ CINEMATIC STORYTELLING</span><span>◆ WORLDBUILDING</span><span>✦ DELVAUX · ESMOD · GOBELINS</span><span>◆ CLO3D RECOGNIZED</span><span>✦ PARIS 2026</span><span>◆ WHERE GAME MEETS FASHION</span>
   </div></div>
 </div>
 
 <!-- ABOUT -->
 <section class="about" id="about">
   <div class="container">
-    <div class="section-header reveal" style="color:var(--sienna2)">
+    <div class="section-header reveal">
       <span class="section-num">001</span>
-      <h2 class="section-title">About</h2>
-      <div class="section-line"></div>
+      <h2 class="section-title" style="color:var(--rust2)">About</h2>
+      <div class="section-line" style="color:var(--rust2)"></div>
     </div>
     <div class="about-grid">
       <div class="about-text reveal">
@@ -1257,46 +852,49 @@ footer { overflow: hidden; border-top: 1px solid var(--border); }
           Currently entering <span class="hl hl-v">Gobelins — Advanced Game Creation & Real-Time Application</span>. The convergence point: costumes designed for characters, fashion systems built for game worlds.
         </p>
 
-      <div class="identity-block">
-  <div class="id-panel game">
-    <div class="id-label">▶ GAME ART</div>
-    <div class="id-skills">
-      <div class="id-skill">Real-time 3D · Unreal Engine 5</div>
-      <div class="id-skill">Character design & rigging</div>
-      <div class="id-skill">World-building · Environment art</div>
-      <div class="id-skill">Game-ready asset pipeline</div>
-    </div>
-  </div>
-
-  <div class="id-panel fashion">
-    <div class="id-label">◆ FASHION</div>
-    <div class="id-skills">
-      <div class="id-skill">CLO3D · digital garment simulation</div>
-      <div class="id-skill">Luxury 3D packshot · R&D</div>
-      <div class="id-skill">AI-assisted design workflows</div>
-      <div class="id-skill">Narrative costume design</div>
-    </div>
-  </div>
-
-  <div class="id-panel bridge">
-    <div class="id-label">✦ INTERSECTION — WHERE BOTH LIVE</div>
-    <div class="id-skills" style="flex-direction:row;flex-wrap:wrap;gap:0.5rem 2rem;">
-      <div class="id-skill">Avatar identity design</div>
-      <div class="id-skill">Cinematic costume for CGI & game</div>
-      <div class="id-skill">Fashion systems for virtual worlds</div>
-      <div class="id-skill">Blender · ZBrush · Photoshop · Premiere</div>
-    </div>
-  </div>
-</div>
+        <!-- Skill pills — clean grouped tags -->
+        <div class="skill-group">
+          <div>
+            <div class="skill-group-label sk-label-game">▶ GAME ART</div>
+            <div class="skill-pills">
+              <span class="skill-pill sk-game">Unreal Engine 5</span>
+              <span class="skill-pill sk-game">Blender</span>
+              <span class="skill-pill sk-game">ZBrush</span>
+              <span class="skill-pill sk-game">Character Design</span>
+              <span class="skill-pill sk-game">Rigging</span>
+              <span class="skill-pill sk-game">World-building</span>
+              <span class="skill-pill sk-game">Real-time 3D</span>
+            </div>
+          </div>
+          <div>
+            <div class="skill-group-label sk-label-fashion">◆ FASHION</div>
+            <div class="skill-pills">
+              <span class="skill-pill sk-fashion">CLO3D</span>
+              <span class="skill-pill sk-fashion">Garment Simulation</span>
+              <span class="skill-pill sk-fashion">Luxury 3D Packshot</span>
+              <span class="skill-pill sk-fashion">R&D Pipeline</span>
+              <span class="skill-pill sk-fashion">AI Design Workflow</span>
+              <span class="skill-pill sk-fashion">Narrative Costume</span>
+            </div>
+          </div>
+          <div>
+            <div class="skill-group-label sk-label-bridge">✦ INTERSECTION</div>
+            <div class="skill-pills">
+              <span class="skill-pill sk-bridge">Avatar Identity</span>
+              <span class="skill-pill sk-bridge">Cinematic Costume</span>
+              <span class="skill-pill sk-bridge">Fashion Systems for Games</span>
+              <span class="skill-pill sk-bridge">Photoshop</span>
+              <span class="skill-pill sk-bridge">Illustrator</span>
+              <span class="skill-pill sk-bridge">Premiere</span>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div class="reveal" style="transition-delay:0.2s">
         <div class="portrait-card">
           <div class="portrait-img-area">
-           <img src="https://drive.google.com/thumbnail?id=1SVMnQY1qpvgfpUDMHIKrGHfCicw3vD8P&sz=w1000" alt="Jen Chau">
-            
-          
-            </div>   
+            <img src="https://drive.google.com/thumbnail?id=1SVMnQY1qpvgfpUDMHIKrGHfCicw3vD8P&sz=w1000" alt="Jen Chau">
           </div>
           <div class="portrait-info">
             <div class="portrait-name">Jen Chau — Nguyen Ngoc Tran Chau</div>
@@ -1315,32 +913,28 @@ footer { overflow: hidden; border-top: 1px solid var(--border); }
 <!-- PROJECTS -->
 <section class="projects" id="projects">
   <div class="container">
-    <div class="section-header reveal" style="color:var(--cobalt2)">
+    <div class="section-header reveal">
       <span class="section-num">002</span>
-      <h2 class="section-title">Selected Work</h2>
-      <div class="section-line"></div>
+      <h2 class="section-title" style="color:var(--dusty-teal2)">Selected Work</h2>
+      <div class="section-line" style="color:var(--dusty-teal2)"></div>
     </div>
   </div>
   <div class="container">
     <div class="projects-grid">
 
-      <!-- P1 — featured -->
+      <!-- P1 featured -->
       <div class="project-card pc-1 featured reveal" onclick="openModal('p1')">
         <div class="card-stripe"></div>
         <div class="project-thumb">
           <img src="https://drive.google.com/thumbnail?id=1B1TTm5kE7fCJ-5w0Ox6GMbxItLTsswod&sz=w2000" alt="">
-   
           <div class="project-thumb-overlay"></div>
-           <div class="project-hover-strip">
-              
-
-          </div>
+          <div class="project-hover-overlay"><span class="hover-view-label">VIEW PROJECT ▶</span></div>
         </div>
         <div class="project-info">
           <div class="project-num">PROJECT 001</div>
           <div class="project-domain domain-fashion">◆ FASHION DESIGN</div>
           <h3 class="project-name">MacArthur</h3>
-          <p class="project-desc">This collection is my way of blending the strange beauty of insects with the epic, haunting vibe of science fiction. I was inspired by the alien elegance of bug anatomy, mixed with the vast, philosophical feel of The Mote in God's Eye. Every outfit is like a character—some are warriors, some are ghosts, some are gods. I wanted the clothes to feel like they're performing on their own, like they came from a distant world with their own myths and histories. It’s not just fashion—it’s a visual performance.</p>
+          <p class="project-desc">Blending the strange beauty of insects with epic science fiction. Inspired by The Mote in God's Eye — every outfit is a character, a warrior, a ghost, a god. Fashion as visual performance.</p>
           <div class="project-footer">
             <div class="project-tags"><span class="ptag">CLO3D</span><span class="ptag">CONCEPT</span><span class="ptag">LUXURY</span></div>
             <button class="view-btn">VIEW ▶</button>
@@ -1352,20 +946,17 @@ footer { overflow: hidden; border-top: 1px solid var(--border); }
       <div class="project-card pc-2 reveal" style="transition-delay:0.08s" onclick="openModal('p2')">
         <div class="card-stripe"></div>
         <div class="project-thumb">
-           <img src="https://lh3.googleusercontent.com/d/1LuWJClFPXMLdTLioAGXC2pAcpfkCiJMI" alt="">
-   
+          <img src="https://lh3.googleusercontent.com/d/1LuWJClFPXMLdTLioAGXC2pAcpfkCiJMI" alt="">
           <div class="project-thumb-overlay"></div>
-          <div class="project-hover-strip">
-             
-        </div>   
+          <div class="project-hover-overlay"><span class="hover-view-label">VIEW PROJECT ▶</span></div>
         </div>
         <div class="project-info">
           <div class="project-num">PROJECT 002</div>
           <div class="project-domain domain-game">▶ GAME / CHARACTER ART</div>
           <h3 class="project-name">Wolfie</h3>
-          <p class="project-desc">Discover the allure of my 'Wolfie' collection, inspired by my fascination with wolves. The design ethos stems from the moment I envisioned the wolf, radiating an inherent sophistication. Each piece encapsulates the wolf's noble spirit, translating it into a harmonious blend of refinement and wild charm. Immerse yourself in this collection that elegantly captures the untamed grace of the wolf.</p>
+          <p class="project-desc">A character design series inspired by wolves — noble spirit, wild charm, and the untamed grace of the animal translated into wearable identity.</p>
           <div class="project-footer">
-            <div class="project-tags"><span class="ptag">CLO3D</span><span class="ptag">PERFORMANCE DESIGN</span><span class="ptag">CHARACTER</span></div>
+            <div class="project-tags"><span class="ptag">CLO3D</span><span class="ptag">PERFORMANCE</span><span class="ptag">CHARACTER</span></div>
             <button class="view-btn">VIEW ▶</button>
           </div>
         </div>
@@ -1377,19 +968,15 @@ footer { overflow: hidden; border-top: 1px solid var(--border); }
         <div class="project-thumb">
           <img src="https://lh3.googleusercontent.com/d/1nexh6TWG4lQnu9r13z8JR2me5iQ05jP7" alt="">
           <div class="project-thumb-overlay"></div>
-          <div class="project-hover-strip">
-         
-          </div>
+          <div class="project-hover-overlay"><span class="hover-view-label">VIEW PROJECT ▶</span></div>
         </div>
         <div class="project-info">
           <div class="project-num">PROJECT 003</div>
           <div class="project-domain domain-fashion">◆ FASHION DESIGN</div>
-          <h3 class="project-name">Die my bride</h3>
-          <p class="project-desc">During the midnight, when everyone left the wedding ceremony at the church, but music could still e heard from inside. The priest walked back inside just to find the bloody guts ripped out of the dead body of the bride. 
-She her beautiful gown shredded on her body and her bloody leather clinging on to her waist , the heartbeat of defiance, with gems cascading like whispers of forbidden love. The moonlight reveals metallic accents, a glimmer of the mystery within. This fashion saga unfolds, a narrative of dark romance, encapsulating the spirit of "Die My Bride" in every stitch, as she becomes the living embodiment of the melody, a muse embracing the shadows.
-.</p>
+          <h3 class="project-name">Die My Bride</h3>
+          <p class="project-desc">Stage costumes for heavy metal performance. Marriage reimagined as grotesque theatre — controlled chaos, parodic brutality, theatrical exaggeration.</p>
           <div class="project-footer">
-            <div class="project-tags"><span class="ptag">CLO3D</span><span class="ptag">LUXURY</span><span class="ptag">R&B</span></div>
+            <div class="project-tags"><span class="ptag">CLO3D</span><span class="ptag">LUXURY</span><span class="ptag">STAGE</span></div>
             <button class="view-btn">VIEW ▶</button>
           </div>
         </div>
@@ -1401,15 +988,13 @@ She her beautiful gown shredded on her body and her bloody leather clinging on t
         <div class="project-thumb">
           <img src="https://lh3.googleusercontent.com/d/1BZhv33UsGX60OuraOQvrGVVuFL47GEE2" alt="">
           <div class="project-thumb-overlay"></div>
-          <div class="project-hover-strip">
-            
-          </div>
+          <div class="project-hover-overlay"><span class="hover-view-label">VIEW PROJECT ▶</span></div>
         </div>
         <div class="project-info">
           <div class="project-num">PROJECT 004</div>
           <div class="project-domain domain-both">✦ GAME × FASHION</div>
-          <h3 class="project-name">Puppet&Musicbox</h3>
-          <p class="project-desc">Inspirated by Scralett from Caraval.</p>
+          <h3 class="project-name">Puppet & Musicbox</h3>
+          <p class="project-desc">Inspired by Scarlett from Caraval — control, illusion and performance. A character suspended between puppet and performer.</p>
           <div class="project-footer">
             <div class="project-tags"><span class="ptag">BLENDER</span><span class="ptag">CLO3D</span><span class="ptag">WORKFLOW</span></div>
             <button class="view-btn">VIEW ▶</button>
@@ -1423,23 +1008,13 @@ She her beautiful gown shredded on her body and her bloody leather clinging on t
         <div class="project-thumb">
           <img src="https://lh3.googleusercontent.com/d/1xo-gbQX2j70KrEhrDK6iLW3sNrHYVttu" alt="">
           <div class="project-thumb-overlay"></div>
-          <div class="project-hover-strip">
-            
-          </div>
+          <div class="project-hover-overlay"><span class="hover-view-label">VIEW PROJECT ▶</span></div>
         </div>
         <div class="project-info">
           <div class="project-num">PROJECT 005</div>
           <div class="project-domain domain-fashion">◆ FASHION DESIGN</div>
           <h3 class="project-name">Nomad in the Desert</h3>
-          <p class="project-desc">A moment of stillness before transformation. 
-
-MacArthur collection version 2: 
-
-This piece explores the relationship between body, environment and observation — where the character exists in a liminal space between organic and artificial.
-I’m interested in building cinematic worlds where fashion, creatures and environments interact as part of a narrative. The final moment shifts from observation to interaction — where the character is no longer passive, but engaged in the act of performance.
-
-Across this series, I’ve been exploring digital fashion as part of a larger cinematic language — where garments, creatures and environments exist within the same narrative system.
-</p>
+          <p class="project-desc">MacArthur Vol. 2 — a liminal space between organic and artificial. Fashion, creatures, and environments as a single narrative system.</p>
           <div class="project-footer">
             <div class="project-tags"><span class="ptag">CLO3D</span><span class="ptag">GARMENT</span><span class="ptag">SIMULATION</span></div>
             <button class="view-btn">VIEW ▶</button>
@@ -1451,18 +1026,15 @@ Across this series, I’ve been exploring digital fashion as part of a larger ci
       <div class="project-card pc-6 reveal" style="transition-delay:0.24s" onclick="openModal('p6')">
         <div class="card-stripe"></div>
         <div class="project-thumb">
-          <svg viewBox="0 0 400 250" preserveAspectRatio="xMidYMid slice"><rect fill="#0a0f16" width="400" height="250"/><text x="200" y="130" text-anchor="middle" fill="#4a6fa5" opacity="0.07" font-family="serif" font-size="95" font-weight="bold" font-style="italic">P6</text><text x="200" y="157" text-anchor="middle" fill="rgba(240,235,232,0.09)" font-family="monospace" font-size="11">[ ADD IMAGE ]</text></svg>
+          <svg viewBox="0 0 400 250" preserveAspectRatio="xMidYMid slice" style="position:absolute;inset:0;width:100%;height:100%"><rect fill="#0a0f16" width="400" height="250"/><text x="200" y="135" text-anchor="middle" fill="#4a6fa5" opacity="0.06" font-family="serif" font-size="95" font-weight="bold" font-style="italic">P6</text><text x="200" y="160" text-anchor="middle" fill="rgba(240,235,232,0.08)" font-family="monospace" font-size="10">[ IMAGE COMING SOON ]</text></svg>
           <div class="project-thumb-overlay"></div>
-          <div class="project-hover-strip">
-            <div class="hs-item">IMG 1</div><div class="hs-item">IMG 2</div><div class="hs-item">IMG 3</div>
-            <div class="hs-item">IMG 4</div><div class="hs-item">IMG 5</div><div class="hs-item">IMG 6</div>
-          </div>
+          <div class="project-hover-overlay"><span class="hover-view-label">VIEW PROJECT ▶</span></div>
         </div>
         <div class="project-info">
           <div class="project-num">PROJECT 006</div>
           <div class="project-domain domain-game">▶ GAME ART</div>
           <h3 class="project-name">World Environment Design</h3>
-          <p class="project-desc">Environment and world-building work — real-time assets, level dressing, atmospheric design for interactive experiences.</p>
+          <p class="project-desc">Real-time assets, level dressing, atmospheric design for interactive experiences in Unreal Engine 5.</p>
           <div class="project-footer">
             <div class="project-tags"><span class="ptag">UE5</span><span class="ptag">ENVIRONMENT</span><span class="ptag">REAL-TIME</span></div>
             <button class="view-btn">VIEW ▶</button>
@@ -1474,18 +1046,15 @@ Across this series, I’ve been exploring digital fashion as part of a larger ci
       <div class="project-card pc-7 reveal" style="transition-delay:0.28s" onclick="openModal('p7')">
         <div class="card-stripe"></div>
         <div class="project-thumb">
-          <svg viewBox="0 0 400 250" preserveAspectRatio="xMidYMid slice"><rect fill="#0c1208" width="400" height="250"/><text x="200" y="130" text-anchor="middle" fill="#6a9a6a" opacity="0.07" font-family="serif" font-size="95" font-weight="bold" font-style="italic">P7</text><text x="200" y="157" text-anchor="middle" fill="rgba(240,235,232,0.09)" font-family="monospace" font-size="11">[ ADD IMAGE ]</text></svg>
+          <svg viewBox="0 0 400 250" preserveAspectRatio="xMidYMid slice" style="position:absolute;inset:0;width:100%;height:100%"><rect fill="#0c1208" width="400" height="250"/><text x="200" y="135" text-anchor="middle" fill="#6a9a6a" opacity="0.06" font-family="serif" font-size="95" font-weight="bold" font-style="italic">P7</text><text x="200" y="160" text-anchor="middle" fill="rgba(240,235,232,0.08)" font-family="monospace" font-size="10">[ IMAGE COMING SOON ]</text></svg>
           <div class="project-thumb-overlay"></div>
-          <div class="project-hover-strip">
-            <div class="hs-item">IMG 1</div><div class="hs-item">IMG 2</div><div class="hs-item">IMG 3</div>
-            <div class="hs-item">VID ▶</div><div class="hs-item">IMG 4</div><div class="hs-item">IMG 5</div>
-          </div>
+          <div class="project-hover-overlay"><span class="hover-view-label">VIEW PROJECT ▶</span></div>
         </div>
         <div class="project-info">
           <div class="project-num">PROJECT 007</div>
           <div class="project-domain domain-both">✦ GAME × FASHION</div>
           <h3 class="project-name">Avatar Fashion System</h3>
-          <p class="project-desc">Costume design system for digital avatars — modular wardrobe logic, cultural coding, identity expression through in-game fashion.</p>
+          <p class="project-desc">Modular wardrobe logic, cultural coding, identity expression through in-game fashion. Garments as character data.</p>
           <div class="project-footer">
             <div class="project-tags"><span class="ptag">AVATAR</span><span class="ptag">SYSTEM</span><span class="ptag">UE5</span></div>
             <button class="view-btn">VIEW ▶</button>
@@ -1497,12 +1066,9 @@ Across this series, I’ve been exploring digital fashion as part of a larger ci
       <div class="project-card pc-8 reveal" style="transition-delay:0.32s" onclick="openModal('p8')">
         <div class="card-stripe"></div>
         <div class="project-thumb">
-          <svg viewBox="0 0 400 250" preserveAspectRatio="xMidYMid slice"><rect fill="#110d18" width="400" height="250"/><text x="200" y="130" text-anchor="middle" fill="#8a6ab4" opacity="0.07" font-family="serif" font-size="95" font-weight="bold" font-style="italic">P8</text><text x="200" y="157" text-anchor="middle" fill="rgba(240,235,232,0.09)" font-family="monospace" font-size="11">[ ADD IMAGE ]</text></svg>
+          <svg viewBox="0 0 400 250" preserveAspectRatio="xMidYMid slice" style="position:absolute;inset:0;width:100%;height:100%"><rect fill="#110d18" width="400" height="250"/><text x="200" y="135" text-anchor="middle" fill="#8a6ab4" opacity="0.06" font-family="serif" font-size="95" font-weight="bold" font-style="italic">P8</text><text x="200" y="160" text-anchor="middle" fill="rgba(240,235,232,0.08)" font-family="monospace" font-size="10">[ IMAGE COMING SOON ]</text></svg>
           <div class="project-thumb-overlay"></div>
-          <div class="project-hover-strip">
-            <div class="hs-item">IMG 1</div><div class="hs-item">IMG 2</div><div class="hs-item">IMG 3</div>
-            <div class="hs-item">IMG 4</div><div class="hs-item">IMG 5</div><div class="hs-item">IMG 6</div>
-          </div>
+          <div class="project-hover-overlay"><span class="hover-view-label">VIEW PROJECT ▶</span></div>
         </div>
         <div class="project-info">
           <div class="project-num">PROJECT 008</div>
@@ -1520,18 +1086,15 @@ Across this series, I’ve been exploring digital fashion as part of a larger ci
       <div class="project-card pc-9 reveal" style="transition-delay:0.36s" onclick="openModal('p9')">
         <div class="card-stripe"></div>
         <div class="project-thumb">
-          <svg viewBox="0 0 400 250" preserveAspectRatio="xMidYMid slice"><rect fill="#170a06" width="400" height="250"/><text x="200" y="130" text-anchor="middle" fill="#b84a2a" opacity="0.07" font-family="serif" font-size="95" font-weight="bold" font-style="italic">P9</text><text x="200" y="157" text-anchor="middle" fill="rgba(240,235,232,0.09)" font-family="monospace" font-size="11">[ ADD IMAGE ]</text></svg>
+          <svg viewBox="0 0 400 250" preserveAspectRatio="xMidYMid slice" style="position:absolute;inset:0;width:100%;height:100%"><rect fill="#170a06" width="400" height="250"/><text x="200" y="135" text-anchor="middle" fill="#b84a2a" opacity="0.06" font-family="serif" font-size="95" font-weight="bold" font-style="italic">P9</text><text x="200" y="160" text-anchor="middle" fill="rgba(240,235,232,0.08)" font-family="monospace" font-size="10">[ IMAGE COMING SOON ]</text></svg>
           <div class="project-thumb-overlay"></div>
-          <div class="project-hover-strip">
-            <div class="hs-item">IMG 1</div><div class="hs-item">IMG 2</div><div class="hs-item">IMG 3</div>
-            <div class="hs-item">VID ▶</div><div class="hs-item">IMG 4</div><div class="hs-item">IMG 5</div>
-          </div>
+          <div class="project-hover-overlay"><span class="hover-view-label">VIEW PROJECT ▶</span></div>
         </div>
         <div class="project-info">
           <div class="project-num">PROJECT 009</div>
           <div class="project-domain domain-game">▶ GAME ART</div>
           <h3 class="project-name">Cinematic Costume Design</h3>
-          <p class="project-desc">Costume design for cinematic sequences — hero garments for CGI, game cinematics, and performance capture pipelines.</p>
+          <p class="project-desc">Hero garments for CGI, game cinematics, and performance capture pipelines. Designing for the shot.</p>
           <div class="project-footer">
             <div class="project-tags"><span class="ptag">CINEMATIC</span><span class="ptag">COSTUME</span><span class="ptag">CGI</span></div>
             <button class="view-btn">VIEW ▶</button>
@@ -1543,18 +1106,15 @@ Across this series, I’ve been exploring digital fashion as part of a larger ci
       <div class="project-card pc-10 reveal" style="transition-delay:0.4s" onclick="openModal('p10')">
         <div class="card-stripe"></div>
         <div class="project-thumb">
-          <svg viewBox="0 0 400 250" preserveAspectRatio="xMidYMid slice"><rect fill="#090d1e" width="400" height="250"/><text x="200" y="130" text-anchor="middle" fill="#5f87f5" opacity="0.07" font-family="serif" font-size="95" font-weight="bold" font-style="italic">P10</text><text x="200" y="157" text-anchor="middle" fill="rgba(240,235,232,0.09)" font-family="monospace" font-size="11">[ ADD IMAGE ]</text></svg>
+          <svg viewBox="0 0 400 250" preserveAspectRatio="xMidYMid slice" style="position:absolute;inset:0;width:100%;height:100%"><rect fill="#090d1e" width="400" height="250"/><text x="200" y="135" text-anchor="middle" fill="#5f87f5" opacity="0.06" font-family="serif" font-size="95" font-weight="bold" font-style="italic">P10</text><text x="200" y="160" text-anchor="middle" fill="rgba(240,235,232,0.08)" font-family="monospace" font-size="10">[ IMAGE COMING SOON ]</text></svg>
           <div class="project-thumb-overlay"></div>
-          <div class="project-hover-strip">
-            <div class="hs-item">IMG 1</div><div class="hs-item">IMG 2</div><div class="hs-item">IMG 3</div>
-            <div class="hs-item">IMG 4</div><div class="hs-item">IMG 5</div><div class="hs-item">IMG 6</div>
-          </div>
+          <div class="project-hover-overlay"><span class="hover-view-label">VIEW PROJECT ▶</span></div>
         </div>
         <div class="project-info">
           <div class="project-num">PROJECT 010</div>
           <div class="project-domain domain-both">✦ GAME × FASHION</div>
           <h3 class="project-name">Speculative Fashion World</h3>
-          <p class="project-desc">A speculative universe where fashion is infrastructure — visual world-building research combining luxury design codes with sci-fi game logic.</p>
+          <p class="project-desc">A speculative universe where fashion is infrastructure — luxury design codes with sci-fi game logic. Fashion as world-building tool.</p>
           <div class="project-footer">
             <div class="project-tags"><span class="ptag">WORLDBUILDING</span><span class="ptag">SPECULATIVE</span><span class="ptag">3D</span></div>
             <button class="view-btn">VIEW ▶</button>
@@ -1569,14 +1129,12 @@ Across this series, I’ve been exploring digital fashion as part of a larger ci
 <!-- EXPERIENCE + EDUCATION -->
 <section class="exp-edu" id="experience">
   <div class="container">
-    <div class="section-header reveal" style="color:var(--rose2)">
+    <div class="section-header reveal">
       <span class="section-num">003</span>
-      <h2 class="section-title">Experience & Education</h2>
-      <div class="section-line"></div>
+      <h2 class="section-title" style="color:var(--rosewood2)">Experience & Education</h2>
+      <div class="section-line" style="color:var(--rosewood2)"></div>
     </div>
-
     <div class="exp-edu-grid">
-
       <!-- EXPERIENCE -->
       <div class="reveal" id="education">
         <div class="subsec-header exp-h">
@@ -1610,12 +1168,11 @@ Across this series, I’ve been exploring digital fashion as part of a larger ci
           <div class="tl-item tl-exp">
             <div class="tl-date">Freelance</div>
             <div class="tl-org">Independent</div>
-            <div class="tl-role">CANNES MAKEUP ARTIST & HAIR STYLIST ASSISTANCE</div>
+            <div class="tl-role">CANNES — MAKEUP & HAIR STYLIST ASSISTANCE</div>
             <ul class="tl-bullets">
-              <li>Managed scheduling coordination between makeup, hair, wardrobe, and talent to ensure a smooth and timely workflow</li>
-              <li>Assisted with celebrity reception, communication, and guiding talent through backstage processes professionally and discreetly</li>
-              <li>Supported logistics including escorting talent, organizing movement between locations, and coordinating transport and timing</li>
-              <li>Assisted with handling and preparing makeup, hair, and wardrobe equipment, ensuring everything was ready and organized for use</li>
+              <li>Celebrity reception, communication, talent guidance backstage</li>
+              <li>Coordinated makeup, hair, wardrobe, and talent scheduling</li>
+              <li>Logistics, transport coordination, and movement between locations</li>
             </ul>
           </div>
         </div>
@@ -1652,7 +1209,7 @@ Across this series, I’ve been exploring digital fashion as part of a larger ci
           </div>
           <div class="tl-item tl-edu">
             <div class="tl-date">Languages</div>
-            <div class="tl-org" style="font-size:1.1rem">Skills & Languages</div>
+            <div class="tl-org" style="font-size:1.1rem">Languages</div>
             <div class="tl-role">PROFICIENCY</div>
             <ul class="tl-bullets">
               <li>Vietnamese — Native</li>
@@ -1662,18 +1219,17 @@ Across this series, I’ve been exploring digital fashion as part of a larger ci
           </div>
         </div>
       </div>
-
     </div>
   </div>
 </section>
 
-<!-- RECOMMENDATIONS -->
+<!-- REFERENCES -->
 <section id="recs">
-  <div class="s-head">
-    <div class="section-header reveal" style="color:var(--rust)">
+  <div class="container">
+    <div class="section-header reveal">
       <span class="section-num">004</span>
-      <h2 class="section-title">References</h2>
-      <div class="section-line"></div>
+      <h2 class="section-title" style="color:var(--tan2)">References</h2>
+      <div class="section-line" style="color:var(--tan2)"></div>
     </div>
   </div>
   <div class="recs-grid">
@@ -1719,7 +1275,7 @@ Across this series, I’ve been exploring digital fashion as part of a larger ci
     </div>
   </div>
 </div>
-   
+
 <!-- CONTACT -->
 <section class="contact" id="contact">
   <div class="contact-bg">JC</div>
@@ -1733,8 +1289,8 @@ Across this series, I’ve been exploring digital fashion as part of a larger ci
     <p class="contact-sub reveal">Paris — Remote — Everywhere</p>
     <div class="contact-links reveal">
       <a href="mailto:jenchauinparis@gmail.com" class="contact-link cl-1">✉ EMAIL</a>
-      <a href="www.linkedin.com/in/jenchauesis" target="_blank" class="contact-link cl-2">in LINKEDIN</a>
-      <a href="https://drive.google.com/file/d/1F7cmY4U4XYtjBij7BliLTXEw6HYgSDyw/preview" class="contact-link cl-3">↓ CV PDF</a>
+      <a href="https://www.linkedin.com/in/jenchauesis" target="_blank" class="contact-link cl-2">in LINKEDIN</a>
+      <a href="https://drive.google.com/file/d/1F7cmY4U4XYtjBij7BliLTXEw6HYgSDyw/preview" target="_blank" class="contact-link cl-3">↓ CV PDF</a>
     </div>
   </div>
 </section>
@@ -1751,7 +1307,7 @@ Across this series, I’ve been exploring digital fashion as part of a larger ci
   </div>
 </footer>
 
-<!-- MODAL -->
+<!-- PROJECT MODAL -->
 <div class="modal-overlay" id="modal-overlay" onclick="handleOverlayClick(event)">
   <div class="modal" id="modal">
     <div class="modal-stripe" id="modal-stripe"></div>
@@ -1773,274 +1329,174 @@ Across this series, I’ve been exploring digital fashion as part of a larger ci
 </div>
 
 <script>
-/* CURSOR */
-const cursor = document.getElementById('cursor');
-const trail  = document.getElementById('cursor-trail');
-document.addEventListener('mousemove', e => {
-  cursor.style.left = e.clientX + 'px'; cursor.style.top = e.clientY + 'px';
-  setTimeout(() => { trail.style.left = e.clientX + 'px'; trail.style.top = e.clientY + 'px'; }, 110);
-});
-
 /* STARS */
-const sc = ['#c45c3a','#2d5be3','#8fcf3a','#c45a82','#d4900a','#4a6fa5','#6a9a6a','#8a6ab4','#e07a58','#5f87f5'];
+const sc = ['#c45c3a','#8fa9aa','#c1bf8e','#96584b','#a87b51','#155c4e'];
 const starsEl = document.getElementById('stars');
-for (let i = 0; i < 50; i++) {
+for (let i = 0; i < 45; i++) {
   const s = document.createElement('div'); s.className = 'star';
-  const sz = Math.random() < 0.6 ? 2 : 4;
-  s.style.cssText = `width:${sz}px;height:${sz}px;background:${sc[i%sc.length]};left:${Math.random()*100}%;top:${Math.random()*100}%;--d:${2+Math.random()*4}s;--delay:${Math.random()*3}s;`;
+  const sz = Math.random() < 0.7 ? 1.5 : 3;
+  s.style.cssText = `width:${sz}px;height:${sz}px;background:${sc[i%sc.length]};left:${Math.random()*100}%;top:${Math.random()*100}%;--d:${2+Math.random()*4}s;--delay:${Math.random()*4}s;`;
   starsEl.appendChild(s);
 }
 
-/* GROUND */
+/* GROUND BLOCKS */
 const ground = document.getElementById('hero-ground');
-const gchars = ['?','◆','★','●','▲','■','◈','◇'];
-for (let i = 0; i < Math.ceil(window.innerWidth/40)+2; i++) {
+const gchars = ['◆','★','●','▲','■','◈'];
+for (let i = 0; i < Math.ceil(window.innerWidth/36)+2; i++) {
   const b = document.createElement('div'); b.className = 'ground-block';
   b.textContent = gchars[i % gchars.length]; ground.appendChild(b);
 }
 
-/* REVEAL */
+/* REVEAL on scroll */
 document.querySelectorAll('.reveal').forEach(r => {
-  new IntersectionObserver(([e]) => { if (e.isIntersecting) e.target.classList.add('visible'); }, { threshold: 0.07 }).observe(r);
+  new IntersectionObserver(([e]) => {
+    if (e.isIntersecting) e.target.classList.add('visible');
+  }, { threshold: 0.07 }).observe(r);
 });
 
 /* PROJECT DATA */
 const pdata = {
-  p1:  { color:'#c45c3a', domain:'◆ FASHION DESIGN', title:'MacArthur',
+  p1: { color:'#a24a1a', domain:'◆ FASHION DESIGN', title:'MacArthur',
     desc:`Conceptual costumes inspired by <em>The Mote in God's Eye</em>.<br><br>
-    Inspired by The Mote in God's Eye, this collection explores the delicate interplay between <strong style="color:#e07a58">the organic elegance of insects</strong> and  <strong style="color:#5f87f5">the mechanical precision of robots.</strong>.
-    Gentle natural tones weave through each design, creating a harmonious balance between the raw beauty of nature and the sophistication of futuristic technology. Each piece invites you to experience a world where biology meets innovation, and evolution takes on a new form.<br><br>
-    Graduation Project – May 2025<br>
-Duration: 5 months (2 months research, 3 months production)<br>
-Inspired by The Mote in God's Eye<br><br>
-
-<strong style="color:#e07a58">Research Context and Intent</strong><br>
-
-MacArthur represents the consolidation of my digital practice into a fully integrated worldbuilding project. Inspired by science fiction literature and insect morphology, the project constructs a speculative bio-mechanical civilization structured through costume hierarchy.<br><br>
-
-The objective was not solely garment design but the development of a coherent cinematic universe in which clothing, character anatomy, and environment operate within the same visual logic.<br><br>
-
-The emotional intention was cinematic anticipation: the sensation of witnessing a trailer for an unrealized science fiction film.<br><br>
-
-<strong style="color:#e07a58">Technical Integration</strong><br>
-
-Pipeline:<br>
-
-- Garment drafting in CLO3D (T-pose)<br>
-- Character sculpting in Blender/ZBrush<br>
-- Rigging and pose blocking<br>
-- Garment re-simulation on posed characters<br>
-- Environmental construction<br>
-- Lighting hierarchy (3–5 point cinematic setup)<br>
-- Rendering and scene composition<br>
-
-Average character polycount: approximately 90k.<br><br>
-
-A major technical obstacle involved rig instability due to excessive geometry density. I resolved this by restructuring topology and strategically reducing polycount while preserving silhouette integrity.`,
-    meta: { Tools:'CLO3D · Blender · UE5', Year:'2024–2025', Type:'Conceptual Collection', Domain:'Luxury Fashion · Storytelling Costume' },
-   media:[
-  {class:'hero', src:'https://drive.google.com/thumbnail?id=1ELzkqG_3SibAutaNhyX-fvMa4x1zbb7l&sz=w2000'},
-  {class:'medium', src:'https://drive.google.com/thumbnail?id=1JcskzAVocDWGRSwpaUwFqXttne-JRt96&sz=w2000'},
-  {class:'medium', src:'https://drive.google.com/thumbnail?id=1YjJ6n-6O8T_0PtRD_jMxET9BOcsVVl7N&sz=w2000'},
-  {class:'wide', src:'https://drive.google.com/thumbnail?id=1asotAWI4Y_CoxW4ncGxmkNyS2TG-zNAt&sz=w2000'},
-  {class:'medium', src:'https://drive.google.com/thumbnail?id=1jKpWBhiN72yMl23eTfas5BA6gGOzJ3ED&sz=w2000'},
-  {class:'medium', src:'https://drive.google.com/thumbnail?id=1dzFDVcsTWB_0-yBH97sfs3ToLNiwVwVi&sz=w2000'},
-  {class:'medium', src:'https://drive.google.com/thumbnail?id=1wNo6WOiO4IxatyPKcZXFNN9rYiWpD3Ur&sz=w2000'},
-  {class:'medium', src:'https://drive.google.com/thumbnail?id=1aXzgVAKehoMmw589dN5SPJrB8wYM-3hb&sz=w2000'},
-  {class:'medium', src:'https://drive.google.com/thumbnail?id=1GvtLxUI_8YD5xpjubjK86e8ocHgOc6AZ&sz=w2000'},
-  {class:'medium', src:'https://drive.google.com/thumbnail?id=1jiZiKRRlV0Co0VrXmCWhBltlBGjU7Jpz&sz=w2000'},
-  {class:'medium', src:'https://drive.google.com/thumbnail?id=1w_kpke1884Ev8KzF-imrwAoD48neJ5CG&sz=w2000'},
-  {class:'medium', src:'https://drive.google.com/thumbnail?id=10HxNW5wORDkz2zYK51j0tSvpNSFXtPXI&sz=w2000'},
-  {class:'wide', src:'https://drive.google.com/thumbnail?id=1B1TTm5kE7fCJ-5w0Ox6GMbxItLTsswod&sz=w2000'},
-]
-},
-
-   p2:  { color:'#2d5be3', domain:'▶ GAME / CHARACTER ART', title:'Wolfie',
-    desc:`Sci-fi character design series — <em style="color:#5f87f5">Wolfie</em>, <em style="color:#8fc08f">Wolfboy</em>, the <em style="color:#f0b030">Werewolf</em><br><br>
-    Independent Project – June 2024<br>
-    Duration: 1 month.<br><br>
-   Conceptual Framework <br><br>
-
-Wolfie was conceived as a speculative cinematic narrative exploring bio-modification, social alienation, and ethical material innovation. The project was developed to qualify for entry into the Digital Designer specialization and to challenge institutional assumptions that digital fashion is confined to ready-to-wear representation.<br><br>
-
-The narrative imagines a future in which humans are transformed into animal-like beings under the guise of social rehabilitation and resource scarcity management. What begins as a utopian scientific solution becomes a mechanism of control. The story culminates in ethical resistance through the development of plant-based artificial fur.<br><br>
-
-The tone was deliberately ambiguous—oscillating between dystopian critique and mythic transformation.<br><br>
-
-<em style="color:#5f87f5">Technical Exploration</em><br><br>
-
-Rigging: Basic character rigging <br>
-Output: Short cinematic sequence <br><br>
-
-This project marked:<br>
-- My first experience rigging a character <br>
-- My first attempt at narrative-driven animation <br>
-- Advanced pattern construction for structurally complex costumes <br>
-
-Environmental knowledge was limited at this time; I relied primarily on HDRI lighting. This resulted in spatial separation between character and background. Lacking formal environment training, I compensated through camera framing and compositional adjustments.`,
-    meta: { Tools:'CLO3D', Year:'2024', Type:'Character Design Series', Domain:'Game Art' },
+    Inspired by insect morphology and science fiction literature, this collection constructs a speculative bio-mechanical civilization structured through costume hierarchy.<br><br>
+    <strong style="color:#c26734">Research Context</strong><br><br>
+    The objective was not solely garment design but the development of a coherent cinematic universe in which clothing, character anatomy, and environment operate within the same visual logic. The emotional intention: cinematic anticipation.<br><br>
+    <strong style="color:#c26734">Technical Pipeline</strong><br><br>
+    Garment drafting in CLO3D → Character sculpting in Blender/ZBrush → Rigging → Garment re-simulation → Environmental construction → Cinematic lighting → Rendering.<br><br>
+    Average character polycount: ~90k. Graduation Project — May 2025. Duration: 5 months.`,
+    meta: { Tools:'CLO3D · Blender · UE5', Year:'2024–2025', Type:'Conceptual Collection', Domain:'Luxury Fashion' },
     media:[
-  {class:'medium', src:'https://drive.google.com/thumbnail?id=1S4hQMSzpRSTTi1lT0uGKJXT53_aLEtVE&sz=w2000'},
-  {class:'medium', src:'https://lh3.googleusercontent.com/d/1TLWcjcIiRatCa2j3ifpPI3mnwsc3q4DX'},
-  {class:'medium', src:'https://lh3.googleusercontent.com/d/1n3B_ndvRzneIz_q5Ng3ROXaZ7N2BUVMx'},
-  {class:'medium', src:'https://lh3.googleusercontent.com/d/1upcbTwNXmTXUA6k-nfsTHJBbohKRMQG0'},
-  {class:'medium', src:'https://lh3.googleusercontent.com/d/1FrV5GiDngy3yxKiKS95gb5NuAMOX8g8q'},]
-  },
-  p3:  { color:'#8fcf3a', domain:'◆ FASHION DESIGN', title:'Die my bride',
-    desc:`Collaborative Project – January 2024<br>
-Duration: 2 months<br>
-Institutional Collaboration: Philharmonie de Paris<br><br>
-
-<em style="color:#8fc08f">Context and Intent</em><br>
-
-Murderdoll was developed as a collaborative project designing stage costumes for heavy metal performance contexts. The aesthetic direction was informed by the theatrical horror-punk identity of Murderdolls, particularly the song Die My Bride, whose exaggerated lyrical violence provided narrative material for visual interpretation.<br><br>
-
-Rather than reproducing the lyrics literally, the project approached the source material as a study of ritualized spectacle: marriage reimagined as grotesque theatre. The aim was to translate musical aggression and dark humor into wearable stage identities that function as performative extensions of character.<br><br>
-
-The emotional objectives were:<br>
-
-- Controlled chaos<br>
-- Parodic brutality<br>
-- Theatrical exaggeration<br>
-- Stage legibility under dynamic lighting conditions<br><br>
-
-<em style="color:#8fc08f">Role and Collaboration</em><br><br>
-
-The project was developed in a team of three. While design decisions were collectively discussed, I assumed responsibility for the entire digital production process, including garment construction, simulation, and digital staging.<br><br>
-
-This project marks my first substantial engagement with 3D tools. Initially tasked with producing a single garment, I independently developed four complete 3D costumes within four days. This unexpected expansion revealed both my technical adaptability and intuitive affinity for digital construction.<br><br>
-
-<em style="color:#8fc08f">Technical Framework</em><br>
-
-Workflow: Digital pattern drafting → Fabric parameter calibration → Simulation testing → Staged composition<br><br>
-
-At this stage, my knowledge of real-time optimization or game engine integration was limited. However, I encountered and resolved significant simulation instability issues by independently researching fabric physics behavior and recalibrating material properties (weight, elasticity, collision thickness).<br><br>
-
-The most distinctive asset was a full-eye studded mask, constructed to exaggerate anonymity and silhouette readability. The material logic centered on leather-like surfaces and metallic detailing to reinforce stage aggression.<br><br>
-
-<em style="color:#8fc08f">Developmental Significance</em><br>
-
-Murderdoll represents a critical transition point. It was not technically sophisticated by later standards, but it marked the shift from analog garment thinking to digital character-oriented construction. It also demonstrated early leadership capacity within a collaborative environment.`,
-    meta: { Tools:'Blender · ZBrush', Year:'2025–2026', Type:'Commercial 3D', Domain:'Luxury Fashion' },
-    media:[ 
-    {class:'medium', src:'https://lh3.googleusercontent.com/d/10kataCzkrYeudIuiI01IfrYsnXUiPhnp'},
-    {class:'medium', src:'https://lh3.googleusercontent.com/d/1oHZFzHoNqU55d7Ajzs_hqC8H_tQcDZK0'},
-           {class:'wide', src:'https://lh3.googleusercontent.com/d/17es5MWQmuC0GsbL4zK0hpnKUGk_b7BGx'},
-           {class:'wide', src:'https://lh3.googleusercontent.com/d/1wnaY6CZXS_2zo8FL-3ri286cu7NSLlIJ'},
-           {class:'wide', src:'https://lh3.googleusercontent.com/d/14mxgcosaAMiDCEOmY8ghZLuZv9p-8jQu'},
-           {class:'wide', src:'https://lh3.googleusercontent.com/d/1ywp2Vmg6br9wRbLwaLJA2B0_46duMG0c'},
-           {class:'wide', src:'https://lh3.googleusercontent.com/d/1DW32XP83blgRPLLbqqecedI3K7AHxhQ-'},
-]
-  },
-  p4:  { color:'#c45a82', domain:'✦ GAME × FASHION', title:'Puppet, Clown, Music!',
-    desc:`Exploring digital fashion as character design.<br><br>
-
-Inspired by a circus-driven, devilish aesthetic, this piece plays with the idea of control, illusion and performance — where the character exists somewhere between puppet and performer.<br><br>
-Rather than referencing directly, I wanted to reinterpret these influences into a cinematic fashion context, where garments become part of the narrative.<br><br>
-
-Currently looking for an alternance starting September 2026 in digital fashion / 3D / cinematic production.`,
-    meta: { Tools:'CLO3D · Blender', Year:'2026', Type:'3D Storytelling', Domain:'Fashion × Tech' },
-    media:[
-   {class:'hero', src:'https://lh3.googleusercontent.com/d/1UYV1t-iYigEKPjZFdYOcn9iSaHs3IhRe'},
-  {class:'medium', src:'https://lh3.googleusercontent.com/d/1cprYqDXq0EZqLUNeItMGudlGD7aF0Po4'},
-  {class:'medium', src:'https://lh3.googleusercontent.com/d/15927HXRM9hmECu75Og3LPxPJv5GKlVeI'},
-  {class:'wide', src:'https://lh3.googleusercontent.com/d/1BZhv33UsGX60OuraOQvrGVVuFL47GEE2'},
-  {class:'medium', src:'https://lh3.googleusercontent.com/d/1O81nRq-KgTISFFQqsRSji5Beb0SWSK6a'},
-  {class:'medium', src:'https://lh3.googleusercontent.com/d/1rQDbDJd7TTgEkswh5he0Cta95zyt-xj4'},
-  {class:'medium', src:'https://lh3.googleusercontent.com/d/10F99Gjkz7WPnqZ6AftidZroq3jh6Wes3'},
-  {class:'medium', src:'https://lh3.googleusercontent.com/d/1YQz1yIEilc_vYjK9UQaY5snhCvqUyoMX'},
-  {class:'medium', src:'https://lh3.googleusercontent.com/d/1wujEe8bd6Y0arseyePWcAlWkGk0mqVY3'},
-  {class:'medium', src:'https://lh3.googleusercontent.com/d/1KeTauh9wz2NJ2DILy9F6M3B2rrLpUemK'},  
+      {class:'hero', src:'https://drive.google.com/thumbnail?id=1ELzkqG_3SibAutaNhyX-fvMa4x1zbb7l&sz=w2000'},
+      {class:'medium', src:'https://drive.google.com/thumbnail?id=1JcskzAVocDWGRSwpaUwFqXttne-JRt96&sz=w2000'},
+      {class:'medium', src:'https://drive.google.com/thumbnail?id=1YjJ6n-6O8T_0PtRD_jMxET9BOcsVVl7N&sz=w2000'},
+      {class:'wide', src:'https://drive.google.com/thumbnail?id=1asotAWI4Y_CoxW4ncGxmkNyS2TG-zNAt&sz=w2000'},
+      {class:'medium', src:'https://drive.google.com/thumbnail?id=1jKpWBhiN72yMl23eTfas5BA6gGOzJ3ED&sz=w2000'},
+      {class:'medium', src:'https://drive.google.com/thumbnail?id=1dzFDVcsTWB_0-yBH97sfs3ToLNiwVwVi&sz=w2000'},
+      {class:'medium', src:'https://drive.google.com/thumbnail?id=1wNo6WOiO4IxatyPKcZXFNN9rYiWpD3Ur&sz=w2000'},
+      {class:'medium', src:'https://drive.google.com/thumbnail?id=1aXzgVAKehoMmw589dN5SPJrB8wYM-3hb&sz=w2000'},
+      {class:'medium', src:'https://drive.google.com/thumbnail?id=1GvtLxUI_8YD5xpjubjK86e8ocHgOc6AZ&sz=w2000'},
+      {class:'medium', src:'https://drive.google.com/thumbnail?id=1jiZiKRRlV0Co0VrXmCWhBltlBGjU7Jpz&sz=w2000'},
+      {class:'medium', src:'https://drive.google.com/thumbnail?id=1w_kpke1884Ev8KzF-imrwAoD48neJ5CG&sz=w2000'},
+      {class:'medium', src:'https://drive.google.com/thumbnail?id=10HxNW5wORDkz2zYK51j0tSvpNSFXtPXI&sz=w2000'},
+      {class:'wide', src:'https://drive.google.com/thumbnail?id=1B1TTm5kE7fCJ-5w0Ox6GMbxItLTsswod&sz=w2000'},
     ]
   },
-  p5:  { color:'#d4900a', domain:'◆ FASHION DESIGN', title:'Digital Garment Collection',
-    desc:`<b style="color:#c9a96e">Nomad — MacArthur Collection Vol. 2</b><br><br>
-A moment of stillness before transformation.<br><br>
-Inspired by the vast, indifferent silence of desert civilizations and the tension between survival and spectacle, Nomad is the second chapter of the MacArthur collection — a speculative world where fashion, creature, and environment exist as a single narrative system.<br><br>
-This series explores the relationship between body, environment, and observation: a character suspended in a liminal space between organic and artificial, between isolation and encounter. The desert is not a backdrop — it is a condition. The mechanical camel, the falcon born of metal and feather, the rider who moves between stillness and performance — each element contributes to a world that feels inherited rather than invented.<br><br>
-The final moment shifts from observation to interaction. The character is no longer passive. She is engaged.<br><br>
-<b style="color:#c9a96e">Graduation Project – May 2025</b><br><br>
-Duration: 5 months (2 months research · 3 months production)<br><br>
-<b style="color:#c9a96e">Research Context & Intent</b><br><br>
-Nomad extends the world-building practice of MacArthur into a desert civilization framework — one where hierarchy is expressed through the body's relationship to its mechanical companions rather than through garment ornamentation alone. The rider, the beast, the bird of prey: three nodes in a visual ecosystem with its own internal logic.<br><br>
-The objective was to develop a cinematic universe in which costume, anatomy, creature design, and landscape operate within a unified visual language. The emotional intention: the sensation of stepping into an unrealized science fiction film — not at its beginning, but somewhere in the middle, where the world already has weight.<br><br>
-<b style="color:#c9a96e">Technical Integration</b><br><br>
-Pipeline:<br>
-— Garment drafting in CLO3D (T-pose)<br>
-— Character sculpting in Blender / ZBrush<br>
-— Rigging and pose blocking<br>
-— Garment re-simulation on posed characters<br>
-— Environmental construction and dune landscape modeling<br>
-— Creature design and integration (mechanical camel, raptor)<br>
-— Lighting hierarchy (3–5 point cinematic setup)<br>
-— Multi-scale rendering: intimate close-up to wide establishing shot<br><br>
-Average character polycount: approximately 90k.<br><br>
-A primary technical challenge involved maintaining silhouette integrity across both macro (distant landscape) and micro (close portrait) compositions. Topology restructuring and strategic polycount reduction were employed to stabilize rigs without sacrificing visual fidelity.<br><br>
-Across this series, I've been exploring digital fashion as part of a larger cinematic language — where garments, creatures and environments exist within the same narrative system. I'm interested in building worlds where the act of dressing becomes inseparable from the act of world-making.`,
-    meta: { Tools:'CLO3D · Blender · Photoshop', Year:'2026', Type:'Digital Collection', Domain:'Digital Fashion · Story' },
+  p2: { color:'#718d8e', domain:'▶ GAME / CHARACTER ART', title:'Wolfie',
+    desc:`Sci-fi character design series — <em style="color:#8fa9aa">Wolfie</em>, <em>Wolfboy</em>, the Werewolf.<br><br>
+    Independent Project — June 2024. Duration: 1 month.<br><br>
+    Conceived as a speculative cinematic narrative exploring bio-modification, social alienation, and ethical material innovation. A future in which humans transform into animal-like beings — utopian solution becomes mechanism of control.<br><br>
+    <strong style="color:#8fa9aa">Technical milestones:</strong> First character rigging experience. First narrative-driven animation. Advanced pattern construction for structurally complex costumes.`,
+    meta: { Tools:'CLO3D · Blender', Year:'2024', Type:'Character Design Series', Domain:'Game Art' },
     media:[
-   {class:'hero', src:'https://lh3.googleusercontent.com/d/1TIyqbRM6Ozq41jOuwa3oSpgwjVMPci59'},
-  {class:'medium', src:'https://lh3.googleusercontent.com/d/1H_Qv0aDPRGCQudRj1e3zQ2PRM3sFvyH0'},
-  {class:'medium', src:'https://lh3.googleusercontent.com/d/1AzGab5FMFwayXpxxZr3x5eA847cveAds'},
-  {class:'wide', src:'https://lh3.googleusercontent.com/d/1SbZ_jSXrbQ9UytPbbp5CL5Fk3MtIdK8h'},
-  {class:'medium', src:'https://lh3.googleusercontent.com/d/17H8zv5bRqSdbZdLL05Cdfo7bDPoH84up'},
-  {class:'medium', src:'https://lh3.googleusercontent.com/d/19a2nNZJm-xrO5LvO-Jm2c4GsftkB-I-3'},
-  {class:'wide', src:'https://lh3.googleusercontent.com/d/1xo-gbQX2j70KrEhrDK6iLW3sNrHYVttu'},]
+      {class:'medium', src:'https://drive.google.com/thumbnail?id=1S4hQMSzpRSTTi1lT0uGKJXT53_aLEtVE&sz=w2000'},
+      {class:'medium', src:'https://lh3.googleusercontent.com/d/1TLWcjcIiRatCa2j3ifpPI3mnwsc3q4DX'},
+      {class:'medium', src:'https://lh3.googleusercontent.com/d/1n3B_ndvRzneIz_q5Ng3ROXaZ7N2BUVMx'},
+      {class:'medium', src:'https://lh3.googleusercontent.com/d/1upcbTwNXmTXUA6k-nfsTHJBbohKRMQG0'},
+      {class:'medium', src:'https://lh3.googleusercontent.com/d/1FrV5GiDngy3yxKiKS95gb5NuAMOX8g8q'},
+    ]
   },
-  p6:  { color:'#4a6fa5', domain:'▶ GAME ART', title:'World Environment Design',
-    desc:`Environment and world-building work — real-time assets, level dressing, atmospheric design for interactive experiences in Unreal Engine 5.<br><br>
-    Exploring how space communicates narrative — environments that feel inhabited, lived-in, story-laden.`,
+  p3: { color:'#c1bf8e', domain:'◆ FASHION DESIGN', title:'Die My Bride',
+    desc:`Collaborative stage costumes for heavy metal performance. Institutional collaboration with Philharmonie de Paris.<br><br>
+    January 2024 · 2 months · Team of three.<br><br>
+    Marriage reimagined as grotesque theatre. Aesthetic direction: controlled chaos, parodic brutality, theatrical exaggeration — translated into wearable stage identities.<br><br>
+    This project marks the first serious engagement with 3D tools. Initially tasked with one garment, four complete 3D costumes were delivered in four days — marking a critical transition from analog garment thinking to digital character-oriented construction.`,
+    meta: { Tools:'CLO3D', Year:'2024', Type:'Stage Costume', Domain:'Fashion × Performance' },
+    media:[
+      {class:'medium', src:'https://lh3.googleusercontent.com/d/10kataCzkrYeudIuiI01IfrYsnXUiPhnp'},
+      {class:'medium', src:'https://lh3.googleusercontent.com/d/1oHZFzHoNqU55d7Ajzs_hqC8H_tQcDZK0'},
+      {class:'wide', src:'https://lh3.googleusercontent.com/d/17es5MWQmuC0GsbL4zK0hpnKUGk_b7BGx'},
+      {class:'wide', src:'https://lh3.googleusercontent.com/d/1wnaY6CZXS_2zo8FL-3ri286cu7NSLlIJ'},
+      {class:'wide', src:'https://lh3.googleusercontent.com/d/14mxgcosaAMiDCEOmY8ghZLuZv9p-8jQu'},
+      {class:'wide', src:'https://lh3.googleusercontent.com/d/1ywp2Vmg6br9wRbLwaLJA2B0_46duMG0c'},
+      {class:'wide', src:'https://lh3.googleusercontent.com/d/1DW32XP83blgRPLLbqqecedI3K7AHxhQ-'},
+    ]
+  },
+  p4: { color:'#96584b', domain:'✦ GAME × FASHION', title:'Puppet & Musicbox',
+    desc:`Inspired by Scarlett from Caraval — a circus-driven, devilish aesthetic playing with control, illusion and performance. The character exists between puppet and performer.<br><br>
+    Digital fashion reinterpreted into a cinematic fashion context, where garments become part of the narrative.`,
+    meta: { Tools:'CLO3D · Blender', Year:'2026', Type:'3D Storytelling', Domain:'Fashion × Game' },
+    media:[
+      {class:'hero', src:'https://lh3.googleusercontent.com/d/1UYV1t-iYigEKPjZFdYOcn9iSaHs3IhRe'},
+      {class:'medium', src:'https://lh3.googleusercontent.com/d/1cprYqDXq0EZqLUNeItMGudlGD7aF0Po4'},
+      {class:'medium', src:'https://lh3.googleusercontent.com/d/15927HXRM9hmECu75Og3LPxPJv5GKlVeI'},
+      {class:'wide', src:'https://lh3.googleusercontent.com/d/1BZhv33UsGX60OuraOQvrGVVuFL47GEE2'},
+      {class:'medium', src:'https://lh3.googleusercontent.com/d/1O81nRq-KgTISFFQqsRSji5Beb0SWSK6a'},
+      {class:'medium', src:'https://lh3.googleusercontent.com/d/1rQDbDJd7TTgEkswh5he0Cta95zyt-xj4'},
+      {class:'medium', src:'https://lh3.googleusercontent.com/d/10F99Gjkz7WPnqZ6AftidZroq3jh6Wes3'},
+      {class:'medium', src:'https://lh3.googleusercontent.com/d/1YQz1yIEilc_vYjK9UQaY5snhCvqUyoMX'},
+      {class:'medium', src:'https://lh3.googleusercontent.com/d/1wujEe8bd6Y0arseyePWcAlWkGk0mqVY3'},
+      {class:'medium', src:'https://lh3.googleusercontent.com/d/1KeTauh9wz2NJ2DILy9F6M3B2rrLpUemK'},
+    ]
+  },
+  p5: { color:'#a87b51', domain:'◆ FASHION DESIGN', title:'Nomad in the Desert',
+    desc:`<strong style="color:#c49a72">MacArthur Collection Vol. 2</strong> — a moment of stillness before transformation.<br><br>
+    Inspired by desert civilizations and the tension between survival and spectacle. Fashion, creature, and environment as a single narrative system.<br><br>
+    The mechanical camel, the falcon born of metal and feather, the rider who moves between stillness and performance — each element contributes to a world that feels inherited rather than invented.<br><br>
+    Graduation Project — May 2025 · 5 months.`,
+    meta: { Tools:'CLO3D · Blender · Photoshop', Year:'2025', Type:'Digital Collection', Domain:'Digital Fashion' },
+    media:[
+      {class:'hero', src:'https://lh3.googleusercontent.com/d/1TIyqbRM6Ozq41jOuwa3oSpgwjVMPci59'},
+      {class:'medium', src:'https://lh3.googleusercontent.com/d/1H_Qv0aDPRGCQudRj1e3zQ2PRM3sFvyH0'},
+      {class:'medium', src:'https://lh3.googleusercontent.com/d/1AzGab5FMFwayXpxxZr3x5eA847cveAds'},
+      {class:'wide', src:'https://lh3.googleusercontent.com/d/1SbZ_jSXrbQ9UytPbbp5CL5Fk3MtIdK8h'},
+      {class:'medium', src:'https://lh3.googleusercontent.com/d/17H8zv5bRqSdbZdLL05Cdgo7bDPoH84up'},
+      {class:'medium', src:'https://lh3.googleusercontent.com/d/19a2nNZJm-xrO5LvO-Jm2c4GsftkB-I-3'},
+      {class:'wide', src:'https://lh3.googleusercontent.com/d/1xo-gbQX2j70KrEhrDK6iLW3sNrHYVttu'},
+    ]
+  },
+  p6: { color:'#532412', domain:'▶ GAME ART', title:'World Environment Design',
+    desc:'Environment and world-building work — real-time assets, level dressing, atmospheric design for interactive experiences in Unreal Engine 5. Exploring how space communicates narrative — environments that feel inhabited, lived-in, story-laden.',
     meta: { Tools:'Unreal Engine 5 · Blender', Year:'2025', Type:'Environment Art', Domain:'Game Art' },
-    media:[{l:'ENVIRONMENT HERO',w:true},{l:'DETAIL 1'},{l:'DETAIL 2'},{l:'ATMOSPHERE'},{l:'WIDE SHOT',w:true},{l:'ASSET STUDY'},{l:'LIGHTING'},{l:'WIREFRAME'},{l:'FINAL RENDER'}]
+    media:[]
   },
-  p7:  { color:'#6a9a6a', domain:'✦ GAME × FASHION', title:'Avatar Fashion System',
-    desc:`Costume design system for digital avatars — modular wardrobe logic, cultural coding, identity expression through in-game fashion.<br><br>
-    Where luxury design meets game systems: garments as character data, style as player identity.`,
+  p7: { color:'#5a5820', domain:'✦ GAME × FASHION', title:'Avatar Fashion System',
+    desc:'Costume design system for digital avatars — modular wardrobe logic, cultural coding, identity expression through in-game fashion. Where luxury design meets game systems: garments as character data, style as player identity.',
     meta: { Tools:'UE5 · CLO3D · Blender', Year:'2025', Type:'Design System', Domain:'Game × Fashion' },
-    media:[{l:'SYSTEM OVERVIEW',w:true},{l:'AVATAR 1'},{l:'AVATAR 2'},{l:'MODULAR PIECES'},{l:'OUTFIT BUILDER',w:true},{l:'DETAIL'},{l:'MATERIAL'},{l:'IN-GAME'},{l:'FINAL'}]
+    media:[]
   },
-  p8:  { color:'#8a6ab4', domain:'◆ FASHION DESIGN', title:'ESMOD Graduation Collection',
-    desc:`Final collection from <em style="color:#f0b030">ESMOD Paris — Digital Fashion Design</em>.<br><br>
-    Fashion as identity construction, costume as mythology, garment as world artifact. Synthesizes three years of digital fashion training into a statement about what fashion means when it escapes the physical.`,
+  p8: { color:'#155c4e', domain:'◆ FASHION DESIGN', title:'ESMOD Graduation Collection',
+    desc:'Final collection from ESMOD Paris — narrative-driven digital fashion. Fashion as identity construction, costume as mythology, garment as world artifact. Synthesizes three years of digital fashion training into a statement about what fashion means when it escapes the physical.',
     meta: { Tools:'CLO3D · Blender · Photoshop', Year:'2025', Type:'Graduation Collection', Domain:'Digital Fashion' },
-    media:[{l:'COLLECTION HERO',w:true},{l:'LOOK 1'},{l:'LOOK 2'},{l:'DETAIL'},{l:'FULL LINEUP',w:true},{l:'TEXTILE STUDY'},{l:'RENDER'},{l:'PROCESS'},{l:'FINAL SHOT'}]
+    media:[]
   },
-  p9:  { color:'#b84a2a', domain:'▶ GAME ART', title:'Cinematic Costume Design',
-    desc:`Costume design for cinematic sequences — hero garments for CGI, game cinematics, and performance capture pipelines.<br><br>
-    Where fashion and film meet: how garments read on camera, in light, in motion. Designing for the shot.`,
+  p9: { color:'#4a0001', domain:'▶ GAME ART', title:'Cinematic Costume Design',
+    desc:'Costume design for cinematic sequences — hero garments for CGI, game cinematics, and performance capture pipelines. Where fashion and film meet: how garments read on camera, in light, in motion. Designing for the shot.',
     meta: { Tools:'ZBrush · Blender · CLO3D', Year:'2025', Type:'Cinematic Design', Domain:'Game × Cinematic' },
-    media:[{l:'HERO COSTUME',w:true},{l:'FRONT'},{l:'BACK'},{l:'DETAIL'},{l:'IN-SCENE',w:true},{l:'MATERIAL'},{l:'SILHOUETTE'},{l:'PROCESS'},{l:'FINAL'}]
+    media:[]
   },
-  p10: { color:'#5f87f5', domain:'✦ GAME × FASHION', title:'Speculative Fashion World',
-    desc:`A speculative universe where fashion is infrastructure — visual world-building research combining luxury design codes with sci-fi game logic.<br><br>
-    What does couture look like in a post-scarcity civilization? What does street fashion mean for an interplanetary society? Fashion as world-building tool.`,
+  p10: { color:'#718d8e', domain:'✦ GAME × FASHION', title:'Speculative Fashion World',
+    desc:'A speculative universe where fashion is infrastructure — visual world-building research combining luxury design codes with sci-fi game logic. What does couture look like in a post-scarcity civilization? Fashion as world-building tool.',
     meta: { Tools:'Blender · UE5 · Photoshop', Year:'2025–2026', Type:'Speculative Research', Domain:'Game × Fashion' },
-    media:[{l:'WORLD OVERVIEW',w:true},{l:'FACTION 1'},{l:'FACTION 2'},{l:'GARMENT STUDY'},{l:'ENVIRONMENT',w:true},{l:'CHARACTER'},{l:'MATERIAL'},{l:'RESEARCH'},{l:'FINAL VISION'}]
+    media:[]
   }
 };
 
 function openModal(id) {
   const p = pdata[id]; if (!p) return;
   document.getElementById('modal-stripe').style.background = p.color;
-  document.getElementById('modal').style.borderColor = 'rgba('+hexToRgb(p.color)+',0.35)';
+  document.getElementById('modal').style.borderColor = hexAlpha(p.color, 0.35);
   document.getElementById('modal-close-btn').style.background = p.color;
   document.getElementById('modal-title').textContent = p.title;
   document.getElementById('modal-domain').textContent = p.domain;
-  const mediaEl = document.getElementById('modal-media'); mediaEl.innerHTML = '';
-  p.media.forEach((m,i) => {
-const div = document.createElement('div');
-div.className = `modal-media-item ${m.class || 'small'}`;
-    // To replace with real image: div.innerHTML = `<img src="images/${id}/${i+1}.jpg" alt="${m.l}">`;
-    // To replace with video: div.innerHTML = `<video src="videos/${id}/${i+1}.mp4" autoplay muted loop playsinline></video>`;
-    if (m.src) {
-  div.innerHTML = `<img src="${m.src}" alt="${m.l}">`;
-} else {
-  div.innerHTML = `<div class="media-ph"><span class="ph-i">◆</span><span>${m.l}</span></div>`;
-}
-    div.style.borderTop = `2px solid ${p.color}30`;
-    mediaEl.appendChild(div);
-  });
-  const metaEl = document.getElementById('modal-meta'); metaEl.innerHTML = '';
+
+  const mediaEl = document.getElementById('modal-media');
+  mediaEl.innerHTML = '';
+  if (p.media && p.media.length > 0) {
+    p.media.forEach(m => {
+      const div = document.createElement('div');
+      div.className = `modal-media-item ${m.class || 'medium'}`;
+      div.style.borderTop = `2px solid ${p.color}40`;
+      if (m.src) {
+        div.innerHTML = `<img src="${m.src}" alt="${p.title}" loading="lazy">`;
+      }
+      mediaEl.appendChild(div);
+    });
+  } else {
+    mediaEl.innerHTML = `<div class="modal-media-item wide" style="padding:3rem;text-align:center;border-top:2px solid ${p.color}40"><span style="font-family:var(--font-pixel);font-size:0.3rem;color:var(--text-dimmer);letter-spacing:0.1em">IMAGES COMING SOON</span></div>`;
+  }
+
+  const metaEl = document.getElementById('modal-meta');
+  metaEl.innerHTML = '';
   Object.entries(p.meta).forEach(([k,v]) => {
     metaEl.innerHTML += `<div class="meta-item" style="border-left:2px solid ${p.color};padding-left:0.8rem"><span class="meta-label">${k.toUpperCase()}</span><span class="meta-val" style="color:${p.color}">${v}</span></div>`;
   });
@@ -2053,14 +1509,16 @@ function closeModal() {
   document.getElementById('modal-overlay').classList.remove('active');
   document.body.style.overflow = '';
 }
-function handleOverlayClick(e) { if (e.target===document.getElementById('modal-overlay')) closeModal(); }
-document.addEventListener('keydown', e => { if(e.key==='Escape') closeModal(); });
-
-function hexToRgb(hex) {
-  const r = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-  return r ? `${parseInt(r[1],16)},${parseInt(r[2],16)},${parseInt(r[3],16)}` : '255,255,255';
+function handleOverlayClick(e) {
+  if (e.target === document.getElementById('modal-overlay')) closeModal();
 }
- /* PDF MODAL */
+
+function hexAlpha(hex, a) {
+  const r = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  return r ? `rgba(${parseInt(r[1],16)},${parseInt(r[2],16)},${parseInt(r[3],16)},${a})` : 'rgba(255,255,255,0.2)';
+}
+
+/* PDF MODAL */
 const pdfLinks = {
   'delvaux-rdi': 'https://drive.google.com/file/d/16TUr4AN8802do1tzaGu-yuICOuHyhDxH/preview',
   'delvaux-3d':  'https://drive.google.com/file/d/1hLpapvLrolOZasXCSUNSQZXaLhYznntk/preview',
@@ -2082,7 +1540,10 @@ function closePDF() {
   document.getElementById('pdf-frame').src = '';
   document.body.style.overflow = '';
 }
-document.addEventListener('keydown', e => { if(e.key==='Escape') closePDF(); });  
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') { closeModal(); closePDF(); }
+});
 </script>
 </body>
 </html>
