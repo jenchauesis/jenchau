@@ -231,14 +231,13 @@ nav::after {
 
 .artwork-item {
   flex-shrink: 0;
-  width: 160px;
+  width: auto;          /* ← tự co theo ratio */
   height: 120px;
   overflow: hidden;
   position: relative;
   opacity: 0.75;
   transition: opacity 0.3s, transform 0.3s;
 }
-
 .artwork-item:hover {
   opacity: 1;
   transform: translateY(-6px);
@@ -246,10 +245,9 @@ nav::after {
 }
 
 .artwork-item img {
-  width: 100%;
+  width: auto;          /* ← không ép width */
   height: 100%;
-  object-fit: cover;
-  object-position: center top;
+  object-fit: unset;    /* ← bỏ crop */
   display: block;
   filter: saturate(0.85);
   transition: filter 0.3s;
