@@ -858,23 +858,20 @@ section { position: relative; z-index: 1; }
 /* ═══ RECOMMENDATIONS ═══ */
 #recs {
   background: var(--bg3);
-  padding: 8rem 0;          /* ← thêm padding như các section khác */
+  padding: 8rem 0;
 }
-
 .s-head {
   max-width: 1300px;
   margin: 0 auto;
-  padding: 0 3rem;          /* ← same as .container */
+  padding: 0 3rem;
   margin-bottom: 0;
 }
-
 .s-num {
   font-family: var(--font-pixel);
   font-size: 0.38rem;
   color: var(--text-dimmer);
   margin-bottom: 0.6rem;
 }
-
 .s-title {
   font-family: var(--font-serif);
   font-size: clamp(2rem, 5vw, 3.5rem);
@@ -882,22 +879,22 @@ section { position: relative; z-index: 1; }
   font-weight: 700;
   margin-bottom: 0;
 }
-
 .recs-grid {
   max-width: 1300px;
   margin: 3rem auto 0;
-  padding: 0 3rem;          /* ← thêm padding 2 bên */
+  padding: 0 3rem;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
 }
-
 .rec {
   border: 1px solid rgba(255,255,255,0.15);
   padding: 2.5rem 2rem;
   position: relative;
   transition: transform .3s;
   background: rgba(255,255,255,0.04);
+  display: flex;
+  flex-direction: column;
 }
 .rec:hover { transform: translate(-4px,-4px) }
 .rec:hover::after { transform: translate(8px,8px) }
@@ -913,7 +910,6 @@ section { position: relative; z-index: 1; }
 .rec:nth-child(1)::after { border-color: var(--rosewood) }
 .rec:nth-child(2)::after { border-color: var(--jade) }
 .rec:nth-child(3)::after { border-color: var(--olive) }
-
 .rec-badge {
   display: inline-flex;
   align-items: center;
@@ -921,42 +917,111 @@ section { position: relative; z-index: 1; }
   font-size: .5rem;
   font-weight: 700;
   padding: .25rem .7rem;
-  margin-bottom: 2rem;       /* ← tăng gap xuống quote */
-  color: var(--white);
+  margin-bottom: 2rem;
+  color: var(--White);
   letter-spacing: .05em;
 }
 .rec:nth-child(1) .rec-badge { background: var(--rosewood) }
 .rec:nth-child(2) .rec-badge { background: var(--jade) }
 .rec:nth-child(3) .rec-badge { background: var(--olive) }
-
-/* Quote — sáng hơn, to hơn, italic như ảnh 1 */
 .rec-q {
   font-size: .85rem;
   line-height: 2;
-  color: rgba(255,255,255,0.55);   /* ← dim white thay vì #444 */
+  color: rgba(255,255,255,0.55);
   margin-bottom: 2rem;
   font-style: italic;
-  font-family: var(--ff-pixel);    /* ← monospace như ảnh 1 */
+  font-family: var(--font-mono);
+  flex: 1;
 }
-
 .rec-foot {
   border-top: 1px solid rgba(255,255,255,0.15);
   padding-top: 1rem;
-  margin-top: auto;
 }
 .rec-who {
-  font-family: var(--ff-body);
+  font-family: var(--font-mono);
   font-weight: 700;
   font-size: .75rem;
   letter-spacing: .1em;
   text-transform: uppercase;
-  color: var(--white);
+  color: var(--White);
 }
 .rec-role {
   font-size: .68rem;
   color: rgba(255,255,255,0.4);
   margin-top: .3rem;
   line-height: 1.5;
+}
+/* PDF BUTTON */
+.rec-pdf-btn {
+  margin-top: 1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-pixel);
+  font-size: 0.32rem;
+  letter-spacing: 0.08em;
+  padding: 0.45rem 0.9rem;
+  border: 1px solid rgba(255,255,255,0.2);
+  background: transparent;
+  color: var(--text-dim);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.rec-pdf-btn:hover {
+  background: rgba(255,255,255,0.06);
+  color: var(--White);
+  transform: translate(-2px,-2px);
+}
+.rec:nth-child(1) .rec-pdf-btn:hover { border-color: var(--rosewood); color: var(--rosewood2); }
+.rec:nth-child(2) .rec-pdf-btn:hover { border-color: var(--jade);     color: var(--jade2); }
+.rec:nth-child(3) .rec-pdf-btn:hover { border-color: var(--olive);    color: var(--sage2); }
+/* PDF MODAL */
+.pdf-overlay {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.92);
+  z-index: 2000;
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.3s;
+  backdrop-filter: blur(12px);
+}
+.pdf-overlay.active { opacity: 1; pointer-events: all; }
+.pdf-modal {
+  width: 90vw; max-width: 860px;
+  height: 88vh;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  display: flex; flex-direction: column;
+  transform: translateY(16px);
+  transition: transform 0.3s;
+}
+.pdf-overlay.active .pdf-modal { transform: translateY(0); }
+.pdf-modal-header {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 1.2rem 1.8rem;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+.pdf-modal-title {
+  font-family: var(--font-pixel);
+  font-size: 0.38rem;
+  letter-spacing: 0.1em;
+  color: var(--text-dim);
+}
+.pdf-modal-close {
+  font-family: var(--font-pixel); font-size: 0.35rem;
+  padding: 0.45rem 1rem;
+  background: var(--rust); color: white; border: none;
+  cursor: pointer; letter-spacing: 0.08em;
+  transition: all 0.15s;
+}
+.pdf-modal-close:hover { transform: translate(-1px,-1px); }
+.pdf-modal-body {
+  flex: 1; overflow: hidden;
+}
+.pdf-modal-body iframe {
+  width: 100%; height: 100%;
+  display: block;
 }
    
 /* CONTACT */
@@ -1618,6 +1683,7 @@ Across this series, I’ve been exploring digital fashion as part of a larger ci
       <div class="rec-foot">
         <p class="rec-who">Vincent Guillet</p>
         <p class="rec-role">Director of Research, Development & Innovation</p>
+        <button class="rec-pdf-btn" onclick="openPDF('delvaux-rdi')">↗ VIEW LETTER</button>
       </div>
     </div>
     <div class="rec reveal">
@@ -1626,6 +1692,7 @@ Across this series, I’ve been exploring digital fashion as part of a larger ci
       <div class="rec-foot">
         <p class="rec-who">Sam Goossens Bara</p>
         <p class="rec-role">Digital Innovation & 3D Expert</p>
+        <button class="rec-pdf-btn" onclick="openPDF('delvaux-3d')">↗ VIEW LETTER</button>
       </div>
     </div>
     <div class="rec reveal">
@@ -1634,10 +1701,24 @@ Across this series, I’ve been exploring digital fashion as part of a larger ci
       <div class="rec-foot">
         <p class="rec-who">Guy Pontal</p>
         <p class="rec-role">Founder & Creative Director, AiX3D</p>
+        <button class="rec-pdf-btn" onclick="openPDF('aix3d')">↗ VIEW LETTER</button>
       </div>
     </div>
   </div>
 </section>
+
+<!-- PDF MODAL -->
+<div class="pdf-overlay" id="pdf-overlay" onclick="closePDF()">
+  <div class="pdf-modal" onclick="event.stopPropagation()">
+    <div class="pdf-modal-header">
+      <span class="pdf-modal-title" id="pdf-modal-title">RECOMMENDATION LETTER</span>
+      <button class="pdf-modal-close" onclick="closePDF()">✕ CLOSE</button>
+    </div>
+    <div class="pdf-modal-body">
+      <iframe id="pdf-frame" src="" frameborder="0"></iframe>
+    </div>
+  </div>
+</div>
    
 <!-- CONTACT -->
 <section class="contact" id="contact">
@@ -1957,6 +2038,29 @@ function hexToRgb(hex) {
   const r = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
   return r ? `${parseInt(r[1],16)},${parseInt(r[2],16)},${parseInt(r[3],16)}` : '255,255,255';
 }
+ /* PDF MODAL */
+const pdfLinks = {
+  'delvaux-rdi': 'https://drive.google.com/file/d/16TUr4AN8802do1tzaGu-yuICOuHyhDxH/preview',
+  'delvaux-3d':  'https://drive.google.com/file/d/1hLpapvLrolOZasXCSUNSQZXaLhYznntk/preview',
+  'aix3d':       'https://drive.google.com/file/d/1xrqfDhVAtu1-saGaqIGGkb6H2pvC5Xiw/preview',
+};
+const pdfTitles = {
+  'delvaux-rdi': 'DELVAUX — RD&I · VINCENT GUILLET',
+  'delvaux-3d':  'DELVAUX — DIGITAL 3D · SAM GOOSSENS BARA',
+  'aix3d':       'AiX3D PARIS · GUY PONTAL',
+};
+function openPDF(id) {
+  document.getElementById('pdf-frame').src = pdfLinks[id];
+  document.getElementById('pdf-modal-title').textContent = pdfTitles[id];
+  document.getElementById('pdf-overlay').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+function closePDF() {
+  document.getElementById('pdf-overlay').classList.remove('active');
+  document.getElementById('pdf-frame').src = '';
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if(e.key==='Escape') closePDF(); });  
 </script>
 </body>
 </html>
