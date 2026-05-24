@@ -856,13 +856,40 @@ section { position: relative; z-index: 1; }
 .meta-val { display: block; margin-top: 0.2rem; }
 
 /* ═══ RECOMMENDATIONS ═══ */
-#recs { background: var(--bg3) }
+#recs {
+  background: var(--bg3);
+  padding: 8rem 0;          /* ← thêm padding như các section khác */
+}
+
+.s-head {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 3rem;          /* ← same as .container */
+  margin-bottom: 0;
+}
+
+.s-num {
+  font-family: var(--font-pixel);
+  font-size: 0.38rem;
+  color: var(--text-dimmer);
+  margin-bottom: 0.6rem;
+}
+
+.s-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-style: italic;
+  font-weight: 700;
+  margin-bottom: 0;
+}
 
 .recs-grid {
+  max-width: 1300px;
+  margin: 3rem auto 0;
+  padding: 0 3rem;          /* ← thêm padding 2 bên */
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
-  margin-top: 3rem;
 }
 
 .rec {
@@ -890,7 +917,7 @@ section { position: relative; z-index: 1; }
 .rec-badge {
   display: inline-flex;
   align-items: center;
-  font-family: var(--ff-pixel);
+  font-family: var(--font-pixel);
   font-size: .5rem;
   font-weight: 700;
   padding: .25rem .7rem;
@@ -909,7 +936,7 @@ section { position: relative; z-index: 1; }
   color: rgba(255,255,255,0.55);   /* ← dim white thay vì #444 */
   margin-bottom: 2rem;
   font-style: italic;
-  font-family: var(--ff-pixel);    /* ← monospace như ảnh 1 */
+  font-family: var(--font-pixel);    /* ← monospace như ảnh 1 */
 }
 
 .rec-foot {
@@ -918,7 +945,7 @@ section { position: relative; z-index: 1; }
   margin-top: auto;
 }
 .rec-who {
-  font-family: var(--ff-body);
+  font-family: var(--font-mono);
   font-weight: 700;
   font-size: .75rem;
   letter-spacing: .1em;
@@ -1578,8 +1605,11 @@ Across this series, I’ve been exploring digital fashion as part of a larger ci
 <!-- RECOMMENDATIONS -->
 <section id="recs">
   <div class="s-head">
-    <div class="s-num reveal" style="color:var(--rust)">04 / REFERENCES</div>
-    <h2 class="s-title reveal"><span class="col-p">THEY</span> SAID IT</h2>
+    <div class="section-header reveal" style="color:var(--rust)">
+      <span class="section-num">004</span>
+      <h2 class="section-title">References</h2>
+      <div class="section-line"></div>
+    </div>
   </div>
   <div class="recs-grid">
     <div class="rec reveal">
@@ -1590,7 +1620,7 @@ Across this series, I’ve been exploring digital fashion as part of a larger ci
         <p class="rec-role">Director of Research, Development & Innovation</p>
       </div>
     </div>
-    <div class="rec reveal d1">
+    <div class="rec reveal">
       <div class="rec-badge">DELVAUX — DIGITAL 3D</div>
       <p class="rec-q">"She integrated into our 3D Pipeline with remarkable speed, showing a deep understanding of the rigorous standards required by the luxury industry."</p>
       <div class="rec-foot">
@@ -1598,7 +1628,7 @@ Across this series, I’ve been exploring digital fashion as part of a larger ci
         <p class="rec-role">Digital Innovation & 3D Expert</p>
       </div>
     </div>
-    <div class="rec reveal d2">
+    <div class="rec reveal">
       <div class="rec-badge">AiX3D — PARIS</div>
       <p class="rec-q">"Her work was recognized by CLO3D in 2024. Ms. Nguyen-Ngoc is a trustworthy, dedicated, and high-performing professional fully equipped to evolve within demanding environments."</p>
       <div class="rec-foot">
@@ -1608,8 +1638,6 @@ Across this series, I’ve been exploring digital fashion as part of a larger ci
     </div>
   </div>
 </section>
- 
-<div class="stripe"></div>
    
 <!-- CONTACT -->
 <section class="contact" id="contact">
