@@ -32,6 +32,82 @@
   --white:       #ffffff;
   --border:      rgba(255,255,255,0.07);
 
+   /* ════════════════════════════════════════
+   SPIDER-MAN: INTO THE SPIDER-VERSE PALETTE
+   Extracted from golden-hour NYC scene
+   9 color families · 50 shades
+════════════════════════════════════════ */
+
+  /* ── SKY & WARM GOLD ── */
+  --gold-1: #f9c767;   /* lightest gold — sky highlight */
+  --gold-2: #fad777;   /* warm pale gold */
+  --gold-3: #f4cf6e;   /* golden mid */
+  --gold-4: #f4d293;   /* warm sand gold */
+  --gold-5: #e1aa60;   /* deep gold */
+  --gold-6: #c98638;   /* amber gold */
+  --gold-7: #c67938;   /* burnt amber */
+  --gold-8: #b68238;   /* warm ochre */
+  --gold-9: #b38c60;   /* muted bronze */
+
+  /* ── TERRACOTTA & BRICK ── */
+  --terra-1: #e16e4b;  /* coral orange — brightest brick */
+  --terra-2: #d65c32;  /* deep terracotta */
+  --terra-3: #9b654d;  /* warm sienna */
+  --terra-4: #9b3322;  /* dark brick red */
+  --terra-5: #dcac8e;  /* pale peach */
+  --terra-6: #57291f;  /* dark rust */
+
+  /* ── REDS & PINKS — market awning, web streak ── */
+  --red-1: #c5212b;    /* vivid red — market sign */
+  --red-2: #9e354d;    /* rose red */
+  --red-3: #d96689;    /* pink-magenta — web streak */
+
+  /* ── BLUES — sky reflections, glass, windows ── */
+  --blue-1: #aed5df;   /* pale sky blue */
+  --blue-2: #a5c8e4;   /* soft cerulean */
+  --blue-3: #96a6dd;   /* periwinkle */
+  --blue-4: #7d81a8;   /* slate blue */
+  --blue-5: #596098;   /* medium indigo-blue */
+  --blue-6: #3b475e;   /* dark slate */
+  --blue-7: #3c4687;   /* deep blue */
+
+  /* ── PURPLES — shadows, windows, night depths ── */
+  --purple-1: #8877d1;  /* bright lavender */
+  --purple-2: #7b6fc9;  /* medium purple */
+  --purple-3: #7e82d4;  /* blue-purple */
+  --purple-4: #54559a;  /* deep violet */
+  --purple-5: #433784;  /* dark indigo */
+  --purple-6: #3b3683;  /* rich indigo */
+  --purple-7: #2c2d58;  /* near-black indigo */
+  --purple-8: #191935;  /* deepest shadow blue */
+  --purple-9: #6822c1;  /* electric purple — web accent */
+
+  /* ── MAUVES & LAVENDERS — walls, mid-tone shadows ── */
+  --mauve-1: #c8bdcd;  /* pale lavender grey */
+  --mauve-2: #9372a3;  /* dusty violet */
+  --mauve-3: #4d3856;  /* dark plum */
+  --mauve-4: #484666;  /* blue-shadow */
+  --mauve-5: #333555;  /* deep blue-grey */
+
+  /* ── GREENS — tree foliage, awning ── */
+  --green-1: #d0e4d4;  /* pale mint */
+  --green-2: #b8c7b9;  /* sage green */
+  --green-3: #7b8267;  /* olive green */
+  --green-4: #384937;  /* dark forest */
+
+  /* ── STONE & NEUTRALS — concrete, sidewalk ── */
+  --stone-1: #a69d9a;  /* warm light grey */
+  --stone-2: #5a5765;  /* blue-grey */
+  --stone-3: #534c53;  /* warm dark grey */
+  --stone-4: #4a4348;  /* charcoal */
+  --stone-5: #393537;  /* near black warm */
+
+  /* ── DARKS & DEEP SHADOWS ── */
+  --dark-1: #472626;   /* dark warm brown */
+  --dark-2: #251817;   /* deep warm black */
+  --dark-3: #171419;   /* near black cool */
+  --dark-4: #130d18;   /* deepest black-purple */
+
   /* ── ACCENT SLOTS ── chừa cho bạn tự điền ──
      Thay #?????? bằng màu bạn muốn.
      accent-1 = màu chính / highlight chủ đạo
@@ -178,13 +254,13 @@ nav::after {
   opacity: 0; animation: fadeUp 0.7s ease 0.4s forwards;
 }
 /* Individual letter colors — swap these to your accents */
-.n-j { color: var(--grey-1); font-style: italic; }  /* ← e.g. var(--accent-1) */
-.n-e { color: var(--grey-2); }
-.n-n { color: var(--grey-1); }
-.n-c { color: var(--grey-2); font-style: italic; }  /* ← e.g. var(--accent-3) */
-.n-h { color: var(--grey-1); }
-.n-a { color: var(--grey-2); }
-.n-u { color: var(--grey-1); font-style: italic; }  /* ← e.g. var(--accent-5) */
+.n-j { color: var(--gold-1); font-style: italic; }  /* ← e.g. var(--accent-1) */
+.n-e { color: var(--gold-5); }
+.n-n { color: var(--gold-9); }
+.n-c { color: var(--gold-7); font-style: italic; }  /* ← e.g. var(--accent-3) */
+.n-h { color: var(--gold-3); }
+.n-a { color: var(--gold-4); }
+.n-u { color: var(--gold-8); font-style: italic; }  /* ← e.g. var(--accent-5) */
 .n-blink {
   font-family: var(--font-pixel); font-size: 0.22em;
   color: var(--grey-4); vertical-align: middle;
