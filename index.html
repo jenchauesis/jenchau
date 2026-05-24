@@ -57,6 +57,8 @@
   --jade:         #155c4e;   /* dark emerald-teal */
   --jade2:        #2a7d6b;
 
+  
+
   --black:     #11120D;   /* smoky black*/
   --olive:     #565449;   /* olive drab */
   --bone:      #D8CFBC;
@@ -439,16 +441,16 @@ nav::after {
 .ticker { overflow: hidden; }
 .ticker-row { display: flex; overflow: hidden; padding: 0.55rem 0; }
 
-.ticker-row:nth-child(1) { background: var(--rust); }
-.ticker-row:nth-child(2) { background: var(--dusty-teal); }
-.ticker-row:nth-child(3) { background: var(--sage); }
+.ticker-row:nth-child(1) { background: #2C2B28; }
+.ticker-row:nth-child(2) { background: #7E7C79; }
+.ticker-row:nth-child(3) { background: #D4D2CF; }
 .ticker-inner { display: flex; gap: 2.5rem; animation: ticker 24s linear infinite; white-space: nowrap; }
 .ticker-row:nth-child(2) .ticker-inner { animation-direction: reverse; animation-duration: 30s; }
 .ticker-row:nth-child(3) .ticker-inner { animation-duration: 18s; }
 .ticker-inner span { font-family: var(--font-pixel); font-size: 0.34rem; letter-spacing: 0.12em; }
-.ticker-row:nth-child(1) .ticker-inner span { color: rgba(255,255,255,0.9); }
-.ticker-row:nth-child(2) .ticker-inner span { color: rgba(255,255,255,0.9); }
-.ticker-row:nth-child(3) .ticker-inner span { color: var(--bg); }
+.ticker-row:nth-child(1) .ticker-inner span { color: #D4D2CF; }
+.ticker-row:nth-child(2) .ticker-inner span { color: #2C2B28; }
+.ticker-row:nth-child(3) .ticker-inner span { color: #2C2B28; }
 @keyframes ticker { from{transform:translateX(0)} to{transform:translateX(-50%)} }
 
 /* COMMONS */
