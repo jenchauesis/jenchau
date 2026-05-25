@@ -294,19 +294,29 @@ nav::after {
 .tag {
   font-family: var(--font-pixel); font-size: 0.33rem;
   padding: 0.48rem 0.85rem; letter-spacing: 0.06em;
-  transition: all 0.15s; border: 1px solid var(--grey-5);
-  color: var(--grey-3); background: transparent;
+  transition: all 0.2s; border: 1px solid;
+  background: transparent;
 }
-.tag:hover { transform: translate(-2px,-2px); color: var(--grey-1); border-color: var(--grey-3); }
-/* TAG HOVER COLORS — Spider-Verse palette */
-.tg-clo3d:hover  { background: #080808; border-color: #e16e4b; color: #e16e4b; }
-.tg-blender:hover{ background: #080808; border-color: #f9c767; color: #f9c767; }
-.tg-ue:hover     { background: #080808; border-color: #7b6fc9; color: #7b6fc9; }
-.tg-ai:hover     { background: #080808; border-color: #d96689; color: #d96689; }
-.tg-lux:hover    { background: #080808; border-color: #c98638; color: #c98638; }
-.tg-zb:hover     { background: #080808; border-color: #596098; color: #596098; }
-.tg-char:hover   { background: #080808; border-color: #9b3322; color: #9b3322; }
-.tg-wb:hover     { background: #080808; border-color: #384937; color: #384937; }
+
+/* DEFAULT — mỗi tag màu riêng, dim */
+.tg-clo3d { color: #9b654d; border-color: #57291f; }
+.tg-blender{ color: #b38c60; border-color: #654b2a; }
+.tg-ue    { color: #54559a; border-color: #2c2d58; }
+.tg-ai    { color: #9e354d; border-color: #422b33; }
+.tg-lux   { color: #9f5d2e; border-color: #563519; }
+.tg-zb    { color: #3b475e; border-color: #262637; }
+.tg-char  { color: #9b3322; border-color: #351915; }
+.tg-wb    { color: #384937; border-color: #262637; }
+
+/* HOVER — sáng lên, cùng hue */
+.tg-clo3d:hover  { background: #080808; border-color: #e16e4b; color: #e16e4b; transform: translate(-2px,-2px); }
+.tg-blender:hover{ background: #080808; border-color: #f9c767; color: #f9c767; transform: translate(-2px,-2px); }
+.tg-ue:hover     { background: #080808; border-color: #7b6fc9; color: #7b6fc9; transform: translate(-2px,-2px); }
+.tg-ai:hover     { background: #080808; border-color: #d96689; color: #d96689; transform: translate(-2px,-2px); }
+.tg-lux:hover    { background: #080808; border-color: #c98638; color: #c98638; transform: translate(-2px,-2px); }
+.tg-zb:hover     { background: #080808; border-color: #596098; color: #596098; transform: translate(-2px,-2px); }
+.tg-char:hover   { background: #080808; border-color: #9b3322; color: #c5212b; transform: translate(-2px,-2px); }
+.tg-wb:hover     { background: #080808; border-color: #384937; color: #7b8267; transform: translate(-2px,-2px); }
 
 .hero-ctas {
   display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
