@@ -1289,12 +1289,15 @@ for (let i = 0; i < 55; i++) {
   s.style.cssText = `width:${sz}px;height:${sz}px;background:${bright?'#ffffff':'#505050'};left:${Math.random()*100}%;top:${Math.random()*100}%;--d:${2+Math.random()*5}s;--delay:${Math.random()*4}s;`;
   starsEl.appendChild(s);
 }
-  // HERO EYEBROW — scale up on scroll
+ // HERO EYEBROW — scale up on scroll
 const eyebrow = document.querySelector('.hero-eyebrow');
 let ticking = false;
 
-// Chờ animation fade-in xong mới gắn scroll
+// Chờ animation CSS xong, rồi xóa nó đi để JS có thể control
 setTimeout(() => {
+  eyebrow.style.animation = 'none';  // ← xóa animation, giải phóng opacity
+  eyebrow.style.opacity = '1';       // ← set lại opacity = 1 thủ công
+
   window.addEventListener('scroll', () => {
     if (!ticking) {
       requestAnimationFrame(() => {
@@ -1310,7 +1313,7 @@ setTimeout(() => {
       ticking = true;
     }
   });
-}, 950); // đợi animation 0.2s delay + 0.7s duration = 0.9s
+}, 950);
    
 /* REVEAL */
 document.querySelectorAll('.reveal').forEach(r => {
