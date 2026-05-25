@@ -1290,13 +1290,6 @@ for (let i = 0; i < 55; i++) {
   s.style.cssText = `width:${sz}px;height:${sz}px;background:${bright?'#ffffff':'#505050'};left:${Math.random()*100}%;top:${Math.random()*100}%;--d:${2+Math.random()*5}s;--delay:${Math.random()*4}s;`;
   starsEl.appendChild(s);
 }
-
-/* REVEAL */
-document.querySelectorAll('.reveal').forEach(r => {
-  new IntersectionObserver(([e]) => { if (e.isIntersecting) e.target.classList.add('visible'); }, { threshold: 0.07 }).observe(r);
-});
-
-/* PROJECT DATA */
    // HERO EYEBROW — scale up on scroll
 const eyebrow = document.querySelector('.hero-eyebrow');
 let ticking = false;
@@ -1307,7 +1300,7 @@ window.addEventListener('scroll', () => {
       const scrollY = window.scrollY;
       const heroH = document.querySelector('.hero').offsetHeight;
       const progress = Math.min(scrollY / (heroH * 0.6), 1); // 0 → 1
-      const scale = 1 + progress * 2.5; // 1x → 3.5x
+      const scale = 1 + progress * 3.5; // 1x → 3.5x
       const opacity = 1 - progress * 0.85; // mờ dần khi scale to
       eyebrow.style.transform = `scale(${scale})`;
       eyebrow.style.opacity = opacity;
@@ -1316,6 +1309,14 @@ window.addEventListener('scroll', () => {
     ticking = true;
   }
 });
+   
+/* REVEAL */
+document.querySelectorAll('.reveal').forEach(r => {
+  new IntersectionObserver(([e]) => { if (e.isIntersecting) e.target.classList.add('visible'); }, { threshold: 0.07 }).observe(r);
+});
+
+/* PROJECT DATA */
+
 const pdata = {
   p1:  { color:'#808080', domain:'◆ FASHION DESIGN', title:'MacArthur',
     desc:`Conceptual costumes inspired by <em>The Mote in God's Eye</em>.<br><br>
