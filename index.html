@@ -536,6 +536,7 @@ etc. */
 .badge-recognized { background: var(--grey-2); color: var(--bg); }   /* ← accent-2 */
 
 /* ── MODAL ── */
+
 .modal-overlay {
   position: fixed; inset: 0; background: rgba(0,0,0,0.97);
   z-index: 1000; display: flex; align-items: center; justify-content: center;
@@ -544,9 +545,11 @@ etc. */
 .modal-overlay.active { opacity: 1; pointer-events: all; }
 .modal {
   width: 92vw; max-width: 1100px; max-height: 90vh;
-  background: var(--bg2); overflow-y: auto;
+  background: var(--bg2); overflow-y: scroll; /* đổi auto → scroll */
+  -webkit-overflow-scrolling: touch; /* iOS */
   transform: translateY(20px); transition: transform 0.3s;
   border: 1px solid var(--grey-5);
+  overscroll-behavior: contain; /* không scroll qua modal ra ngoài */
 }
 .modal-overlay.active .modal { transform: translateY(0); }
 .modal-stripe { height: 5px; background: var(--grey-3); }   /* ← per-project accent via JS */
@@ -1534,10 +1537,14 @@ function openModal(id) {
   document.getElementById('modal-desc').innerHTML = p.desc;
   document.getElementById('modal-overlay').classList.add('active');
   document.body.style.overflow = 'hidden';
+document.body.style.position = 'fixed';
+document.body.style.width = '100%';
 }
 function closeModal() {
   document.getElementById('modal-overlay').classList.remove('active');
-  document.body.style.overflow = '';
+document.body.style.overflow = '';
+document.body.style.position = '';
+document.body.style.width = '';
 }
 function handleOverlayClick(e) { if (e.target===document.getElementById('modal-overlay')) closeModal(); }
 
