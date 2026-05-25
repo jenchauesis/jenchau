@@ -404,8 +404,13 @@ section { position: relative; z-index: 1; }
 .portrait-detail { font-size: 0.82rem; color: var(--grey-3); line-height: 1.9; }
 
 /* ── PROJECTS ── */
-.projects { padding: 8rem 0; background: var( <img src="https://lh3.googleusercontent.com/d/1a-Gk-hxX2G6icsvMu7P7i0Ez6MpvyUQi" alt="">); }
-.projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px; }
+.projects {
+  padding: 8rem 0;
+  background:
+    linear-gradient(to bottom, rgba(8,8,8,0.82) 0%, rgba(8,8,8,0.75) 50%, rgba(8,8,8,0.88) 100%),
+    url('https://drive.google.com/thumbnail?id=1a-Gk-hxX2G6icsvMu7P7i0Ez6MpvyUQi&sz=w2000') center center / cover no-repeat;
+  background-attachment: fixed; /* parallax nhẹ */
+}
 .project-card {
   position: relative; background: var(--ink); overflow: hidden;
   cursor: auto !important; transition: transform 0.2s, box-shadow 0.2s;
