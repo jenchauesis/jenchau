@@ -298,25 +298,23 @@ nav::after {
   background: transparent;
 }
 
-/* DEFAULT — mỗi tag màu riêng, dim */
-.tg-clo3d { color: #9b654d; border-color: #57291f; }
-.tg-blender{ color: #b38c60; border-color: #654b2a; }
-.tg-ue    { color: #54559a; border-color: #2c2d58; }
-.tg-ai    { color: #9e354d; border-color: #422b33; }
-.tg-lux   { color: #9f5d2e; border-color: #563519; }
-.tg-zb    { color: #3b475e; border-color: #262637; }
-.tg-char  { color: #9b3322; border-color: #351915; }
-.tg-wb    { color: #384937; border-color: #262637; }
+.tg-clo3d  { color: var(--terra-3);  border-color: var(--terra-6); }
+.tg-blender{ color: var(--gold-9);   border-color: var(--gold-6); }
+.tg-ue     { color: var(--purple-4); border-color: var(--purple-7); }
+.tg-ai     { color: var(--red-2);    border-color: var(--dark-1); }
+.tg-lux    { color: var(--gold-6);   border-color: var(--terra-6); }
+.tg-zb     { color: var(--blue-6);   border-color: var(--mauve-5); }
+.tg-char   { color: var(--terra-4);  border-color: var(--dark-1); }
+.tg-wb     { color: var(--green-4);  border-color: var(--mauve-5); }
 
-/* HOVER — sáng lên, cùng hue */
-.tg-clo3d:hover  { background: #080808; border-color: #e16e4b; color: #e16e4b; transform: translate(-2px,-2px); }
-.tg-blender:hover{ background: #080808; border-color: #f9c767; color: #f9c767; transform: translate(-2px,-2px); }
-.tg-ue:hover     { background: #080808; border-color: #7b6fc9; color: #7b6fc9; transform: translate(-2px,-2px); }
-.tg-ai:hover     { background: #080808; border-color: #d96689; color: #d96689; transform: translate(-2px,-2px); }
-.tg-lux:hover    { background: #080808; border-color: #c98638; color: #c98638; transform: translate(-2px,-2px); }
-.tg-zb:hover     { background: #080808; border-color: #596098; color: #596098; transform: translate(-2px,-2px); }
-.tg-char:hover   { background: #080808; border-color: #9b3322; color: #c5212b; transform: translate(-2px,-2px); }
-.tg-wb:hover     { background: #080808; border-color: #384937; color: #7b8267; transform: translate(-2px,-2px); }
+.tg-clo3d:hover  { border-color: var(--terra-1);  color: var(--terra-1);  transform: translate(-2px,-2px); }
+.tg-blender:hover{ border-color: var(--gold-1);   color: var(--gold-1);   transform: translate(-2px,-2px); }
+.tg-ue:hover     { border-color: var(--purple-2); color: var(--purple-2); transform: translate(-2px,-2px); }
+.tg-ai:hover     { border-color: var(--red-3);    color: var(--red-3);    transform: translate(-2px,-2px); }
+.tg-lux:hover    { border-color: var(--gold-5);   color: var(--gold-5);   transform: translate(-2px,-2px); }
+.tg-zb:hover     { border-color: var(--blue-5);   color: var(--blue-5);   transform: translate(-2px,-2px); }
+.tg-char:hover   { border-color: var(--red-1);    color: var(--red-1);    transform: translate(-2px,-2px); }
+.tg-wb:hover     { border-color: var(--green-3);  color: var(--green-3);  transform: translate(-2px,-2px); }
 
 .hero-ctas {
   display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
