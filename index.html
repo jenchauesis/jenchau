@@ -243,6 +243,9 @@ nav::after {
   letter-spacing: 0.32em; margin-bottom: 2.5rem;
   color: var(--text-dimmer);
   opacity: 0; animation: fadeUp 0.7s ease 0.2s forwards;
+  transform-origin: center center; /* scale từ giữa ra */
+  will-change: transform, opacity;  /* performance hint */
+  pointer-events: none;
 }
 
 /* ── HERO TITLE — original style ── */
@@ -1294,6 +1297,25 @@ document.querySelectorAll('.reveal').forEach(r => {
 });
 
 /* PROJECT DATA */
+   // HERO EYEBROW — scale up on scroll
+const eyebrow = document.querySelector('.hero-eyebrow');
+let ticking = false;
+
+window.addEventListener('scroll', () => {
+  if (!ticking) {
+    requestAnimationFrame(() => {
+      const scrollY = window.scrollY;
+      const heroH = document.querySelector('.hero').offsetHeight;
+      const progress = Math.min(scrollY / (heroH * 0.6), 1); // 0 → 1
+      const scale = 1 + progress * 2.5; // 1x → 3.5x
+      const opacity = 1 - progress * 0.85; // mờ dần khi scale to
+      eyebrow.style.transform = `scale(${scale})`;
+      eyebrow.style.opacity = opacity;
+      ticking = false;
+    });
+    ticking = true;
+  }
+});
 const pdata = {
   p1:  { color:'#808080', domain:'◆ FASHION DESIGN', title:'MacArthur',
     desc:`Conceptual costumes inspired by <em>The Mote in God's Eye</em>.<br><br>
