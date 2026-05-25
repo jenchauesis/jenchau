@@ -202,6 +202,16 @@ nav::after {
 }
 .hero::before {
   content: '';
+  position: absolute; inset: 0;
+  background:
+    url('https://drive.google.com/thumbnail?id=1EQAJ8W6c45jHN5jVU3g10icqSS9IutvY&sz=w2000')
+    center center / cover no-repeat;
+  opacity: 0.08;
+  pointer-events: none;
+  z-index: 0;
+}
+.hero::after {
+  content: '';
   position: absolute; inset: 3px;
   border: 1px solid var(--grey-5);
   pointer-events: none; z-index: 3;
