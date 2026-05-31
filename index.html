@@ -436,13 +436,18 @@ section { position: relative; z-index: 1; }
 .projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px; }
 
 /* ── VIEW MORE ── */
-.projects-more-wrap {
+/* Spans all 3 grid columns as a divider row */
+.view-more-row {
+  grid-column: 1 / -1;
+  display: flex; flex-direction: column; align-items: center; gap: 1.2rem;
+  padding: 2.5rem 0 1.5rem;
+  border-top: 1px solid var(--grey-5);
   position: relative; z-index: 2;
-  display: flex; flex-direction: column; align-items: center; gap: 1.5rem;
-  padding: 3rem 0 1rem;
 }
-.projects-hidden { display: none; }
-.projects-hidden.revealed { display: contents; }
+.view-more-row.hidden { display: none; }
+
+/* Individual cards hidden until View More clicked */
+.project-card.hidden-project { display: none; }
 
 .view-more-btn {
   font-family: var(--font-pixel); font-size: 0.38rem;
@@ -963,7 +968,7 @@ footer { overflow: hidden; border-top: 1px solid var(--grey-5); }
       <div class="section-line"></div>
     </div>
 
-    <!-- VISIBLE PROJECTS (1–6) -->
+    <!-- ALL PROJECTS — 1 single grid -->
     <div class="projects-grid" id="projects-grid-main">
 
       <!-- P1 -->
@@ -1086,21 +1091,16 @@ footer { overflow: hidden; border-top: 1px solid var(--grey-5); }
         </div>
       </div>
 
-    </div><!-- /projects-grid-main -->
-
-    <!-- VIEW MORE BUTTON -->
-    <div class="projects-more-wrap">
-      <button class="view-more-btn" id="view-more-btn" onclick="revealMoreProjects()">
-        ▼ VIEW MORE WORK
-      </button>
-      <span class="view-more-count" id="view-more-count">+9 MORE PROJECTS</span>
-    </div>
-
-    <!-- HIDDEN PROJECTS (7–15) — shown after clicking View More -->
-    <div class="projects-grid projects-hidden" id="projects-grid-more">
+      <!-- VIEW MORE DIVIDER — spans full 3 cols inside the grid -->
+      <div class="view-more-row" id="view-more-row">
+        <button class="view-more-btn" id="view-more-btn" onclick="revealMoreProjects()">
+          ▼ VIEW MORE WORK
+        </button>
+        <span class="view-more-count" id="view-more-count">+9 MORE PROJECTS</span>
+      </div>
 
       <!-- P7 — OVERGROWN (visible, has images) -->
-      <div class="project-card pc-7 reveal" style="transition-delay:0.08s" onclick="openModal('p7')">
+      <div class="project-card pc-7 hidden-project reveal" style="transition-delay:0.08s" onclick="openModal('p7')">
         <div class="card-stripe"></div>
         <div class="project-thumb">
           <img src="https://drive.google.com/thumbnail?id=11lPwWZ4jmribCWL0kB3rEgSCCF725_0P&sz=w2000" alt="">
@@ -1120,7 +1120,7 @@ footer { overflow: hidden; border-top: 1px solid var(--grey-5); }
       </div>
 
       <!-- P8 — BEWILDERED GOLDFISH (visible, has images) -->
-      <div class="project-card pc-8 reveal" style="transition-delay:0.12s" onclick="openModal('p8')">
+      <div class="project-card pc-8 hidden-project reveal" style="transition-delay:0.12s" onclick="openModal('p8')">
         <div class="card-stripe"></div>
         <div class="project-thumb">
           <img src="https://drive.google.com/thumbnail?id=1QAW699siMvHJvTduOlnqjBQQdM4fAfEX&sz=w1000" alt="">
@@ -1140,7 +1140,7 @@ footer { overflow: hidden; border-top: 1px solid var(--grey-5); }
       </div>
 
       <!-- P9 — CINEMATIC COSTUME (visible, images coming soon) -->
-      <div class="project-card pc-9 reveal" style="transition-delay:0.16s" onclick="openModal('p9')">
+      <div class="project-card pc-9 hidden-project reveal" style="transition-delay:0.16s" onclick="openModal('p9')">
         <div class="card-stripe"></div>
         <div class="project-thumb">
           <img src="https://drive.google.com/thumbnail?id=1lOVGqpKJAL9UAisp3KhyoeH20tPXmSsN&sz=w2000" alt="">
@@ -1160,7 +1160,7 @@ footer { overflow: hidden; border-top: 1px solid var(--grey-5); }
       </div>
 
       <!-- P10 — PLACEHOLDER (hidden until images added) -->
-      <div class="project-card pc-10 placeholder reveal" style="transition-delay:0.20s">
+      <div class="project-card pc-10 hidden-project placeholder reveal" style="transition-delay:0.20s">
         <div class="card-stripe"></div>
         <div class="project-thumb" style="background:#0c0c0c;aspect-ratio:16/10;position:relative;">
           <div class="placeholder-overlay">
@@ -1180,7 +1180,7 @@ footer { overflow: hidden; border-top: 1px solid var(--grey-5); }
       </div>
 
       <!-- P11 — PLACEHOLDER -->
-      <div class="project-card pc-11 placeholder reveal" style="transition-delay:0.24s">
+      <div class="project-card pc-11 hidden-project placeholder reveal" style="transition-delay:0.24s">
         <div class="card-stripe"></div>
         <div class="project-thumb" style="background:#0c0c0c;aspect-ratio:16/10;position:relative;">
           <div class="placeholder-overlay">
@@ -1200,7 +1200,7 @@ footer { overflow: hidden; border-top: 1px solid var(--grey-5); }
       </div>
 
       <!-- P12 — PLACEHOLDER -->
-      <div class="project-card pc-12 placeholder reveal" style="transition-delay:0.28s">
+      <div class="project-card pc-12 hidden-project placeholder reveal" style="transition-delay:0.28s">
         <div class="card-stripe"></div>
         <div class="project-thumb" style="background:#0c0c0c;aspect-ratio:16/10;position:relative;">
           <div class="placeholder-overlay">
@@ -1220,7 +1220,7 @@ footer { overflow: hidden; border-top: 1px solid var(--grey-5); }
       </div>
 
       <!-- P13 — PLACEHOLDER -->
-      <div class="project-card pc-13 placeholder reveal" style="transition-delay:0.32s">
+      <div class="project-card pc-13 hidden-project placeholder reveal" style="transition-delay:0.32s">
         <div class="card-stripe"></div>
         <div class="project-thumb" style="background:#0c0c0c;aspect-ratio:16/10;position:relative;">
           <div class="placeholder-overlay">
@@ -1240,7 +1240,7 @@ footer { overflow: hidden; border-top: 1px solid var(--grey-5); }
       </div>
 
       <!-- P14 — PLACEHOLDER -->
-      <div class="project-card pc-14 placeholder reveal" style="transition-delay:0.36s">
+      <div class="project-card pc-14 hidden-project placeholder reveal" style="transition-delay:0.36s">
         <div class="card-stripe"></div>
         <div class="project-thumb" style="background:#0c0c0c;aspect-ratio:16/10;position:relative;">
           <div class="placeholder-overlay">
@@ -1260,7 +1260,7 @@ footer { overflow: hidden; border-top: 1px solid var(--grey-5); }
       </div>
 
       <!-- P15 — PLACEHOLDER -->
-      <div class="project-card pc-15 placeholder reveal" style="transition-delay:0.40s">
+      <div class="project-card pc-15 hidden-project placeholder reveal" style="transition-delay:0.40s">
         <div class="card-stripe"></div>
         <div class="project-thumb" style="background:#0c0c0c;aspect-ratio:16/10;position:relative;">
           <div class="placeholder-overlay">
@@ -1279,7 +1279,7 @@ footer { overflow: hidden; border-top: 1px solid var(--grey-5); }
         </div>
       </div>
 
-    </div><!-- /projects-grid-more -->
+    </div><!-- /projects-grid-main (single unified grid) -->
 
   </div>
 </section>
@@ -1526,16 +1526,13 @@ document.querySelectorAll('.reveal').forEach(r => {
 
 /* ── VIEW MORE ── */
 function revealMoreProjects() {
-  const grid = document.getElementById('projects-grid-more');
-  const btn = document.getElementById('view-more-btn');
-  const count = document.getElementById('view-more-count');
-  grid.classList.add('revealed');
-  btn.classList.add('hidden');
-  count.style.display = 'none';
-  // Re-trigger reveal animations for newly visible cards
-  grid.querySelectorAll('.reveal').forEach(r => {
-    setTimeout(() => r.classList.add('visible'), 80);
+  // Show all hidden cards
+  document.querySelectorAll('.hidden-project').forEach((card, i) => {
+    card.style.display = '';  // remove display:none
+    setTimeout(() => card.classList.add('visible'), i * 60 + 50);
   });
+  // Hide the view-more-row divider entirely
+  document.getElementById('view-more-row').classList.add('hidden');
 }
 
 /* ── PROJECT DATA ── */
