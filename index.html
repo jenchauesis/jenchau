@@ -1184,21 +1184,21 @@ footer { overflow: hidden; border-top: 1px solid var(--grey-5); }
       </div>
 
       <!-- P11 — PLACEHOLDER -->
-      <div class="project-card pc-11 placeholder reveal" style="transition-delay:0.24s">
+      <div class="project-card pc-10 reveal" style="transition-delay:0.20s" onclick="openModal('p11')">
         <div class="card-stripe"></div>
-        <div class="project-thumb" style="background:#0c0c0c;aspect-ratio:16/10;position:relative;">
-          <div class="placeholder-overlay">
-            <span class="ph-icon">◈</span>
-            <span class="ph-label">COMING SOON</span>
-          </div>
+        <div class="project-thumb">
+          <img src="https://drive.google.com/thumbnail?id=1uqRxDZqSpoWmduCQbVyg9rmGTp_8gv0H&sz=w2000" alt="">
+          <div class="project-thumb-overlay"></div>
+          <div class="project-hover-strip"></div>
         </div>
         <div class="project-info">
-          <div class="project-num">PROJECT 011</div>
-          <div class="project-domain domain-game">▶ GAME ART</div>
-          <h3 class="project-name">Project XI</h3>
-          <p class="project-desc">—</p>
+          <div class="project-num">PROJECT 010</div>
+          <div class="project-domain domain-both">✦ GAME × CHARACTER</div>
+          <h3 class="project-name">Velith — The Iron Moth</h3>
+          <p class="project-desc"></p>
           <div class="project-footer">
-            <div class="project-tags"><span class="ptag">TBD</span></div>
+            <div class="project-tags"><span class="ptag">WORLDBUILDING</span><span class="ptag">CHARACTER</span><span class="ptag">3D</span></div>
+            <button class="view-btn">VIEW ▶</button>
           </div>
         </div>
       </div>
@@ -1702,7 +1702,20 @@ From concept sketch to 3D sculpt, Aelindra embodies the MacArthur ethos: worldbu
       { class: 'wide', src: 'https://drive.google.com/thumbnail?id=1J5kkMqUOpWTgZ3kxSkg4AOCpWeTarq-O&sz=w2000' },
     ]
   },
-  /* ── P11–P15: placeholders ── */
+  p11: {
+    color: '#808080', domain: '✦ GAME × CHARACTER', title: 'Velith — The Iron Moth',
+    desc: `Where the Grasshopper was built for speed and camouflage, Velith was built for endurance and magnetism. She is Mute Planet's third documented lifeform — a being whose body is half-creature, half-mineral. Her skin has calcified over generations into a dense iron-fur membrane: thousands of micro-filaments that conduct heat, repel light, and shimmer with a ghostly iridescence in low frequencies.<br><br> 
+Her chest carries bioluminescent thermal nodes — the only organ on Mute Planet known to generate warmth independently of the planet's dying sun. The insect hands, each finger elongated into a talon-like chitinous claw, serve as both tool and weapon — fine enough to thread silk, strong enough to crack iron ore. Her crown is a skeletal butterfly mask fused directly to the skull: part headdress, part nervous system extension.<br><br> 
+Velith is imagined wholly from within — no reference, no archetype. A body that chose transformation not as metamorphosis, but as permanence.`,
+    meta: { Tools: 'ZBrush · Blender', Year: '2025', Type: 'Character Design', Domain: 'Game × Character' },
+    media: [
+{ class: 'wide',   video: 'https://drive.google.com/file/d/1lEaBa9gEVZgCMGVln092KknaCnxh8WpQ/preview' },
+{ class: 'medium', src: 'https://drive.google.com/thumbnail?id=1-6N6kKROuCHPDvT_7WIH8DHFmF_Etf2J&sz=w2000' },
+{ class: 'medium', src: 'https://drive.google.com/thumbnail?id=15AditoGFMN--UU0L6rmkpxzk6OtOFOal&sz=w2000' },
+{ class: 'wide', src: 'https://drive.google.com/thumbnail?id=1KJ4ALKbdo2VgH9dS_mbiJP5JcohnL38-&sz=w2000' },
+    ]
+  },
+  /* ── P12–P15: placeholders ── */
 };
 
 /* ── MODAL ── */
