@@ -488,7 +488,9 @@ section { position: relative; z-index: 1; }
   position: fixed; inset: 0; background: rgba(0,0,0,0.97);
   z-index: 1000; display: flex; align-items: center; justify-content: center;
   opacity: 0; pointer-events: none; transition: opacity 0.3s; backdrop-filter: blur(14px);
-  overflow-y: auto; overscroll-behavior: contain; touch-action: pan-y;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-y: contain;
 }
 .modal-overlay.active { opacity: 1; pointer-events: all; }
 .modal {
@@ -498,7 +500,6 @@ section { position: relative; z-index: 1; }
   transform: translateY(20px); transition: transform 0.3s;
   border: 1px solid var(--grey-5);
   overscroll-behavior: contain;
-  touch-action: pan-y;
 }
 
 .modal-overlay.active .modal { transform: translateY(0); }
@@ -675,8 +676,18 @@ footer { overflow: hidden; border-top: 1px solid var(--grey-5); }
 
 /* ── RESPONSIVE ── */
 @media (max-width: 768px) {
-  .modal-overlay { align-items: flex-start; justify-content: stretch; }
-  .modal { width: 100%; max-width: 100%; height: 100dvh; max-height: 100dvh; border-radius: 0; overflow-y: auto; -webkit-overflow-scrolling: touch; }
+  html.modal-open, body.modal-open { overflow: hidden; height: 100%; }
+  .modal-overlay {
+    display: block;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-y: contain;
+  }
+  .modal {
+    width: 100%; max-width: 100%;
+    height: auto; min-height: 100%; max-height: none;
+    border-radius: 0; overflow: visible;
+  }
   .modal-body { padding: 1.2rem; overflow: visible; }
   .modal-media-grid { grid-template-columns: 1fr; gap: 4px; }
   .modal-media-item.hero, .modal-media-item.wide, .modal-media-item.medium { grid-column: span 1; }
@@ -1691,6 +1702,14 @@ Velith is imagined wholly from within — no reference, no archetype. A body tha
 let pageScrollY = 0;
 function lockPageScroll() {
   pageScrollY = window.scrollY || window.pageYOffset;
+
+  // iOS / in-app browsers need the fixed overlay itself to remain the scroll container.
+  if (window.matchMedia('(max-width: 768px)').matches) {
+    document.documentElement.classList.add('modal-open');
+    document.body.classList.add('modal-open');
+    return;
+  }
+
   document.body.style.position = 'fixed';
   document.body.style.top = `-${pageScrollY}px`;
   document.body.style.left = '0';
@@ -1698,6 +1717,8 @@ function lockPageScroll() {
   document.body.style.width = '100%';
 }
 function unlockPageScroll() {
+  document.documentElement.classList.remove('modal-open');
+  document.body.classList.remove('modal-open');
   document.body.style.position = '';
   document.body.style.top = '';
   document.body.style.left = '';
@@ -1740,6 +1761,7 @@ function openModal(id) {
   const overlay = document.getElementById('modal-overlay');
   const modal = document.getElementById('modal');
   overlay.classList.add('active');
+  overlay.scrollTop = 0;
   modal.scrollTop = 0;
   lockPageScroll();
 }
