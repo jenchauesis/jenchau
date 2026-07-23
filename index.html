@@ -79,6 +79,49 @@ body::after {
 ::-webkit-scrollbar-track { background: var(--bg2); }
 ::-webkit-scrollbar-thumb { background: var(--grey-4); }
 
+
+/* ── DESKTOP VIEWING NOTICE ── */
+.desktop-notice {
+  position: absolute;
+  top: 5.7rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 8;
+
+  width: min(92vw, 760px);
+  padding: 0.65rem 1rem;
+
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  line-height: 1.55;
+  letter-spacing: 0.04em;
+  text-align: center;
+
+  color: rgba(239,239,239,0.58);
+  background: rgba(8,8,8,0.52);
+  border: 1px solid rgba(255,255,255,0.08);
+  backdrop-filter: blur(10px);
+
+  pointer-events: none;
+}
+
+.desktop-notice strong {
+  color: rgba(239,239,239,0.78);
+  font-weight: 400;
+}
+
+@media (max-width: 768px) {
+  .desktop-notice {
+    top: 4.7rem;
+    width: calc(100% - 2rem);
+    padding: 0.65rem 0.8rem;
+    font-size: 0.62rem;
+    line-height: 1.5;
+    color: rgba(239,239,239,0.68);
+    background: rgba(8,8,8,0.72);
+  }
+}
+
 /* ── NAV ── */
 nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
@@ -982,6 +1025,10 @@ footer { overflow: hidden; border-top: 1px solid var(--grey-5); }
 
 <!-- HERO -->
 <section class="hero" id="home">
+  <div class="desktop-notice">
+    <strong>For the best experience, please view this portfolio on a desktop or laptop.</strong>
+    Mobile support is still being improved, and some navigation features may not work as intended.
+  </div>
   <div class="stars" id="stars"></div>
 
   <div class="floater" style="left:6%;top:25%;color:var(--grey-4);--d:8s;--delay:0s;--fs:22px;">◆</div>
