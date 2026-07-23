@@ -488,6 +488,7 @@ section { position: relative; z-index: 1; }
   position: fixed; inset: 0; background: rgba(0,0,0,0.97);
   z-index: 1000; display: flex; align-items: center; justify-content: center;
   opacity: 0; pointer-events: none; transition: opacity 0.3s; backdrop-filter: blur(14px);
+  overflow-y: auto; overscroll-behavior: contain; touch-action: pan-y;
 }
 .modal-overlay.active { opacity: 1; pointer-events: all; }
 .modal {
@@ -497,7 +498,9 @@ section { position: relative; z-index: 1; }
   transform: translateY(20px); transition: transform 0.3s;
   border: 1px solid var(--grey-5);
   overscroll-behavior: contain;
+  touch-action: pan-y;
 }
+
 .modal-overlay.active .modal { transform: translateY(0); }
 .modal-stripe { height: 5px; background: var(--grey-3); }
 .modal-header {
@@ -529,6 +532,37 @@ section { position: relative; z-index: 1; }
 .meta-item { font-family: var(--font-pixel); font-size: 0.55rem; line-height: 2; letter-spacing: 0.1em; }
 .meta-label { color: var(--grey-4); display: block; }
 .meta-val { display: block; margin-top: 0.2rem; color: var(--grey-2); }
+
+/* ── PORTFOLIO DOCUMENTS ── */
+.portfolio-docs { padding: 8rem 0; background: var(--bg); }
+.portfolio-docs-intro {
+  max-width: 760px; margin: -2rem 0 3rem;
+  color: var(--text-dim); font-size: 0.92rem; line-height: 1.9;
+}
+.portfolio-docs-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+.portfolio-doc-card {
+  min-height: 280px; padding: 2rem; position: relative; overflow: hidden;
+  border: 1px solid var(--grey-5); background: rgba(255,255,255,0.015);
+  display: flex; flex-direction: column; justify-content: space-between;
+  transition: transform .25s, border-color .25s, background .25s;
+}
+.portfolio-doc-card:hover { transform: translateY(-4px); border-color: var(--grey-3); background: rgba(255,255,255,0.025); }
+.portfolio-doc-card::after {
+  content: attr(data-index); position: absolute; right: 1rem; bottom: -1.2rem;
+  font-family: var(--font-serif); font-size: 8rem; font-style: italic;
+  color: rgba(255,255,255,0.025); pointer-events: none;
+}
+.doc-kicker { font-family: var(--font-pixel); font-size: .46rem; letter-spacing: .12em; color: var(--grey-4); }
+.doc-title { font-family: var(--font-serif); font-size: clamp(2rem,4vw,3.2rem); font-style: italic; color: var(--grey-1); margin: 1.2rem 0 .8rem; }
+.doc-desc { max-width: 560px; font-size: .86rem; line-height: 1.85; color: var(--text-dim); }
+.doc-actions { display: flex; gap: .7rem; flex-wrap: wrap; margin-top: 2rem; position: relative; z-index: 1; }
+.doc-btn {
+  font-family: var(--font-pixel); font-size: .46rem; letter-spacing: .08em;
+  padding: .75rem 1rem; border: 1px solid var(--grey-4); background: transparent;
+  color: var(--grey-2); cursor: pointer; text-decoration: none; transition: all .15s;
+}
+.doc-btn:hover { transform: translate(-2px,-2px); background: var(--grey-1); color: var(--bg); }
+.doc-btn[aria-disabled="true"] { opacity: .45; cursor: not-allowed; }
 
 /* ── RECOMMENDATIONS ── */
 #recs { background: var(--bg3); padding: 8rem 0; position: relative; }
@@ -641,8 +675,9 @@ footer { overflow: hidden; border-top: 1px solid var(--grey-5); }
 
 /* ── RESPONSIVE ── */
 @media (max-width: 768px) {
-  .modal { width: 100vw; max-width: 100vw; max-height: 100vh; height: 100vh; border-radius: 0; -webkit-overflow-scrolling: touch; }
-  .modal-body { padding: 1.2rem; overflow-y: auto; -webkit-overflow-scrolling: touch; }
+  .modal-overlay { align-items: flex-start; justify-content: stretch; }
+  .modal { width: 100%; max-width: 100%; height: 100dvh; max-height: 100dvh; border-radius: 0; overflow-y: auto; -webkit-overflow-scrolling: touch; }
+  .modal-body { padding: 1.2rem; overflow: visible; }
   .modal-media-grid { grid-template-columns: 1fr; gap: 4px; }
   .modal-media-item.hero, .modal-media-item.wide, .modal-media-item.medium { grid-column: span 1; }
   .modal-header { padding: 1rem 1.2rem; }
@@ -661,6 +696,8 @@ footer { overflow: hidden; border-top: 1px solid var(--grey-5); }
   .project-card.featured { grid-column: span 1; }
   .ticker-row:nth-child(3) { display: none; }
   .recs-grid { grid-template-columns: 1fr; padding: 0 1rem; }
+  .portfolio-docs-grid { grid-template-columns: 1fr; }
+  .portfolio-doc-card { min-height: 240px; padding: 1.4rem; }
   .contact-links { flex-direction: column; align-items: center; }
   .contact-link { width: 100%; text-align: center; }
   .pdf-modal { width: 100vw; max-width: 100vw; height: 100vh; border-radius: 0; }
@@ -699,6 +736,7 @@ footer { overflow: hidden; border-top: 1px solid var(--grey-5); }
   <ul class="nav-links">
     <li><a href="#about">ABOUT</a></li>
     <li><a href="#projects">WORK</a></li>
+    <li><a href="#portfolios">PDF</a></li>
     <li><a href="#experience">EXP</a></li>
     <li><a href="#education">EDU</a></li>
     <li><a href="#contact">CONTACT</a></li>
@@ -1281,11 +1319,50 @@ footer { overflow: hidden; border-top: 1px solid var(--grey-5); }
   </div>
 </section>
 
+
+<!-- SPECIALIZED PORTFOLIOS -->
+<section class="portfolio-docs" id="portfolios">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-num">004</span>
+      <h2 class="section-title">Selected Portfolios</h2>
+      <div class="section-line"></div>
+    </div>
+    <p class="portfolio-docs-intro reveal">
+      Two focused documents for different types of opportunities. Choose the portfolio that best matches the role or collaboration.
+    </p>
+    <div class="portfolio-docs-grid">
+      <article class="portfolio-doc-card reveal" data-index="01">
+        <div>
+          <div class="doc-kicker">PRODUCTION · PIPELINE · 3D EXECUTION</div>
+          <h3 class="doc-title">Production Portfolio</h3>
+          <p class="doc-desc">Process-driven work, technical execution, production pipelines, real-time 3D, rendering, and project delivery.</p>
+        </div>
+        <div class="doc-actions">
+          <button class="doc-btn" onclick="openPDF('production-portfolio')">↗ VIEW PDF</button>
+          <a class="doc-btn" id="production-download" href="#" target="_blank" rel="noopener" aria-disabled="true">↓ OPEN FILE</a>
+        </div>
+      </article>
+      <article class="portfolio-doc-card reveal" data-index="02">
+        <div>
+          <div class="doc-kicker">GRAPHIC DESIGN · ART DIRECTION · VISUAL SYSTEMS</div>
+          <h3 class="doc-title">Graphic Portfolio</h3>
+          <p class="doc-desc">Branding, layout, communication design, visual identity, editorial composition, and graphic experimentation.</p>
+        </div>
+        <div class="doc-actions">
+          <button class="doc-btn" onclick="openPDF('graphic-portfolio')">↗ VIEW PDF</button>
+          <a class="doc-btn" id="graphic-download" href="#" target="_blank" rel="noopener" aria-disabled="true">↓ OPEN FILE</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
 <!-- RECOMMENDATIONS -->
 <section id="recs">
   <div class="s-head">
     <div class="section-header reveal">
-      <span class="section-num">004</span>
+      <span class="section-num">005</span>
       <h2 class="section-title">References</h2>
       <div class="section-line"></div>
     </div>
@@ -1610,6 +1687,25 @@ Velith is imagined wholly from within — no reference, no archetype. A body tha
 };
 
 /* ── MODAL ── */
+
+let pageScrollY = 0;
+function lockPageScroll() {
+  pageScrollY = window.scrollY || window.pageYOffset;
+  document.body.style.position = 'fixed';
+  document.body.style.top = `-${pageScrollY}px`;
+  document.body.style.left = '0';
+  document.body.style.right = '0';
+  document.body.style.width = '100%';
+}
+function unlockPageScroll() {
+  document.body.style.position = '';
+  document.body.style.top = '';
+  document.body.style.left = '';
+  document.body.style.right = '';
+  document.body.style.width = '';
+  window.scrollTo(0, pageScrollY);
+}
+
 function openModal(id) {
   const p = pdata[id];
   if (!p) return;
@@ -1641,17 +1737,18 @@ function openModal(id) {
   });
 
   document.getElementById('modal-desc').innerHTML = p.desc;
-  document.getElementById('modal-overlay').classList.add('active');
-  document.body.style.overflow = 'hidden';
-  document.body.style.position = 'fixed';
-  document.body.style.width = '100%';
+  const overlay = document.getElementById('modal-overlay');
+  const modal = document.getElementById('modal');
+  overlay.classList.add('active');
+  modal.scrollTop = 0;
+  lockPageScroll();
 }
 
 function closeModal() {
-  document.getElementById('modal-overlay').classList.remove('active');
-  document.body.style.overflow = '';
-  document.body.style.position = '';
-  document.body.style.width = '';
+  const overlay = document.getElementById('modal-overlay');
+  if (!overlay.classList.contains('active')) return;
+  overlay.classList.remove('active');
+  unlockPageScroll();
 }
 
 function handleOverlayClick(e) {
@@ -1663,25 +1760,52 @@ const pdfLinks = {
   'delvaux-rdi': 'https://drive.google.com/file/d/16TUr4AN8802do1tzaGu-yuICOuHyhDxH/preview',
   'delvaux-3d':  'https://drive.google.com/file/d/1hLpapvLrolOZasXCSUNSQZXaLhYznntk/preview',
   'aix3d':       'https://drive.google.com/file/d/1xrqfDhVAtu1-saGaqIGGkb6H2pvC5Xiw/preview',
+  // Replace these two placeholders with your Google Drive /preview links.
+  'production-portfolio': '',
+  'graphic-portfolio': '',
 };
 const pdfTitles = {
   'delvaux-rdi': 'DELVAUX — RD&I · VINCENT GUILLET',
   'delvaux-3d':  'DELVAUX — DIGITAL 3D · SAM GOOSSENS BARA',
   'aix3d':       'AiX3D PARIS · GUY PONTAL',
+  'production-portfolio': 'PRODUCTION PORTFOLIO',
+  'graphic-portfolio': 'GRAPHIC PORTFOLIO',
 };
 
 function openPDF(id) {
-  document.getElementById('pdf-frame').src = pdfLinks[id];
+  const url = pdfLinks[id];
+  if (!url) {
+    alert('Add the PDF Google Drive /preview link in pdfLinks first.');
+    return;
+  }
+  document.getElementById('pdf-frame').src = url;
   document.getElementById('pdf-modal-title').textContent = pdfTitles[id];
   document.getElementById('pdf-overlay').classList.add('active');
-  document.body.style.overflow = 'hidden';
+  lockPageScroll();
 }
 
 function closePDF() {
-  document.getElementById('pdf-overlay').classList.remove('active');
+  const overlay = document.getElementById('pdf-overlay');
+  if (!overlay.classList.contains('active')) return;
+  overlay.classList.remove('active');
   document.getElementById('pdf-frame').src = '';
-  document.body.style.overflow = '';
+  unlockPageScroll();
 }
+
+function configurePortfolioLinks() {
+  const pairs = [
+    ['production-download', 'production-portfolio'],
+    ['graphic-download', 'graphic-portfolio']
+  ];
+  pairs.forEach(([elementId, pdfId]) => {
+    const link = document.getElementById(elementId);
+    const previewUrl = pdfLinks[pdfId];
+    if (!link || !previewUrl) return;
+    link.href = previewUrl.replace('/preview', '/view');
+    link.removeAttribute('aria-disabled');
+  });
+}
+configurePortfolioLinks();
 
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape') { closeModal(); closePDF(); }
