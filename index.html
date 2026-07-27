@@ -388,6 +388,34 @@ section { position: relative; z-index: 1; }
 
 .projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px; }
 
+.work-category { margin-bottom: 6rem; }
+.work-category:last-child { margin-bottom: 0; }
+.work-category-header {
+  display: flex; align-items: flex-end; justify-content: space-between; gap: 2rem;
+  margin-bottom: 1.8rem; padding-bottom: 1rem; border-bottom: 1px solid var(--grey-5);
+}
+.work-category-title {
+  font-family: var(--font-serif); font-size: clamp(1.8rem, 4vw, 3rem);
+  font-style: italic; color: var(--grey-1);
+}
+.work-category-kicker {
+  font-family: var(--font-pixel); font-size: 0.46rem; letter-spacing: 0.12em;
+  color: var(--grey-4); margin-bottom: 0.55rem;
+}
+.work-category-desc {
+  max-width: 540px; font-size: 0.82rem; line-height: 1.8;
+  color: var(--text-dim); text-align: right;
+}
+.vm-project-card { border-color: var(--grey-5); }
+.vm-project-card .card-stripe { background: var(--grey-2); }
+.vm-project-card .project-domain { color: var(--grey-2); }
+.vm-slot-label {
+  position: absolute; top: 1rem; left: 1rem; z-index: 6;
+  font-family: var(--font-pixel); font-size: 0.38rem; letter-spacing: 0.08em;
+  padding: 0.45rem 0.65rem; background: rgba(8,8,8,0.82);
+  color: var(--grey-2); border: 1px solid var(--grey-5);
+}
+
 .view-more-row {
   grid-column: 1 / -1;
   display: flex; flex-direction: column; align-items: center; gap: 1.2rem;
@@ -973,6 +1001,8 @@ footer { overflow: hidden; border-top: 1px solid var(--grey-5); }
   .hero-tags { gap: 0.4rem; }
   .tag { font-size: 0.36rem; padding: 0.4rem 0.65rem; }
   .projects-grid { grid-template-columns: 1fr; gap: 2px; }
+  .work-category-header { align-items: flex-start; flex-direction: column; gap: 0.8rem; }
+  .work-category-desc { text-align: left; }
   .project-card.featured { grid-column: span 1; }
   .ticker-row:nth-child(3) { display: none; }
   .recs-grid { grid-template-columns: 1fr; padding: 0 1rem; }
@@ -1015,7 +1045,8 @@ footer { overflow: hidden; border-top: 1px solid var(--grey-5); }
   </div>
   <ul class="nav-links">
     <li><a href="#about">ABOUT</a></li>
-    <li><a href="#projects">WORK</a></li>
+    <li><a href="#vm-work">VM</a></li>
+    <li><a href="#art-work">ART</a></li>
     <li><a href="#portfolios">PDF</a></li>
     <li><a href="#experience">EXP</a></li>
     <li><a href="#education">EDU</a></li>
@@ -1194,6 +1225,80 @@ footer { overflow: hidden; border-top: 1px solid var(--grey-5); }
       <h2 class="section-title">Selected Work</h2>
       <div class="section-line"></div>
     </div>
+
+    <!-- VISUAL MERCHANDISING / SPATIAL DESIGN -->
+    <div class="work-category" id="vm-work">
+      <div class="work-category-header reveal">
+        <div>
+          <div class="work-category-kicker">01 / SPECIALIZED PORTFOLIO</div>
+          <h3 class="work-category-title">Visual Merchandising & Spatial Design</h3>
+        </div>
+        <p class="work-category-desc">Luxury retail concepts, window displays, pop-ups and branded spatial experiences developed through 3D visualization.</p>
+      </div>
+
+      <div class="projects-grid" id="vm-projects-grid">
+        <!-- VM PROJECT 01: Chỉ thay URL trong src của ảnh thumbnail và trong pdata.vm1.media bên dưới -->
+        <div class="project-card vm-project-card reveal" onclick="openModal('vm1')">
+          <div class="card-stripe"></div>
+          <div class="project-thumb">
+            <img src="https://drive.google.com/uc?export=view&id=1h4ODCa0bIw9gb6jq8LaKO_Tca5ng5Yfm' width='1600' height='1000' viewBox='0 0 1600 1000'%3E%3Crect width='1600' height='1000' fill='%230c0c0c'/%3E%3Crect x='35' y='35' width='1530' height='930' fill='none' stroke='%23404040' stroke-width='3' stroke-dasharray='18 14'/%3E%3Ctext x='800' y='470' fill='%23808080' font-family='monospace' font-size='42' text-anchor='middle'%3ETHUMBNAIL 16:10%3C/text%3E%3Ctext x='800' y='535' fill='%23555555' font-family='monospace' font-size='25' text-anchor='middle'%3EREPLACE ONLY THIS IMG SRC%3C/text%3E%3C/svg%3E" alt="Luxury flagship store project thumbnail">
+            <div class="project-thumb-overlay"></div>
+            <span class="vm-slot-label">VM PROJECT 01</span>
+          </div>
+          <div class="project-info">
+            <div class="project-num">VM PROJECT 001</div>
+            <div class="project-domain">◆ RETAIL DESIGN / VISUAL MERCHANDISING</div>
+            <h3 class="project-name">Luxury Flagship Store</h3>
+            <p class="project-desc">Reserved for a complete luxury retail concept: customer journey, product zoning, materials, lighting and hero display moments.</p>
+            <div class="project-footer"><div class="project-tags"><span class="ptag">SKETCHUP</span><span class="ptag">RETAIL</span><span class="ptag">LIGHTING</span></div></div>
+          </div>
+        </div>
+
+        <!-- VM PROJECT 02: Chỉ thay URL trong src của ảnh thumbnail và trong pdata.vm2.media bên dưới -->
+        <div class="project-card vm-project-card reveal" onclick="openModal('vm2')" style="transition-delay:0.08s">
+          <div class="card-stripe"></div>
+          <div class="project-thumb">
+            <img src="data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1600' height='1000' viewBox='0 0 1600 1000'%3E%3Crect width='1600' height='1000' fill='%230c0c0c'/%3E%3Crect x='35' y='35' width='1530' height='930' fill='none' stroke='%23404040' stroke-width='3' stroke-dasharray='18 14'/%3E%3Ctext x='800' y='470' fill='%23808080' font-family='monospace' font-size='42' text-anchor='middle'%3ETHUMBNAIL 16:10%3C/text%3E%3Ctext x='800' y='535' fill='%23555555' font-family='monospace' font-size='25' text-anchor='middle'%3EREPLACE ONLY THIS IMG SRC%3C/text%3E%3C/svg%3E" alt="Window display project thumbnail">
+            <div class="project-thumb-overlay"></div>
+            <span class="vm-slot-label">VM PROJECT 02</span>
+          </div>
+          <div class="project-info">
+            <div class="project-num">VM PROJECT 002</div>
+            <div class="project-domain">◆ WINDOW DISPLAY / CAMPAIGN</div>
+            <h3 class="project-name">Seasonal Window Display</h3>
+            <p class="project-desc">Reserved for a campaign-led window concept combining storytelling, product hierarchy, props, graphic elements and nighttime lighting.</p>
+            <div class="project-footer"><div class="project-tags"><span class="ptag">VM</span><span class="ptag">STORYTELLING</span><span class="ptag">CAMPAIGN</span></div></div>
+          </div>
+        </div>
+
+        <!-- VM PROJECT 03: Chỉ thay URL trong src của ảnh thumbnail và trong pdata.vm3.media bên dưới -->
+        <div class="project-card vm-project-card reveal" onclick="openModal('vm3')" style="transition-delay:0.12s">
+          <div class="card-stripe"></div>
+          <div class="project-thumb">
+            <img src="data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1600' height='1000' viewBox='0 0 1600 1000'%3E%3Crect width='1600' height='1000' fill='%230c0c0c'/%3E%3Crect x='35' y='35' width='1530' height='930' fill='none' stroke='%23404040' stroke-width='3' stroke-dasharray='18 14'/%3E%3Ctext x='800' y='470' fill='%23808080' font-family='monospace' font-size='42' text-anchor='middle'%3ETHUMBNAIL 16:10%3C/text%3E%3Ctext x='800' y='535' fill='%23555555' font-family='monospace' font-size='25' text-anchor='middle'%3EREPLACE ONLY THIS IMG SRC%3C/text%3E%3C/svg%3E" alt="Pop-up experience project thumbnail">
+            <div class="project-thumb-overlay"></div>
+            <span class="vm-slot-label">VM PROJECT 03</span>
+          </div>
+          <div class="project-info">
+            <div class="project-num">VM PROJECT 003</div>
+            <div class="project-domain">◆ POP-UP / BRAND EXPERIENCE</div>
+            <h3 class="project-name">Immersive Pop-up Space</h3>
+            <p class="project-desc">Reserved for an experiential pop-up featuring a strong central installation, social-media moments and adaptable merchandising modules.</p>
+            <div class="project-footer"><div class="project-tags"><span class="ptag">3D SPACE</span><span class="ptag">EXPERIENCE</span><span class="ptag">BRANDING</span></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DIGITAL FASHION / GAME ART -->
+    <div class="work-category" id="art-work">
+      <div class="work-category-header reveal">
+        <div>
+          <div class="work-category-kicker">02 / CORE ARTWORK</div>
+          <h3 class="work-category-title">Digital Fashion & Game Art</h3>
+        </div>
+        <p class="work-category-desc">Character, costume, fashion and cinematic 3D projects across CLO3D, Blender and real-time pipelines.</p>
+      </div>
 
     <div class="projects-grid" id="projects-grid-main">
 
@@ -1503,6 +1608,7 @@ footer { overflow: hidden; border-top: 1px solid var(--grey-5); }
       </div><!-- /more-projects-wrap -->
 
     </div><!-- /projects-grid-main -->
+    </div><!-- /art-work -->
 
   </div>
 </section>
@@ -1798,6 +1904,50 @@ function revealMoreProjects() {
 
 /* ── PROJECT DATA ── */
 const pdata = {
+  /* ================================================================
+     VM IMAGE SLOTS — SAFE EDITING
+     - Replace ONLY the text between src: '...' for each image.
+     - class: 'hero' or 'wide' = full-width horizontal image.
+     - class: 'medium' = half-width image on desktop, full-width mobile.
+     - Recommended export: JPG/WebP, 1600–2400 px wide.
+     - Add more images by duplicating one complete { class, src } line.
+     ================================================================ */
+  vm1: {
+    color: '#b68238', domain: '◆ RETAIL DESIGN / VISUAL MERCHANDISING', title: 'Luxury Flagship Store',
+    desc: ``,
+    meta: { Tools: 'SketchUp · Blender · Adobe', Year: '2026', Type: 'Flagship Store Concept', Role: 'Visual Merchandising · 3D Visualization' },
+    media: [
+      { class: 'hero', src: 'https://drive.google.com/uc?export=view&id=1h4ODCa0bIw9gb6jq8LaKO_Tca5ng5Yfm' width='1600' height='1000' viewBox='0 0 1600 1000'%3E%3Crect width='1600' height='1000' fill='%23070707'/%3E%3Crect x='35' y='35' width='1530' height='930' fill='none' stroke='%23404040' stroke-width='3' stroke-dasharray='18 14'/%3E%3Ctext x='800' y='470' fill='%23808080' font-family='monospace' font-size='42' text-anchor='middle'%3EPROJECT IMAGE%3C/text%3E%3Ctext x='800' y='535' fill='%23555555' font-family='monospace' font-size='25' text-anchor='middle'%3EREPLACE THE src URL ONLY%3C/text%3E%3C/svg%3E' },
+      { class: 'medium', src: 'https://drive.google.com/uc?export=view&id=1L1u1AporUBnRzCBtmUSFHREubgKFvOTM' width='1600' height='1000' viewBox='0 0 1600 1000'%3E%3Crect width='1600' height='1000' fill='%23070707'/%3E%3Crect x='35' y='35' width='1530' height='930' fill='none' stroke='%23404040' stroke-width='3' stroke-dasharray='18 14'/%3E%3Ctext x='800' y='470' fill='%23808080' font-family='monospace' font-size='42' text-anchor='middle'%3EPROJECT IMAGE%3C/text%3E%3Ctext x='800' y='535' fill='%23555555' font-family='monospace' font-size='25' text-anchor='middle'%3EREPLACE THE src URL ONLY%3C/text%3E%3C/svg%3E' },
+      { class: 'medium', src: 'https://drive.google.com/uc?export=view&id=1egiudOHm2veHLfw0HAeYhTcIup93aYA7' width='1600' height='1000' viewBox='0 0 1600 1000'%3E%3Crect width='1600' height='1000' fill='%23070707'/%3E%3Crect x='35' y='35' width='1530' height='930' fill='none' stroke='%23404040' stroke-width='3' stroke-dasharray='18 14'/%3E%3Ctext x='800' y='470' fill='%23808080' font-family='monospace' font-size='42' text-anchor='middle'%3EPROJECT IMAGE%3C/text%3E%3Ctext x='800' y='535' fill='%23555555' font-family='monospace' font-size='25' text-anchor='middle'%3EREPLACE THE src URL ONLY%3C/text%3E%3C/svg%3E' },
+      { class: 'medium', src: 'https://drive.google.com/uc?export=view&id=1gYG0mkHxtzxrD40KWSRj-Ym21n7blZ1L' width='1600' height='1000' viewBox='0 0 1600 1000'%3E%3Crect width='1600' height='1000' fill='%23070707'/%3E%3Crect x='35' y='35' width='1530' height='930' fill='none' stroke='%23404040' stroke-width='3' stroke-dasharray='18 14'/%3E%3Ctext x='800' y='470' fill='%23808080' font-family='monospace' font-size='42' text-anchor='middle'%3EPROJECT IMAGE%3C/text%3E%3Ctext x='800' y='535' fill='%23555555' font-family='monospace' font-size='25' text-anchor='middle'%3EREPLACE THE src URL ONLY%3C/text%3E%3C/svg%3E' },
+      { class: 'medium', src: 'https://drive.google.com/uc?export=view&id=1OuSxTkDocEgllqusKih6JjrGIDuPwcQ0' width='1600' height='1000' viewBox='0 0 1600 1000'%3E%3Crect width='1600' height='1000' fill='%23070707'/%3E%3Crect x='35' y='35' width='1530' height='930' fill='none' stroke='%23404040' stroke-width='3' stroke-dasharray='18 14'/%3E%3Ctext x='800' y='470' fill='%23808080' font-family='monospace' font-size='42' text-anchor='middle'%3EPROJECT IMAGE%3C/text%3E%3Ctext x='800' y='535' fill='%23555555' font-family='monospace' font-size='25' text-anchor='middle'%3EREPLACE THE src URL ONLY%3C/text%3E%3C/svg%3E' },
+    ]
+  },
+  vm2: {
+    color: '#808080', domain: '◆ WINDOW DISPLAY / CAMPAIGN', title: 'Seasonal Window Display',
+    desc: `Replace this text with the campaign story, product focus, window composition, prop development, graphics and day-to-night lighting approach.`,
+    meta: { Tools: 'Blender · Photoshop · Illustrator', Year: '2026', Type: 'Window Display Concept', Role: 'Concept · Art Direction · Visualization' },
+    media: [
+      { class: 'hero', src: 'data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1600' height='1000' viewBox='0 0 1600 1000'%3E%3Crect width='1600' height='1000' fill='%23070707'/%3E%3Crect x='35' y='35' width='1530' height='930' fill='none' stroke='%23404040' stroke-width='3' stroke-dasharray='18 14'/%3E%3Ctext x='800' y='470' fill='%23808080' font-family='monospace' font-size='42' text-anchor='middle'%3EPROJECT IMAGE%3C/text%3E%3Ctext x='800' y='535' fill='%23555555' font-family='monospace' font-size='25' text-anchor='middle'%3EREPLACE THE src URL ONLY%3C/text%3E%3C/svg%3E' },
+      { class: 'medium', src: 'data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1600' height='1000' viewBox='0 0 1600 1000'%3E%3Crect width='1600' height='1000' fill='%23070707'/%3E%3Crect x='35' y='35' width='1530' height='930' fill='none' stroke='%23404040' stroke-width='3' stroke-dasharray='18 14'/%3E%3Ctext x='800' y='470' fill='%23808080' font-family='monospace' font-size='42' text-anchor='middle'%3EPROJECT IMAGE%3C/text%3E%3Ctext x='800' y='535' fill='%23555555' font-family='monospace' font-size='25' text-anchor='middle'%3EREPLACE THE src URL ONLY%3C/text%3E%3C/svg%3E' },
+      { class: 'medium', src: 'data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1600' height='1000' viewBox='0 0 1600 1000'%3E%3Crect width='1600' height='1000' fill='%23070707'/%3E%3Crect x='35' y='35' width='1530' height='930' fill='none' stroke='%23404040' stroke-width='3' stroke-dasharray='18 14'/%3E%3Ctext x='800' y='470' fill='%23808080' font-family='monospace' font-size='42' text-anchor='middle'%3EPROJECT IMAGE%3C/text%3E%3Ctext x='800' y='535' fill='%23555555' font-family='monospace' font-size='25' text-anchor='middle'%3EREPLACE THE src URL ONLY%3C/text%3E%3C/svg%3E' },
+      { class: 'wide', src: 'data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1600' height='1000' viewBox='0 0 1600 1000'%3E%3Crect width='1600' height='1000' fill='%23070707'/%3E%3Crect x='35' y='35' width='1530' height='930' fill='none' stroke='%23404040' stroke-width='3' stroke-dasharray='18 14'/%3E%3Ctext x='800' y='470' fill='%23808080' font-family='monospace' font-size='42' text-anchor='middle'%3EPROJECT IMAGE%3C/text%3E%3Ctext x='800' y='535' fill='%23555555' font-family='monospace' font-size='25' text-anchor='middle'%3EREPLACE THE src URL ONLY%3C/text%3E%3C/svg%3E' },
+    ]
+  },
+  vm3: {
+    color: '#596098', domain: '◆ POP-UP / BRAND EXPERIENCE', title: 'Immersive Pop-up Space',
+    desc: `Replace this text with the pop-up objective, visitor journey, central installation, social-media moments and modular merchandising system.`,
+    meta: { Tools: 'SketchUp · Blender · Unreal Engine', Year: '2026', Type: 'Pop-up Experience', Role: 'Spatial Concept · 3D Design' },
+    media: [
+      { class: 'hero', src: 'data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1600' height='1000' viewBox='0 0 1600 1000'%3E%3Crect width='1600' height='1000' fill='%23070707'/%3E%3Crect x='35' y='35' width='1530' height='930' fill='none' stroke='%23404040' stroke-width='3' stroke-dasharray='18 14'/%3E%3Ctext x='800' y='470' fill='%23808080' font-family='monospace' font-size='42' text-anchor='middle'%3EPROJECT IMAGE%3C/text%3E%3Ctext x='800' y='535' fill='%23555555' font-family='monospace' font-size='25' text-anchor='middle'%3EREPLACE THE src URL ONLY%3C/text%3E%3C/svg%3E' },
+      { class: 'medium', src: 'data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1600' height='1000' viewBox='0 0 1600 1000'%3E%3Crect width='1600' height='1000' fill='%23070707'/%3E%3Crect x='35' y='35' width='1530' height='930' fill='none' stroke='%23404040' stroke-width='3' stroke-dasharray='18 14'/%3E%3Ctext x='800' y='470' fill='%23808080' font-family='monospace' font-size='42' text-anchor='middle'%3EPROJECT IMAGE%3C/text%3E%3Ctext x='800' y='535' fill='%23555555' font-family='monospace' font-size='25' text-anchor='middle'%3EREPLACE THE src URL ONLY%3C/text%3E%3C/svg%3E' },
+      { class: 'medium', src: 'data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1600' height='1000' viewBox='0 0 1600 1000'%3E%3Crect width='1600' height='1000' fill='%23070707'/%3E%3Crect x='35' y='35' width='1530' height='930' fill='none' stroke='%23404040' stroke-width='3' stroke-dasharray='18 14'/%3E%3Ctext x='800' y='470' fill='%23808080' font-family='monospace' font-size='42' text-anchor='middle'%3EPROJECT IMAGE%3C/text%3E%3Ctext x='800' y='535' fill='%23555555' font-family='monospace' font-size='25' text-anchor='middle'%3EREPLACE THE src URL ONLY%3C/text%3E%3C/svg%3E' },
+      { class: 'wide', src: 'data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1600' height='1000' viewBox='0 0 1600 1000'%3E%3Crect width='1600' height='1000' fill='%23070707'/%3E%3Crect x='35' y='35' width='1530' height='930' fill='none' stroke='%23404040' stroke-width='3' stroke-dasharray='18 14'/%3E%3Ctext x='800' y='470' fill='%23808080' font-family='monospace' font-size='42' text-anchor='middle'%3EPROJECT IMAGE%3C/text%3E%3Ctext x='800' y='535' fill='%23555555' font-family='monospace' font-size='25' text-anchor='middle'%3EREPLACE THE src URL ONLY%3C/text%3E%3C/svg%3E' },
+      { class: 'medium', src: 'data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1600' height='1000' viewBox='0 0 1600 1000'%3E%3Crect width='1600' height='1000' fill='%23070707'/%3E%3Crect x='35' y='35' width='1530' height='930' fill='none' stroke='%23404040' stroke-width='3' stroke-dasharray='18 14'/%3E%3Ctext x='800' y='470' fill='%23808080' font-family='monospace' font-size='42' text-anchor='middle'%3EPROJECT IMAGE%3C/text%3E%3Ctext x='800' y='535' fill='%23555555' font-family='monospace' font-size='25' text-anchor='middle'%3EREPLACE THE src URL ONLY%3C/text%3E%3C/svg%3E' },
+      { class: 'medium', src: 'data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1600' height='1000' viewBox='0 0 1600 1000'%3E%3Crect width='1600' height='1000' fill='%23070707'/%3E%3Crect x='35' y='35' width='1530' height='930' fill='none' stroke='%23404040' stroke-width='3' stroke-dasharray='18 14'/%3E%3Ctext x='800' y='470' fill='%23808080' font-family='monospace' font-size='42' text-anchor='middle'%3EPROJECT IMAGE%3C/text%3E%3Ctext x='800' y='535' fill='%23555555' font-family='monospace' font-size='25' text-anchor='middle'%3EREPLACE THE src URL ONLY%3C/text%3E%3C/svg%3E' },
+    ]
+  },
   p1: {
     color: '#808080', domain: '◆ FASHION DESIGN', title: 'MacArthur',
     desc: `Conceptual costumes inspired by <em>The Mote in God's Eye</em>.<br><br>
