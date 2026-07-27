@@ -409,6 +409,60 @@ section { position: relative; z-index: 1; }
 .vm-project-card { border-color: var(--grey-5); }
 .vm-project-card .card-stripe { background: var(--grey-2); }
 .vm-project-card .project-domain { color: var(--grey-2); }
+
+/* ── PACKSHOT CATEGORY ── */
+.packshot-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+.packshot-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(320px, 0.65fr);
+  min-height: 390px;
+}
+.packshot-card .card-stripe {
+  grid-column: 1 / -1;
+}
+.packshot-card .project-thumb {
+  grid-column: 1;
+  grid-row: 2;
+  aspect-ratio: auto;
+  min-height: 390px;
+}
+.packshot-card .project-info {
+  grid-column: 2;
+  grid-row: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2.4rem;
+}
+.packshot-card .project-name {
+  font-size: clamp(1.8rem, 4vw, 3rem);
+}
+.packshot-card .project-desc {
+  max-width: 560px;
+}
+@media (max-width: 900px) {
+  .packshot-card {
+    grid-template-columns: 1fr;
+    min-height: 0;
+  }
+  .packshot-card .card-stripe {
+    grid-column: 1;
+  }
+  .packshot-card .project-thumb {
+    grid-column: 1;
+    grid-row: auto;
+    min-height: 0;
+    aspect-ratio: 16 / 9;
+  }
+  .packshot-card .project-info {
+    grid-column: 1;
+    grid-row: auto;
+  }
+}
+
 .vm-slot-label {
   position: absolute; top: 1rem; left: 1rem; z-index: 6;
   font-family: var(--font-pixel); font-size: 0.38rem; letter-spacing: 0.08em;
@@ -1046,6 +1100,7 @@ footer { overflow: hidden; border-top: 1px solid var(--grey-5); }
   <ul class="nav-links">
     <li><a href="#about">ABOUT</a></li>
     <li><a href="#vm-work">VM</a></li>
+    <li><a href="#packshot-work">PACKSHOT</a></li>
     <li><a href="#art-work">ART</a></li>
     <li><a href="#portfolios">PDF</a></li>
     <li><a href="#experience">EXP</a></li>
@@ -1290,12 +1345,44 @@ footer { overflow: hidden; border-top: 1px solid var(--grey-5); }
       </div>
     </div>
 
+    <!-- LUXURY PRODUCT PACKSHOT -->
+    <div class="work-category" id="packshot-work">
+      <div class="work-category-header reveal">
+        <div>
+          <div class="work-category-kicker">02 / PRODUCT VISUALIZATION</div>
+          <h3 class="work-category-title">Luxury Product Packshot</h3>
+        </div>
+        <p class="work-category-desc">Hyper-realistic product imagery developed through 3D modelling, material refinement, studio lighting and commercial presentation workflows.</p>
+      </div>
+
+      <div class="packshot-grid" id="packshot-projects-grid">
+      <div class="project-card pc-6 packshot-card reveal" onclick="openModal('p6')">
+        <div class="card-stripe"></div>
+        <div class="project-thumb">
+          <img src="https://drive.google.com/thumbnail?id=1uWc9zmfBUU9A3I6CG1m8_iydEL5P-muN&sz=w2000" alt="">
+          <div class="project-thumb-overlay"></div>
+          <div class="project-hover-strip"></div>
+        </div>
+        <div class="project-info">
+          <div class="project-num">PACKSHOT PROJECT 001</div>
+          <div class="project-domain domain-game">◆ LUXURY PRODUCT VISUALIZATION</div>
+          <h3 class="project-name">Luxury Product Packshot</h3>
+          <p class="project-desc">High-fidelity product visualization focused on luxury materials, controlled studio lighting, texture accuracy and presentation-ready imagery.</p>
+          <div class="project-footer">
+            <div class="project-tags"><span class="ptag">CLO3D</span><span class="ptag">BLENDER</span><span class="ptag">TEXTURE MAP</span></div>
+            <button class="view-btn">VIEW ▶</button>
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+
     <!-- DIGITAL FASHION / GAME ART -->
     <div class="work-category" id="art-work">
       <div class="work-category-header reveal">
         <div>
-          <div class="work-category-kicker">02 / CORE ARTWORK</div>
-          <h3 class="work-category-title">Digital Fashion & Game Art</h3>
+          <div class="work-category-kicker">03 / CORE ARTWORK</div>
+          <h3 class="work-category-title">Digital Fashion, Character & Game Art</h3>
         </div>
         <p class="work-category-desc">Character, costume, fashion and cinematic 3D projects across CLO3D, Blender and real-time pipelines.</p>
       </div>
@@ -1402,25 +1489,6 @@ footer { overflow: hidden; border-top: 1px solid var(--grey-5); }
         </div>
       </div>
 
-      <!-- P6 -->
-      <div class="project-card pc-6 reveal" style="transition-delay:0.24s" onclick="openModal('p6')">
-        <div class="card-stripe"></div>
-        <div class="project-thumb">
-          <img src="https://drive.google.com/thumbnail?id=1uWc9zmfBUU9A3I6CG1m8_iydEL5P-muN&sz=w2000" alt="">
-          <div class="project-thumb-overlay"></div>
-          <div class="project-hover-strip"></div>
-        </div>
-        <div class="project-info">
-          <div class="project-num">PROJECT 006</div>
-          <div class="project-domain domain-game">▶ COMMERCIAL</div>
-          <h3 class="project-name">3D Packshot</h3>
-          <p class="project-desc">Commercial 3D render — hyper-realistic packshots for luxury brand presentations.</p>
-          <div class="project-footer">
-            <div class="project-tags"><span class="ptag">CLO3D</span><span class="ptag">BLENDER</span><span class="ptag">TEXTURE MAP</span></div>
-            <button class="view-btn">VIEW ▶</button>
-          </div>
-        </div>
-      </div>
 
       <!-- VIEW MORE DIVIDER -->
       <div class="view-more-row" id="view-more-row">
