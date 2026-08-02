@@ -761,6 +761,17 @@ body.modal-open {
   border: 0;
 }
 
+.media-caption {
+  padding: 0.65rem 0.8rem;
+  border-top: 1px solid var(--grey-5);
+  background: #080808;
+  font-family: var(--font-pixel);
+  font-size: 0.38rem;
+  line-height: 1.6;
+  letter-spacing: 0.08em;
+  color: var(--grey-3);
+}
+
 .modal-media-item.media-hero,
 .modal-media-item.media-wide {
   grid-column: span 2;
@@ -1389,6 +1400,8 @@ footer { overflow: hidden; border-top: 1px solid var(--grey-5); }
 
     <div class="projects-grid" id="projects-grid-main">
 
+
+
       <!-- P1 -->
       <div class="project-card pc-1 featured reveal" onclick="openModal('p1')">
         <div class="card-stripe"></div>
@@ -1409,21 +1422,42 @@ footer { overflow: hidden; border-top: 1px solid var(--grey-5); }
         </div>
       </div>
 
-      <!-- P2 -->
-      <div class="project-card pc-2 reveal" style="transition-delay:0.08s" onclick="openModal('p2')">
+      <!-- REQUIEM -->
+      <div class="project-card pc-requiem featured reveal" style="transition-delay:0.06s" onclick="openModal('requiem')">
         <div class="card-stripe"></div>
         <div class="project-thumb">
-          <img src="https://lh3.googleusercontent.com/d/1LuWJClFPXMLdTLioAGXC2pAcpfkCiJMI" alt="">
+          <img src="https://drive.google.com/thumbnail?id=1ahTyhSLSOLaHncoSL7MQGJ_H6kf7rcIj&sz=w2000" alt="Requiem cinematic 3D artwork">
           <div class="project-thumb-overlay"></div>
           <div class="project-hover-strip"></div>
         </div>
         <div class="project-info">
           <div class="project-num">PROJECT 002</div>
-          <div class="project-domain domain-game">▶ FASHION / CHARACTER ART</div>
-          <h3 class="project-name">Wolfie</h3>
-          <p class="project-desc">Discover the allure of the 'Wolfie' collection, inspired by fascination with wolves. Each piece encapsulates the wolf's noble spirit, translating it into a harmonious blend of refinement and wild charm.</p>
+          <div class="project-domain domain-both">✦ CINEMATIC 3D ART × DIGITAL FASHION</div>
+          <h3 class="project-name">REQUIEM</h3>
+          <p class="project-desc">A monumental dreamscape where a headphone-haired statue, flooded Renaissance architecture, drifting light and sculptural fashion collide in a surreal requiem for memory, technology and beauty.</p>
           <div class="project-footer">
-            <div class="project-tags"><span class="ptag">CLO3D</span><span class="ptag">PERFORMANCE</span><span class="ptag">CHARACTER</span></div>
+            <div class="project-tags"><span class="ptag">BLENDER</span><span class="ptag">CLO3D</span><span class="ptag">CINEMATIC ART</span></div>
+            <button class="view-btn">VIEW ▶</button>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- P7 -->
+      <div class="project-card pc-7 reveal" style="transition-delay:0.08s" onclick="openModal('p7')">
+        <div class="card-stripe"></div>
+        <div class="project-thumb">
+          <img src="https://drive.google.com/thumbnail?id=11lPwWZ4jmribCWL0kB3rEgSCCF725_0P&sz=w2000" alt="">
+          <div class="project-thumb-overlay"></div>
+          <div class="project-hover-strip"></div>
+        </div>
+        <div class="project-info">
+          <div class="project-num">PROJECT 003</div>
+          <div class="project-domain domain-both">✦ 3D ART</div>
+          <h3 class="project-name">Overgrown</h3>
+          <p class="project-desc">What if beetles had gardens growing out of their backs? What if flowers were the size of gods, and everything else just lived in their shadow? That's where this project started — not from a brief, not from a reference board.</p>
+          <div class="project-footer">
+            <div class="project-tags"><span class="ptag">CHARACTER</span><span class="ptag">ART</span><span class="ptag">BLENDER</span></div>
             <button class="view-btn">VIEW ▶</button>
           </div>
         </div>
@@ -1438,7 +1472,7 @@ footer { overflow: hidden; border-top: 1px solid var(--grey-5); }
           <div class="project-hover-strip"></div>
         </div>
         <div class="project-info">
-          <div class="project-num">PROJECT 003</div>
+          <div class="project-num">PROJECT 004</div>
           <div class="project-domain domain-fashion">◆ FASHION DESIGN</div>
           <h3 class="project-name">Die my bride</h3>
           <p class="project-desc">Stage costumes for heavy metal performance. Dark romance translated into wearable stage identity — controlled chaos, parodic brutality, theatrical exaggeration.</p>
@@ -1458,7 +1492,7 @@ footer { overflow: hidden; border-top: 1px solid var(--grey-5); }
           <div class="project-hover-strip"></div>
         </div>
         <div class="project-info">
-          <div class="project-num">PROJECT 004</div>
+          <div class="project-num">PROJECT 005</div>
           <div class="project-domain domain-both">✦ GAME × FASHION</div>
           <h3 class="project-name">Puppet&Musicbox</h3>
           <p class="project-desc">Inspired by Scarlett from Caraval. Circus-driven, devilish aesthetic — the character exists somewhere between puppet and performer.</p>
@@ -1478,7 +1512,7 @@ footer { overflow: hidden; border-top: 1px solid var(--grey-5); }
           <div class="project-hover-strip"></div>
         </div>
         <div class="project-info">
-          <div class="project-num">PROJECT 005</div>
+          <div class="project-num">PROJECT 006</div>
           <div class="project-domain domain-fashion">◆ FASHION DESIGN</div>
           <h3 class="project-name">Nomad in the Desert</h3>
           <p class="project-desc">MacArthur collection version 2. A moment of stillness before transformation — fashion, creatures, and environments interact as part of a narrative system.</p>
@@ -1489,33 +1523,33 @@ footer { overflow: hidden; border-top: 1px solid var(--grey-5); }
         </div>
       </div>
 
-
       <!-- VIEW MORE DIVIDER -->
       <div class="view-more-row" id="view-more-row">
         <button class="view-more-btn" id="view-more-btn" onclick="revealMoreProjects()">
           ▼ VIEW MORE WORK
         </button>
-        <span class="view-more-count" id="view-more-count">+9 MORE PROJECTS</span>
+        <span class="view-more-count" id="view-more-count">+5 MORE PROJECTS</span>
       </div>
 
       <!-- MORE PROJECTS WRAPPER -->
       <div class="more-projects-wrap" id="more-projects-wrap">
 
-      <!-- P7 -->
-      <div class="project-card pc-7 reveal" style="transition-delay:0.08s" onclick="openModal('p7')">
+
+      <!-- P2 -->
+      <div class="project-card pc-2 reveal" style="transition-delay:0.08s" onclick="openModal('p2')">
         <div class="card-stripe"></div>
         <div class="project-thumb">
-          <img src="https://drive.google.com/thumbnail?id=11lPwWZ4jmribCWL0kB3rEgSCCF725_0P&sz=w2000" alt="">
+          <img src="https://lh3.googleusercontent.com/d/1LuWJClFPXMLdTLioAGXC2pAcpfkCiJMI" alt="">
           <div class="project-thumb-overlay"></div>
           <div class="project-hover-strip"></div>
         </div>
         <div class="project-info">
           <div class="project-num">PROJECT 007</div>
-          <div class="project-domain domain-both">✦ 3D ART</div>
-          <h3 class="project-name">Overgrown</h3>
-          <p class="project-desc">What if beetles had gardens growing out of their backs? What if flowers were the size of gods, and everything else just lived in their shadow? That's where this project started — not from a brief, not from a reference board.</p>
+          <div class="project-domain domain-game">▶ FASHION / CHARACTER ART</div>
+          <h3 class="project-name">Wolfie</h3>
+          <p class="project-desc">Discover the allure of the 'Wolfie' collection, inspired by fascination with wolves. Each piece encapsulates the wolf's noble spirit, translating it into a harmonious blend of refinement and wild charm.</p>
           <div class="project-footer">
-            <div class="project-tags"><span class="ptag">CHARACTER</span><span class="ptag">ART</span><span class="ptag">BLENDER</span></div>
+            <div class="project-tags"><span class="ptag">CLO3D</span><span class="ptag">PERFORMANCE</span><span class="ptag">CHARACTER</span></div>
             <button class="view-btn">VIEW ▶</button>
           </div>
         </div>
@@ -1590,7 +1624,7 @@ footer { overflow: hidden; border-top: 1px solid var(--grey-5); }
           <div class="project-hover-strip"></div>
         </div>
         <div class="project-info">
-          <div class="project-num">PROJECT 010</div>
+          <div class="project-num">PROJECT 011</div>
           <div class="project-domain domain-both">✦ GAME × CHARACTER</div>
           <h3 class="project-name">Velith — The Iron Moth</h3>
           <p class="project-desc"></p>
@@ -1598,78 +1632,6 @@ footer { overflow: hidden; border-top: 1px solid var(--grey-5); }
             <div class="project-tags"><span class="ptag">WORLDBUILDING</span><span class="ptag">CHARACTER</span><span class="ptag">3D</span></div>
             <button class="view-btn">VIEW ▶</button>
           </div>
-        </div>
-      </div>
-
-      <!-- P12 PLACEHOLDER -->
-      <div class="project-card pc-12 placeholder reveal" style="transition-delay:0.28s; display:none">
-        <div class="card-stripe"></div>
-        <div class="project-thumb" style="background:#0c0c0c;aspect-ratio:16/10;position:relative;">
-          <div class="placeholder-overlay">
-            <span class="ph-icon">◈</span>
-            <span class="ph-label">COMING SOON</span>
-          </div>
-        </div>
-        <div class="project-info">
-          <div class="project-num">PROJECT 012</div>
-          <div class="project-domain domain-fashion">◆ FASHION DESIGN</div>
-          <h3 class="project-name">Project XII</h3>
-          <p class="project-desc">—</p>
-          <div class="project-footer"><div class="project-tags"><span class="ptag">TBD</span></div></div>
-        </div>
-      </div>
-
-      <!-- P13 PLACEHOLDER -->
-      <div class="project-card pc-13 placeholder reveal" style="transition-delay:0.32s; display:none">
-        <div class="card-stripe"></div>
-        <div class="project-thumb" style="background:#0c0c0c;aspect-ratio:16/10;position:relative;">
-          <div class="placeholder-overlay">
-            <span class="ph-icon">◈</span>
-            <span class="ph-label">COMING SOON</span>
-          </div>
-        </div>
-        <div class="project-info">
-          <div class="project-num">PROJECT 013</div>
-          <div class="project-domain domain-both">✦ GAME × FASHION</div>
-          <h3 class="project-name">Project XIII</h3>
-          <p class="project-desc">—</p>
-          <div class="project-footer"><div class="project-tags"><span class="ptag">TBD</span></div></div>
-        </div>
-      </div>
-
-      <!-- P14 PLACEHOLDER -->
-      <div class="project-card pc-14 placeholder reveal" style="transition-delay:0.36s; display:none">
-        <div class="card-stripe"></div>
-        <div class="project-thumb" style="background:#0c0c0c;aspect-ratio:16/10;position:relative;">
-          <div class="placeholder-overlay">
-            <span class="ph-icon">◈</span>
-            <span class="ph-label">COMING SOON</span>
-          </div>
-        </div>
-        <div class="project-info">
-          <div class="project-num">PROJECT 014</div>
-          <div class="project-domain domain-game">▶ GAME ART</div>
-          <h3 class="project-name">Project XIV</h3>
-          <p class="project-desc">—</p>
-          <div class="project-footer"><div class="project-tags"><span class="ptag">TBD</span></div></div>
-        </div>
-      </div>
-
-      <!-- P15 PLACEHOLDER -->
-      <div class="project-card pc-15 placeholder reveal" style="transition-delay:0.40s; display:none">
-        <div class="card-stripe"></div>
-        <div class="project-thumb" style="background:#0c0c0c;aspect-ratio:16/10;position:relative;">
-          <div class="placeholder-overlay">
-            <span class="ph-icon">◈</span>
-            <span class="ph-label">COMING SOON</span>
-          </div>
-        </div>
-        <div class="project-info">
-          <div class="project-num">PROJECT 015</div>
-          <div class="project-domain domain-fashion">◆ FASHION DESIGN</div>
-          <h3 class="project-name">Project XV</h3>
-          <p class="project-desc">—</p>
-          <div class="project-footer"><div class="project-tags"><span class="ptag">TBD</span></div></div>
         </div>
       </div>
 
@@ -2023,6 +1985,28 @@ Circular podiums, dramatic lighting, and mirrored perspectives guide customers n
       { class: 'medium', src: "data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1600' height='1000' viewBox='0 0 1600 1000'%3E%3Crect width='1600' height='1000' fill='%23070707'/%3E%3Crect x='35' y='35' width='1530' height='930' fill='none' stroke='%23404040' stroke-width='3' stroke-dasharray='18 14'/%3E%3Ctext x='800' y='470' fill='%23808080' font-family='monospace' font-size='42' text-anchor='middle'%3EPROJECT IMAGE%3C/text%3E%3Ctext x='800' y='535' fill='%23555555' font-family='monospace' font-size='25' text-anchor='middle'%3EREPLACE THE src URL ONLY%3C/text%3E%3C/svg%3E" },
     ]
   },
+  requiem: {
+    color: '#9372a3', domain: '✦ CINEMATIC 3D ART × DIGITAL FASHION', title: 'REQUIEM',
+    desc: `Independent Project — August 2026.<br><br>
+REQUIEM is a cinematic 3D artwork built around a monumental female statue rising from a flooded architectural ruin. Renaissance forms, scaffolding, drifting vessels, suspended light and a sculptural braided garment create a world that feels ceremonial, decayed and strangely alive.<br><br>
+The project explores the tension between classical beauty and technological residue. Wired headphones become hair, ornament and symbolic infrastructure; water turns the architecture into a reflective stage; and the oversized figure anchors the composition as both deity and abandoned machine.<br><br>
+<strong>Pipeline:</strong> Concept development → 3D asset creation → CLO3D garment construction → Blender environment assembly → water and lighting setup → cinematic rendering → final art direction and post-production.`,
+    meta: { Tools: 'Blender · CLO3D · Photoshop · AI-assisted workflow', Year: '2026', Type: 'Independent Cinematic Artwork', Role: 'Concept · 3D Art · Fashion · Lighting · Environment' },
+    media: [
+      { class: 'hero',   src: 'https://drive.google.com/thumbnail?id=1ahTyhSLSOLaHncoSL7MQGJ_H6kf7rcIj&sz=w2000', caption: 'FINAL IMAGE 01' },
+      { class: 'medium', src: 'https://drive.google.com/thumbnail?id=1SqEuf62tL0JAMgympamgOvjS8HVc2GGr&sz=w2000', caption: 'FINAL IMAGE 02' },
+      { class: 'medium', src: 'https://drive.google.com/thumbnail?id=1x3g6tDmB7lmMWC-imwHQ_BnPcTB0N3jM&sz=w2000', caption: 'FINAL IMAGE 03' },
+      { class: 'wide',   src: 'https://drive.google.com/thumbnail?id=1Jx_9YpsFTuUcfIwaAQljFJ_ogNu5WkvE&sz=w2000', caption: 'FINAL IMAGE 04' },
+      { class: 'medium', src: 'https://drive.google.com/thumbnail?id=1-FDpdvECq0Puq7pzMZXpOAlYKDGNyoAd&sz=w2000', caption: 'FINAL IMAGE 05' },
+      { class: 'medium', src: 'https://drive.google.com/thumbnail?id=199uTroyBC-MWrnk5rsAI2TFXjCuRAJmF&sz=w2000', caption: 'FINAL IMAGE 06' },
+      { class: 'wide',   src: 'https://drive.google.com/thumbnail?id=13qH5xJfx5jKcQ6uWmfuR2oaOMGUaAvMQ&sz=w2000', caption: 'FINAL IMAGE 07' },
+      { class: 'medium', src: 'https://drive.google.com/thumbnail?id=1mY-d_vhbGNUvaasTJc6ZuxI9W2al-dPU&sz=w2000', caption: 'BEHIND THE SCENES 01' },
+      { class: 'medium', src: 'https://drive.google.com/thumbnail?id=1wpYWJfiH9rb1S6OBMQ3OehHzs8xN-W-s&sz=w2000', caption: 'BEHIND THE SCENES 02' },
+      { class: 'medium', src: 'https://drive.google.com/thumbnail?id=1YFKTnC9Ys0G-6I9NY97qPvQJW_QP4olv&sz=w2000', caption: 'BEHIND THE SCENES 03' },
+      { class: 'medium', src: 'https://drive.google.com/thumbnail?id=10ClSZGzfaZQ_AzQgpzRp6YnO9hzG2QxC&sz=w2000', caption: 'BEHIND THE SCENES 04' },
+      { class: 'wide',   src: 'https://drive.google.com/thumbnail?id=1pv9lfT3dGw0hNTy7Tbd-d4Zk847MdgV8&sz=w2000', caption: 'BEHIND THE SCENES 05' },
+    ]
+  },
   p1: {
     color: '#808080', domain: '◆ FASHION DESIGN', title: 'MacArthur',
     desc: `Conceptual costumes inspired by <em>The Mote in God's Eye</em>.<br><br>
@@ -2242,9 +2226,12 @@ function openModal(id) {
     if (m.video) {
       div.innerHTML = `<iframe src="${m.video}" frameborder="0" allowfullscreen style="width:100%;aspect-ratio:16/9;display:block;"></iframe>`;
     } else if (m.src) {
-      div.innerHTML = `<img src="${m.src}" alt="${m.l || ''}">`;
+      div.innerHTML = `<img src="${m.src}" alt="${m.caption || m.l || ''}">`;
     } else {
       div.innerHTML = `<div class="media-ph" style="position:relative;min-height:120px"><span class="ph-i">◆</span><span>${m.l}</span></div>`;
+    }
+    if (m.caption) {
+      div.insertAdjacentHTML('beforeend', `<div class="media-caption">${m.caption}</div>`);
     }
     mediaEl.appendChild(div);
   });
