@@ -729,7 +729,7 @@ body.modal-open {
 
 .modal-media-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(6, minmax(0, 1fr));
   gap: 8px;
   align-items: start;
 }
@@ -774,13 +774,30 @@ body.modal-open {
 
 .modal-media-item.media-hero,
 .modal-media-item.media-wide {
-  grid-column: span 2;
+  grid-column: span 6;
 }
 
 .modal-media-item.media-portrait,
 .modal-media-item.media-medium,
 .modal-media-item.media-small {
-  grid-column: span 1;
+  grid-column: span 3;
+}
+
+/* Smaller supporting images used only for process / behind-the-scenes proof. */
+.modal-media-item.media-bts {
+  grid-column: span 2;
+  opacity: 0.78;
+  border: 1px solid rgba(255,255,255,0.05);
+  transition: opacity 0.2s, transform 0.2s;
+}
+.modal-media-item.media-bts:hover {
+  opacity: 1;
+  transform: translateY(-2px);
+}
+.modal-media-item.media-bts .media-caption {
+  font-size: 0.32rem;
+  color: var(--grey-4);
+  padding: 0.5rem 0.6rem;
 }
 
 .media-ph {
@@ -1040,8 +1057,20 @@ footer { overflow: hidden; border-top: 1px solid var(--grey-5); }
   .modal-media-item.media-wide,
   .modal-media-item.media-medium,
   .modal-media-item.media-portrait,
-  .modal-media-item.media-small {
+  .modal-media-item.media-small,
+  .modal-media-item.media-bts {
     grid-column: auto;
+  }
+
+  .modal-media-item.media-bts {
+    display: inline-block;
+    width: calc(50% - 5px);
+    margin-right: 6px;
+    vertical-align: top;
+  }
+
+  .modal-media-item.media-bts:nth-of-type(even) {
+    margin-right: 0;
   }
 
   .modal-media-item img,
@@ -1423,10 +1452,10 @@ footer { overflow: hidden; border-top: 1px solid var(--grey-5); }
       </div>
 
       <!-- REQUIEM -->
-      <div class="project-card pc-requiem featured reveal" style="transition-delay:0.06s" onclick="openModal('requiem')">
+      <div class="project-card pc-requiem reveal" style="transition-delay:0.06s" onclick="openModal('requiem')">
         <div class="card-stripe"></div>
         <div class="project-thumb">
-          <img src="https://drive.google.com/thumbnail?id=1ahTyhSLSOLaHncoSL7MQGJ_H6kf7rcIj&sz=w2000" alt="Requiem cinematic 3D artwork">
+          <img src="https://drive.google.com/thumbnail?id=1IVjmB5ZPkcgxHTlrcMPwAe1gI1dcfB9h&sz=w2000" alt="Requiem cinematic 3D artwork">
           <div class="project-thumb-overlay"></div>
           <div class="project-hover-strip"></div>
         </div>
@@ -2000,11 +2029,11 @@ The project explores the tension between classical beauty and technological resi
       { class: 'medium', src: 'https://drive.google.com/thumbnail?id=1-FDpdvECq0Puq7pzMZXpOAlYKDGNyoAd&sz=w2000', caption: 'FINAL IMAGE 05' },
       { class: 'medium', src: 'https://drive.google.com/thumbnail?id=199uTroyBC-MWrnk5rsAI2TFXjCuRAJmF&sz=w2000', caption: 'FINAL IMAGE 06' },
       { class: 'wide',   src: 'https://drive.google.com/thumbnail?id=13qH5xJfx5jKcQ6uWmfuR2oaOMGUaAvMQ&sz=w2000', caption: 'FINAL IMAGE 07' },
-      { class: 'medium', src: 'https://drive.google.com/thumbnail?id=1mY-d_vhbGNUvaasTJc6ZuxI9W2al-dPU&sz=w2000', caption: 'BEHIND THE SCENES 01' },
-      { class: 'medium', src: 'https://drive.google.com/thumbnail?id=1wpYWJfiH9rb1S6OBMQ3OehHzs8xN-W-s&sz=w2000', caption: 'BEHIND THE SCENES 02' },
-      { class: 'medium', src: 'https://drive.google.com/thumbnail?id=1YFKTnC9Ys0G-6I9NY97qPvQJW_QP4olv&sz=w2000', caption: 'BEHIND THE SCENES 03' },
-      { class: 'medium', src: 'https://drive.google.com/thumbnail?id=10ClSZGzfaZQ_AzQgpzRp6YnO9hzG2QxC&sz=w2000', caption: 'BEHIND THE SCENES 04' },
-      { class: 'wide',   src: 'https://drive.google.com/thumbnail?id=1pv9lfT3dGw0hNTy7Tbd-d4Zk847MdgV8&sz=w2000', caption: 'BEHIND THE SCENES 05' },
+      { class: 'bts', src: 'https://drive.google.com/thumbnail?id=1mY-d_vhbGNUvaasTJc6ZuxI9W2al-dPU&sz=w2000', caption: 'BEHIND THE SCENES 01' },
+      { class: 'bts', src: 'https://drive.google.com/thumbnail?id=1wpYWJfiH9rb1S6OBMQ3OehHzs8xN-W-s&sz=w2000', caption: 'BEHIND THE SCENES 02' },
+      { class: 'bts', src: 'https://drive.google.com/thumbnail?id=1YFKTnC9Ys0G-6I9NY97qPvQJW_QP4olv&sz=w2000', caption: 'BEHIND THE SCENES 03' },
+      { class: 'bts', src: 'https://drive.google.com/thumbnail?id=10ClSZGzfaZQ_AzQgpzRp6YnO9hzG2QxC&sz=w2000', caption: 'BEHIND THE SCENES 04' },
+      { class: 'bts',   src: 'https://drive.google.com/thumbnail?id=1pv9lfT3dGw0hNTy7Tbd-d4Zk847MdgV8&sz=w2000', caption: 'BEHIND THE SCENES 05' },
     ]
   },
   p1: {
