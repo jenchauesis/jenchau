@@ -564,6 +564,90 @@ section { position: relative; z-index: 1; }
 }
 .view-btn:hover { transform: translate(-1px,-1px); box-shadow: 3px 3px 0 rgba(0,0,0,0.8); }
 
+
+/* ── VISUAL FRAGMENTS / IG GRID ── */
+.visual-fragments-category {
+  margin-top: 7rem;
+  margin-bottom: 0;
+}
+.visual-fragments-category .visual-fragments-grid {
+  margin-top: 0;
+}
+.visual-fragments-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 2rem;
+  margin-bottom: 1.4rem;
+}
+.visual-fragments-title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  font-style: italic;
+  color: var(--grey-1);
+  margin-top: 0.35rem;
+}
+.visual-fragments-desc {
+  max-width: 420px;
+  text-align: right;
+  font-size: 0.78rem;
+  line-height: 1.7;
+  color: var(--text-dim);
+}
+.visual-fragments-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3px;
+}
+.fragment {
+  position: relative;
+  overflow: hidden;
+  background: var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.fragment img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  filter: none;
+  transition: filter 0.35s ease, transform 0.45s ease;
+}
+.fragment:hover img {
+  filter: brightness(1.05);
+  transform: scale(1.015);
+}
+.fragment-end {
+  display: flex;
+  min-height: 260px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  border: 1px solid var(--grey-5);
+  color: var(--grey-4);
+}
+.fragment-end span { font-size: 1.3rem; }
+.fragment-end small {
+  font-family: var(--font-pixel);
+  font-size: 0.38rem;
+  line-height: 1.8;
+  letter-spacing: 0.12em;
+  text-align: center;
+}
+@media (max-width: 768px) {
+  .visual-fragments-head {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.7rem;
+  }
+  .visual-fragments-desc { text-align: left; }
+  .visual-fragments-grid { grid-template-columns: repeat(2, 1fr); }
+  .fragment-end { display: none; }
+}
+
 /* ── EXPERIENCE + EDUCATION ── */
 .exp-edu { padding: 8rem 0; }
 .exp-edu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
@@ -1552,6 +1636,7 @@ footer { overflow: hidden; border-top: 1px solid var(--grey-5); }
         </div>
       </div>
 
+
       <!-- VIEW MORE DIVIDER -->
       <div class="view-more-row" id="view-more-row">
         <button class="view-more-btn" id="view-more-btn" onclick="revealMoreProjects()">
@@ -1668,6 +1753,30 @@ footer { overflow: hidden; border-top: 1px solid var(--grey-5); }
 
     </div><!-- /projects-grid-main -->
     </div><!-- /art-work -->
+
+
+    <!-- VISUAL FRAGMENTS -->
+    <div class="work-category visual-fragments-category" id="visual-fragments">
+      <div class="work-category-header reveal">
+        <div>
+          <div class="work-category-kicker">04 / VISUAL STUDIES</div>
+          <h3 class="work-category-title">Visual Fragments</h3>
+        </div>
+        <p class="work-category-desc">Selected fashion, costume and image-making studies — independent visual experiments collected as an ongoing archive.</p>
+      </div>
+
+      <div class="visual-fragments-grid reveal">
+        <div class="fragment"><img src="https://drive.google.com/thumbnail?id=10nW-lpiM559_u3zW-_HFSDut3M9VuDbG&sz=w1200" alt="Fashion visual study 01"></div>
+        <div class="fragment"><img src="https://drive.google.com/thumbnail?id=1j9uGjyyVmVTr8yMJgxvsu9bHYgE_Ki7S&sz=w1200" alt="Fashion visual study 02"></div>
+        <div class="fragment"><img src="https://drive.google.com/thumbnail?id=1bSiiEv7yq0em1kqNhMqpgMPCJt5lq2pc&sz=w1200" alt="Fashion visual study 03"></div>
+        <div class="fragment"><img src="https://drive.google.com/thumbnail?id=1xITzDm9RXjQRjqxwwItJFsEY0n9NbN7m&sz=w1200" alt="Fashion visual study 04"></div>
+        <div class="fragment"><img src="https://drive.google.com/thumbnail?id=1Z-LbAaQmPmtlXd-QZimYzi7BnKGwefg-&sz=w1200" alt="Fashion visual study 05"></div>
+        <div class="fragment"><img src="https://drive.google.com/thumbnail?id=1jBg_btNuJzGbEyNjm7EylJpKnXfpBAAa&sz=w1200" alt="Fashion visual study 06"></div>
+        <div class="fragment"><img src="https://drive.google.com/thumbnail?id=1nLvanYrkua-OZFs-atXtQKtlRFxP_FZS&sz=w1200" alt="Fashion visual study 07"></div>
+        <div class="fragment"><img src="https://drive.google.com/thumbnail?id=1UxR6_ESYrbM7MFWMne1YsiWrxjj-Sr0x&sz=w1200" alt="Fashion visual study 08"></div>
+        <div class="fragment fragment-end"><span>✦</span><small>ONGOING<br>STUDIES</small></div>
+      </div>
+    </div>
 
   </div>
 </section>
