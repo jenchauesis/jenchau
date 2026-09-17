@@ -1,3 +1,4 @@
+```
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -555,7 +556,14 @@ section { position: relative; z-index: 1; }
 .project-desc { font-size: 0.8rem; color: var(--text-dim); line-height: 1.75; margin-bottom: 0.9rem; }
 .project-footer { display: flex; align-items: center; justify-content: space-between; gap: 0.8rem; }
 .project-tags { display: flex; gap: 0.35rem; flex-wrap: wrap; }
-.ptag { font-family: var(--font-pixel); font-size: 0.38rem; padding: 0.35rem 0.65rem; background: transparent; border: 1px solid var(--grey-5); color: var(--grey-4); letter-spacing: 0.03em; }
+.ptag { font-family: var(--font-pixel); font-size: 0.38rem; padding: 0.35rem 0.65rem; background: transparent; border: 1px solid var(--grey-5); color: var(--grey-4); letter-spacing: 0.03em; transition: all 0.15s ease; }
+/* Software tags — subtle brand-color accents */
+.ptag.software-clo3d { color: #48A9E6; border-color: rgba(72,169,230,.72); background: rgba(72,169,230,.07); }
+.ptag.software-blender { color: #F5792A; border-color: rgba(245,121,42,.72); background: rgba(245,121,42,.07); }
+.ptag.software-ue5 { color: #F2F2F2; border-color: rgba(242,242,242,.58); background: rgba(242,242,242,.06); }
+.ptag.software-zbrush { color: #C9B08A; border-color: rgba(201,176,138,.72); background: rgba(201,176,138,.07); }
+.ptag.software-substance { color: #FF6B45; border-color: rgba(255,107,69,.72); background: rgba(255,107,69,.07); }
+.ptag.software-clo3d:hover, .ptag.software-blender:hover, .ptag.software-ue5:hover, .ptag.software-zbrush:hover, .ptag.software-substance:hover { filter: brightness(1.2); }
 .view-btn {
   font-family: var(--font-pixel); font-size: 0.4rem; padding: 0.52rem 1rem;
   border: none; cursor: pointer; letter-spacing: 0.06em; transition: all 0.15s;
@@ -1592,7 +1600,7 @@ footer { overflow: hidden; border-top: 1px solid var(--grey-5); }
           <h3 class="project-name">Luxury Product Packshot</h3>
           <p class="project-desc">High-fidelity product visualization focused on luxury materials, controlled studio lighting, texture accuracy and presentation-ready imagery.</p>
           <div class="project-footer">
-            <div class="project-tags"><span class="ptag">CLO3D</span><span class="ptag">BLENDER</span><span class="ptag">TEXTURE MAP</span></div>
+            <div class="project-tags"><span class="ptag software-clo3d">CLO3D</span><span class="ptag software-blender">BLENDER</span><span class="ptag">TEXTURE MAP</span></div>
             <button class="view-btn">VIEW ▶</button>
           </div>
         </div>
@@ -1628,7 +1636,7 @@ footer { overflow: hidden; border-top: 1px solid var(--grey-5); }
           <h3 class="project-name">MacArthur</h3>
           <p class="project-desc">This collection blends the strange beauty of insects with the epic, haunting vibe of science fiction. Inspired by alien elegance of bug anatomy mixed with the philosophical feel of The Mote in God's Eye. Every outfit is like a character — some are warriors, some are ghosts, some are gods.</p>
           <div class="project-footer">
-            <div class="project-tags"><span class="ptag">CLO3D</span><span class="ptag">CONCEPT</span><span class="ptag">LUXURY</span></div>
+            <div class="project-tags"><span class="ptag software-clo3d">CLO3D</span><span class="ptag software-blender">BLENDER</span><span class="ptag software-ue5">UE5</span><span class="ptag software-zbrush">ZBRUSH</span></div>
             <button class="view-btn">VIEW ▶</button>
           </div>
         </div>
@@ -1648,7 +1656,7 @@ footer { overflow: hidden; border-top: 1px solid var(--grey-5); }
           <h3 class="project-name">REQUIEM</h3>
           <p class="project-desc">A monumental dreamscape where a headphone-haired statue, flooded Renaissance architecture, drifting light and sculptural fashion collide in a surreal requiem for memory, technology and beauty.</p>
           <div class="project-footer">
-            <div class="project-tags"><span class="ptag">BLENDER</span><span class="ptag">CLO3D</span><span class="ptag">CINEMATIC ART</span></div>
+            <div class="project-tags"><span class="ptag software-clo3d">CLO3D</span><span class="ptag software-blender">BLENDER</span></div>
             <button class="view-btn">VIEW ▶</button>
           </div>
         </div>
@@ -1669,7 +1677,7 @@ footer { overflow: hidden; border-top: 1px solid var(--grey-5); }
           <h3 class="project-name">Overgrown</h3>
           <p class="project-desc">What if beetles had gardens growing out of their backs? What if flowers were the size of gods, and everything else just lived in their shadow? That's where this project started — not from a brief, not from a reference board.</p>
           <div class="project-footer">
-            <div class="project-tags"><span class="ptag">CHARACTER</span><span class="ptag">ART</span><span class="ptag">BLENDER</span></div>
+            <div class="project-tags"><span class="ptag software-blender">BLENDER</span></div>
             <button class="view-btn">VIEW ▶</button>
           </div>
         </div>
@@ -1689,7 +1697,7 @@ footer { overflow: hidden; border-top: 1px solid var(--grey-5); }
           <h3 class="project-name">Die my bride</h3>
           <p class="project-desc">Stage costumes for heavy metal performance. Dark romance translated into wearable stage identity — controlled chaos, parodic brutality, theatrical exaggeration.</p>
           <div class="project-footer">
-            <div class="project-tags"><span class="ptag">CLO3D</span><span class="ptag">LUXURY</span><span class="ptag">R&B</span></div>
+            <div class="project-tags"><span class="ptag software-clo3d">CLO3D</span></div>
             <button class="view-btn">VIEW ▶</button>
           </div>
         </div>
@@ -1709,7 +1717,7 @@ footer { overflow: hidden; border-top: 1px solid var(--grey-5); }
           <h3 class="project-name">Puppet&Musicbox</h3>
           <p class="project-desc">Inspired by Scarlett from Caraval. Circus-driven, devilish aesthetic — the character exists somewhere between puppet and performer.</p>
           <div class="project-footer">
-            <div class="project-tags"><span class="ptag">BLENDER</span><span class="ptag">CLO3D</span><span class="ptag">WORKFLOW</span></div>
+            <div class="project-tags"><span class="ptag software-clo3d">CLO3D</span><span class="ptag software-blender">BLENDER</span></div>
             <button class="view-btn">VIEW ▶</button>
           </div>
         </div>
@@ -1729,7 +1737,7 @@ footer { overflow: hidden; border-top: 1px solid var(--grey-5); }
           <h3 class="project-name">Nomad in the Desert</h3>
           <p class="project-desc">MacArthur collection version 2. A moment of stillness before transformation — fashion, creatures, and environments interact as part of a narrative system.</p>
           <div class="project-footer">
-            <div class="project-tags"><span class="ptag">CLO3D</span><span class="ptag">GARMENT</span><span class="ptag">SIMULATION</span></div>
+            <div class="project-tags"><span class="ptag software-clo3d">CLO3D</span><span class="ptag software-blender">BLENDER</span></div>
             <button class="view-btn">VIEW ▶</button>
           </div>
         </div>
@@ -1762,7 +1770,7 @@ footer { overflow: hidden; border-top: 1px solid var(--grey-5); }
           <h3 class="project-name">Wolfie</h3>
           <p class="project-desc">Discover the allure of the 'Wolfie' collection, inspired by fascination with wolves. Each piece encapsulates the wolf's noble spirit, translating it into a harmonious blend of refinement and wild charm.</p>
           <div class="project-footer">
-            <div class="project-tags"><span class="ptag">CLO3D</span><span class="ptag">PERFORMANCE</span><span class="ptag">CHARACTER</span></div>
+            <div class="project-tags"><span class="ptag software-clo3d">CLO3D</span></div>
             <button class="view-btn">VIEW ▶</button>
           </div>
         </div>
@@ -1782,7 +1790,7 @@ footer { overflow: hidden; border-top: 1px solid var(--grey-5); }
           <h3 class="project-name">Bewildered Goldfish</h3>
           <p class="project-desc">Concept art and costume design exploring aquatic creature aesthetics — translating goldfish morphology into fashion language.</p>
           <div class="project-footer">
-            <div class="project-tags"><span class="ptag">CONCEPT ART</span><span class="ptag">COSTUME DESIGN</span><span class="ptag">3D</span></div>
+            <div class="project-tags"><span class="ptag software-clo3d">CLO3D</span><span class="ptag software-blender">BLENDER</span></div>
             <button class="view-btn">VIEW ▶</button>
           </div>
         </div>
@@ -1802,7 +1810,7 @@ footer { overflow: hidden; border-top: 1px solid var(--grey-5); }
           <h3 class="project-name">Protocol: Birth</h3>
           <p class="project-desc">Costume design for cinematic sequences — hero garments for CGI, game cinematics, and performance capture pipelines.</p>
           <div class="project-footer">
-            <div class="project-tags"><span class="ptag">CINEMATIC</span><span class="ptag">COSTUME</span><span class="ptag">CGI</span></div>
+            <div class="project-tags"><span class="ptag software-clo3d">CLO3D</span><span class="ptag software-blender">BLENDER</span></div>
             <button class="view-btn">VIEW ▶</button>
           </div>
         </div>
@@ -1822,7 +1830,7 @@ footer { overflow: hidden; border-top: 1px solid var(--grey-5); }
           <h3 class="project-name">Aelindra — The Mote Grasshopper</h3>
           <p class="project-desc"></p>
           <div class="project-footer">
-            <div class="project-tags"><span class="ptag">WORLDBUILDING</span><span class="ptag">CHARACTER</span><span class="ptag">3D</span></div>
+            <div class="project-tags"><span class="ptag software-zbrush">ZBRUSH</span><span class="ptag software-substance">SUBSTANCE PAINTER</span></div>
             <button class="view-btn">VIEW ▶</button>
           </div>
         </div>
@@ -1842,7 +1850,7 @@ footer { overflow: hidden; border-top: 1px solid var(--grey-5); }
           <h3 class="project-name">Velith — The Iron Moth</h3>
           <p class="project-desc"></p>
           <div class="project-footer">
-            <div class="project-tags"><span class="ptag">WORLDBUILDING</span><span class="ptag">CHARACTER</span><span class="ptag">3D</span></div>
+            <div class="project-tags"><span class="ptag software-zbrush">ZBRUSH</span><span class="ptag software-substance">SUBSTANCE PAINTER</span></div>
             <button class="view-btn">VIEW ▶</button>
           </div>
         </div>
@@ -2639,3 +2647,4 @@ document.addEventListener('keydown', e => {
 </script>
 </body>
 </html>
+```
