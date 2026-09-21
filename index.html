@@ -952,6 +952,30 @@ body.modal-open {
   border: 0;
 }
 
+.project-pdf-embed {
+  display: none;
+  margin-top: 2rem;
+  width: 100%;
+}
+.project-pdf-embed.active {
+  display: block;
+}
+.project-pdf-embed iframe {
+  width: 100%;
+  height: min(82vh, 900px);
+  min-height: 620px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: #111;
+  display: block;
+  margin-top: 1rem;
+}
+@media (max-width: 700px) {
+  .project-pdf-embed iframe {
+    height: 72vh;
+    min-height: 480px;
+  }
+}
+
 .media-caption {
   padding: 0.65rem 0.8rem;
   border-top: 1px solid var(--grey-5);
@@ -2135,6 +2159,11 @@ footer { overflow: hidden; border-top: 1px solid var(--grey-5); }
             <button id="mac-book-next" type="button">NEXT ›</button>
           </div>
         </div>
+        <div class="project-pdf-embed" id="project-pdf-embed">
+          <div class="mac-book-label">PROJECT BOOK</div>
+          <div class="mac-book-sub">Browse the full PDF directly here</div>
+          <iframe id="project-pdf-frame" title="Project PDF" loading="lazy" allow="autoplay"></iframe>
+        </div>
       </div>
     </div>
   </div>
@@ -2299,6 +2328,7 @@ The project explores the tension between classical beauty and technological resi
   p1: {
     color: '#808080', domain: '◆ FASHION DESIGN', title: 'MacArthur',
     projectBook: true,
+    pdfEmbed: 'https://drive.google.com/file/d/1DqRCVBCH83AYR87NujWdf8mZAj9LEYid/preview',
     desc: `Conceptual costumes inspired by <em>The Mote in God's Eye</em>.<br><br>
 Graduation Project – May 2025. Duration: 5 months (2 months research, 3 months production).<br><br>
 MacArthur represents the consolidation of my digital practice into a fully integrated worldbuilding project. The objective was not solely garment design but the development of a coherent cinematic universe in which clothing, character anatomy, and environment operate within the same visual logic.<br><br>
@@ -2389,6 +2419,7 @@ Pipeline: Garment drafting → Character sculpting → Rigging → Environmental
   p6: {
     color: '#808080', domain: '▶ PACKSHOT', title: 'Bag Packshot',
     pdf: 'https://drive.google.com/file/d/1tYyakCfYTwYYYmFE9bJBl7GlEfWzyPXP/view?usp=drive_link',
+    pdfEmbed: 'https://drive.google.com/file/d/1tYyakCfYTwYYYmFE9bJBl7GlEfWzyPXP/preview',
     desc: `Commercial 3D renders — hyper-realistic packshots for luxury brand presentations. Production-validated models aligned with manufacturing processes.`,
     meta: { Tools: 'CLO3D · Blender', Year: '2025', Type: 'Commercial', Domain: 'Luxury Packshot' },
     media: [
@@ -2412,6 +2443,7 @@ Pipeline: Garment drafting → Character sculpting → Rigging → Environmental
   p7: {
     color: '#808080', domain: '✦ MODELLING × 3D ART', title: 'Overgrown',
     pdf: 'https://drive.google.com/file/d/1Xo9E2pmisYRqAee36gje1iLXbH6HH-jC/view?usp=drive_link',
+    pdfEmbed: 'https://drive.google.com/file/d/1Xo9E2pmisYRqAee36gje1iLXbH6HH-jC/preview',
     desc: `A creature that carries a garden on its back. Not by accident — by nature.<br><br>
 This project explores a fictional ecosystem where the boundaries between flora and fauna have quietly dissolved. Insects wear petals. Flowers cast shadows like trees. Everything borrows something from everything else.<br><br>
 Built across different hours of the day — harsh midday light, cold dusk, deep night — to see how the same world breathes differently depending on when you look at it.`,
@@ -2573,6 +2605,16 @@ function openModal(id) {
     setMacBookPage(0);
   } else {
     projectBook.classList.remove('active');
+  }
+
+  const pdfEmbed = document.getElementById('project-pdf-embed');
+  const pdfFrame = document.getElementById('project-pdf-frame');
+  if (p.pdfEmbed && !p.projectBook) {
+    pdfFrame.src = p.pdfEmbed;
+    pdfEmbed.classList.add('active');
+  } else {
+    pdfEmbed.classList.remove('active');
+    pdfFrame.src = '';
   }
 
   const overlay = document.getElementById('modal-overlay');
