@@ -1405,7 +1405,7 @@ footer { overflow: hidden; border-top: 1px solid var(--grey-5); }
 }
 
 
-/* ── GAME & REAL-TIME / MOVING THUMBNAIL ── */
+/* ── GAME & REAL-TIME / GOOGLE DRIVE MOVING THUMBNAIL ── */
 .game-coming-card {
   position: relative;
   width: 100%;
@@ -1415,29 +1415,51 @@ footer { overflow: hidden; border-top: 1px solid var(--grey-5); }
   aspect-ratio: 16 / 7;
 }
 
-.game-coming-video {
+/* Crop the Drive player so it behaves visually like a cover thumbnail. */
+.game-drive-crop {
   position: absolute;
   inset: 0;
+  overflow: hidden;
+  background: #080808;
+}
+
+.game-coming-video {
+  position: absolute;
+  left: 50%;
+  top: 50%;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: 143%;
+  min-width: 100%;
+  min-height: 100%;
+  transform: translate(-50%, -50%);
+  border: 0;
   display: block;
   background: #080808;
 }
 
-/* Watermark only — intentionally subtle so the video remains visible */
 .game-coming-watermark {
   position: absolute;
-  right: 1.25rem;
-  top: 1.15rem;
+  left: 50%;
+  top: 50%;
+  right: auto;
+  transform: translate(-50%, -50%);
   z-index: 3;
+
+  width: 100%;
+  text-align: center;
+
   font-family: Arial, Helvetica, sans-serif;
-  font-size: clamp(.75rem, 1.35vw, 1.05rem);
+  font-size: clamp(2.8rem, 7vw, 7rem);
   font-weight: 800;
-  letter-spacing: .18em;
-  color: rgba(255,255,255,.58);
-  text-shadow: 0 1px 8px rgba(0,0,0,.55);
+  line-height: 0.9;
+  letter-spacing: 0.12em;
+
+  color: rgba(255,255,255,0.30);
+  text-shadow: 0 2px 18px rgba(0,0,0,0.22);
+
+  white-space: nowrap;
   pointer-events: none;
+  user-select: none;
 }
 
 .game-coming-meta {
@@ -1450,17 +1472,24 @@ footer { overflow: hidden; border-top: 1px solid var(--grey-5); }
   font-weight: 700;
   letter-spacing: .11em;
   color: rgba(255,255,255,.68);
-  text-shadow: 0 1px 7px rgba(0,0,0,.7);
+  text-shadow: 0 1px 7px rgba(0,0,0,.8);
   pointer-events: none;
 }
 
 @media (max-width: 700px) {
   .game-coming-card { aspect-ratio: 16 / 10; }
 
+  .game-coming-video {
+    height: 115%;
+  }
+
   .game-coming-watermark {
-    top: .75rem;
-    right: .7rem;
-    font-size: .68rem;
+    left: 50%;
+    top: 50%;
+    right: auto;
+    transform: translate(-50%, -50%);
+    font-size: clamp(1.8rem, 10vw, 3.2rem);
+    letter-spacing: 0.08em;
   }
 
   .game-coming-meta {
@@ -1677,15 +1706,17 @@ footer { overflow: hidden; border-top: 1px solid var(--grey-5); }
       </div>
 
       <div class="game-coming-card reveal" aria-label="Game and Real-Time project — Coming Soon">
-        <video
-          class="game-coming-video"
-          autoplay
-          muted
-          loop
-          playsinline
-          preload="metadata">
-          <source src="https://drive.google.com/uc?export=download&id=1xGzaPzrMGTMqEr69bprMYU2ZLuR-N4il" type="video/mp4">
-        </video>
+        <div class="game-drive-crop">
+          <iframe
+            class="game-coming-video"
+            src="https://drive.google.com/file/d/1xGzaPzrMGTMqEr69bprMYU2ZLuR-N4il/preview"
+            title="Game & Real-Time — Coming Soon"
+            frameborder="0"
+            scrolling="no"
+            allow="fullscreen; picture-in-picture"
+            tabindex="-1">
+          </iframe>
+        </div>
 
         <div class="game-coming-watermark">COMING SOON</div>
         <div class="game-coming-meta">GAME × REAL-TIME / 2026</div>
@@ -2942,14 +2973,6 @@ if (document.readyState === 'loading') {
 }
 
 
-
-/* ── GAME MOVING THUMBNAIL AUTOPLAY ── */
-document.querySelectorAll('.game-coming-video').forEach(video => {
-  video.muted = true;
-  const tryPlay = () => video.play().catch(() => {});
-  if (video.readyState >= 2) tryPlay();
-  else video.addEventListener('canplay', tryPlay, { once: true });
-});
 
 </script>
 </body>
