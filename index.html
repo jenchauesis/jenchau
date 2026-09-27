@@ -703,6 +703,7 @@ section { position: relative; z-index: 1; }
 .badge-completed  { background: var(--ink2); border: 1px solid var(--grey-5); color: var(--grey-4); }
 .badge-recognized { background: var(--grey-2); color: var(--bg); }
 
+
 /* ── MODAL ── */
 html.modal-open,
 body.modal-open {
@@ -1344,6 +1345,131 @@ footer { overflow: hidden; border-top: 1px solid var(--grey-5); }
   .id-panel.bridge { grid-column: span 1; }
   .recs-grid { grid-template-columns: 1fr; }
 }
+
+/* ── PROJECT MEDIA BADGES ── */
+.project-media-badges {
+  position: absolute;
+  top: 0.85rem;
+  right: 0.85rem;
+  z-index: 8;
+  display: flex;
+  gap: 0.35rem;
+  pointer-events: none;
+}
+
+.project-media-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.42rem 0.58rem;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.06em;
+  color: #fff;
+  background: rgba(8, 8, 8, 0.82);
+  border: 1px solid rgba(255,255,255,0.22);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 2px 2px 0 rgba(0,0,0,0.35);
+  transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+}
+
+.project-card:hover .project-media-badge {
+  background: rgba(8,8,8,0.94);
+  border-color: rgba(255,255,255,0.5);
+  transform: translateY(-1px);
+}
+
+.project-media-badge.video::before {
+  content: '▶';
+  font-size: 0.42rem;
+}
+
+.project-media-badge.pdf::before {
+  content: '▤';
+  font-size: 0.46rem;
+}
+
+@media (max-width: 640px) {
+  .project-media-badges {
+    top: 0.65rem;
+    right: 0.65rem;
+  }
+
+  .project-media-badge {
+    font-size: 0.62rem;
+    padding: 0.4rem 0.52rem;
+  }
+}
+
+
+/* ── GAME & REAL-TIME / MOVING THUMBNAIL ── */
+.game-coming-card {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border: 1px solid var(--grey-4);
+  background: #080808;
+  aspect-ratio: 16 / 7;
+}
+
+.game-coming-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  background: #080808;
+}
+
+/* Watermark only — intentionally subtle so the video remains visible */
+.game-coming-watermark {
+  position: absolute;
+  right: 1.25rem;
+  top: 1.15rem;
+  z-index: 3;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: clamp(.75rem, 1.35vw, 1.05rem);
+  font-weight: 800;
+  letter-spacing: .18em;
+  color: rgba(255,255,255,.58);
+  text-shadow: 0 1px 8px rgba(0,0,0,.55);
+  pointer-events: none;
+}
+
+.game-coming-meta {
+  position: absolute;
+  left: 1rem;
+  bottom: .9rem;
+  z-index: 3;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .11em;
+  color: rgba(255,255,255,.68);
+  text-shadow: 0 1px 7px rgba(0,0,0,.7);
+  pointer-events: none;
+}
+
+@media (max-width: 700px) {
+  .game-coming-card { aspect-ratio: 16 / 10; }
+
+  .game-coming-watermark {
+    top: .75rem;
+    right: .7rem;
+    font-size: .68rem;
+  }
+
+  .game-coming-meta {
+    font-size: .55rem;
+    left: .7rem;
+    bottom: .65rem;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -1357,6 +1483,7 @@ footer { overflow: hidden; border-top: 1px solid var(--grey-5); }
   </div>
   <ul class="nav-links">
     <li><a href="#about">ABOUT</a></li>
+    <li><a href="#game-work">GAME</a></li>
     <li><a href="#vm-work">VM</a></li>
     <li><a href="#packshot-work">PACKSHOT</a></li>
     <li><a href="#art-work">ART</a></li>
@@ -1539,11 +1666,37 @@ footer { overflow: hidden; border-top: 1px solid var(--grey-5); }
       <div class="section-line"></div>
     </div>
 
+    <!-- GAME & REAL-TIME -->
+    <div class="work-category" id="game-work">
+      <div class="work-category-header reveal">
+        <div>
+          <div class="work-category-kicker">01 / GAME & REAL-TIME</div>
+          <h3 class="work-category-title">Game & Real-Time</h3>
+        </div>
+        <p class="work-category-desc">Game art, real-time environments, character-driven costume and cinematic experiments developed in Unreal Engine.</p>
+      </div>
+
+      <div class="game-coming-card reveal" aria-label="Game and Real-Time project — Coming Soon">
+        <video
+          class="game-coming-video"
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="metadata">
+          <source src="https://drive.google.com/uc?export=download&id=1xGzaPzrMGTMqEr69bprMYU2ZLuR-N4il" type="video/mp4">
+        </video>
+
+        <div class="game-coming-watermark">COMING SOON</div>
+        <div class="game-coming-meta">GAME × REAL-TIME / 2026</div>
+      </div>
+    </div>
+
     <!-- VISUAL MERCHANDISING / SPATIAL DESIGN -->
     <div class="work-category" id="vm-work">
       <div class="work-category-header reveal">
         <div>
-          <div class="work-category-kicker">01 / SPECIALIZED PORTFOLIO</div>
+          <div class="work-category-kicker">02 / SPECIALIZED PORTFOLIO</div>
           <h3 class="work-category-title">Visual Merchandising & Spatial Design</h3>
         </div>
         <p class="work-category-desc">Luxury retail concepts, window displays, pop-ups and branded spatial experiences developed through 3D visualization.</p>
@@ -1607,7 +1760,7 @@ footer { overflow: hidden; border-top: 1px solid var(--grey-5); }
     <div class="work-category" id="packshot-work">
       <div class="work-category-header reveal">
         <div>
-          <div class="work-category-kicker">02 / PRODUCT VISUALIZATION</div>
+          <div class="work-category-kicker">03 / PRODUCT VISUALIZATION</div>
           <h3 class="work-category-title">Luxury Product Packshot</h3>
         </div>
         <p class="work-category-desc">Hyper-realistic product imagery developed through 3D modelling, material refinement, studio lighting and commercial presentation workflows.</p>
@@ -1639,7 +1792,7 @@ footer { overflow: hidden; border-top: 1px solid var(--grey-5); }
     <div class="work-category" id="art-work">
       <div class="work-category-header reveal">
         <div>
-          <div class="work-category-kicker">03 / CORE ARTWORK</div>
+          <div class="work-category-kicker">04 / CORE ARTWORK</div>
           <h3 class="work-category-title">Digital Fashion, Character & Game Art</h3>
         </div>
         <p class="work-category-desc">Character, costume, fashion and cinematic 3D projects across CLO3D, Blender and real-time pipelines.</p>
@@ -1914,7 +2067,7 @@ footer { overflow: hidden; border-top: 1px solid var(--grey-5); }
     <div class="work-category visual-fragments-category" id="visual-fragments">
       <div class="work-category-header reveal">
         <div>
-          <div class="work-category-kicker">04 / VISUAL STUDIES</div>
+          <div class="work-category-kicker">05 / VISUAL STUDIES</div>
           <h3 class="work-category-title">Visual Fragments</h3>
         </div>
         <p class="work-category-desc">Selected fashion, costume and image-making studies — independent visual experiments collected as an ongoing archive.</p>
@@ -2736,6 +2889,68 @@ configurePortfolioLinks();
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape') { closeModal(); closePDF(); }
 });
+
+
+/* ── AUTO PROJECT MEDIA BADGES ── */
+function addProjectMediaBadges() {
+  document.querySelectorAll('.project-card').forEach(card => {
+    const onclick = card.getAttribute('onclick') || '';
+    const match = onclick.match(/openModal\(['"]([^'"]+)['"]\)/);
+    if (!match) return;
+
+    const projectId = match[1];
+    const project = pdata[projectId];
+    if (!project) return;
+
+    const thumb = card.querySelector('.project-thumb');
+    if (!thumb) return;
+
+    thumb.querySelector('.project-media-badges')?.remove();
+
+    const hasPDF = Boolean(project.projectBook || project.pdfEmbed);
+    const hasVideo =
+      Array.isArray(project.media) &&
+      project.media.some(item => item && item.video);
+
+    if (!hasPDF && !hasVideo) return;
+
+    const badges = document.createElement('div');
+    badges.className = 'project-media-badges';
+
+    if (hasPDF) {
+      const badge = document.createElement('span');
+      badge.className = 'project-media-badge pdf';
+      badge.textContent = 'PDF';
+      badges.appendChild(badge);
+    }
+
+    if (hasVideo) {
+      const badge = document.createElement('span');
+      badge.className = 'project-media-badge video';
+      badge.textContent = 'VIDEO';
+      badges.appendChild(badge);
+    }
+
+    thumb.appendChild(badges);
+  });
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', addProjectMediaBadges);
+} else {
+  addProjectMediaBadges();
+}
+
+
+
+/* ── GAME MOVING THUMBNAIL AUTOPLAY ── */
+document.querySelectorAll('.game-coming-video').forEach(video => {
+  video.muted = true;
+  const tryPlay = () => video.play().catch(() => {});
+  if (video.readyState >= 2) tryPlay();
+  else video.addEventListener('canplay', tryPlay, { once: true });
+});
+
 </script>
 </body>
 </html>
