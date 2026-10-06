@@ -1499,6 +1499,17 @@ footer { overflow: hidden; border-top: 1px solid var(--grey-5); }
   }
 }
 
+
+/* ── WATCH DESIGN PACKSHOT ── */
+.watch-packshot-card { margin-top: 3px; }
+.watch-collage { position: absolute; inset: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); grid-template-rows: repeat(2, minmax(0, 1fr)); gap: 2px; background: #050505; }
+.project-thumb .watch-collage img { position: static; width: 100%; height: 100%; object-fit: cover; object-position: center; }
+.watch-packshot-card .project-thumb-overlay { opacity: .35; }
+.modal-media-item.media-watch { grid-column: span 2; }
+.watch-section-title { grid-column: 1 / -1; padding: 1.25rem 0 .65rem; border-bottom: 1px solid var(--grey-5); font-family: var(--font-pixel); font-size: .52rem; letter-spacing: .12em; color: var(--grey-2); }
+.watch-row-label { grid-column: 1 / -1; margin-top: .9rem; font-family: var(--font-pixel); font-size: .42rem; letter-spacing: .12em; color: var(--grey-3); }
+.watch-section-note { grid-column: 1 / -1; margin: .15rem 0 .7rem; font-size: .78rem; line-height: 1.8; color: var(--text-dim); }
+@media(max-width:768px){ .modal-media-item.media-watch{display:inline-block;width:calc((100% - 12px) / 3);margin-right:6px;vertical-align:top;} .modal-media-item.media-watch.watch-last{margin-right:0;} .watch-row-label{display:block;margin:1rem 0 .5rem;} .modal-media-item.media-watch .media-caption{display:none;} }
 </style>
 </head>
 <body>
@@ -1812,6 +1823,34 @@ footer { overflow: hidden; border-top: 1px solid var(--grey-5); }
           <p class="project-desc">High-fidelity product visualization focused on luxury materials, controlled studio lighting, texture accuracy and presentation-ready imagery.</p>
           <div class="project-footer">
             <div class="project-tags"><span class="ptag software-clo3d">CLO3D</span><span class="ptag software-blender">BLENDER</span><span class="ptag">TEXTURE MAP</span></div>
+            <button class="view-btn">VIEW ▶</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card packshot-card watch-packshot-card reveal" onclick="openModal('watchdesign')">
+        <div class="card-stripe"></div>
+        <div class="project-thumb">
+          <div class="watch-collage">
+            <img src="https://drive.google.com/thumbnail?id=1BojTTOwrzc0G0mcuuj1NKIiB4-CFJtzo&sz=w800" alt="Watch design case study inspired by YEMA" loading="lazy">
+            <img src="https://drive.google.com/thumbnail?id=1l9nZZjAOuIipaSRwS6cicKOsOexGuo8M&sz=w800" alt="" loading="lazy">
+            <img src="https://drive.google.com/thumbnail?id=1TgmuhFVanWV-UXDZGg3gQRS6eGpxmU5b&sz=w800" alt="" loading="lazy">
+            <img src="https://drive.google.com/thumbnail?id=1jQ_LO1nS4IBZtLOYnhXk47_RodI0ER31&sz=w800" alt="" loading="lazy">
+            <img src="https://drive.google.com/thumbnail?id=10RGfNQvKF3qvNppYaptDk_c8-Mm_K5P7&sz=w800" alt="" loading="lazy">
+            <img src="https://drive.google.com/thumbnail?id=1sXaJi84N2AWC6lELbbnbtBRSqEgUMJTi&sz=w800" alt="" loading="lazy">
+            <img src="https://drive.google.com/thumbnail?id=1xAzIOtqJEZc1ZPjWruoicoA5r6jL1YJP&sz=w800" alt="" loading="lazy">
+            <img src="https://drive.google.com/thumbnail?id=1nuL_-wHVYG9zdVx_VyOjtEEcyIt-a7Z7&sz=w800" alt="" loading="lazy">
+          </div>
+          <div class="project-thumb-overlay"></div>
+          <div class="project-hover-strip"></div>
+        </div>
+        <div class="project-info">
+          <div class="project-num">PACKSHOT PROJECT 002</div>
+          <div class="project-domain domain-game">◆ WATCH DESIGN · PRODUCT VISUALIZATION</div>
+          <h3 class="project-name">Watch Design Packshot</h3>
+          <p class="project-desc">A GOBELINS art-direction case study exploring new watch concepts inspired by YEMA's design heritage, with a focus on Spationaute and Yachtingraf.</p>
+          <div class="project-footer">
+            <div class="project-tags"><span class="ptag">WATCH DESIGN</span><span class="ptag">ART DIRECTION</span><span class="ptag">AI WORKFLOW</span></div>
             <button class="view-btn">VIEW ▶</button>
           </div>
         </div>
@@ -2642,6 +2681,49 @@ Pipeline: Garment drafting → Character sculpting → Rigging → Environmental
       { class: 'wide',   src: 'https://lh3.googleusercontent.com/d/1xo-gbQX2j70KrEhrDK6iLW3sNrHYVttu' },
     ]
   },
+  watchdesign: {
+    color: '#b8b8b8', domain: '◆ WATCH DESIGN · ART DIRECTION CASE STUDY', title: 'Watch Design Packshot',
+    desc: `<strong>GOBELINS ART-DIRECTION CASE STUDY — 2026.</strong><br><br>These watch concepts were developed as part of a GOBELINS learning project using YEMA as the selected brand case study. The exercise explores how an established watch identity can be reinterpreted through concept design, product visualization and a broader 3D brand-experience proposal.<br><br>The images below focus specifically on the <strong>watch design and visual development</strong>. The complete interactive experience, technical implementation and Unreal Engine 5 workflow will be documented separately in the upcoming <strong>YEMA</strong> project under <strong>Game & Real-Time</strong> once the project is complete.<br><br><strong>SPATIONAUTE</strong> — Concepts reinterpret YEMA's space-oriented lineage through orbital graphics, layered displays, globe and spacecraft-inspired geometry, and retro-futuristic material language.<br><br><strong>YACHTINGRAF</strong> — Concepts build from the collection's nautical timing identity, exploring countdown graphics, high-contrast information systems and more collectible retro-futuristic compositions.`,
+    meta: { Tools: 'Sketch · AI-assisted Visualization · Blender · UE5', Year: '2026', Type: 'GOBELINS Academic Case Study', Role: 'Watch Design · Art Direction · 3D Development', Brand: 'YEMA — Case Study / Inspiration' },
+    media: [
+      { class: 'watch', src: 'https://drive.google.com/thumbnail?id=182YsNROhvvussN1ITR1UJnO08HMuMsL3&sz=w2000', caption: 'SPATIONAUTE CONCEPT 01 · VIEW 1/3' },
+      { class: 'watch', src: 'https://drive.google.com/thumbnail?id=1BojTTOwrzc0G0mcuuj1NKIiB4-CFJtzo&sz=w2000', caption: 'SPATIONAUTE CONCEPT 01 · VIEW 2/3' },
+      { class: 'watch', src: 'https://drive.google.com/thumbnail?id=1axMhNdg3q-k1xGp2lJf7k9qVLc9yF59l&sz=w2000', caption: 'SPATIONAUTE CONCEPT 01 · VIEW 3/3' },
+      { class: 'watch', src: 'https://drive.google.com/thumbnail?id=1KT-ZUMd_J74nsxiyQtVnyo5bG9ysHnRq&sz=w2000', caption: 'SPATIONAUTE CONCEPT 02 · VIEW 1/3' },
+      { class: 'watch', src: 'https://drive.google.com/thumbnail?id=1sXaJi84N2AWC6lELbbnbtBRSqEgUMJTi&sz=w2000', caption: 'SPATIONAUTE CONCEPT 02 · VIEW 2/3' },
+      { class: 'watch', src: 'https://drive.google.com/thumbnail?id=1lS1JExYV_oKnpClbIh3CDrkSr3umS_mv&sz=w2000', caption: 'SPATIONAUTE CONCEPT 02 · VIEW 3/3' },
+      { class: 'watch', src: 'https://drive.google.com/thumbnail?id=188EeC61Uz3EVwhnhvMILHYYKToNF2gJ3&sz=w2000', caption: 'SPATIONAUTE CONCEPT 03 · VIEW 1/3' },
+      { class: 'watch', src: 'https://drive.google.com/thumbnail?id=1lGREfBAuZbT2PdIohrr-eKo5N3WB1HC7&sz=w2000', caption: 'SPATIONAUTE CONCEPT 03 · VIEW 2/3' },
+      { class: 'watch', src: 'https://drive.google.com/thumbnail?id=1B7kJzjGj4uo0WqBFXGIL7bNB0Bznz4Ad&sz=w2000', caption: 'SPATIONAUTE CONCEPT 03 · VIEW 3/3' },
+      { class: 'watch', src: 'https://drive.google.com/thumbnail?id=1osB3A4UU34wAfW9vHJDchPb0eFpzs05E&sz=w2000', caption: 'SPATIONAUTE CONCEPT 04 · VIEW 1/3' },
+      { class: 'watch', src: 'https://drive.google.com/thumbnail?id=1K8n2sKMYJ49bJLAZRe-_FJrQJbOFz7Rh&sz=w2000', caption: 'SPATIONAUTE CONCEPT 04 · VIEW 2/3' },
+      { class: 'watch', src: 'https://drive.google.com/thumbnail?id=1l9nZZjAOuIipaSRwS6cicKOsOexGuo8M&sz=w2000', caption: 'SPATIONAUTE CONCEPT 04 · VIEW 3/3' },
+      { class: 'watch', src: 'https://drive.google.com/thumbnail?id=1qfW3kEc4SquczwHy3yvgPNPnO5fI2ACa&sz=w2000', caption: 'SPATIONAUTE CONCEPT 05 · VIEW 1/3' },
+      { class: 'watch', src: 'https://drive.google.com/thumbnail?id=194chZa_9najNAc8ss-0iOE-krhcbWLv1&sz=w2000', caption: 'SPATIONAUTE CONCEPT 05 · VIEW 2/3' },
+      { class: 'watch', src: 'https://drive.google.com/thumbnail?id=1zmstuLLLUHNQnY3kzQdi6jFDTJhwqks4&sz=w2000', caption: 'SPATIONAUTE CONCEPT 05 · VIEW 3/3' },
+      { class: 'watch', src: 'https://drive.google.com/thumbnail?id=1NQcjSKEnqFi-0LeqmhpaZzO7idrV6ZW6&sz=w2000', caption: 'SPATIONAUTE CONCEPT 06 · VIEW 1/3' },
+      { class: 'watch', src: 'https://drive.google.com/thumbnail?id=1ftszDvQ0kliK3sFwpmv3XOLDECGBN5JK&sz=w2000', caption: 'SPATIONAUTE CONCEPT 06 · VIEW 2/3' },
+      { class: 'watch', src: 'https://drive.google.com/thumbnail?id=1jQ_LO1nS4IBZtLOYnhXk47_RodI0ER31&sz=w2000', caption: 'SPATIONAUTE CONCEPT 06 · VIEW 3/3' },
+      { class: 'watch', src: 'https://drive.google.com/thumbnail?id=1y6D2En1HI21T_KFntUC7pOS0qnVvzvsG&sz=w2000', caption: 'YACHTINGRAF CONCEPT 01 · VIEW 1/3' },
+      { class: 'watch', src: 'https://drive.google.com/thumbnail?id=1-2C7Bvkxe1ytssIW_czfZlftPEvImJhh&sz=w2000', caption: 'YACHTINGRAF CONCEPT 01 · VIEW 2/3' },
+      { class: 'watch', src: 'https://drive.google.com/thumbnail?id=1YE0ofrpFNw_P_c0wU1Od5ZhLPbPuSHQd&sz=w2000', caption: 'YACHTINGRAF CONCEPT 01 · VIEW 3/3' },
+      { class: 'watch', src: 'https://drive.google.com/thumbnail?id=1TgmuhFVanWV-UXDZGg3gQRS6eGpxmU5b&sz=w2000', caption: 'YACHTINGRAF CONCEPT 02 · VIEW 1/3' },
+      { class: 'watch', src: 'https://drive.google.com/thumbnail?id=1-CTAng0Ez0Y4ZlgxO8d-KX_kJTXOH7c7&sz=w2000', caption: 'YACHTINGRAF CONCEPT 02 · VIEW 2/3' },
+      { class: 'watch', src: 'https://drive.google.com/thumbnail?id=1UkxwCwegc8LVczMEsTNTqdpJv5wg-FIq&sz=w2000', caption: 'YACHTINGRAF CONCEPT 02 · VIEW 3/3' },
+      { class: 'watch', src: 'https://drive.google.com/thumbnail?id=1Xr-qWOsrNoTPWeDQoRtVFrWRXj5sRr21&sz=w2000', caption: 'YACHTINGRAF CONCEPT 03 · VIEW 1/3' },
+      { class: 'watch', src: 'https://drive.google.com/thumbnail?id=1V0eBR5x_QPFrtxouPXQv1pZV3CB84CZJ&sz=w2000', caption: 'YACHTINGRAF CONCEPT 03 · VIEW 2/3' },
+      { class: 'watch', src: 'https://drive.google.com/thumbnail?id=1xAzIOtqJEZc1ZPjWruoicoA5r6jL1YJP&sz=w2000', caption: 'YACHTINGRAF CONCEPT 03 · VIEW 3/3' },
+      { class: 'watch', src: 'https://drive.google.com/thumbnail?id=1nuL_-wHVYG9zdVx_VyOjtEEcyIt-a7Z7&sz=w2000', caption: 'YACHTINGRAF CONCEPT 04 · VIEW 1/3' },
+      { class: 'watch', src: 'https://drive.google.com/thumbnail?id=1Bmn1gdIUHXwEA7sW7ZVH_-Z-zK1A8xJ6&sz=w2000', caption: 'YACHTINGRAF CONCEPT 04 · VIEW 2/3' },
+      { class: 'watch', src: 'https://drive.google.com/thumbnail?id=1b17CURYIqV7FdG8hkk37CqkNimlN7KPy&sz=w2000', caption: 'YACHTINGRAF CONCEPT 04 · VIEW 3/3' },
+      { class: 'watch', src: 'https://drive.google.com/thumbnail?id=1srlv6at1BhK9vHeggJ0X5_i9tRxpnlki&sz=w2000', caption: 'YACHTINGRAF CONCEPT 05 · VIEW 1/3' },
+      { class: 'watch', src: 'https://drive.google.com/thumbnail?id=1dzqgRgbL0UJ9havzpFOX_2xrxKakCYxb&sz=w2000', caption: 'YACHTINGRAF CONCEPT 05 · VIEW 2/3' },
+      { class: 'watch', src: 'https://drive.google.com/thumbnail?id=10RGfNQvKF3qvNppYaptDk_c8-Mm_K5P7&sz=w2000', caption: 'YACHTINGRAF CONCEPT 05 · VIEW 3/3' },
+      { class: 'watch', src: 'https://drive.google.com/thumbnail?id=1oiPbjBtJv0Xl3wEnD6UmAp2NFdzuOsmP&sz=w2000', caption: 'YACHTINGRAF CONCEPT 06 · VIEW 1/3' },
+      { class: 'watch', src: 'https://drive.google.com/thumbnail?id=1YIByuDBPkn86ieYLRF4j4hGFYEpaRI9u&sz=w2000', caption: 'YACHTINGRAF CONCEPT 06 · VIEW 2/3' },
+      { class: 'watch', src: 'https://drive.google.com/thumbnail?id=1Blc8kfvp1KSPW9HAjA4jI8pFKJ3uI-G0&sz=w2000', caption: 'YACHTINGRAF CONCEPT 06 · VIEW 3/3' }
+    ]
+  },
   p6: {
     color: '#808080', domain: '▶ PACKSHOT', title: 'Bag Packshot',
     pdf: 'https://drive.google.com/file/d/1tYyakCfYTwYYYmFE9bJBl7GlEfWzyPXP/view?usp=drive_link',
@@ -2801,9 +2883,27 @@ function openModal(id) {
 
   const mediaEl = document.getElementById('modal-media');
   mediaEl.innerHTML = '';
-  p.media.forEach(m => {
+  p.media.forEach((m, mediaIndex) => {
+    if (id === 'watchdesign' && (mediaIndex === 0 || mediaIndex === 18)) {
+      const heading = document.createElement('div');
+      heading.className = 'watch-section-title';
+      heading.textContent = mediaIndex === 0 ? '01 / SPATIONAUTE — SPACE & ORBITAL STUDIES' : '02 / YACHTINGRAF — NAUTICAL COUNTDOWN STUDIES';
+      mediaEl.appendChild(heading);
+      const note = document.createElement('div');
+      note.className = 'watch-section-note';
+      note.textContent = mediaIndex === 0 ? 'Space-oriented watch concepts exploring orbital information, layered mechanics and retro-futuristic forms.' : 'Nautical timing concepts exploring countdown readability, graphic hierarchy and collectible retro-futuristic variations.';
+      mediaEl.appendChild(note);
+    }
+    if (id === 'watchdesign' && mediaIndex % 3 === 0) {
+      const rowLabel = document.createElement('div');
+      rowLabel.className = 'watch-row-label';
+      const lineName = mediaIndex < 18 ? 'SPATIONAUTE' : 'YACHTINGRAF';
+      rowLabel.textContent = `${lineName} — CONCEPT ${String((mediaIndex % 18) / 3 + 1).padStart(2, '0')}`;
+      mediaEl.appendChild(rowLabel);
+    }
     const div = document.createElement('div');
     div.className = `modal-media-item media-${m.class || 'small'}`;
+    if (id === 'watchdesign' && mediaIndex % 3 === 2) div.classList.add('watch-last');
     if (m.video) {
       div.innerHTML = `<iframe src="${m.video}" frameborder="0" allowfullscreen style="width:100%;aspect-ratio:16/9;display:block;"></iframe>`;
     } else if (m.src) {
