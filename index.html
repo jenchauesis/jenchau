@@ -1510,6 +1510,20 @@ footer { overflow: hidden; border-top: 1px solid var(--grey-5); }
 .watch-row-label { grid-column: 1 / -1; margin-top: .9rem; font-family: var(--font-pixel); font-size: .42rem; letter-spacing: .12em; color: var(--grey-3); }
 .watch-section-note { grid-column: 1 / -1; margin: .15rem 0 .7rem; font-size: .78rem; line-height: 1.8; color: var(--text-dim); }
 @media(max-width:768px){ .modal-media-item.media-watch{display:inline-block;width:calc((100% - 12px) / 3);margin-right:6px;vertical-align:top;} .modal-media-item.media-watch.watch-last{margin-right:0;} .watch-row-label{display:block;margin:1rem 0 .5rem;} .modal-media-item.media-watch .media-caption{display:none;} }
+
+/* PARIS IS LYING project thumbnail */
+.paris-project-card { cursor:pointer; isolation:isolate; }
+.paris-project-card .game-drive-crop { pointer-events:none; }
+.paris-project-card .game-coming-video { pointer-events:none; }
+.paris-video-shade {position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(90deg,rgba(0,0,0,.84),rgba(0,0,0,.23) 75%);}
+.paris-project-label {position:absolute;z-index:4;left:clamp(20px,5vw,72px);bottom:clamp(22px,5vw,68px);right:20px;color:#fff;pointer-events:none;}
+.paris-project-label>span:first-child {font-size:11px;letter-spacing:.22em;color:#c7ff32;}
+.paris-project-label h3 {font-size:clamp(30px,5vw,76px);line-height:1.05;margin:14px 0;font-weight:800;letter-spacing:-.04em;}
+.paris-project-label p {font-size:clamp(12px,1.5vw,17px);max-width:550px;}
+.paris-open-label {display:inline-block;margin-top:18px;font-size:12px;letter-spacing:.16em;border-bottom:1px solid #c7ff32;padding-bottom:8px;}
+.paris-project-card:hover .paris-open-label {color:#c7ff32;}
+.paris-project-card:focus-visible {outline:3px solid #c7ff32;outline-offset:4px;}
+@media(max-width:650px){.paris-project-card{aspect-ratio:4/3}.paris-project-label p{max-width:270px}}
 </style>
 </head>
 <body>
@@ -1716,21 +1730,15 @@ footer { overflow: hidden; border-top: 1px solid var(--grey-5); }
         <p class="work-category-desc">Game art, real-time environments, character-driven costume and cinematic experiments developed in Unreal Engine.</p>
       </div>
 
-      <div class="game-coming-card reveal" aria-label="Game and Real-Time project — Coming Soon">
+      <div class="game-coming-card reveal paris-project-card" role="button" tabindex="0" onclick="openModal('parislying')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openModal('parislying')}">
         <div class="game-drive-crop">
-          <iframe
-            class="game-coming-video"
-            src="https://drive.google.com/file/d/1xGzaPzrMGTMqEr69bprMYU2ZLuR-N4il/preview"
-            title="Game & Real-Time — Coming Soon"
-            frameborder="0"
-            scrolling="no"
-            allow="fullscreen; picture-in-picture"
-            tabindex="-1">
-          </iframe>
+          <iframe class="game-coming-video" loading="lazy"
+            src="https://drive.google.com/file/d/13nI7WDwE-wmLoo8BVDjMFhLeklOQvn3c/preview"
+            title="PARIS IS LYING gameplay preview" frameborder="0" tabindex="-1"
+            allow="autoplay; fullscreen; picture-in-picture"></iframe>
         </div>
-
-        <div class="game-coming-watermark">COMING SOON</div>
-        <div class="game-coming-meta">GAME × REAL-TIME / 2026</div>
+        <div class="paris-video-shade"></div>
+        <div class="paris-project-label"><span>01 / GAME & REAL-TIME · 2026</span><h3>PARIS IS LYING</h3><p>A surreal first-person puzzle adventure set in a distorted Paris.</p><span class="paris-open-label">VIEW PROJECT ↗ &nbsp; · &nbsp; VIDEO</span></div>
       </div>
     </div>
 
@@ -2499,6 +2507,41 @@ const MACARTHUR_BOOK_PAGES = [
 ];
 
 const pdata = {
+  parislying: {
+    color: '#c7ff32',
+    domain: '◆ GAME DESIGN / REAL-TIME / INTERACTIVE STORYTELLING',
+    title: 'PARIS IS LYING',
+    desc: `<h3>01 / PROJECT OVERVIEW</h3>
+    <p><strong>PARIS IS LYING</strong> is an experimental first-person puzzle adventure developed as a playable Level 1 prototype in Unreal Engine 5. It explores perception, contradictory realities, and environmental storytelling through a surreal interpretation of Paris.</p>
+    <p>Rather than presenting the city as a familiar historical landmark, the project reimagines its architecture through visual distortions, skeletal monuments, uncanny faces, and a collision of Renaissance-inspired aesthetics with graphic pop art.</p>
+    <h3>02 / NARRATIVE PREMISE</h3>
+    <p>Following a violent storm at sea, an aristocratic woman from the eighteenth or nineteenth century awakens in an unfamiliar Paris. The Eiffel Tower appears to be constructed from bones, the city seems alive, and ordinary architectural details no longer obey reality. A mysterious letter offers cryptic guidance without revealing the truth of her arrival.</p>
+    <p>The player must investigate the city and learn to question what they see. The central narrative principle is simple: <em>the city is lying, and observation alone is not enough.</em></p>
+    <h3>03 / VISUAL DIRECTION</h3>
+    <p>The art direction combines distorted Haussmann architecture, surreal Renaissance imagery, childlike graphic elements, and a high-contrast pop-art palette. The skeletal Eiffel Tower acts as the primary landmark and visual symbol. The contrast between historical costume and impossible urban space reinforces the protagonist's displacement in time.</p>
+    <h3>04 / LEVEL 01: PLAYER JOURNEY</h3>
+    <p><strong>Arrival:</strong> A storm-at-sea cinematic introduces the protagonist. A flash of light transitions into a first-person awakening. The player explores the riverside, climbs toward the city, and discovers its first impossible landmarks.</p>
+    <p><strong>Puzzle 01 / The Postcard Kiosk:</strong> A postcard depicts a version of the Eiffel Tower that conflicts with the skeletal structure in the environment. The player manipulates the image to replace the distorted landmark, introducing the idea that representations can alter reality.</p>
+    <p><strong>Puzzle 02 / The Perspective Frame:</strong> A floating frame near the Seine reveals different architectural details depending on the viewing side. Flowers appear on one side while windows appear on the other. The player rotates the frame through discrete states until the contradictory views align.</p>
+    <p><strong>End of Prototype:</strong> The clues lead toward a concealed entrance beneath the quay. The locked passage establishes the next narrative objective and leaves the mystery unresolved.</p>
+    <h3>05 / GAMEPLAY & INTERACTION DESIGN</h3>
+    <p>The prototype is designed around first-person exploration, object interaction, visual inspection, and environmental puzzles. The learning curve introduces one perceptual mechanic at a time, moving from image replacement to viewpoint-dependent alignment. The puzzles are intended to communicate through visual feedback rather than lengthy instructions.</p>
+    <h3>06 / TECHNICAL DEVELOPMENT</h3>
+    <p>Developed in <strong>Unreal Engine 5</strong> using Blueprint visual scripting. The workflow includes first-person interaction logic, puzzle states and validation, widget-based UI, animated menu transitions, video-based cinematic integration, level sequencing, and real-time lighting and environment presentation.</p>
+    <h3>07 / DESIGN CHALLENGES & ITERATION</h3>
+    <p>The central challenge is making an intentionally illogical world feel understandable to play. Environmental cues, distinct puzzle states, and readable interaction feedback are used to preserve clarity without sacrificing surrealism. The introduction also explores continuity between pre-rendered cinematic footage and interactive first-person gameplay.</p>
+    <h3>08 / OUTCOME & NEXT STEPS</h3>
+    <p>The project is structured as a Level 1 proof of concept and a foundation for a larger narrative game. Planned expansion may develop the hidden passage, deepen the city's contradictory visual logic, and introduce new perspective-based puzzle systems. This report describes the prototype's intended design and development scope, not a claim that every planned feature is fully implemented.</p>`,
+    meta: {
+      Year: '2026',
+      Format: 'Playable Level 1 prototype',
+      Genre: 'First-person surreal puzzle adventure',
+      Engine: 'Unreal Engine 5',
+      Development: 'Blueprints · UI/UX · Environment · Cinematic',
+      Focus: 'Game design · Real-time interaction · Visual storytelling'
+    },
+    media: [{class:'hero', video:'https://drive.google.com/file/d/13nI7WDwE-wmLoo8BVDjMFhLeklOQvn3c/preview',caption:'PARIS IS LYING / Game preview'}]
+  },
   /* ================================================================
      VM IMAGE SLOTS — SAFE EDITING
      IMPORTANT: paste ONLY a clean image URL between the two quote marks.
