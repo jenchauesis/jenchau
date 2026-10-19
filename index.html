@@ -1524,6 +1524,15 @@ footer { overflow: hidden; border-top: 1px solid var(--grey-5); }
 .paris-project-card:hover .paris-open-label {color:#c7ff32;}
 .paris-project-card:focus-visible {outline:3px solid #c7ff32;outline-offset:4px;}
 @media(max-width:650px){.paris-project-card{aspect-ratio:4/3}.paris-project-label p{max-width:270px}}
+
+/* CATEGORY NAVIGATION + SHAREABLE PROJECT PAGES */
+.category-nav{position:sticky;top:0;z-index:80;background:rgba(8,8,8,.96);backdrop-filter:blur(18px);border-block:1px solid #303030;padding:18px max(20px,5vw)}
+.category-nav-inner{display:flex;gap:9px;align-items:center;flex-wrap:wrap;max-width:1450px;margin:auto}
+.category-label{font:10px 'Space Mono',monospace;color:#888;margin-right:14px;letter-spacing:2px}
+.category-btn{cursor:pointer;border:1px solid #555;background:transparent;color:#eee;border-radius:50px;padding:12px 17px;font:11px 'Space Mono',monospace;transition:.25s}
+.category-btn:hover,.category-btn.active{background:#c4ff43;border-color:#c4ff43;color:#090909}
+.category-empty{padding:75px 15px;color:#aaa;font:13px 'Space Mono',monospace;text-align:center}
+@media(max-width:650px){.category-nav{padding:13px 12px}.category-nav-inner{flex-wrap:nowrap;overflow-x:auto}.category-btn{white-space:nowrap;padding:10px 12px}.category-label{display:none}}
 </style>
 </head>
 <body>
@@ -1711,6 +1720,7 @@ footer { overflow: hidden; border-top: 1px solid var(--grey-5); }
   </div>
 </section>
 
+<nav class="category-nav" aria-label="Explore project categories"><div class="category-nav-inner"><span class="category-label">EXPLORE /</span><button class="category-btn active" data-cat="all">ALL WORKS</button><button class="category-btn" data-cat="fashion">VISUAL FRAGMENTS</button><button class="category-btn" data-cat="game">GAME DESIGN</button><button class="category-btn" data-cat="art">DIGITAL FASHION, CHARACTER & GAME ART</button><button class="category-btn" data-cat="vm">VISUAL MERCHANDISING</button><button class="category-btn" data-cat="creature">CHARACTER & CREATURE</button></div></nav>
 <!-- PROJECTS -->
 <section class="projects" id="projects">
   <div class="container">
@@ -1730,7 +1740,7 @@ footer { overflow: hidden; border-top: 1px solid var(--grey-5); }
         <p class="work-category-desc">Game art, real-time environments, character-driven costume and cinematic experiments developed in Unreal Engine.</p>
       </div>
 
-      <div class="game-coming-card reveal paris-project-card" role="button" tabindex="0" onclick="openModal('parislying')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openModal('parislying')}">
+      <div class="game-coming-card reveal paris-project-card" role="button" tabindex="0" onclick="window.location.href='projects/parislying.html'" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();window.location.href='projects/parislying.html'}">
         <div class="game-drive-crop">
           <iframe class="game-coming-video" loading="lazy"
             src="https://drive.google.com/file/d/13nI7WDwE-wmLoo8BVDjMFhLeklOQvn3c/preview"
@@ -1754,7 +1764,7 @@ footer { overflow: hidden; border-top: 1px solid var(--grey-5); }
 
       <div class="projects-grid" id="vm-projects-grid">
         <!-- VM PROJECT 01: Chỉ thay URL trong src của ảnh thumbnail và trong pdata.vm1.media bên dưới -->
-        <div class="project-card vm-project-card reveal" onclick="openModal('vm1')">
+        <div class="project-card vm-project-card reveal" onclick="window.location.href='projects/vm1.html'">
           <div class="card-stripe"></div>
           <div class="project-thumb">
             <img src="https://drive.google.com/thumbnail?id=1h4ODCa0bIw9gb6jq8LaKO_Tca5ng5Yfm&sz=w2000" alt="Luxury flagship store project thumbnail">
@@ -1771,7 +1781,7 @@ footer { overflow: hidden; border-top: 1px solid var(--grey-5); }
         </div>
 
         <!-- VM PROJECT 02: Chỉ thay URL trong src của ảnh thumbnail và trong pdata.vm2.media bên dưới -->
-        <div class="project-card vm-project-card reveal" onclick="openModal('vm2')" style="transition-delay:0.08s">
+        <div class="project-card vm-project-card reveal" onclick="window.location.href='projects/vm2.html'" style="transition-delay:0.08s">
           <div class="card-stripe"></div>
           <div class="project-thumb">
             <img src="https://drive.google.com/thumbnail?id=122QC3xhYzZUgt60plV8zJz7KuU7PF2pq&sz=w2000" alt="Window display project thumbnail">
@@ -1788,7 +1798,7 @@ footer { overflow: hidden; border-top: 1px solid var(--grey-5); }
         </div>
 
         <!-- VM PROJECT 03: Chỉ thay URL trong src của ảnh thumbnail và trong pdata.vm3.media bên dưới -->
-        <div class="project-card vm-project-card reveal" onclick="openModal('vm3')" style="display:none; transition-delay:0.12s">
+        <div class="project-card vm-project-card reveal" onclick="window.location.href='projects/vm3.html'" style="display:none; transition-delay:0.12s">
           <div class="card-stripe"></div>
           <div class="project-thumb">
             <img src="data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1600' height='1000' viewBox='0 0 1600 1000'%3E%3Crect width='1600' height='1000' fill='%230c0c0c'/%3E%3Crect x='35' y='35' width='1530' height='930' fill='none' stroke='%23404040' stroke-width='3' stroke-dasharray='18 14'/%3E%3Ctext x='800' y='470' fill='%23808080' font-family='monospace' font-size='42' text-anchor='middle'%3ETHUMBNAIL 16:10%3C/text%3E%3Ctext x='800' y='535' fill='%23555555' font-family='monospace' font-size='25' text-anchor='middle'%3EREPLACE ONLY THIS IMG SRC%3C/text%3E%3C/svg%3E" alt="Pop-up experience project thumbnail">
@@ -1817,7 +1827,7 @@ footer { overflow: hidden; border-top: 1px solid var(--grey-5); }
       </div>
 
       <div class="packshot-grid" id="packshot-projects-grid">
-      <div class="project-card pc-6 packshot-card reveal" onclick="openModal('p6')">
+      <div class="project-card pc-6 packshot-card reveal" onclick="window.location.href='projects/p6.html'">
         <div class="card-stripe"></div>
         <div class="project-thumb">
           <img src="https://drive.google.com/thumbnail?id=1uWc9zmfBUU9A3I6CG1m8_iydEL5P-muN&sz=w2000" alt="">
@@ -1836,7 +1846,7 @@ footer { overflow: hidden; border-top: 1px solid var(--grey-5); }
         </div>
       </div>
 
-      <div class="project-card packshot-card watch-packshot-card reveal" onclick="openModal('watchdesign')">
+      <div class="project-card packshot-card watch-packshot-card reveal" onclick="window.location.href='projects/watchdesign.html'">
         <div class="card-stripe"></div>
         <div class="project-thumb">
           <div class="watch-collage">
@@ -1881,7 +1891,7 @@ footer { overflow: hidden; border-top: 1px solid var(--grey-5); }
 
 
       <!-- P1 -->
-      <div class="project-card pc-1 featured reveal" onclick="openModal('p1')">
+      <div class="project-card pc-1 featured reveal" onclick="window.location.href='projects/p1.html'">
         <div class="card-stripe"></div>
         <div class="project-thumb">
           <img src="https://drive.google.com/thumbnail?id=1B1TTm5kE7fCJ-5w0Ox6GMbxItLTsswod&sz=w2000" alt="">
@@ -1901,7 +1911,7 @@ footer { overflow: hidden; border-top: 1px solid var(--grey-5); }
       </div>
 
       <!-- REQUIEM -->
-      <div class="project-card pc-requiem reveal" style="transition-delay:0.06s" onclick="openModal('requiem')">
+      <div class="project-card pc-requiem reveal" style="transition-delay:0.06s" onclick="window.location.href='projects/requiem.html'">
         <div class="card-stripe"></div>
         <div class="project-thumb">
           <img src="https://drive.google.com/thumbnail?id=1IVjmB5ZPkcgxHTlrcMPwAe1gI1dcfB9h&sz=w2000" alt="Requiem cinematic 3D artwork">
@@ -1923,7 +1933,7 @@ footer { overflow: hidden; border-top: 1px solid var(--grey-5); }
 
 
       <!-- GREY FREY -->
-      <div class="project-card pc-greyfrey reveal" style="transition-delay:0.07s" onclick="openModal('greyfrey')">
+      <div class="project-card pc-greyfrey reveal" style="transition-delay:0.07s" onclick="window.location.href='projects/greyfrey.html'">
         <div class="card-stripe"></div>
         <div class="project-thumb">
           <img src="https://drive.google.com/thumbnail?id=1Anw_NdpYvOicRCYzyhZioWaSwxNkSYWv&sz=w2000" alt="Grey Frey creature-inspired digital costume">
@@ -1943,7 +1953,7 @@ footer { overflow: hidden; border-top: 1px solid var(--grey-5); }
       </div>
 
       <!-- P7 -->
-      <div class="project-card pc-7 reveal" style="transition-delay:0.08s" onclick="openModal('p7')">
+      <div class="project-card pc-7 reveal" style="transition-delay:0.08s" onclick="window.location.href='projects/p7.html'">
         <div class="card-stripe"></div>
         <div class="project-thumb">
           <img src="https://drive.google.com/thumbnail?id=11lPwWZ4jmribCWL0kB3rEgSCCF725_0P&sz=w2000" alt="">
@@ -1963,7 +1973,7 @@ footer { overflow: hidden; border-top: 1px solid var(--grey-5); }
       </div>
 
       <!-- P3 -->
-      <div class="project-card pc-3 reveal" style="transition-delay:0.12s" onclick="openModal('p3')">
+      <div class="project-card pc-3 reveal" style="transition-delay:0.12s" onclick="window.location.href='projects/p3.html'">
         <div class="card-stripe"></div>
         <div class="project-thumb">
           <img src="https://lh3.googleusercontent.com/d/1nexh6TWG4lQnu9r13z8JR2me5iQ05jP7" alt="">
@@ -1983,7 +1993,7 @@ footer { overflow: hidden; border-top: 1px solid var(--grey-5); }
       </div>
 
       <!-- P4 -->
-      <div class="project-card pc-4 reveal" style="transition-delay:0.16s" onclick="openModal('p4')">
+      <div class="project-card pc-4 reveal" style="transition-delay:0.16s" onclick="window.location.href='projects/p4.html'">
         <div class="card-stripe"></div>
         <div class="project-thumb">
           <img src="https://lh3.googleusercontent.com/d/1BZhv33UsGX60OuraOQvrGVVuFL47GEE2" alt="">
@@ -2003,7 +2013,7 @@ footer { overflow: hidden; border-top: 1px solid var(--grey-5); }
       </div>
 
       <!-- P5 -->
-      <div class="project-card pc-5 reveal" style="transition-delay:0.2s" onclick="openModal('p5')">
+      <div class="project-card pc-5 reveal" style="transition-delay:0.2s" onclick="window.location.href='projects/p5.html'">
         <div class="card-stripe"></div>
         <div class="project-thumb">
           <img src="https://lh3.googleusercontent.com/d/1xo-gbQX2j70KrEhrDK6iLW3sNrHYVttu" alt="">
@@ -2036,7 +2046,7 @@ footer { overflow: hidden; border-top: 1px solid var(--grey-5); }
 
 
       <!-- P2 -->
-      <div class="project-card pc-2 reveal" style="transition-delay:0.08s" onclick="openModal('p2')">
+      <div class="project-card pc-2 reveal" style="transition-delay:0.08s" onclick="window.location.href='projects/p2.html'">
         <div class="card-stripe"></div>
         <div class="project-thumb">
           <img src="https://lh3.googleusercontent.com/d/1LuWJClFPXMLdTLioAGXC2pAcpfkCiJMI" alt="">
@@ -2056,7 +2066,7 @@ footer { overflow: hidden; border-top: 1px solid var(--grey-5); }
       </div>
 
       <!-- P8 -->
-      <div class="project-card pc-8 reveal" style="transition-delay:0.12s" onclick="openModal('p8')">
+      <div class="project-card pc-8 reveal" style="transition-delay:0.12s" onclick="window.location.href='projects/p8.html'">
         <div class="card-stripe"></div>
         <div class="project-thumb">
           <img src="https://drive.google.com/thumbnail?id=1QAW699siMvHJvTduOlnqjBQQdM4fAfEX&sz=w1000" alt="">
@@ -2076,7 +2086,7 @@ footer { overflow: hidden; border-top: 1px solid var(--grey-5); }
       </div>
 
       <!-- P9 -->
-      <div class="project-card pc-9 reveal" style="transition-delay:0.16s" onclick="openModal('p9')">
+      <div class="project-card pc-9 reveal" style="transition-delay:0.16s" onclick="window.location.href='projects/p9.html'">
         <div class="card-stripe"></div>
         <div class="project-thumb">
           <img src="https://drive.google.com/thumbnail?id=1lOVGqpKJAL9UAisp3KhyoeH20tPXmSsN&sz=w2000" alt="">
@@ -2096,7 +2106,7 @@ footer { overflow: hidden; border-top: 1px solid var(--grey-5); }
       </div>
 
       <!-- P10 -->
-      <div class="project-card pc-10 reveal" style="transition-delay:0.20s" onclick="openModal('p10')">
+      <div class="project-card pc-10 reveal" style="transition-delay:0.20s" onclick="window.location.href='projects/p10.html'">
         <div class="card-stripe"></div>
         <div class="project-thumb">
           <img src="https://drive.google.com/thumbnail?id=1Ri9YsSiseUwu1ooq_her2_d6Ok234zcC&sz=w2000" alt="">
@@ -2116,7 +2126,7 @@ footer { overflow: hidden; border-top: 1px solid var(--grey-5); }
       </div>
 
       <!-- P11 -->
-      <div class="project-card pc-10 reveal" style="transition-delay:0.20s" onclick="openModal('p11')">
+      <div class="project-card pc-10 reveal" style="transition-delay:0.20s" onclick="window.location.href='projects/p11.html'">
         <div class="card-stripe"></div>
         <div class="project-thumb">
           <img src="https://drive.google.com/thumbnail?id=1uqRxDZqSpoWmduCQbVyg9rmGTp_8gv0H&sz=w2000" alt="">
@@ -3117,6 +3127,45 @@ if (document.readyState === 'loading') {
 
 
 
+
+
+(function(){
+ const categoryMap={
+ parislying:['game','art'],vm1:['vm'],vm2:['vm'],vm3:['vm'],
+ greyfrey:['art'],requiem:['art'],p1:['art','fashion','game'],
+ p2:['fashion'],p3:['fashion'],p4:['fashion'],p5:['fashion'],
+ watchdesign:['art','vm'],p6:['art','vm'],p7:['art'],
+ p8:['art'],p9:['game','art'],
+ p10:['game','art'],p11:['game','art']
+ };
+ const emptyMessage=document.createElement('div');
+ emptyMessage.id='creature-coming-soon';
+ emptyMessage.innerHTML='<span style="font-size:11px;letter-spacing:.22em;color:#b8ff40">CHARACTER & CREATURE DESIGN</span><h2 style="font-size:clamp(26px,5vw,62px);margin:22px 0;font-weight:500">A little universe is coming to life.</h2><p style="color:#999">Stay tuned.</p>';
+ emptyMessage.style.cssText='display:none;text-align:center;padding:110px 20px 160px;max-width:1100px;margin:auto';
+ document.getElementById('projects')?.prepend(emptyMessage);
+ const cards=[...document.querySelectorAll('[onclick*="projects/"]')];
+ const more=document.getElementById('more-projects-wrap');
+ document.querySelectorAll('.category-btn').forEach(btn=>btn.addEventListener('click',()=>{
+  const cat=btn.dataset.cat;
+  emptyMessage.style.display=cat==='creature'?'block':'none';
+  document.querySelectorAll('.category-btn').forEach(b=>b.classList.toggle('active',b===btn));
+  if(more && cat!=='all'){more.classList.add('revealed');more.querySelectorAll('.reveal').forEach(el=>el.classList.add('visible'));}
+  const moreRow=document.getElementById('view-more-row');
+  if(moreRow)moreRow.style.display=cat==='all'?'':'none';
+  cards.forEach(card=>{
+   const id=(card.getAttribute('onclick')||'').match(/projects\/([a-zA-Z0-9]+)\.html/)?.[1];
+   const show=cat==='all'||(categoryMap[id]||['art']).includes(cat);
+   card.style.setProperty('display',show?'':'none','important');
+   if(show)card.classList.add('visible');
+  });
+  document.querySelectorAll('.work-category').forEach(block=>{
+    const its=cards.filter(c=>block.contains(c));
+    block.style.display=its.length&&!its.some(c=>c.style.display!=='none')?'none':'';
+  });
+  const section=document.getElementById('projects');
+  if(section)window.scrollTo({top:section.getBoundingClientRect().top+scrollY-90,behavior:'smooth'});
+ }));
+})();
 </script>
 </body>
 </html>
