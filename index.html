@@ -1745,7 +1745,7 @@ footer { overflow: hidden; border-top: 1px solid var(--grey-5); }
   </div>
 </section>
 
-<nav class="category-nav" aria-label="Explore project categories"><div class="category-nav-inner"><span class="category-label">EXPLORE /</span><button class="category-btn active" data-cat="all">ALL WORKS</button><button class="category-btn" data-cat="fashion">VISUAL FRAGMENTS</button><button class="category-btn" data-cat="game">GAME DESIGN</button><button class="category-btn" data-cat="art">DIGITAL FASHION, CHARACTER & GAME ART</button><button class="category-btn" data-cat="vm">VISUAL MERCHANDISING</button><button class="category-btn" data-cat="creature">CHARACTER & CREATURE</button></div></nav>
+<nav class="category-nav" aria-label="Explore project categories"><div class="category-nav-inner"><span class="category-label">EXPLORE /</span><button class="category-btn active" data-cat="all">ALL WORKS</button><button class="category-btn" data-cat="fashion">VISUAL FRAGMENTS</button><button class="category-btn" data-cat="game">GAME DESIGN</button><button class="category-btn" data-cat="art">DIGITAL FASHION, CHARACTER & GAME ART</button><button class="category-btn" data-cat="vm">VISUAL MERCHANDISING</button><button class="category-btn" data-cat="creature">CHARACTER & CREATURE</button><button class="category-btn" data-cat="packshot">PACKSHOT</button></div></nav>
 <!-- PROJECTS -->
 <section class="projects" id="projects">
   <div class="container">
@@ -3222,7 +3222,7 @@ if (document.readyState === 'loading') {
 
 /* CATEGORY BUTTONS: navigate to original sections, do not filter projects. */
 (function(){
-  const targets={all:'projects',fashion:'visual-fragments',game:'game-work',art:'art-work',vm:'vm-work',creature:'creature-work'};
+  const targets={all:'projects',fashion:'visual-fragments',game:'game-work',art:'art-work',vm:'vm-work',creature:'creature-work',packshot:'packshot-work'};
   const buttons=[...document.querySelectorAll('.category-btn')];
   const nav=document.querySelector('.category-nav');
   function navigate(cat){
